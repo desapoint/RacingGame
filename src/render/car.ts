@@ -2,9 +2,9 @@ import type { CarDef, OwnedCar } from '../types';
 import { CAR_BODY_ATLAS, CAR_PAINT_MASK_ATLAS, WHEEL_ATLAS, WHEEL_META } from './sprite-data';
 
 const COLUMNS = 6;
-const CAR_CELL_WIDTH = 400;
-const CAR_CELL_HEIGHT = 150;
-const WHEEL_CELL = 96;
+const CAR_CELL_WIDTH = 160;
+const CAR_CELL_HEIGHT = 60;
+const WHEEL_CELL = 64;
 const carAtlas = new Image();
 const paintMaskAtlas = new Image();
 const wheelAtlas = new Image();
@@ -48,7 +48,8 @@ function tintLayer(index: number, color: string, lower = false): HTMLCanvasEleme
   ctx.drawImage(paintMaskAtlas, sx, sy, sw, sh, 0, 0, sw, sh);
   ctx.globalCompositeOperation = 'source-in';
   ctx.fillStyle = color;
-  ctx.fillRect(0, lower ? 96 : 0, sw, lower ? sh - 96 : sh);
+  const lowerY = Math.round(CAR_CELL_HEIGHT * 0.64);
+  ctx.fillRect(0, lower ? lowerY : 0, sw, lower ? sh - lowerY : sh);
   ctx.globalCompositeOperation = 'source-over';
   tintCache.set(key, canvas);
   if (tintCache.size > 96) tintCache.delete(tintCache.keys().next().value!);
@@ -66,7 +67,7 @@ function liveryLayer(car: CarDef, owned: OwnedCar): HTMLCanvasElement | undefine
   canvas.width = CAR_CELL_WIDTH;
   canvas.height = CAR_CELL_HEIGHT;
   const ctx = canvas.getContext('2d')!;
-  ctx.scale(0.5, 0.5);
+  ctx.scale(CAR_CELL_WIDTH / 800, CAR_CELL_HEIGHT / 300);
   for (const mark of owned.marks) {
     ctx.strokeStyle = mark.color;
     ctx.lineWidth = mark.width;
@@ -131,12 +132,10 @@ export function drawCar(
     ctx.fillRect(58, 238, 38, 6);
   }
 
-  const meta = WHEEL_META[car.spriteIndex - 1];
+  const [leftWheelX, rightWheelX, wheelY, diameter] = WHEEL_META[car.spriteIndex - 1];
   const wheelIndex = wheelSpriteIndex(car, owned);
-  const diameter = meta[3] * 2;
-  const wheelY = (meta[2] - meta[3] / 2 + 3) * 2;
-  drawWheel(ctx, wheelIndex, meta[0] * 2, wheelY, diameter, rotation);
-  drawWheel(ctx, wheelIndex, meta[1] * 2, wheelY, diameter, rotation);
+  drawWheel(ctx, wheelIndex, leftWheelX, wheelY, diameter, rotation);
+  drawWheel(ctx, wheelIndex, rightWheelX, wheelY, diameter, rotation);
 
   const [sx, sy, sw, sh] = cell(car.spriteIndex, CAR_CELL_WIDTH, CAR_CELL_HEIGHT);
   ctx.drawImage(carAtlas, sx, sy, sw, sh, 0, 0, 800, 300);
