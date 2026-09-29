@@ -139,11 +139,10 @@ export function drawCar(
 
   const [sx, sy, sw, sh] = cell(car.spriteIndex, CAR_CELL_WIDTH, CAR_CELL_HEIGHT);
   ctx.drawImage(carAtlas, sx, sy, sw, sh, 0, 0, 800, 300);
-  if (owned && owned.paint.toLowerCase() !== car.color.toLowerCase()) {
-    ctx.globalAlpha = 0.72;
-    ctx.drawImage(tintLayer(car.spriteIndex, owned.paint), 0, 0, 800, 300);
-    ctx.globalAlpha = 1;
-  }
+  const paint = owned?.paint ?? car.color;
+  ctx.globalAlpha = 0.72;
+  ctx.drawImage(tintLayer(car.spriteIndex, paint), 0, 0, 800, 300);
+  ctx.globalAlpha = 1;
   if (owned?.accent) {
     ctx.globalAlpha = 0.48;
     ctx.drawImage(tintLayer(car.spriteIndex, owned.accent, true), 0, 0, 800, 300);
