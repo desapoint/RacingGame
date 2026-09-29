@@ -45,6 +45,10 @@ export function validateConfig(config: GameData = data): void {
   const rivals = new Set(config.rivals.map((rival) => rival.id));
   ensure(cars.has(config.starter) && cars.has(config.loaner), 'missing starter or loaner');
   ensure(config.distance > 0 && config.startCash >= 0, 'invalid race or economy values');
+  ensure(
+    new Set(config.cars.map((car) => car.spriteIndex)).size === config.cars.length,
+    'duplicate car sprite index',
+  );
   config.cars.forEach((car) =>
     ensure(
       car.class >= 0 &&
@@ -53,7 +57,9 @@ export function validateConfig(config: GameData = data): void {
         car.acceleration > 0 &&
         car.maxSpeed > 0 &&
         car.mass > 0 &&
-        ['coupe', 'hatch', 'super', 'mazda3-sedan', 'forte-gt-sedan'].includes(car.art),
+        Number.isInteger(car.spriteIndex) &&
+        car.spriteIndex >= 1 &&
+        car.spriteIndex <= 30,
       `invalid car ${car.id}`,
     ),
   );
