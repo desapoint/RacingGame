@@ -11,7 +11,7 @@ export interface CarDef {
   mass: number;
   acceleration: number;
   maxSpeed: number;
-  art: 'coupe' | 'hatch' | 'super' | 'mazda3-sedan' | 'forte-gt-sedan';
+  spriteIndex: number;
   color: string;
 }
 export interface PartDef {
