@@ -4,7 +4,7 @@ import { accrueIdle, careerReward, claimIdle, eligible } from './game/economy';
 import { Race } from './game/race';
 import { Controls, type Action } from './input/controls';
 import { Renderer } from './render/renderer';
-import { drawCar } from './render/car';
+import { drawCar, preloadCarSprites } from './render/car';
 import { SaveRepository, downloadSave, parseSave } from './storage/save';
 import { LiveryEditor } from './ui/livery';
 import * as ui from './ui/screens';
@@ -67,6 +67,7 @@ class App {
   async start(): Promise<void> {
     this.root.innerHTML = '<div class="loading">REDLINE / <span>Opening the garage…</span></div>';
     this.save = await this.repository.load();
+    await preloadCarSprites();
     this.ensureLoaner();
     accrueIdle(this.save.payload);
     this.render();
