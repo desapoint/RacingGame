@@ -2,9 +2,9 @@ import type { CarDef, OwnedCar } from '../types';
 import { CAR_BODY_ATLAS, CAR_PAINT_MASK_ATLAS, WHEEL_ATLAS, WHEEL_META } from './sprite-data';
 
 const COLUMNS = 6;
-const CAR_CELL_WIDTH = 160;
-const CAR_CELL_HEIGHT = 60;
-const WHEEL_CELL = 64;
+const CAR_CELL_WIDTH = 128;
+const CAR_CELL_HEIGHT = 48;
+const WHEEL_CELL = 48;
 const carAtlas = new Image();
 const paintMaskAtlas = new Image();
 const wheelAtlas = new Image();
