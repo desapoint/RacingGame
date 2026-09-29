@@ -1,7 +1,8 @@
 import { build } from 'esbuild';
-import { mkdir, readFile, writeFile, rm, stat } from 'node:fs/promises';
+import { copyFile, mkdir, readFile, writeFile, rm, stat } from 'node:fs/promises';
 
 await mkdir('dist', { recursive: true });
+await mkdir('dist/assets', { recursive: true });
 const [javascript, css] = await Promise.all([
   build({
     entryPoints: ['src/main.ts'],
@@ -59,9 +60,14 @@ const html = template
   .replace('</head>', () => `<style>${styles}</style>\n  </head>`)
   .replace(bootstrap, () => launch);
 await writeFile('dist/index.html', html);
+await Promise.all(
+  ['car-bodies.webp', 'car-paint-mask.webp', 'wheels.webp'].map((name) =>
+    copyFile(`assets/${name}`, `dist/assets/${name}`),
+  ),
+);
 // Remove only the obsolete assets produced by our previous release format.
 await Promise.all(['game.js', 'styles.css'].map((name) => rm(`dist/${name}`, { force: true })));
-for (const name of ['index.html', 'config.js'])
+for (const name of ['index.html', 'config.js', 'assets/car-bodies.webp', 'assets/car-paint-mask.webp', 'assets/wheels.webp'])
   console.log(
     `Offline release: dist/${name} (${((await stat(`dist/${name}`)).size / 1024).toFixed(1)} KB)`,
   );
