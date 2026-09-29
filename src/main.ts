@@ -1,0 +1,522 @@
+import { carById, data } from './data/config';
+import { createOwned, buyCar, buyPart } from './game/garage';
+import { accrueIdle, careerReward, claimIdle, eligible } from './game/economy';
+import { Race } from './game/race';
+import { Controls, type Action } from './input/controls';
+import { Renderer } from './render/renderer';
+import { drawCar } from './render/car';
+import { SaveRepository, downloadSave, parseSave } from './storage/save';
+import { LiveryEditor } from './ui/livery';
+import * as ui from './ui/screens';
+import type { Difficulty, OwnedCar, SaveEnvelope, Screen } from './types';
+
+type RaceContext = { type: 'career' | 'job' | 'quick'; id: string; title: string };
+class App {
+  private root = document.querySelector<HTMLDivElement>('#app')!;
+  private repository = new SaveRepository();
+  private save!: SaveEnvelope;
+  private screen: Screen = 'garage';
+  private renderer?: Renderer;
+  private editor?: LiveryEditor;
+  private editing = false;
+  private race?: Race;
+  private context?: RaceContext;
+  private frame = 0;
+  private toastTimer = 0;
+  private outcomePaid = false;
+  private lastHud = 0;
+  private controls: Controls;
+  constructor() {
+    this.controls = new Controls(
+      (action) => this.raceAction(action),
+      () => !!this.race && !this.race.finished,
+    );
+    this.root.addEventListener('click', (event) => {
+      const button = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-action]');
+      if (button && !button.disabled)
+        void this.action(button.dataset.action!, button.dataset.id ?? '').catch((error) =>
+          this.toast(error instanceof Error ? error.message : 'Something went wrong.'),
+        );
+    });
+    this.root.addEventListener(
+      'change',
+      (event) =>
+        void this.change(event).catch((error) =>
+          this.toast(error instanceof Error ? error.message : 'Unable to apply change.'),
+        ),
+    );
+    this.root.addEventListener('input', (event) => this.input(event));
+    window.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        if (this.race && !this.race.finished) {
+          this.race.paused = true;
+          this.updateHud();
+          this.renderer?.race(this.race, this.save.payload.settings.reducedMotion);
+        }
+        void this.persist();
+      }
+    });
+    window.addEventListener('resize', () => {
+      this.renderer?.resize();
+      this.draw();
+    });
+    setInterval(() => {
+      if (this.save) void this.persist();
+    }, 15000);
+  }
+  async start(): Promise<void> {
+    this.root.innerHTML = '<div class="loading">REDLINE / <span>Opening the garage…</span></div>';
+    this.save = await this.repository.load();
+    this.ensureLoaner();
+    accrueIdle(this.save.payload);
+    this.render();
+    await this.persist();
+  }
+  private get profile() {
+    return this.save.payload;
+  }
+  private ensureLoaner(): void {
+    if (this.profile.cars.length < 200 && !this.profile.cars.some((car) => carById.has(car.id))) {
+      this.profile.cars.push(createOwned(carById.get(data.loaner)!));
+      this.profile.selected = data.loaner;
+    }
+  }
+  private get owned(): OwnedCar {
+    return (
+      this.profile.cars.find((c) => c.id === this.profile.selected && carById.has(c.id)) ??
+      this.profile.cars.find((c) => carById.has(c.id)) ??
+      createOwned(carById.get(data.loaner)!)
+    );
+  }
+  private async persist(): Promise<void> {
+    if (!this.save) return;
+    accrueIdle(this.profile);
+    await this.repository.write(this.save);
+    const status = document.querySelector('#save-status');
+    if (status) status.textContent = `● ${this.repository.status}`;
+  }
+  private render(): void {
+    this.editor?.destroy();
+    this.editor = undefined;
+    this.renderer = undefined;
+    this.root.innerHTML = ui.shell(this.profile, this.screen, this.repository.status);
+    const main = document.querySelector<HTMLElement>('#main')!;
+    switch (this.screen) {
+      case 'garage':
+        main.innerHTML = ui.garage(this.profile, this.owned, this.editing);
+        break;
+      case 'career':
+        main.innerHTML = ui.career(this.profile, this.owned);
+        break;
+      case 'dealership':
+        main.innerHTML = ui.dealership(this.profile);
+        break;
+      case 'jobs':
+        accrueIdle(this.profile);
+        main.innerHTML = ui.jobs(this.profile);
+        break;
+      case 'settings':
+        main.innerHTML = ui.settings(
+          this.profile,
+          this.repository.status,
+          !!this.repository.recovery,
+        );
+        break;
+    }
+    const canvas = document.querySelector<HTMLCanvasElement>('#garage-canvas');
+    if (canvas) {
+      this.renderer = new Renderer(canvas);
+      this.draw();
+      if (this.editing)
+        this.editor = new LiveryEditor(
+          canvas,
+          this.owned,
+          () => this.draw(),
+          () => {
+            this.root
+              .querySelectorAll<HTMLButtonElement>(
+                '[data-action="undo"], [data-action="clear-livery"]',
+              )
+              .forEach((button) => (button.disabled = !this.owned.marks.length));
+            void this.persist();
+          },
+        );
+    }
+    document
+      .querySelectorAll<HTMLCanvasElement>('.dealer-canvas')
+      .forEach((canvas) => drawCar(canvas.getContext('2d')!, carById.get(canvas.dataset.car!)!));
+  }
+  private draw(): void {
+    if (this.race) this.renderer?.race(this.race, this.profile.settings.reducedMotion);
+    else if (this.screen === 'garage')
+      this.renderer?.garage(carById.get(this.owned.id)!, this.owned, this.editing);
+  }
+  private toast(message: string): void {
+    const element = document.querySelector<HTMLElement>('#toast');
+    if (!element) return;
+    clearTimeout(this.toastTimer);
+    element.textContent = message;
+    element.hidden = false;
+    this.toastTimer = window.setTimeout(() => (element.hidden = true), 3800);
+  }
+  private async action(action: string, id: string): Promise<void> {
+    if (action === 'nav') {
+      if (this.race && !this.race.finished) {
+        this.race.paused = true;
+        this.draw();
+        if (!confirm('Leave this race? No credits will be charged.')) return;
+      }
+      this.stopRace();
+      this.screen = id as Screen;
+      this.editing = false;
+      this.render();
+      window.scrollTo(0, 0);
+      return;
+    }
+    if (action === 'launch' || action === 'shift' || action === 'nitro' || action === 'pause') {
+      this.raceAction(action);
+      return;
+    }
+    if (action === 'event') {
+      const event = data.events.find((e) => e.id === id);
+      if (!event || data.events.indexOf(event) > this.profile.unlocked) return;
+      const restriction = eligible(event, this.owned);
+      if (restriction) {
+        this.toast(restriction);
+        return;
+      }
+      this.startRace({ type: 'career', id, title: event.name }, this.owned, event.rivals);
+      return;
+    }
+    if (action === 'quick') {
+      this.startRace({ type: 'quick', id: 'quick', title: 'Open strip / single race' }, this.owned);
+      return;
+    }
+    if (action === 'job') {
+      const job = data.jobs.find((j) => j.id === id);
+      if (!job) return;
+      this.startRace(
+        { type: 'job', id, title: job.name },
+        id === 'night-shift' ? createOwned(carById.get(data.loaner)!) : this.owned,
+      );
+      return;
+    }
+    if (action === 'retry') {
+      const context = this.context!;
+      this.stopRace();
+      if (context.type === 'career') await this.action('event', context.id);
+      else if (context.type === 'job') await this.action('job', context.id);
+      else await this.action('quick', '');
+      return;
+    }
+    let message = '';
+    if (action === 'buy-car') message = buyCar(this.profile, id);
+    if (action === 'part') message = buyPart(this.profile, this.owned, id);
+    if (action === 'editor') {
+      this.editing = !this.editing;
+      this.render();
+      if (this.editing)
+        document.querySelector('#garage-canvas')?.scrollIntoView({
+          behavior: this.profile.settings.reducedMotion ? 'instant' : 'smooth',
+          block: 'center',
+        });
+      return;
+    }
+    if (action === 'undo') this.owned.marks.pop();
+    if (action === 'clear-livery') this.owned.marks = [];
+    if (action === 'claim') message = `Collected C ${ui.money(claimIdle(this.profile))}.`;
+    if (action === 'facility') {
+      const next = data.idle[this.profile.idle.level + 1];
+      if (next && this.profile.cash >= next.price) {
+        accrueIdle(this.profile);
+        this.profile.cash -= next.price;
+        this.profile.idle.level++;
+        message = 'The workshop is ready for more business.';
+      }
+    }
+    if (action === 'export') {
+      accrueIdle(this.profile);
+      downloadSave(JSON.stringify(this.save, null, 2));
+      this.toast('Save exported. Keep the JSON file as your backup.');
+      return;
+    }
+    if (action === 'recovery') {
+      downloadSave(this.repository.recovery ?? '', 'redline-recovery.json');
+      return;
+    }
+    if (action === 'recover-new') {
+      if (
+        !confirm(
+          'Replace the unreadable stored save with this session? Export the original first if you want to recover it later.',
+        )
+      )
+        return;
+      if (!(await this.repository.replace(this.save))) {
+        this.toast(
+          'Could not replace the save. Original preserved. Export this session to keep it.',
+        );
+        return;
+      }
+      message = 'This session is now your saved profile.';
+    }
+    if (action === 'close-modal') {
+      document.querySelector<HTMLDialogElement>('#modal')?.close();
+      return;
+    }
+    await this.persist();
+    this.render();
+    if (message) this.toast(message);
+  }
+  private input(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    if (target.id === 'launch-tune') {
+      this.owned.launch = Number(target.value);
+      document.querySelector('#launch-value')!.textContent = `${target.value} RPM`;
+    }
+    if (target.id === 'drive-tune') {
+      this.owned.drive = Number(target.value);
+      document.querySelector('#drive-value')!.textContent = Number(target.value).toFixed(2);
+    }
+    if (target.id === 'body-color') {
+      this.owned.paint = target.value;
+      this.draw();
+    }
+    if (target.id === 'accent-color') {
+      this.owned.accent = target.value;
+      this.draw();
+    }
+    if (target.id === 'ink-color' && this.editor) this.editor.color = target.value;
+  }
+  private async change(event: Event): Promise<void> {
+    const target = event.target as HTMLInputElement;
+    if (target.id === 'difficulty') this.profile.settings.difficulty = target.value as Difficulty;
+    if (target.id === 'reduced-motion') this.profile.settings.reducedMotion = target.checked;
+    if (target.id === 'car-select') {
+      this.profile.selected = target.value;
+      this.render();
+    }
+    if (target.id === 'wheels') {
+      this.owned.wheels = Number(target.value);
+      this.draw();
+    }
+    if (target.id === 'import-save') {
+      const file = target.files?.[0];
+      if (!file) return;
+      if (file.size > 2_000_000) {
+        this.toast('Save exceeds the 2 MB limit.');
+        return;
+      }
+      try {
+        const candidate = parseSave(await file.text());
+        const dialog = document.querySelector<HTMLDialogElement>('#modal')!;
+        dialog.innerHTML = `<div class="eyebrow">SAVE IMPORT PREVIEW</div><h2>Continue this story?</h2><p>Schema ${candidate.schemaVersion} · App ${ui.escape(candidate.appVersion)}<br>${candidate.payload.cars.length} cars · C ${ui.money(candidate.payload.cash)}<br>${candidate.payload.unlocked} / 20 career events<br>Saved ${new Date(candidate.updatedAt).toLocaleString()}</p><p>This replaces your current profile. Export a backup first if you want to keep both.</p><div class="save-actions"><button class="primary" id="confirm-import">Import this save</button>${ui.button('Cancel', 'close-modal', '', 'secondary')}</div>`;
+        dialog.showModal();
+        document.querySelector('#confirm-import')!.addEventListener(
+          'click',
+          async () => {
+            if (await this.repository.replace(candidate)) {
+              this.save = candidate;
+              this.ensureLoaner();
+              accrueIdle(this.profile);
+              dialog.close();
+              this.render();
+              await this.persist();
+              this.toast('Save imported. Welcome back.');
+            } else this.toast('Storage failed. Your active profile was kept.');
+          },
+          { once: true },
+        );
+      } catch (error) {
+        this.toast(error instanceof Error ? error.message : 'This file could not be imported.');
+      }
+      target.value = '';
+      return;
+    }
+    await this.persist();
+  }
+  private startRace(context: RaceContext, owned: OwnedCar, rivals?: string[]): void {
+    this.editor?.destroy();
+    this.editor = undefined;
+    this.editing = false;
+    const tier = carById.get(owned.id)!.class;
+    this.context = context;
+    this.outcomePaid = false;
+    this.race = new Race(
+      structuredClone(owned),
+      rivals ?? data.rivals.filter((r) => carById.get(r.carId)!.class === tier).map((r) => r.id),
+      this.profile.settings.difficulty,
+    );
+    const main = document.querySelector<HTMLElement>('#main')!;
+    main.innerHTML = `<div class="page-heading race-heading"><div><div class="eyebrow">${context.type.toUpperCase()} / ${this.profile.settings.difficulty.toUpperCase()}</div><h1>${context.title}<span class="heading-dot">.</span></h1><p>¼ mile · ${carById.get(owned.id)!.name} · Featured rival: ${this.race.racers[1].name}</p></div>${ui.button('Pause <kbd>Esc</kbd>', 'pause', '', 'secondary')}</div><section class="panel race-panel"><div class="race-top"><span id="race-status">STAGING</span><div class="distance-bar"><i id="distance-fill"></i></div><span id="race-distance">0 / 402 M</span></div><canvas id="race-canvas" aria-label="Two lane drag race"></canvas><div class="race-feedback" id="race-feedback" role="status">Wait for green. Time your launch.</div><div class="dashboard"><div class="speed"><span>SPEED</span><strong id="speed">0</strong><small>KM/H</small></div><div class="tachometer"><div class="tach-label"><span id="rpm">3,000 RPM</span><span id="shift-label">LAUNCH WINDOW</span></div><div class="tach-track"><div id="tach-fill"></div><i id="shift-window"></i></div><div class="tach-scale"><span>0</span><span>2</span><span>4</span><span>6</span><span>8 × 1,000</span></div></div><div class="gear"><span>GEAR</span><strong id="gear">1</strong><small>/ 6</small></div><div class="race-time"><span>ELAPSED</span><strong id="elapsed">0.000</strong><small>SECONDS</small></div></div></section><div class="race-controls">${ui.button('<kbd>Space</kbd><span>Launch<small>On green · match the RPM window</small></span>', 'launch', '', 'secondary')}${ui.button('<kbd>↑</kbd><span>Shift up<small>6,100–6,800 RPM · Shift also works</small></span>', 'shift', '', 'primary')}${ui.button('<kbd>N</kbd><span>Nitrous<small id="nitro-label">' + (this.race.player.nitroLeft ? 'Ready to use' : 'Install a system in the garage') + '</small></span>', 'nitro', '', 'secondary', !this.race.player.nitroLeft)}</div><p class="race-note">Reaction time counts toward placement. Jumping the lights adds a 0.75 s penalty. All three rivals run the same distance.</p>`;
+    this.renderer = new Renderer(document.querySelector<HTMLCanvasElement>('#race-canvas')!);
+    window.scrollTo(0, 0);
+    this.lastHud = 0;
+    this.updateHud();
+    let last = performance.now(),
+      accumulator = 0;
+    const frame = (now: number) => {
+      if (!this.race) return;
+      const delta = Math.min(0.1, (now - last) / 1000);
+      last = now;
+      if (!this.race.paused && !document.hidden) {
+        accumulator += delta;
+        while (accumulator >= 1 / 120) {
+          this.race.update(1 / 120);
+          accumulator -= 1 / 120;
+        }
+      } else accumulator = 0;
+      this.renderer?.race(this.race, this.profile.settings.reducedMotion);
+      if (now - this.lastHud > 50) {
+        this.updateHud();
+        this.lastHud = now;
+      }
+      if (this.race.finished) {
+        void this.finishRace();
+        return;
+      }
+      this.frame = requestAnimationFrame(frame);
+    };
+    cancelAnimationFrame(this.frame);
+    this.frame = requestAnimationFrame(frame);
+  }
+  private raceAction(action: Action): void {
+    if (!this.race || this.race.finished) return;
+    if (action === 'pause') this.race.paused = !this.race.paused;
+    else this.race[action]();
+    this.updateHud();
+  }
+  private updateHud(): void {
+    const race = this.race;
+    if (!race) return;
+    const player = race.player;
+    const set = (id: string, text: string) => {
+      const node = document.getElementById(id);
+      if (node && node.textContent !== text) node.textContent = text;
+    };
+    set('speed', Math.round(player.speed * 3.6).toString());
+    set('gear', player.gear.toString());
+    set('rpm', `${ui.money(player.rpm)} RPM`);
+    set('elapsed', player.elapsed.toFixed(3));
+    set('race-distance', `${Math.floor(player.distance)} / 402 M`);
+    set(
+      'race-status',
+      race.finished
+        ? 'FINISHED'
+        : race.paused
+          ? 'PAUSED'
+          : race.time < 0
+            ? 'STAGING'
+            : player.finish
+              ? 'FINISHED'
+              : `POSITION ${race.place} / 4`,
+    );
+    set(
+      'race-feedback',
+      race.finished
+        ? 'Race complete · your results are below'
+        : race.paused
+          ? 'Take your time. Resume when you’re ready.'
+          : race.time < 0
+            ? race.falseStart
+              ? race.feedback
+              : 'Wait for green. Time your launch.'
+            : !player.launched
+              ? 'GREEN · PRESS SPACE TO LAUNCH'
+              : player.finish
+                ? 'Across the line. Waiting for the field…'
+                : race.time < race.feedbackUntil
+                  ? race.feedback
+                  : player.rpm >= 6100 && player.rpm <= 6800
+                    ? 'SHIFT NOW'
+                    : player.rpm > 6800
+                      ? 'REDLINE · SHIFT UP'
+                      : 'Build speed. Watch your RPM.',
+    );
+    set('shift-label', player.launched ? 'SHIFT WINDOW' : 'LAUNCH WINDOW');
+    set(
+      'nitro-label',
+      player.stats.nitro
+        ? `${player.nitroLeft.toFixed(1)} s ${player.nitroActive ? 'remaining' : 'ready'}`
+        : 'Install a system in the garage',
+    );
+    const bar = document.getElementById('tach-fill');
+    if (bar) {
+      bar.style.width = `${(player.rpm / 8000) * 100}%`;
+      bar.classList.toggle('perfect', player.rpm >= 6100 && player.rpm <= 6800);
+    }
+    const shift = document.getElementById('shift-window');
+    if (shift) {
+      shift.style.left = `${((player.launched ? 6100 : (player.owned?.launch ?? 4800) - 300) / 8000) * 100}%`;
+      shift.style.width = `${((player.launched ? 700 : 600) / 8000) * 100}%`;
+    }
+    const distance = document.getElementById('distance-fill');
+    if (distance) distance.style.width = `${(player.distance / data.distance) * 100}%`;
+    const pause = document.querySelector<HTMLButtonElement>('[data-action="pause"]');
+    if (pause) {
+      pause.innerHTML = `${race.paused ? 'Resume' : 'Pause'} <kbd>Esc</kbd>`;
+      pause.disabled = race.finished;
+    }
+    const launch = document.querySelector<HTMLButtonElement>('[data-action="launch"]');
+    if (launch) launch.disabled = player.launched || race.finished;
+    const shiftButton = document.querySelector<HTMLButtonElement>('[data-action="shift"]');
+    if (shiftButton) shiftButton.disabled = !player.launched || player.gear >= 6 || !!player.finish;
+    const nitro = document.querySelector<HTMLButtonElement>('[data-action="nitro"]');
+    if (nitro)
+      nitro.disabled =
+        !player.launched || player.nitroLeft <= 0 || player.nitroActive || !!player.finish;
+  }
+  private async finishRace(): Promise<void> {
+    if (this.outcomePaid || !this.race || !this.context) return;
+    this.outcomePaid = true;
+    const race = this.race,
+      player = race.player,
+      context = this.context,
+      place = race.place;
+    let reward = 0;
+    this.profile.races++;
+    if (place === 1) this.profile.wins++;
+    if (context.type === 'career')
+      reward = careerReward(
+        this.profile,
+        data.events.find((e) => e.id === context.id)!,
+        place,
+        player.elapsed,
+        player.trap,
+      );
+    if (context.type === 'job') {
+      const job = data.jobs.find((j) => j.id === context.id)!;
+      reward =
+        job.participation +
+        (place === 1
+          ? job.bonus
+          : Math.round(job.bonus * (place === 2 ? 0.5 : place === 3 ? 0.25 : 0)));
+      this.profile.cash += reward;
+    }
+    this.updateHud();
+    const sorted = [...race.racers].sort((a, b) => a.finish - b.finish);
+    document
+      .querySelector('#main')!
+      .insertAdjacentHTML(
+        'beforeend',
+        `<section class="panel results" id="race-results" tabindex="-1"><div class="results-heading"><div><span class="eyebrow">${place === 1 ? 'THAT’S HOW IT’S DONE' : place <= 3 ? 'ON THE PODIUM' : 'ANOTHER RUN, ANOTHER LESSON'}</span><h2>${place === 1 ? 'You took the win.' : `P${place}. Keep chasing.`}</h2><p>${context.type === 'career' ? (place <= 3 ? 'Next event unlocked. Your story continues.' : 'A podium unlocks the next event. Retry for free.') : context.type === 'job' ? 'Shift complete. Your payout is in the bank.' : 'Practice complete. Try a different setup or take on the ladder.'}</p></div><div class="result-reward">+ C ${ui.money(reward)}<span>RACE REWARD</span></div></div><div class="result-stats"><div><span>REACTION</span><strong>${player.launched ? player.reaction.toFixed(3) : '—'} <small>s</small></strong></div><div><span>ELAPSED TIME</span><strong>${player.elapsed.toFixed(3)} <small>s</small></strong></div><div><span>TRAP SPEED</span><strong>${player.trap.toFixed(1)} <small>km/h</small></strong></div><div><span>PERFECT SHIFTS</span><strong>${race.shifts.filter((s) => s === 'Perfect shift').length} <small>/ ${race.shifts.length}</small></strong></div></div><div class="standings">${sorted.map((r, i) => `<div class="standing ${r === player ? 'is-player' : ''}"><strong>0${i + 1}</strong><span>${r.name}<small>${r.car.name}</small></span><span>${r.distance < data.distance ? 'DNF' : r.finish.toFixed(3) + ' s'}<small>TOTAL TIME</small></span></div>`).join('')}</div><div class="result-actions">${ui.button('Back to garage', 'nav', 'garage', 'secondary')}${ui.button('Run it back ↻', 'retry', '', 'secondary')}${ui.button('Continue career →', 'nav', 'career', 'primary')}</div></section>`,
+      );
+    document.querySelector<HTMLElement>('#race-results')?.focus({ preventScroll: true });
+    document.querySelector('#race-results')?.scrollIntoView({
+      behavior: this.profile.settings.reducedMotion ? 'instant' : 'smooth',
+      block: 'start',
+    });
+    await this.persist();
+    const balance = document.getElementById('balance');
+    if (balance) balance.textContent = ui.money(this.profile.cash);
+  }
+  private stopRace(): void {
+    cancelAnimationFrame(this.frame);
+    this.race = undefined;
+    this.renderer = undefined;
+  }
+}
+
+void new App().start().catch((error) => {
+  document.querySelector('#app')!.textContent =
+    `Unable to start Redline: ${error instanceof Error ? error.message : 'Unknown error'}`;
+});

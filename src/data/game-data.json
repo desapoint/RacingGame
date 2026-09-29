@@ -1,0 +1,723 @@
+{
+  "title": "Redline",
+  "distance": 402.336,
+  "startCash": 8000,
+  "starter": "kestrel-rs",
+  "loaner": "kestrel-rs",
+  "classes": [
+    {
+      "id": "street",
+      "name": "Street",
+      "subtitle": "Every legend starts somewhere.",
+      "color": "#b7a1ff"
+    },
+    {
+      "id": "club",
+      "name": "Club",
+      "subtitle": "Find your people. Beat their times.",
+      "color": "#72dcc9"
+    },
+    {
+      "id": "pro",
+      "name": "Pro",
+      "subtitle": "Built for the thousandths.",
+      "color": "#ffbc74"
+    },
+    {
+      "id": "elite",
+      "name": "Elite",
+      "subtitle": "Nothing left on the table.",
+      "color": "#ff788b"
+    }
+  ],
+  "cars": [
+    {
+      "id": "kestrel-rs",
+      "name": "Kestrel RS",
+      "tagline": "Light feet. Heavy ambition.",
+      "class": 0,
+      "price": 0,
+      "power": 190,
+      "mass": 1180,
+      "acceleration": 7.3,
+      "maxSpeed": 65,
+      "art": "hatch",
+      "color": "#baa7f7"
+    },
+    {
+      "id": "comet-gt",
+      "name": "Comet GT",
+      "tagline": "A little muscle goes a long way.",
+      "class": 0,
+      "price": 3500,
+      "power": 212,
+      "mass": 1220,
+      "acceleration": 7.5,
+      "maxSpeed": 67,
+      "art": "coupe",
+      "color": "#edb272"
+    },
+    {
+      "id": "vela-sport",
+      "name": "Vela Sport",
+      "tagline": "Made for the late shift.",
+      "class": 0,
+      "price": 7000,
+      "power": 234,
+      "mass": 1260,
+      "acceleration": 7.7,
+      "maxSpeed": 69,
+      "art": "super",
+      "color": "#85c9b5"
+    },
+    {
+      "id": "mazda3-turbo-sedan-2021",
+      "name": "2021 Mazda3 Turbo Sedan",
+      "tagline": "Quiet confidence. Turbocharged ambition.",
+      "class": 0,
+      "price": 7800,
+      "power": 250,
+      "mass": 1540,
+      "acceleration": 8.1,
+      "maxSpeed": 66,
+      "art": "mazda3-sedan",
+      "color": "#bd233b"
+    },
+    {
+      "id": "kia-forte-gt-sedan-2022",
+      "name": "2022 Kia Forte GT Sedan",
+      "tagline": "Four doors. A little more attitude.",
+      "class": 0,
+      "price": 6200,
+      "power": 201,
+      "mass": 1375,
+      "acceleration": 7.65,
+      "maxSpeed": 65,
+      "art": "forte-gt-sedan",
+      "color": "#f07827"
+    },
+    {
+      "id": "sable-r",
+      "name": "Sable R",
+      "tagline": "Light feet. Heavy ambition.",
+      "class": 1,
+      "price": 34000,
+      "power": 350,
+      "mass": 1265,
+      "acceleration": 9.5,
+      "maxSpeed": 79,
+      "art": "hatch",
+      "color": "#baa7f7"
+    },
+    {
+      "id": "monarch-6",
+      "name": "Monarch 6",
+      "tagline": "A little muscle goes a long way.",
+      "class": 1,
+      "price": 37500,
+      "power": 372,
+      "mass": 1305,
+      "acceleration": 9.7,
+      "maxSpeed": 81,
+      "art": "coupe",
+      "color": "#edb272"
+    },
+    {
+      "id": "arcadia-gt",
+      "name": "Arcadia GT",
+      "tagline": "Made for the late shift.",
+      "class": 1,
+      "price": 41000,
+      "power": 394,
+      "mass": 1345,
+      "acceleration": 9.9,
+      "maxSpeed": 83,
+      "art": "super",
+      "color": "#85c9b5"
+    },
+    {
+      "id": "tempest-rx",
+      "name": "Tempest RX",
+      "tagline": "Light feet. Heavy ambition.",
+      "class": 2,
+      "price": 94000,
+      "power": 510,
+      "mass": 1350,
+      "acceleration": 11.7,
+      "maxSpeed": 93,
+      "art": "coupe",
+      "color": "#baa7f7"
+    },
+    {
+      "id": "spectre-s",
+      "name": "Spectre S",
+      "tagline": "A little muscle goes a long way.",
+      "class": 2,
+      "price": 97500,
+      "power": 532,
+      "mass": 1390,
+      "acceleration": 11.899999999999999,
+      "maxSpeed": 95,
+      "art": "super",
+      "color": "#edb272"
+    },
+    {
+      "id": "solstice-r",
+      "name": "Solstice R",
+      "tagline": "Made for the late shift.",
+      "class": 2,
+      "price": 101000,
+      "power": 554,
+      "mass": 1430,
+      "acceleration": 12.1,
+      "maxSpeed": 97,
+      "art": "super",
+      "color": "#85c9b5"
+    },
+    {
+      "id": "apex-one",
+      "name": "Apex One",
+      "tagline": "Light feet. Heavy ambition.",
+      "class": 3,
+      "price": 218000,
+      "power": 670,
+      "mass": 1435,
+      "acceleration": 13.9,
+      "maxSpeed": 107,
+      "art": "coupe",
+      "color": "#baa7f7"
+    },
+    {
+      "id": "revenant-x",
+      "name": "Revenant X",
+      "tagline": "A little muscle goes a long way.",
+      "class": 3,
+      "price": 221500,
+      "power": 692,
+      "mass": 1475,
+      "acceleration": 14.1,
+      "maxSpeed": 109,
+      "art": "super",
+      "color": "#edb272"
+    },
+    {
+      "id": "zenith-xx",
+      "name": "Zenith XX",
+      "tagline": "Made for the late shift.",
+      "class": 3,
+      "price": 225000,
+      "power": 714,
+      "mass": 1515,
+      "acceleration": 14.3,
+      "maxSpeed": 111,
+      "art": "super",
+      "color": "#85c9b5"
+    }
+  ],
+  "parts": [
+    {
+      "id": "engine-1",
+      "name": "ECU & intake",
+      "slot": "engine",
+      "level": 1,
+      "price": 1400,
+      "minClass": 0,
+      "effect": 0.12
+    },
+    {
+      "id": "engine-2",
+      "name": "Competition engine",
+      "slot": "engine",
+      "level": 2,
+      "price": 6500,
+      "minClass": 1,
+      "effect": 0.24
+    },
+    {
+      "id": "engine-3",
+      "name": "Works engine",
+      "slot": "engine",
+      "level": 3,
+      "price": 18000,
+      "minClass": 2,
+      "effect": 0.36
+    },
+    {
+      "id": "transmission-1",
+      "name": "Short-shift kit",
+      "slot": "transmission",
+      "level": 1,
+      "price": 1400,
+      "minClass": 0,
+      "effect": 0.06
+    },
+    {
+      "id": "transmission-2",
+      "name": "Competition transmission",
+      "slot": "transmission",
+      "level": 2,
+      "price": 6500,
+      "minClass": 1,
+      "effect": 0.12
+    },
+    {
+      "id": "transmission-3",
+      "name": "Works transmission",
+      "slot": "transmission",
+      "level": 3,
+      "price": 18000,
+      "minClass": 2,
+      "effect": 0.18
+    },
+    {
+      "id": "tires-1",
+      "name": "Street compound",
+      "slot": "tires",
+      "level": 1,
+      "price": 1400,
+      "minClass": 0,
+      "effect": 0.12
+    },
+    {
+      "id": "tires-2",
+      "name": "Competition tires",
+      "slot": "tires",
+      "level": 2,
+      "price": 6500,
+      "minClass": 1,
+      "effect": 0.24
+    },
+    {
+      "id": "tires-3",
+      "name": "Works tires",
+      "slot": "tires",
+      "level": 3,
+      "price": 18000,
+      "minClass": 2,
+      "effect": 0.36
+    },
+    {
+      "id": "nitro-1",
+      "name": "Nitrous system",
+      "slot": "nitro",
+      "level": 1,
+      "price": 1400,
+      "minClass": 0,
+      "effect": 1
+    },
+    {
+      "id": "nitro-2",
+      "name": "Competition nitro",
+      "slot": "nitro",
+      "level": 2,
+      "price": 6500,
+      "minClass": 1,
+      "effect": 2
+    },
+    {
+      "id": "nitro-3",
+      "name": "Works nitro",
+      "slot": "nitro",
+      "level": 3,
+      "price": 18000,
+      "minClass": 2,
+      "effect": 3
+    },
+    {
+      "id": "weight-1",
+      "name": "Lightweight package",
+      "slot": "weight",
+      "level": 1,
+      "price": 1400,
+      "minClass": 0,
+      "effect": 0.07
+    },
+    {
+      "id": "weight-2",
+      "name": "Competition weight",
+      "slot": "weight",
+      "level": 2,
+      "price": 6500,
+      "minClass": 1,
+      "effect": 0.14
+    },
+    {
+      "id": "weight-3",
+      "name": "Works weight",
+      "slot": "weight",
+      "level": 3,
+      "price": 18000,
+      "minClass": 2,
+      "effect": 0.21
+    }
+  ],
+  "rivals": [
+    {
+      "id": "rival-0-0",
+      "name": "Jules Park",
+      "carId": "kestrel-rs",
+      "reaction": 0.22,
+      "shift": 0.9,
+      "consistency": 0.07,
+      "nitroAt": 100,
+      "tune": 0.97
+    },
+    {
+      "id": "rival-0-1",
+      "name": "Milo Vega",
+      "carId": "comet-gt",
+      "reaction": 0.3,
+      "shift": 0.86,
+      "consistency": 0.1,
+      "nitroAt": 150,
+      "tune": 0.985
+    },
+    {
+      "id": "rival-0-2",
+      "name": "Rae Collins",
+      "carId": "vela-sport",
+      "reaction": 0.38,
+      "shift": 0.8200000000000001,
+      "consistency": 0.13,
+      "nitroAt": 200,
+      "tune": 1.0
+    },
+    {
+      "id": "rival-1-0",
+      "name": "Nico Silva",
+      "carId": "sable-r",
+      "reaction": 0.22,
+      "shift": 0.9,
+      "consistency": 0.07,
+      "nitroAt": 100,
+      "tune": 0.97
+    },
+    {
+      "id": "rival-1-1",
+      "name": "Kit Monroe",
+      "carId": "monarch-6",
+      "reaction": 0.3,
+      "shift": 0.86,
+      "consistency": 0.1,
+      "nitroAt": 150,
+      "tune": 0.985
+    },
+    {
+      "id": "rival-1-2",
+      "name": "Ari Stone",
+      "carId": "arcadia-gt",
+      "reaction": 0.38,
+      "shift": 0.8200000000000001,
+      "consistency": 0.13,
+      "nitroAt": 200,
+      "tune": 1.0
+    },
+    {
+      "id": "rival-2-0",
+      "name": "Alex Mercer",
+      "carId": "tempest-rx",
+      "reaction": 0.22,
+      "shift": 0.9,
+      "consistency": 0.07,
+      "nitroAt": 100,
+      "tune": 0.97
+    },
+    {
+      "id": "rival-2-1",
+      "name": "Sasha Reed",
+      "carId": "spectre-s",
+      "reaction": 0.3,
+      "shift": 0.86,
+      "consistency": 0.1,
+      "nitroAt": 150,
+      "tune": 0.985
+    },
+    {
+      "id": "rival-2-2",
+      "name": "Jo Ellis",
+      "carId": "solstice-r",
+      "reaction": 0.38,
+      "shift": 0.8200000000000001,
+      "consistency": 0.13,
+      "nitroAt": 200,
+      "tune": 1.0
+    },
+    {
+      "id": "rival-3-0",
+      "name": "Val Ortiz",
+      "carId": "apex-one",
+      "reaction": 0.22,
+      "shift": 0.9,
+      "consistency": 0.07,
+      "nitroAt": 100,
+      "tune": 0.97
+    },
+    {
+      "id": "rival-3-1",
+      "name": "Ren Takeda",
+      "carId": "revenant-x",
+      "reaction": 0.3,
+      "shift": 0.86,
+      "consistency": 0.1,
+      "nitroAt": 150,
+      "tune": 0.985
+    },
+    {
+      "id": "rival-3-2",
+      "name": "Max Sterling",
+      "carId": "zenith-xx",
+      "reaction": 0.38,
+      "shift": 0.8200000000000001,
+      "consistency": 0.13,
+      "nitroAt": 200,
+      "tune": 1.0
+    }
+  ],
+  "events": [
+    {
+      "id": "street-1",
+      "name": "First light",
+      "division": 0,
+      "rivals": ["rival-0-0", "rival-0-1", "rival-0-2"],
+      "reward": 7500,
+      "maxPartLevel": 1,
+      "final": false
+    },
+    {
+      "id": "street-2",
+      "name": "Industrial action",
+      "division": 0,
+      "rivals": ["rival-0-0", "rival-0-1", "rival-0-2"],
+      "reward": 8000,
+      "maxPartLevel": 1,
+      "final": false
+    },
+    {
+      "id": "street-3",
+      "name": "After hours",
+      "division": 0,
+      "rivals": ["rival-0-0", "rival-0-1", "rival-0-2"],
+      "reward": 8500,
+      "maxPartLevel": 1,
+      "final": false
+    },
+    {
+      "id": "street-4",
+      "name": "The underpass",
+      "division": 0,
+      "rivals": ["rival-0-0", "rival-0-1", "rival-0-2"],
+      "reward": 9000,
+      "maxPartLevel": 1,
+      "final": false
+    },
+    {
+      "id": "street-5",
+      "name": "Street royalty",
+      "division": 0,
+      "rivals": ["rival-0-0", "rival-0-1", "rival-0-2"],
+      "reward": 9500,
+      "maxPartLevel": 1,
+      "final": true
+    },
+    {
+      "id": "club-1",
+      "name": "Club initiation",
+      "division": 1,
+      "rivals": ["rival-1-0", "rival-1-1", "rival-1-2"],
+      "reward": 17000,
+      "maxPartLevel": 2,
+      "final": false
+    },
+    {
+      "id": "club-2",
+      "name": "Dockside duel",
+      "division": 1,
+      "rivals": ["rival-1-0", "rival-1-1", "rival-1-2"],
+      "reward": 17500,
+      "maxPartLevel": 2,
+      "final": false
+    },
+    {
+      "id": "club-3",
+      "name": "Night movers",
+      "division": 1,
+      "rivals": ["rival-1-0", "rival-1-1", "rival-1-2"],
+      "reward": 18000,
+      "maxPartLevel": 2,
+      "final": false
+    },
+    {
+      "id": "club-4",
+      "name": "Inner circle",
+      "division": 1,
+      "rivals": ["rival-1-0", "rival-1-1", "rival-1-2"],
+      "reward": 18500,
+      "maxPartLevel": 2,
+      "final": false
+    },
+    {
+      "id": "club-5",
+      "name": "Club champion",
+      "division": 1,
+      "rivals": ["rival-1-0", "rival-1-1", "rival-1-2"],
+      "reward": 19000,
+      "maxPartLevel": 2,
+      "final": true
+    },
+    {
+      "id": "pro-1",
+      "name": "Proving ground",
+      "division": 2,
+      "rivals": ["rival-2-0", "rival-2-1", "rival-2-2"],
+      "reward": 34000,
+      "maxPartLevel": 3,
+      "final": false
+    },
+    {
+      "id": "pro-2",
+      "name": "Full commitment",
+      "division": 2,
+      "rivals": ["rival-2-0", "rival-2-1", "rival-2-2"],
+      "reward": 34500,
+      "maxPartLevel": 3,
+      "final": false
+    },
+    {
+      "id": "pro-3",
+      "name": "Over the limit",
+      "division": 2,
+      "rivals": ["rival-2-0", "rival-2-1", "rival-2-2"],
+      "reward": 35000,
+      "maxPartLevel": 3,
+      "final": false
+    },
+    {
+      "id": "pro-4",
+      "name": "No lifting",
+      "division": 2,
+      "rivals": ["rival-2-0", "rival-2-1", "rival-2-2"],
+      "reward": 35500,
+      "maxPartLevel": 3,
+      "final": false
+    },
+    {
+      "id": "pro-5",
+      "name": "Professional courtesy",
+      "division": 2,
+      "rivals": ["rival-2-0", "rival-2-1", "rival-2-2"],
+      "reward": 36000,
+      "maxPartLevel": 3,
+      "final": true
+    },
+    {
+      "id": "elite-1",
+      "name": "Rare company",
+      "division": 3,
+      "rivals": ["rival-3-0", "rival-3-1", "rival-3-2"],
+      "reward": 55000,
+      "maxPartLevel": 3,
+      "final": false
+    },
+    {
+      "id": "elite-2",
+      "name": "The last tenth",
+      "division": 3,
+      "rivals": ["rival-3-0", "rival-3-1", "rival-3-2"],
+      "reward": 55500,
+      "maxPartLevel": 3,
+      "final": false
+    },
+    {
+      "id": "elite-3",
+      "name": "Limitless",
+      "division": 3,
+      "rivals": ["rival-3-0", "rival-3-1", "rival-3-2"],
+      "reward": 56000,
+      "maxPartLevel": 3,
+      "final": false
+    },
+    {
+      "id": "elite-4",
+      "name": "Crown contenders",
+      "division": 3,
+      "rivals": ["rival-3-0", "rival-3-1", "rival-3-2"],
+      "reward": 56500,
+      "maxPartLevel": 3,
+      "final": false
+    },
+    {
+      "id": "elite-5",
+      "name": "King of the quarter",
+      "division": 3,
+      "rivals": ["rival-3-0", "rival-3-1", "rival-3-2"],
+      "reward": 57000,
+      "maxPartLevel": 3,
+      "final": true
+    }
+  ],
+  "difficulties": {
+    "easy": {
+      "performance": 0.86,
+      "reaction": 0.2,
+      "mistakes": 0.14
+    },
+    "normal": {
+      "performance": 0.97,
+      "reaction": 0.06,
+      "mistakes": 0.07
+    },
+    "hard": {
+      "performance": 1.055,
+      "reaction": 0,
+      "mistakes": 0.015
+    }
+  },
+  "jobs": [
+    {
+      "id": "night-shift",
+      "name": "The night shift",
+      "description": "A quiet strip. A borrowed car. An honest payout.",
+      "participation": 1200,
+      "bonus": 1800
+    },
+    {
+      "id": "test-driver",
+      "name": "Test driver",
+      "description": "Put your own setup through its paces.",
+      "participation": 1500,
+      "bonus": 2200
+    }
+  ],
+  "idle": [
+    {
+      "name": "Corner workshop",
+      "price": 0,
+      "rate": 60,
+      "capacity": 180
+    },
+    {
+      "name": "Neighborhood garage",
+      "price": 4000,
+      "rate": 120,
+      "capacity": 450
+    },
+    {
+      "name": "Performance shop",
+      "price": 12000,
+      "rate": 240,
+      "capacity": 900
+    }
+  ],
+  "tuning": {
+    "launch": {
+      "min": 3200,
+      "max": 6500,
+      "default": 4800
+    },
+    "drive": {
+      "min": 2.8,
+      "max": 4.4,
+      "default": 3.5
+    }
+  }
+}

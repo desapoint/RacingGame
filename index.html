@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#111217" />
+    <meta name="description" content="An offline-ready drag racing game. Build your car, find your shift, own the quarter mile." />
+    <title>Redline — Drag Club</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- REDLINE_BOOTSTRAP_START -->
+    <script>
+      if (location.protocol === 'file:') {
+        location.replace(new URL('./dist/index.html', location.href).href);
+      } else {
+        const stylesheet = document.createElement('link');
+        stylesheet.rel = 'stylesheet';
+        stylesheet.href = './src/styles.css';
+        document.head.append(stylesheet);
+        const entrypoint = document.createElement('script');
+        entrypoint.type = 'module';
+        entrypoint.src = './src/main.ts';
+        document.body.append(entrypoint);
+      }
+    </script>
+    <!-- REDLINE_BOOTSTRAP_END -->
+  </body>
+</html>
