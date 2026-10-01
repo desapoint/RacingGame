@@ -25,33 +25,33 @@ export class Renderer {
     c.height = this.height;
     const ctx = c.getContext('2d')!;
     const sky = ctx.createLinearGradient(0, 0, 0, 300);
-    sky.addColorStop(0, '#171922');
-    sky.addColorStop(1, '#36303d');
+    sky.addColorStop(0, '#121614');
+    sky.addColorStop(1, '#30342f');
     ctx.fillStyle = sky;
     ctx.fillRect(0, 0, 1100, 460);
     ctx.fillStyle = '#ddddc8';
     ctx.beginPath();
     ctx.arc(858, 76, 27, 0, Math.PI * 2);
     ctx.fill();
-    ctx.fillStyle = '#20202a';
+    ctx.fillStyle = '#1c201d';
     for (let i = 0; i < 22; i++) {
       const h = 35 + ((i * 47) % 92);
       ctx.fillRect(i * 58 - 12, 236 - h, 43, h);
     }
-    ctx.fillStyle = '#171921';
+    ctx.fillStyle = '#141714';
     ctx.fillRect(0, 219, 1100, 50);
     for (let i = 0; i < 18; i++) {
-      ctx.fillStyle = i % 4 === 0 ? '#b8a1e657' : '#6f68752b';
+      ctx.fillStyle = i % 4 === 0 ? '#e0a24745' : '#9b968b24';
       ctx.fillRect(i * 68 + 15, 230, 25, 5);
     }
-    ctx.fillStyle = '#49434d';
+    ctx.fillStyle = '#4a4d47';
     ctx.fillRect(0, 263, 1100, 5);
-    ctx.fillStyle = '#1d1e26';
+    ctx.fillStyle = '#1c1f1c';
     ctx.fillRect(0, 268, 1100, 192);
-    ctx.fillStyle = '#34343e';
+    ctx.fillStyle = '#353934';
     ctx.fillRect(0, 350, 1100, 2);
     ctx.fillRect(0, 445, 1100, 3);
-    ctx.strokeStyle = '#bab0c018';
+    ctx.strokeStyle = '#d7d0c018';
     ctx.lineWidth = 1;
     for (let i = 0; i < 24; i++) {
       ctx.beginPath();
@@ -63,12 +63,12 @@ export class Renderer {
   garage(car: CarDef, owned: OwnedCar, editing = false): void {
     const ctx = this.ctx;
     const bg = ctx.createLinearGradient(0, 0, 1100, 460);
-    bg.addColorStop(0, '#24212f');
-    bg.addColorStop(0.65, '#18191f');
-    bg.addColorStop(1, '#202029');
+    bg.addColorStop(0, '#282b27');
+    bg.addColorStop(0.65, '#171a17');
+    bg.addColorStop(1, '#20231f');
     ctx.fillStyle = bg;
     ctx.fillRect(0, 0, 1100, 460);
-    ctx.strokeStyle = '#a798c313';
+    ctx.strokeStyle = '#c3bcaf16';
     ctx.lineWidth = 1;
     for (let i = 0; i < 12; i++) {
       ctx.beginPath();
@@ -83,13 +83,13 @@ export class Renderer {
     ctx.fillStyle = '#ffffff03';
     ctx.font = 'italic 900 205px Arial';
     ctx.fillText('REDLINE', 55, 262);
-    ctx.strokeStyle = '#bfa3ff';
+    ctx.strokeStyle = '#d85845';
     ctx.lineWidth = 3;
     ctx.beginPath();
     ctx.moveTo(71, 66);
     ctx.lineTo(238, 66);
     ctx.stroke();
-    ctx.strokeStyle = '#bfa3ff20';
+    ctx.strokeStyle = '#d8584526';
     ctx.lineWidth = 8;
     ctx.beginPath();
     ctx.moveTo(71, 70);
@@ -117,7 +117,7 @@ export class Renderer {
     const scroll = reducedMotion ? 0 : race.player.distance * 7;
     ctx.fillStyle = '#aaa0b254';
     for (let i = -1; i < 15; i++) ctx.fillRect(i * 110 - (scroll % 110), 349, 58, 3);
-    ctx.fillStyle = '#88718f';
+    ctx.fillStyle = '#8f897f';
     ctx.font = 'bold 10px monospace';
     for (let i = 0; i < 7; i++) {
       const x = i * 210 - (scroll % 210);
@@ -170,7 +170,7 @@ export class Renderer {
       Math.max(20, rivalX + 100),
       235,
     );
-    ctx.fillStyle = '#cbb7ff';
+    ctx.fillStyle = '#e16a58';
     ctx.fillText('YOU', 228, 321);
     const startX = 352 - race.player.distance * 7;
     if (startX > -90 && startX < 1160) {
