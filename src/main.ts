@@ -4,10 +4,12 @@ import { accrueIdle, careerReward, claimIdle, eligible } from './game/economy';
 import { Race } from './game/race';
 import { Controls, type Action } from './input/controls';
 import { Renderer } from './render/renderer';
-import { drawCar, preloadCarSprites } from './render/car';
+import { drawCar, prepareCarSprites } from './render/car';
 import { SaveRepository, downloadSave, parseSave } from './storage/save';
 import { LiveryEditor } from './ui/livery';
 import * as ui from './ui/screens';
+import { dealership, initialDealerFilters, dealerSelection } from './ui/dealership';
+import { vehicleSpecs } from './ui/vehicle-specs';
 import type { Difficulty, OwnedCar, SaveEnvelope, Screen } from './types';
 
 type RaceContext = { type: 'career' | 'job' | 'quick'; id: string; title: string };
@@ -26,6 +28,10 @@ class App {
   private outcomePaid = false;
   private lastHud = 0;
   private controls: Controls;
+  private dealerFilters = initialDealerFilters();
+  private viewRevision = 0;
+  private searchTimer = 0;
+  private loadingRace = false;
   constructor() {
     this.controls = new Controls(
       (action) => this.raceAction(action),
@@ -67,8 +73,8 @@ class App {
   async start(): Promise<void> {
     this.root.innerHTML = '<div class="loading">REDLINE / <span>Opening the garage…</span></div>';
     this.save = await this.repository.load();
-    await preloadCarSprites();
     this.ensureLoaner();
+    await prepareCarSprites([carById.get(this.owned.id)!]);
     accrueIdle(this.save.payload);
     this.render();
     await this.persist();
@@ -97,6 +103,7 @@ class App {
     if (status) status.textContent = `● ${this.repository.status}`;
   }
   private render(): void {
+    const revision = ++this.viewRevision;
     this.editor?.destroy();
     this.editor = undefined;
     this.renderer = undefined;
@@ -110,7 +117,7 @@ class App {
         main.innerHTML = ui.career(this.profile, this.owned);
         break;
       case 'dealership':
-        main.innerHTML = ui.dealership(this.profile);
+        main.innerHTML = dealership(this.profile, this.dealerFilters);
         break;
       case 'jobs':
         accrueIdle(this.profile);
@@ -143,9 +150,31 @@ class App {
           },
         );
     }
-    document
-      .querySelectorAll<HTMLCanvasElement>('.dealer-canvas')
-      .forEach((canvas) => drawCar(canvas.getContext('2d')!, carById.get(canvas.dataset.car!)!));
+    const visible =
+      this.screen === 'garage'
+        ? [carById.get(this.owned.id)!]
+        : this.screen === 'dealership'
+          ? dealerSelection(this.dealerFilters).cars
+          : [];
+    if (visible.length) {
+      const status = document.querySelector('#car-loading');
+      if (status) status.textContent = 'Loading cars…';
+      void prepareCarSprites(visible, undefined, () => revision === this.viewRevision)
+        .then(() => {
+          if (revision !== this.viewRevision) return;
+          this.draw();
+          document
+            .querySelectorAll<HTMLCanvasElement>('.dealer-canvas')
+            .forEach((canvas) =>
+              drawCar(canvas.getContext('2d')!, carById.get(canvas.dataset.car!)!),
+            );
+          if (status) status.textContent = '';
+        })
+        .catch((error) => {
+          if (revision === this.viewRevision)
+            this.toast(error instanceof Error ? error.message : 'Unable to load car artwork.');
+        });
+    }
   }
   private draw(): void {
     if (this.race) this.renderer?.race(this.race, this.profile.settings.reducedMotion);
@@ -161,6 +190,26 @@ class App {
     this.toastTimer = window.setTimeout(() => (element.hidden = true), 3800);
   }
   private async action(action: string, id: string): Promise<void> {
+    if (action === 'specs') {
+      const car = carById.get(id);
+      if (!car) return;
+      const dialog = document.querySelector<HTMLDialogElement>('#modal')!;
+      dialog.innerHTML = vehicleSpecs(
+        car,
+        this.profile.cars.find((item) => item.id === id),
+      );
+      dialog.classList.add('vehicle-modal');
+      dialog.setAttribute('aria-labelledby', 'spec-title');
+      dialog.showModal();
+      dialog.scrollTop = 0;
+      return;
+    }
+    if (action === 'dealer-page') {
+      this.dealerFilters.page = Math.max(0, Number(id) || 0);
+      this.render();
+      window.scrollTo(0, 0);
+      return;
+    }
     if (action === 'nav') {
       if (this.race && !this.race.finished) {
         this.race.paused = true;
@@ -186,17 +235,20 @@ class App {
         this.toast(restriction);
         return;
       }
-      this.startRace({ type: 'career', id, title: event.name }, this.owned, event.rivals);
+      await this.startRace({ type: 'career', id, title: event.name }, this.owned, event.rivals);
       return;
     }
     if (action === 'quick') {
-      this.startRace({ type: 'quick', id: 'quick', title: 'Open strip / single race' }, this.owned);
+      await this.startRace(
+        { type: 'quick', id: 'quick', title: 'Open strip / single race' },
+        this.owned,
+      );
       return;
     }
     if (action === 'job') {
       const job = data.jobs.find((j) => j.id === id);
       if (!job) return;
-      this.startRace(
+      await this.startRace(
         { type: 'job', id, title: job.name },
         id === 'night-shift' ? createOwned(carById.get(data.loaner)!) : this.owned,
       );
@@ -290,6 +342,23 @@ class App {
   }
   private input(event: Event): void {
     const target = event.target as HTMLInputElement;
+    if (target.id === 'dealer-search') {
+      this.dealerFilters.search = target.value;
+      this.dealerFilters.page = 0;
+      clearTimeout(this.searchTimer);
+      this.searchTimer = window.setTimeout(() => {
+        if (this.screen !== 'dealership' || this.race) return;
+        const focused = document.activeElement === target;
+        const position = target.selectionStart;
+        this.render();
+        if (focused) {
+          const search = document.querySelector<HTMLInputElement>('#dealer-search')!;
+          search.focus();
+          search.setSelectionRange(position, position);
+        }
+      }, 200);
+      return;
+    }
     if (target.id === 'launch-tune') {
       this.owned.launch = Number(target.value);
       document.querySelector('#launch-value')!.textContent = `${target.value} RPM`;
@@ -310,6 +379,19 @@ class App {
   }
   private async change(event: Event): Promise<void> {
     const target = event.target as HTMLInputElement;
+    const dealerKey = (
+      {
+        'dealer-category': 'category',
+        'dealer-condition': 'condition',
+        'dealer-sort': 'sort',
+      } as const
+    )[target.id as 'dealer-category'];
+    if (dealerKey) {
+      this.dealerFilters[dealerKey] = target.value;
+      this.dealerFilters.page = 0;
+      this.render();
+      return;
+    }
     if (target.id === 'difficulty') this.profile.settings.difficulty = target.value as Difficulty;
     if (target.id === 'reduced-motion') this.profile.settings.reducedMotion = target.checked;
     if (target.id === 'car-select') {
@@ -330,6 +412,8 @@ class App {
       try {
         const candidate = parseSave(await file.text());
         const dialog = document.querySelector<HTMLDialogElement>('#modal')!;
+        dialog.classList.remove('vehicle-modal');
+        dialog.removeAttribute('aria-labelledby');
         dialog.innerHTML = `<div class="eyebrow">SAVE IMPORT PREVIEW</div><h2>Continue this story?</h2><p>Schema ${candidate.schemaVersion} · App ${ui.escape(candidate.appVersion)}<br>${candidate.payload.cars.length} cars · C ${ui.money(candidate.payload.cash)}<br>${candidate.payload.unlocked} / 20 career events<br>Saved ${new Date(candidate.updatedAt).toLocaleString()}</p><p>This replaces your current profile. Export a backup first if you want to keep both.</p><div class="save-actions"><button class="primary" id="confirm-import">Import this save</button>${ui.button('Cancel', 'close-modal', '', 'secondary')}</div>`;
         dialog.showModal();
         document.querySelector('#confirm-import')!.addEventListener(
@@ -355,20 +439,35 @@ class App {
     }
     await this.persist();
   }
-  private startRace(context: RaceContext, owned: OwnedCar, rivals?: string[]): void {
+  private async startRace(context: RaceContext, owned: OwnedCar, rivals?: string[]): Promise<void> {
+    if (this.loadingRace) return;
+    this.loadingRace = true;
+    const revision = ++this.viewRevision;
+    let race: Race;
+    try {
+      const tier = carById.get(owned.id)!.class;
+      race = new Race(
+        structuredClone(owned),
+        rivals ?? data.rivals.filter((r) => carById.get(r.carId)!.class === tier).map((r) => r.id),
+        this.profile.settings.difficulty,
+      );
+      await prepareCarSprites(
+        [race.player.car, race.racers[1].car],
+        undefined,
+        () => revision === this.viewRevision,
+      );
+    } finally {
+      this.loadingRace = false;
+    }
+    if (revision !== this.viewRevision) return;
     this.editor?.destroy();
     this.editor = undefined;
     this.editing = false;
-    const tier = carById.get(owned.id)!.class;
     this.context = context;
     this.outcomePaid = false;
-    this.race = new Race(
-      structuredClone(owned),
-      rivals ?? data.rivals.filter((r) => carById.get(r.carId)!.class === tier).map((r) => r.id),
-      this.profile.settings.difficulty,
-    );
+    this.race = race;
     const main = document.querySelector<HTMLElement>('#main')!;
-    main.innerHTML = `<div class="page-heading race-heading"><div><div class="eyebrow">${context.type.toUpperCase()} / ${this.profile.settings.difficulty.toUpperCase()}</div><h1>${context.title}<span class="heading-dot">.</span></h1><p>¼ mile · ${carById.get(owned.id)!.name} · Featured rival: ${this.race.racers[1].name}</p></div>${ui.button('Pause <kbd>Esc</kbd>', 'pause', '', 'secondary')}</div><section class="panel race-panel"><div class="race-top"><span id="race-status">STAGING</span><div class="distance-bar"><i id="distance-fill"></i></div><span id="race-distance">0 / 402 M</span></div><canvas id="race-canvas" aria-label="Two lane drag race"></canvas><div class="race-feedback" id="race-feedback" role="status">Wait for green. Time your launch.</div><div class="dashboard instrument-cluster"><div class="gauge speed-gauge" id="speed-gauge"><div class="gauge-face"><span class="gauge-caption">SPEED</span><i class="gauge-needle"></i><i class="gauge-hub"></i><strong id="speed">0</strong><small>KM/H</small><div class="gauge-scale"><span>0</span><span>160</span><span>320</span></div></div></div><div class="gauge tach-gauge" id="tach-gauge"><div class="gauge-face"><span class="gauge-caption">TACH</span><i class="gauge-needle"></i><i class="gauge-hub"></i><strong id="rpm">3,000</strong><small>RPM</small><div class="gauge-scale"><span>0</span><span>4K</span><span>8K</span></div><span class="shift-callout" id="shift-label">LAUNCH WINDOW</span></div></div><div class="gear-console"><span>GEAR</span><strong id="gear">1</strong><small>6-SPEED</small><div class="shift-gate" aria-hidden="true"><i></i><i></i><i></i></div></div><div class="race-time odometer"><span>RUN TIMER</span><strong id="elapsed">0.000</strong><small>SECONDS</small></div></div></section><div class="race-controls">${ui.button('<kbd>Space</kbd><span>Launch<small>On green · match the RPM window</small></span>', 'launch', '', 'secondary')}${ui.button('<kbd>↑</kbd><span>Shift up<small>6,100–6,800 RPM · Shift also works</small></span>', 'shift', '', 'primary')}${ui.button('<kbd>N</kbd><span>Nitrous<small id="nitro-label">' + (this.race.player.nitroLeft ? 'Ready to use' : 'Install a system in the garage') + '</small></span>', 'nitro', '', 'secondary', !this.race.player.nitroLeft)}</div><p class="race-note">Reaction time counts toward placement. Jumping the lights adds a 0.75 s penalty. All three rivals run the same distance.</p>`;
+    main.innerHTML = `<div class="page-heading race-heading"><div><div class="eyebrow">${context.type.toUpperCase()} / ${this.profile.settings.difficulty.toUpperCase()}</div><h1>${context.title}<span class="heading-dot">.</span></h1><p>¼ mile · ${carById.get(owned.id)!.name} · Featured rival: ${this.race.racers[1].name}</p></div>${ui.button('Pause <kbd>Esc</kbd>', 'pause', '', 'secondary')}</div><section class="panel race-panel"><div class="race-top"><span id="race-status">STAGING</span><div class="distance-bar"><i id="distance-fill"></i></div><span id="race-distance">0 / 402 M</span></div><canvas id="race-canvas" aria-label="Two lane drag race"></canvas><div class="race-feedback" id="race-feedback" role="status">Wait for green. Time your launch.</div><div class="dashboard instrument-cluster"><div class="gauge speed-gauge" id="speed-gauge"><div class="gauge-face"><span class="gauge-caption">SPEED</span><i class="gauge-needle"></i><i class="gauge-hub"></i><strong id="speed">0</strong><small>KM/H</small><div class="gauge-scale"><span>0</span><span>160</span><span>320</span></div></div></div><div class="gauge tach-gauge" id="tach-gauge"><div class="gauge-face"><span class="gauge-caption">RPM</span><div class="tach-numbers" aria-hidden="true"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span class="redline-number">7</span><span class="redline-number">8</span></div><i class="gauge-needle"></i><i class="gauge-hub"></i><strong id="rpm">3.0</strong><small>×1000 RPM</small><span class="shift-callout" id="shift-label">LAUNCH</span></div></div><div class="gear-console"><span>GEAR</span><strong id="gear">1</strong><small>6-SPEED</small><div class="shift-gate" aria-hidden="true"><i></i><i></i><i></i></div></div><div class="race-time odometer"><span>RUN TIMER</span><strong id="elapsed">0.000</strong><small>SECONDS</small></div></div></section><div class="race-controls">${ui.button('<kbd>Space</kbd><span>Launch<small>On green · hold your launch RPM</small></span>', 'launch', '', 'secondary control-launch')}${ui.button('<kbd>↑</kbd><span>Shift<small>6,100–6,800 RPM · Shift key also works</small></span>', 'shift', '', 'primary control-shift')}${ui.button('<kbd>N</kbd><span>Nitrous<small id="nitro-label">' + (this.race.player.nitroLeft ? 'Ready to use' : 'Install a system in the garage') + '</small></span>', 'nitro', '', 'secondary control-nitro', !this.race.player.nitroLeft)}</div><p class="race-note">Reaction time counts toward placement. Jumping the lights adds a 0.75 s penalty. All three rivals run the same distance.</p>`;
     this.renderer = new Renderer(document.querySelector<HTMLCanvasElement>('#race-canvas')!);
     window.scrollTo(0, 0);
     this.lastHud = 0;
@@ -416,7 +515,7 @@ class App {
     };
     set('speed', Math.round(player.speed * 3.6).toString());
     set('gear', player.gear.toString());
-    set('rpm', ui.money(player.rpm));
+    set('rpm', (player.rpm / 1000).toFixed(1));
     set('elapsed', player.elapsed.toFixed(3));
     set('race-distance', `${Math.floor(player.distance)} / 402 M`);
     const speedGauge = document.getElementById('speed-gauge');
@@ -468,25 +567,26 @@ class App {
                       ? 'REDLINE · SHIFT UP'
                       : 'Build speed. Watch your RPM.',
     );
-    set('shift-label', player.launched ? 'SHIFT WINDOW' : 'LAUNCH WINDOW');
+    set(
+      'shift-label',
+      !player.launched
+        ? 'LAUNCH'
+        : player.rpm >= 6100 && player.rpm <= 6800
+          ? 'SHIFT NOW'
+          : player.rpm > 6800
+            ? 'REDLINE'
+            : 'SHIFT',
+    );
     set(
       'nitro-label',
       player.stats.nitro
         ? `${player.nitroLeft.toFixed(1)} s ${player.nitroActive ? 'remaining' : 'ready'}`
         : 'Install a system in the garage',
     );
-    const bar = document.getElementById('tach-fill');
-    if (bar) {
-      bar.style.width = `${(player.rpm / 8000) * 100}%`;
-      bar.classList.toggle('perfect', player.rpm >= 6100 && player.rpm <= 6800);
-    }
-    const shift = document.getElementById('shift-window');
-    if (shift) {
-      shift.style.left = `${((player.launched ? 6100 : (player.owned?.launch ?? 4800) - 300) / 8000) * 100}%`;
-      shift.style.width = `${((player.launched ? 700 : 600) / 8000) * 100}%`;
-    }
     const distance = document.getElementById('distance-fill');
     if (distance) distance.style.width = `${(player.distance / data.distance) * 100}%`;
+    const raceControls = document.querySelector<HTMLElement>('.race-controls');
+    if (raceControls) raceControls.classList.toggle('finished', race.finished);
     const pause = document.querySelector<HTMLButtonElement>('[data-action="pause"]');
     if (pause) {
       pause.innerHTML = `${race.paused ? 'Resume' : 'Pause'} <kbd>Esc</kbd>`;
@@ -546,6 +646,7 @@ class App {
     if (balance) balance.textContent = ui.money(this.profile.cash);
   }
   private stopRace(): void {
+    this.viewRevision++;
     cancelAnimationFrame(this.frame);
     this.race = undefined;
     this.renderer = undefined;

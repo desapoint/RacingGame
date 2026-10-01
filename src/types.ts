@@ -1,6 +1,35 @@
 export type Slot = 'engine' | 'transmission' | 'tires' | 'nitro' | 'weight';
 export type Difficulty = 'easy' | 'normal' | 'hard';
 export type Screen = 'garage' | 'career' | 'dealership' | 'jobs' | 'settings';
+export type VehicleCategory =
+  'suv' | 'sedan' | 'hatchback' | 'wagon' | 'minivan' | 'pickup' | 'coupe' | 'convertible';
+export type VehicleCondition = 'standard' | 'used' | 'rusty';
+export interface VehicleModel {
+  id: string;
+  name: string;
+  year: number;
+  category: VehicleCategory;
+  segment: string;
+  make: string;
+  model: string;
+  trim: string;
+  market: string;
+  engine: string;
+  fuel: 'petrol' | 'diesel' | 'mild hybrid' | 'hybrid' | 'plug-in hybrid' | 'electric';
+  drivetrain: 'FWD' | 'RWD' | 'AWD' | '4WD';
+  transmission: string;
+  /** 0 means a continuously variable transmission, rather than zero drive gears. */
+  gears: number;
+  seats: number;
+  doors: number;
+  powerHp: number | null;
+  torqueNm: number | null;
+  curbWeightKg: number | null;
+  lengthMm?: number | null;
+  wheelbaseMm?: number | null;
+  sources: { label: string; url: string }[];
+  notes: string;
+}
 export interface CarDef {
   id: string;
   name: string;
@@ -11,8 +40,15 @@ export interface CarDef {
   mass: number;
   acceleration: number;
   maxSpeed: number;
-  spriteIndex: number;
+  art: string;
   color: string;
+  year: number;
+  era: 'modern' | 'classic';
+  modelId?: string;
+  category?: VehicleCategory;
+  condition?: VehicleCondition;
+  grip?: number;
+  shiftTime?: number;
 }
 export interface PartDef {
   id: string;
@@ -50,6 +86,8 @@ export interface GameData {
   loaner: string;
   classes: { id: string; name: string; subtitle: string; color: string }[];
   cars: CarDef[];
+  models?: VehicleModel[];
+  carAliases?: Record<string, string>;
   parts: PartDef[];
   rivals: RivalDef[];
   events: EventDef[];

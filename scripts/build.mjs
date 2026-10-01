@@ -1,8 +1,26 @@
 import { build } from 'esbuild';
-import { copyFile, mkdir, readFile, writeFile, rm, stat } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, rm, stat } from 'node:fs/promises';
+
+// Run the same data validation used at startup before replacing the playable release.
+const validation = await build({
+  entryPoints: ['src/data/config.ts'],
+  bundle: true,
+  platform: 'node',
+  format: 'esm',
+  write: false,
+});
+try {
+  await import(
+    `data:text/javascript;base64,${Buffer.from(validation.outputFiles[0].text).toString('base64')}`
+  );
+} catch (error) {
+  // Keep a malformed config error readable instead of printing the bundled data URL.
+  throw new Error(
+    `Release configuration is invalid: ${error instanceof Error ? error.message : error}`,
+  );
+}
 
 await mkdir('dist', { recursive: true });
-await mkdir('dist/assets', { recursive: true });
 const [javascript, css] = await Promise.all([
   build({
     entryPoints: ['src/main.ts'],
@@ -13,6 +31,7 @@ const [javascript, css] = await Promise.all([
     minify: true,
     write: false,
     metafile: true,
+    loader: { '.webp': 'dataurl' },
     plugins: [
       {
         name: 'editable-release-config',
@@ -60,14 +79,9 @@ const html = template
   .replace('</head>', () => `<style>${styles}</style>\n  </head>`)
   .replace(bootstrap, () => launch);
 await writeFile('dist/index.html', html);
-await Promise.all(
-  ['car-bodies.webp', 'car-paint-mask.webp', 'wheels.webp'].map((name) =>
-    copyFile(`assets/${name}`, `dist/assets/${name}`),
-  ),
-);
 // Remove only the obsolete assets produced by our previous release format.
 await Promise.all(['game.js', 'styles.css'].map((name) => rm(`dist/${name}`, { force: true })));
-for (const name of ['index.html', 'config.js', 'assets/car-bodies.webp', 'assets/car-paint-mask.webp', 'assets/wheels.webp'])
+for (const name of ['index.html', 'config.js'])
   console.log(
     `Offline release: dist/${name} (${((await stat(`dist/${name}`)).size / 1024).toFixed(1)} KB)`,
   );

@@ -4,6 +4,7 @@ import type { GameData } from '../types';
 export const data = raw as GameData;
 validateConfig(data);
 export const carById = new Map(data.cars.map((car) => [car.id, car]));
+export const modelById = new Map((data.models ?? []).map((model) => [model.id, model]));
 export const partById = new Map(data.parts.map((part) => [part.id, part]));
 export const rivalById = new Map(data.rivals.map((rival) => [rival.id, rival]));
 
@@ -42,13 +43,83 @@ export function validateConfig(config: GameData = data): void {
     'easy, normal, and hard difficulty profiles are required',
   );
   const cars = new Map(config.cars.map((car) => [car.id, car]));
+  const categories = [
+    'suv',
+    'sedan',
+    'hatchback',
+    'wagon',
+    'minivan',
+    'pickup',
+    'coupe',
+    'convertible',
+  ];
+  const models = config.models ?? [];
+  ensure(Array.isArray(models), 'models must be an array');
+  ensure(
+    models.every((model) => model && typeof model.id === 'string' && model.id.length > 0),
+    'missing model ID',
+  );
+  ensure(new Set(models.map((model) => model.id)).size === models.length, 'duplicate model ID');
+  for (const model of models) {
+    ensure(model && typeof model.id === 'string' && model.id.length > 0, 'missing model ID');
+    ensure(categories.includes(model.category), `invalid model category ${model.id}`);
+    for (const field of [
+      'name',
+      'make',
+      'model',
+      'trim',
+      'segment',
+      'market',
+      'engine',
+      'transmission',
+      'notes',
+    ] as const)
+      ensure(typeof model[field] === 'string', `missing ${field} for ${model.id}`);
+    ensure(
+      Number.isInteger(model.year) && model.year >= 1960 && model.year <= 2030,
+      `invalid model year ${model.id}`,
+    );
+    ensure(
+      ['petrol', 'diesel', 'mild hybrid', 'hybrid', 'plug-in hybrid', 'electric'].includes(
+        model.fuel,
+      ),
+      `invalid fuel ${model.id}`,
+    );
+    ensure(
+      ['FWD', 'RWD', 'AWD', '4WD'].includes(model.drivetrain),
+      `invalid drivetrain ${model.id}`,
+    );
+    ensure(
+      Number.isInteger(model.gears) && model.gears >= 0 && model.gears <= 10,
+      `invalid gearbox ${model.id}`,
+    );
+    ensure(
+      Number.isInteger(model.seats) &&
+        model.seats >= 1 &&
+        model.seats <= 9 &&
+        Number.isInteger(model.doors) &&
+        model.doors >= 2 &&
+        model.doors <= 6,
+      `invalid seating/doors ${model.id}`,
+    );
+    for (const field of ['powerHp', 'torqueNm', 'curbWeightKg'] as const)
+      ensure(
+        model[field] === null || (Number.isFinite(model[field]) && model[field]! > 0),
+        `invalid factory ${field} for ${model.id}`,
+      );
+    ensure(
+      Array.isArray(model.sources) &&
+        model.sources.length > 0 &&
+        model.sources.every(
+          (source) => typeof source.label === 'string' && /^https?:\/\/[^\s]+$/.test(source.url),
+        ),
+      `missing specification sources for ${model.id}`,
+    );
+  }
+  const modelIds = new Set(models.map((model) => model.id));
   const rivals = new Set(config.rivals.map((rival) => rival.id));
   ensure(cars.has(config.starter) && cars.has(config.loaner), 'missing starter or loaner');
   ensure(config.distance > 0 && config.startCash >= 0, 'invalid race or economy values');
-  ensure(
-    new Set(config.cars.map((car) => car.spriteIndex)).size === config.cars.length,
-    'duplicate car sprite index',
-  );
   config.cars.forEach((car) =>
     ensure(
       car.class >= 0 &&
@@ -57,12 +128,26 @@ export function validateConfig(config: GameData = data): void {
         car.acceleration > 0 &&
         car.maxSpeed > 0 &&
         car.mass > 0 &&
-        Number.isInteger(car.spriteIndex) &&
-        car.spriteIndex >= 1 &&
-        car.spriteIndex <= 30,
+        (car.grip === undefined || (Number.isFinite(car.grip) && car.grip > 0 && car.grip <= 3)) &&
+        (car.shiftTime === undefined ||
+          (Number.isFinite(car.shiftTime) && car.shiftTime >= 0.2 && car.shiftTime <= 2)) &&
+        (car.category === undefined || categories.includes(car.category)) &&
+        (car.condition === undefined || ['standard', 'used', 'rusty'].includes(car.condition)) &&
+        (car.modelId === undefined || modelIds.has(car.modelId)) &&
+        typeof car.color === 'string' &&
+        /^#[0-9a-f]{6}$/i.test(car.color) &&
+        typeof car.art === 'string' &&
+        car.art.length > 0 &&
+        Number.isInteger(car.year) &&
+        car.year >= 1960 &&
+        car.year <= 2030 &&
+        ['modern', 'classic'].includes(car.era),
       `invalid car ${car.id}`,
     ),
   );
+  for (const [previous, current] of Object.entries(config.carAliases ?? {})) {
+    ensure(!cars.has(previous) && cars.has(current), `invalid retired-car mapping ${previous}`);
+  }
   config.parts.forEach((part) =>
     ensure(
       ['engine', 'transmission', 'tires', 'nitro', 'weight'].includes(part.slot) &&

@@ -20,8 +20,8 @@ export function statsFor(car: CarDef, owned?: OwnedCar): CarStats {
   return {
     acceleration: (car.acceleration * power) / weight,
     maxSpeed: car.maxSpeed * Math.sqrt(power),
-    grip: 1 + effect('tires'),
-    shiftTime: 0.28 - effect('transmission'),
+    grip: (car.grip ?? 1) + effect('tires'),
+    shiftTime: (car.shiftTime ?? 0.28) - effect('transmission'),
     nitro: effect('nitro'),
     power: Math.round(car.power * power),
     mass: Math.round(car.mass * weight),

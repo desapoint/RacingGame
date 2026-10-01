@@ -1,0 +1,182 @@
+{
+  "porsche-911-turbo-s-2024": {
+    "file": "porsche-911-turbo-s-2024-2d.png",
+    "width": 2048,
+    "height": 768,
+    "bounds": [
+      16,
+      55,
+      2015,
+      695
+    ],
+    "wheels": [
+      {
+        "x": 466,
+        "y": 539,
+        "radius": 145
+      },
+      {
+        "x": 1610,
+        "y": 535,
+        "radius": 145
+      }
+    ],
+    "paintColor": "#0872ef",
+    "referenceUrls": [
+      "https://www.vegasautogallery.com/used-vehicle-2024-porsche-911-turbo-s-c-3669/"
+    ],
+    "facing": "right",
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/porsche-911-turbo-s-2024.png"
+  },
+  "nissan-gtr-nismo-2024": {
+    "file": "nissan-gtr-nismo-2024-2d.png",
+    "width": 2048,
+    "height": 768,
+    "bounds": [
+      13,
+      16,
+      2024,
+      752
+    ],
+    "wheels": [
+      {
+        "x": 400,
+        "y": 538,
+        "radius": 145
+      },
+      {
+        "x": 1646,
+        "y": 538,
+        "radius": 145
+      }
+    ],
+    "paintColor": "#075bdc",
+    "referenceUrls": [
+      "https://www.baysidenissan.ca/en/new-catalog/nissan/2024-nissan-gt-r-nismo-appearance-package-id25431"
+    ],
+    "facing": "right",
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/nissan-gtr-nismo-2024.png"
+  },
+  "chevrolet-corvette-z06-2024": {
+    "file": "chevrolet-corvette-z06-2024-2d.png",
+    "width": 2172,
+    "height": 724,
+    "bounds": [
+      0,
+      9,
+      2150,
+      699
+    ],
+    "wheels": [
+      {
+        "x": 459,
+        "y": 506,
+        "radius": 140
+      },
+      {
+        "x": 1688,
+        "y": 510,
+        "radius": 140
+      }
+    ],
+    "paintColor": "#ffd000",
+    "referenceUrls": [
+      "https://www.autocar.co.uk/car-review/chevrolet/corvette-z06"
+    ],
+    "facing": "right",
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/chevrolet-corvette-z06-2024.png"
+  },
+  "ferrari-296-gtb-2024": {
+    "file": "ferrari-296-gtb-2024-2d.png",
+    "width": 2172,
+    "height": 724,
+    "bounds": [
+      30,
+      13,
+      2114,
+      685
+    ],
+    "wheels": [
+      {
+        "x": 389,
+        "y": 465,
+        "radius": 150
+      },
+      {
+        "x": 1677,
+        "y": 470,
+        "radius": 144
+      }
+    ],
+    "paintColor": "#ed101a",
+    "referenceUrls": [
+      "https://www.ferrariofnaples.com/inventory/certified-used-2024-ferrari-296-gtb-base-rwd-2d-coupe-zff99slaxr0304576/"
+    ],
+    "facing": "right",
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/ferrari-296-gtb-2024.png"
+  },
+  "lamborghini-revuelto-2024": {
+    "file": "lamborghini-revuelto-2024-2d.png",
+    "width": 2159,
+    "height": 728,
+    "bounds": [
+      0,
+      17,
+      2133,
+      678
+    ],
+    "wheels": [
+      {
+        "x": 412,
+        "y": 484,
+        "radius": 148
+      },
+      {
+        "x": 1653,
+        "y": 504,
+        "radius": 137
+      }
+    ],
+    "paintColor": "#14dc08",
+    "referenceUrls": [
+      "https://www.supervettura.com/Car-Details/2024-Lamborghini-Revuelto/240"
+    ],
+    "facing": "right",
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/lamborghini-revuelto-2024.png"
+  },
+  "mclaren-750s-2024": {
+    "file": "mclaren-750s-2024-2d.png",
+    "width": 2172,
+    "height": 724,
+    "bounds": [
+      21,
+      41,
+      2133,
+      670
+    ],
+    "wheels": [
+      {
+        "x": 431,
+        "y": 529,
+        "radius": 142
+      },
+      {
+        "x": 1736,
+        "y": 540,
+        "radius": 148
+      }
+    ],
+    "paintColor": "#ff7900",
+    "referenceUrls": [
+      "https://domcar.com.cy/en/catalog/auto/19351/"
+    ],
+    "facing": "left",
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/mclaren-750s-2024.png"
+  }
+}

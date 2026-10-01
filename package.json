@@ -9,7 +9,9 @@
     "typecheck": "tsc --noEmit",
     "test": "tsx --test tests/*.test.ts",
     "test:browser": "playwright test",
-    "format": "prettier --write src scripts tests playwright.config.ts"
+    "format": "prettier --write src scripts tests playwright.config.ts",
+    "assets:prepare": "node scripts/prepare-car-assets.mjs",
+    "roster:assemble": "node scripts/assemble-roster.mjs"
   },
   "devDependencies": {
     "@playwright/test": "^1.56.0",

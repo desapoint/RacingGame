@@ -1,0 +1,43 @@
+{
+  "toyota-rav4-xle-awd-2024": { "bounds": [16, 134, 1739, 645], "facing": "right" },
+  "honda-crv-exl-awd-2024": {
+    "bounds": [29, 162, 1712, 641],
+    "facing": "right",
+    "wheels": [
+      { "x": 374, "y": 662, "radius": 121 },
+      { "x": 1420, "y": 662, "radius": 121 }
+    ]
+  },
+  "mazda-cx5-turbo-premium-2024": {
+    "bounds": [108, 19, 1898, 697],
+    "facing": "left",
+    "wheels": [
+      { "x": 475, "y": 563, "radius": 140 },
+      { "x": 1663, "y": 563, "radius": 140 }
+    ]
+  },
+  "subaru-forester-sport-2024": {
+    "bounds": [16, 153, 1581, 630],
+    "facing": "left",
+    "wheels": [
+      { "x": 326, "y": 654, "radius": 112 },
+      { "x": 1283, "y": 653, "radius": 112 }
+    ]
+  },
+  "kia-telluride-sx-awd-2024": {
+    "bounds": [9, 197, 1658, 614],
+    "facing": "right",
+    "wheels": [
+      { "x": 340, "y": 679, "radius": 118 },
+      { "x": 1376, "y": 678, "radius": 118 }
+    ]
+  },
+  "hyundai-palisade-calligraphy-2024": {
+    "bounds": [23, 158, 1725, 628],
+    "facing": "right",
+    "wheels": [
+      { "x": 389, "y": 644, "radius": 124 },
+      { "x": 1428, "y": 644, "radius": 124 }
+    ]
+  }
+}

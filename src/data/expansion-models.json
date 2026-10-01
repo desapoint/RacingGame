@@ -1,0 +1,982 @@
+[
+  {
+    "id": "toyota-rav4-xle-awd-2024",
+    "name": "2024 Toyota RAV4 XLE AWD",
+    "year": 2024,
+    "category": "suv",
+    "segment": "compact family SUV",
+    "make": "Toyota",
+    "model": "RAV4",
+    "trim": "XLE AWD",
+    "market": "US",
+    "engine": "2.5L Dynamic Force DOHC 4-cylinder",
+    "fuel": "petrol",
+    "drivetrain": "AWD",
+    "transmission": "Direct Shift 8-speed electronically controlled automatic (ECT-i)",
+    "gears": 8,
+    "seats": 5,
+    "doors": 4,
+    "powerHp": 203,
+    "torqueNm": 249,
+    "curbWeightKg": null,
+    "lengthMm": 4595,
+    "wheelbaseMm": 2690,
+    "sources": [
+      {
+        "label": "Toyota 2024 RAV4 eBrochure (engine, torque, transmission, seating, dimensions, grade curb weight)",
+        "url": "https://www.toyota.com/content/dam/toyota/brochures/pdf/2024/rav4_ebrochure.pdf"
+      },
+      {
+        "label": "Toyota USA Newsroom: 2024 RAV4 grades and AWD availability",
+        "url": "https://pressroom.toyota.com/2024-toyota-rav4-go-wild-in-style/"
+      }
+    ],
+    "notes": "Toyota lists 203 hp and 184 lb-ft (249 Nm converted) for the 2.5L gas engine; published 8-speed automatic and AWD availability are from Toyota sources. Curb weight left null because the Toyota brochure grade value does not separate AWD. Length and wheelbase convert Toyota’s 180.9 in and 105.9 in. Four passenger doors; liftgate excluded."
+  },
+  {
+    "id": "honda-crv-exl-awd-2024",
+    "name": "2024 Honda CR-V EX-L AWD 1.5T",
+    "year": 2024,
+    "category": "suv",
+    "segment": "compact family SUV",
+    "make": "Honda",
+    "model": "CR-V",
+    "trim": "EX-L AWD 1.5T",
+    "market": "US",
+    "engine": "1.5L turbocharged inline-4, 1498 cc",
+    "fuel": "petrol",
+    "drivetrain": "AWD",
+    "transmission": "Continuously variable transmission (CVT)",
+    "gears": 0,
+    "seats": 5,
+    "doors": 4,
+    "powerHp": 190,
+    "torqueNm": 243,
+    "curbWeightKg": 1649,
+    "lengthMm": 4694,
+    "wheelbaseMm": 2699,
+    "sources": [
+      {
+        "label": "Honda 2024 CR-V specifications",
+        "url": "https://www.hondainfocenter.com/2024/CR-V/Feature-Guide/Specifications/"
+      },
+      {
+        "label": "Honda 2024 CR-V feature guide by trim",
+        "url": "https://www.hondainfocenter.com/-/media/Honda-Sales-Tool-Media-Folder/Images/2024-CR-V/PDFs/2024-CR-V-Features-by-Trim.ashx"
+      }
+    ],
+    "notes": "Honda lists EX-L 1.5T AWD at 190 SAE hp and 179 lb-ft (243 Nm), CVT, 3,635 lb (1,649 kg), 184.8 in length (4,694 mm), 106.3 in wheelbase (2,699 mm), 5 seats. Four passenger doors; tailgate excluded. CVT has no fixed gear count."
+  },
+  {
+    "id": "mazda-cx5-turbo-premium-2024",
+    "name": "2024 Mazda CX-5 Turbo Premium AWD",
+    "year": 2024,
+    "category": "suv",
+    "segment": "compact family SUV",
+    "make": "Mazda",
+    "model": "CX-5",
+    "trim": "2.5 Turbo Premium AWD",
+    "market": "US",
+    "engine": "2.5L Skyactiv-G Dynamic Pressure Turbo inline-4",
+    "fuel": "petrol",
+    "drivetrain": "AWD",
+    "transmission": "Skyactiv-Drive 6-speed automatic",
+    "gears": 6,
+    "seats": 5,
+    "doors": 4,
+    "powerHp": 256,
+    "torqueNm": 434,
+    "curbWeightKg": 1754,
+    "lengthMm": 4575,
+    "wheelbaseMm": 2697,
+    "sources": [
+      {
+        "label": "Mazda USA 2024 CX-5 specification deck",
+        "url": "https://filecache.mediaroom.com/mr5mr_mazdausa2/223259/download/2024%20CX-5%20Spec%20Deck.pdf"
+      },
+      {
+        "label": "Mazda USA 2024 CX-5 newsroom",
+        "url": "https://news.mazdausa.com/vehicles-2024-cx-5"
+      }
+    ],
+    "notes": "Official Mazda deck specifies the 2.5 Turbo Premium AWD, 256 SAE hp and 320 lb-ft on premium fuel (434 Nm converted), AWD, 6-speed automatic, 180.1-in length (4,575 mm), 106.2-in wheelbase (2,697 mm), five-passenger capacity. Mazda specification deck lists 3,867 lb (1,754 kg) for Turbo trims including Turbo Premium. Four passenger doors; liftgate excluded."
+  },
+  {
+    "id": "subaru-forester-sport-2024",
+    "name": "2024 Subaru Forester Sport AWD",
+    "year": 2024,
+    "category": "suv",
+    "segment": "compact family SUV",
+    "make": "Subaru",
+    "model": "Forester",
+    "trim": "Sport AWD",
+    "market": "US",
+    "engine": "2.5L SUBARU BOXER 4-cylinder",
+    "fuel": "petrol",
+    "drivetrain": "AWD",
+    "transmission": "Lineartronic continuously variable transmission (CVT)",
+    "gears": 0,
+    "seats": 5,
+    "doors": 4,
+    "powerHp": 182,
+    "torqueNm": 239,
+    "curbWeightKg": 1605,
+    "lengthMm": 4641,
+    "wheelbaseMm": 2670,
+    "sources": [
+      {
+        "label": "Subaru 2024 Forester brochure",
+        "url": "https://www.subaru.com/content/dam/subaru/downloads/pdf/brochures/2024/2024_Forester_Brochure_101023.pdf"
+      },
+      {
+        "label": "Subaru vehicle resources",
+        "url": "https://www.subaru.com/owners/vehicle-resources.html?model=2024-FOR-RFA"
+      }
+    ],
+    "notes": "Subaru brochure identifies the Sport 2.5L BOXER at 182 hp and base curb weight 3,538 lb (1,605 kg); official model dimensions are 182.7 in length (4,641 mm) and 105.1 in wheelbase (2,670 mm). Sport has standard Symmetrical AWD and Lineartronic CVT. Torque 176 lb-ft converted to 239 Nm. Four passenger doors; tailgate excluded. CVT has no fixed gear count."
+  },
+  {
+    "id": "kia-telluride-sx-awd-2024",
+    "name": "2024 Kia Telluride SX AWD",
+    "year": 2024,
+    "category": "suv",
+    "segment": "midsize three-row family SUV",
+    "make": "Kia",
+    "model": "Telluride",
+    "trim": "SX AWD",
+    "market": "US",
+    "engine": "3.8L Lambda II V6 GDI",
+    "fuel": "petrol",
+    "drivetrain": "AWD",
+    "transmission": "8-speed automatic",
+    "gears": 8,
+    "seats": 7,
+    "doors": 4,
+    "powerHp": 291,
+    "torqueNm": 355,
+    "curbWeightKg": 1951,
+    "lengthMm": 5001,
+    "wheelbaseMm": 2901,
+    "sources": [
+      {
+        "label": "Kia America 2024 Telluride specifications",
+        "url": "https://www.kiamedia.com/us/en/models/telluride/2024/specifications"
+      },
+      {
+        "label": "Kia America 2024 Telluride overview",
+        "url": "https://www.kiamedia.com/us/en/models/telluride/2024"
+      }
+    ],
+    "notes": "Kia lists a 3.8L GDI V6, 291 hp, 262 lb-ft (355 Nm converted), 8-speed automatic, SX AWD, 7 seats, 196.9-inch length (5,001 mm), 114.2-inch wheelbase (2,901 mm). Kia lists SX AWD curb weight at a minimum 4,301 lb (1,951 kg), with equipment-dependent range to 4,524 lb. Four passenger doors; liftgate excluded."
+  },
+  {
+    "id": "hyundai-palisade-calligraphy-2024",
+    "name": "2024 Hyundai Palisade Calligraphy AWD",
+    "year": 2024,
+    "category": "suv",
+    "segment": "midsize three-row family SUV",
+    "make": "Hyundai",
+    "model": "Palisade",
+    "trim": "Calligraphy AWD",
+    "market": "US",
+    "engine": "3.8L GDI V6",
+    "fuel": "petrol",
+    "drivetrain": "AWD",
+    "transmission": "8-speed automatic with SHIFTRONIC",
+    "gears": 8,
+    "seats": 7,
+    "doors": 4,
+    "powerHp": 291,
+    "torqueNm": 355,
+    "curbWeightKg": null,
+    "lengthMm": 4996,
+    "wheelbaseMm": 2901,
+    "sources": [
+      {
+        "label": "Hyundai 2024 Palisade specifications (manufacturer document archived by El Automovilista)",
+        "url": "https://www.elautomovilista.com/2024HyundaiPalisade/specs.pdf"
+      }
+    ],
+    "notes": "Hyundai lists 291 hp and 262 lb-ft (355 Nm converted) for the 3.8L GDI V6; Calligraphy AWD uses an 8-speed automatic and seats seven. Length 196.7 in (4,996 mm) and wheelbase 114.2 in (2,901 mm). Exact curb weight remains unverified: the source gives a shared seven-seat AWD range of 4,389–4,506 lb without isolating Calligraphy. Four passenger doors; liftgate excluded."
+  },
+  {
+    "id": "ford-explorer-st-2024",
+    "name": "2024 Ford Explorer ST 4WD",
+    "year": 2024,
+    "category": "suv",
+    "segment": "midsize three-row performance SUV",
+    "make": "Ford",
+    "model": "Explorer",
+    "trim": "ST 4WD",
+    "market": "US",
+    "engine": "3.0L EcoBoost twin-turbocharged V6",
+    "fuel": "petrol",
+    "drivetrain": "4WD",
+    "transmission": "10-speed automatic",
+    "gears": 10,
+    "seats": 6,
+    "doors": 4,
+    "powerHp": 400,
+    "torqueNm": 563,
+    "curbWeightKg": null,
+    "lengthMm": 5050,
+    "wheelbaseMm": 3025,
+    "sources": [
+      {
+        "label": "Ford 2024 Explorer technical specifications (ST 400A)",
+        "url": "https://nd-mediagallery2-public-production.s3.amazonaws.com/a400732a6cc2c4b0b41d9b19dcbc92b3/24my_bro_explorer_tech_sheet.pdf"
+      },
+      {
+        "label": "Ford Mexico 2024 Explorer ST specification catalogue",
+        "url": "https://www.ford.mx/content/dam/Ford/website-assets/latam/mx/nameplate/explorer-st/2024/pdf/ford-explorer-st-2024-catalogo-descargable.pdf"
+      }
+    ],
+    "notes": "Ford lists the 3.0L EcoBoost V6 at 400 hp and 415 lb-ft; torque converted to 563 Nm. ST 4WD uses a 10-speed automatic. Six seats with standard second-row captain chairs. Dimensions convert 198.8 in length and 119.1 in wheelbase. Curb weight left null because trim-specific value is not verified from a primary source. Four passenger doors; liftgate excluded."
+  },
+  {
+    "id": "chevrolet-tahoe-z71-2024",
+    "name": "2024 Chevrolet Tahoe Z71 4WD 5.3 V8",
+    "year": 2024,
+    "category": "suv",
+    "segment": "full-size three-row SUV",
+    "make": "Chevrolet",
+    "model": "Tahoe",
+    "trim": "Z71 4WD",
+    "market": "US",
+    "engine": "5.3L EcoTec3 V8 with Dynamic Fuel Management",
+    "fuel": "petrol",
+    "drivetrain": "4WD",
+    "transmission": "10-speed automatic",
+    "gears": 10,
+    "seats": 8,
+    "doors": 4,
+    "powerHp": 355,
+    "torqueNm": 519,
+    "curbWeightKg": 2568,
+    "lengthMm": 5352,
+    "wheelbaseMm": 3071,
+    "sources": [
+      {
+        "label": "GM 2024 Tahoe US retail/fleet order guide, archived copy (Z71 equipment and 5.3L 4WD specifications)",
+        "url": "https://www.autoevolution.com/pdf/news_attachements/gm-rolls-out-2024-chevrolet-tahoe-and-suburban-pricing-goes-up-2100-for-both-224970.pdf"
+      }
+    ],
+    "notes": "2024 Z71 4WD with standard 5.3L V8, 355 hp and 383 lb-ft (519 Nm converted), with ten-speed automatic. GM’s November 2023 order guide lists 2,568 kg (5,661 lb) curb weight for the 5.3L 4WD Tahoe; this is the shared powertrain/body figure, not an individually weighed Z71, and optional equipment changes weight. Z71 seats eight with the second-row bench, seven with optional buckets. Four passenger doors; liftgate excluded."
+  },
+  {
+    "id": "jeep-wrangler-rubicon-2024",
+    "name": "2024 Jeep Wrangler Unlimited Rubicon 3.6 automatic",
+    "year": 2024,
+    "category": "suv",
+    "segment": "off-road midsize SUV",
+    "make": "Jeep",
+    "model": "Wrangler Unlimited",
+    "trim": "Rubicon four-door 3.6 automatic",
+    "market": "US",
+    "engine": "3.6L Pentastar V6",
+    "fuel": "petrol",
+    "drivetrain": "4WD",
+    "transmission": "8-speed automatic",
+    "gears": 8,
+    "seats": 5,
+    "doors": 4,
+    "powerHp": 285,
+    "torqueNm": 353,
+    "curbWeightKg": null,
+    "lengthMm": 4785,
+    "wheelbaseMm": 3007,
+    "sources": [
+      {
+        "label": "Stellantis 2024 Wrangler model introduction",
+        "url": "https://blog.stellantisnorthamerica.com/2023/04/05/jeep-brand-introduces-new-2024-wrangler/"
+      },
+      {
+        "label": "2024 Jeep Wrangler Fleet Buyers Guide",
+        "url": "https://digimag.rrd.com/Chrysler/DNL/2024-Fleet-Buyers-Guide-Catalog.pdf"
+      }
+    ],
+    "notes": "US 3.6L Pentastar V6 rating 285 SAE hp, 260 lb-ft (353 Nm converted); four-door Rubicon automatic uses 8-speed transmission and 4WD. Five seats. Length 188.4 in and wheelbase 118.4 in converted to mm. Curb weight left null because exact equipment/roof dependent figure was not verified. Four passenger doors; spare tire excluded."
+  },
+  {
+    "id": "volvo-xc90-b6-plus-2024",
+    "name": "2024 Volvo XC90 B6 Plus AWD",
+    "year": 2024,
+    "category": "suv",
+    "segment": "midsize luxury three-row SUV",
+    "make": "Volvo",
+    "model": "XC90",
+    "trim": "B6 Plus AWD",
+    "market": "US",
+    "engine": "2.0L turbocharged and supercharged mild-hybrid inline-4",
+    "fuel": "mild hybrid",
+    "drivetrain": "AWD",
+    "transmission": "8-speed Geartronic automatic",
+    "gears": 8,
+    "seats": 7,
+    "doors": 4,
+    "powerHp": 295,
+    "torqueNm": 420,
+    "curbWeightKg": null,
+    "lengthMm": 4953,
+    "wheelbaseMm": 2984,
+    "sources": [
+      {
+        "label": "Volvo Cars archived 2024 XC90 technical document",
+        "url": "https://www.volvocars.com/us/media/documents/cc1c549e06ce452d80c3b33e001ce992/"
+      },
+      {
+        "label": "Volvo Cars Cape Cod 2024 XC90 model and powertrain guide",
+        "url": "https://www.volvocarscapecod.com/research-2024-xc-90-cape-cod-ma.htm"
+      },
+      {
+        "label": "Volvo MY24 XC90 Cyprus brochure (body dimensions reference; B5/T8 powertrains)",
+        "url": "https://www.volvocars.com/files/cs/v3/assets/blt0feaa88e629251fc/bltae8b2f62e4d70686/66eb042044ba3379a77f646e/xc90-my24-26-10-2023.pdf?branch=prod_alias"
+      }
+    ],
+    "notes": "2024 US B6 mild-hybrid gasoline AWD has 295 SAE hp and 310 lb-ft (420 Nm converted), 8-speed automatic. XC90 Plus B6 is listed as seven-passenger configuration; exact US B6 Plus curb weight is not verified. The Cyprus brochure is used only for shared body dimensions, not B6 engine or weight figures. Length 195.0 in (4,953 mm), wheelbase 117.5 in (2,984 mm). Four passenger doors; liftgate excluded."
+  },
+  {
+    "id": "toyota-camry-se-2024",
+    "name": "2024 Toyota Camry SE FWD 2.5",
+    "year": 2024,
+    "category": "sedan",
+    "segment": "midsize sedan",
+    "make": "Toyota",
+    "model": "Camry",
+    "trim": "SE FWD 2.5",
+    "market": "US",
+    "engine": "2.5L Dynamic Force inline-4",
+    "fuel": "petrol",
+    "drivetrain": "FWD",
+    "transmission": "Direct Shift 8-speed automatic",
+    "gears": 8,
+    "seats": 5,
+    "doors": 4,
+    "powerHp": 203,
+    "torqueNm": 249,
+    "curbWeightKg": 1515,
+    "lengthMm": 4895,
+    "wheelbaseMm": 2824,
+    "sources": [
+      {
+        "label": "Toyota 2024 Camry eBrochure",
+        "url": "https://www.toyota.com/content/dam/toyota/brochures/pdf/2024/camry_ebrochure.pdf"
+      },
+      {
+        "label": "Toyota USA 2024 Camry newsroom",
+        "url": "https://pressroom.toyota.com/2024-toyota-camry-style-and-performance-in-americas-best-selling-midsize-sedan/"
+      }
+    ],
+    "notes": "Toyota lists the gas SE FWD 2.5L at 203 hp and 184 lb-ft (249 Nm converted), with 8-speed automatic. Curb weight is 3,340 lb (1,515 kg), from the gas SE FWD column on page 24 of Toyota’s brochure; the paired 3,530 lb value is for AWD. Length 192.7 in (4,895 mm), wheelbase 111.2 in (2,824 mm). Five seats. Four passenger doors; trunk excluded."
+  },
+  {
+    "id": "honda-accord-ex-2024",
+    "name": "2024 Honda Accord EX 1.5T",
+    "year": 2024,
+    "category": "sedan",
+    "segment": "midsize sedan",
+    "make": "Honda",
+    "model": "Accord",
+    "trim": "EX 1.5T",
+    "market": "US",
+    "engine": "1.5L turbocharged inline-4",
+    "fuel": "petrol",
+    "drivetrain": "FWD",
+    "transmission": "continuously variable transmission (CVT)",
+    "gears": 0,
+    "seats": 5,
+    "doors": 4,
+    "powerHp": 192,
+    "torqueNm": 260,
+    "curbWeightKg": 1488,
+    "lengthMm": 4971,
+    "wheelbaseMm": 2830,
+    "sources": [
+      {
+        "label": "Honda 2024 Accord specifications",
+        "url": "https://www.hondainfocenter.com/2024/Accord/Feature-Guide/Specifications/"
+      },
+      {
+        "label": "Honda 2024 Accord 1.5L turbo specifications",
+        "url": "https://www.hondainfocenter.com/2024/Accord/Feature-Guide/Engine-Chassis-Features/Turbocharged-1-5-liter-Engine/"
+      }
+    ],
+    "notes": "Honda lists EX 1.5L turbo at 192 SAE hp and 192 lb-ft (260 Nm converted), CVT, FWD, 3,280 lb (1,488 kg) curb weight, 195.7 in length (4,971 mm), 111.4 in wheelbase (2,830 mm), five seats. Regular unleaded. Four passenger doors; trunk excluded. CVT has no fixed gear count."
+  },
+  {
+    "id": "hyundai-elantra-sel-2024",
+    "name": "2024 Hyundai Elantra SEL 2.0",
+    "year": 2024,
+    "category": "sedan",
+    "segment": "compact sedan",
+    "make": "Hyundai",
+    "model": "Elantra",
+    "trim": "SEL 2.0",
+    "market": "US",
+    "engine": "2.0L Smartstream MPI inline-4",
+    "fuel": "petrol",
+    "drivetrain": "FWD",
+    "transmission": "Smartstream Intelligent Variable Transmission (IVT)",
+    "gears": 0,
+    "seats": 5,
+    "doors": 4,
+    "powerHp": 147,
+    "torqueNm": 179,
+    "curbWeightKg": null,
+    "lengthMm": 4709,
+    "wheelbaseMm": 2720,
+    "sources": [
+      {
+        "label": "Hyundai USA 2024 Elantra trim specifications",
+        "url": "https://www.hyundaiusa.com/us/en/vehicles/elantra/compare-specs/spec_config_page"
+      },
+      {
+        "label": "Hyundai-authored 2024 Elantra specifications (facelift dimensions, archived PDF p.11)",
+        "url": "https://manuals.plus/m/9e01f2992a4dce2ae9c9a4b06ee410590cc7f57520230a00e6107ce259ef4770.pdf"
+      }
+    ],
+    "notes": "Hyundai lists the 2.0L SEL at 147 hp and 132 lb-ft (179 Nm converted), with Smartstream IVT and FWD. Length 185.4 in (4,709 mm; 2024 facelift), wheelbase 107.1 in (2,720 mm), five seats. Curb weight left null because Hyundai publishes a range shared across configurations. Four passenger doors; trunk excluded. IVT has no fixed gear count."
+  },
+  {
+    "id": "nissan-altima-sr-2024",
+    "name": "2024 Nissan Altima 2.5 SR FWD",
+    "year": 2024,
+    "category": "sedan",
+    "segment": "midsize sedan",
+    "make": "Nissan",
+    "model": "Altima",
+    "trim": "2.5 SR FWD",
+    "market": "US",
+    "engine": "2.5L PR25DD direct-injection inline-4",
+    "fuel": "petrol",
+    "drivetrain": "FWD",
+    "transmission": "Xtronic continuously variable transmission (CVT)",
+    "gears": 0,
+    "seats": 5,
+    "doors": 4,
+    "powerHp": 188,
+    "torqueNm": 244,
+    "curbWeightKg": 1507,
+    "lengthMm": 4900,
+    "wheelbaseMm": 2824,
+    "sources": [
+      {
+        "label": "Nissan 2024 Altima specifications",
+        "url": "https://usa.nissannews.com/en-US/releases/2024-nissan-altima-specifications"
+      },
+      {
+        "label": "Nissan 2024 Altima brochure",
+        "url": "https://www.nissanusa.com/content/dam/Nissan/us/vehicle-brochures/2024/2024-nissan-altima-brochure-en.pdf"
+      }
+    ],
+    "notes": "Nissan lists 2.5L FWD at 188 hp and 180 lb-ft (244 Nm converted), CVT, regular unleaded. Length 192.9 in (4,900 mm); wheelbase 111.2 in (2,824 mm). Five seats. Nissan’s factory table lists 3,323 lb (1,507 kg) total curb weight for 2.5 SR FWD. Four passenger doors; trunk excluded. CVT has no fixed gear count."
+  },
+  {
+    "id": "toyota-prius-xle-2024",
+    "name": "2024 Toyota Prius XLE FWD",
+    "year": 2024,
+    "category": "hatchback",
+    "segment": "compact hybrid hatchback",
+    "make": "Toyota",
+    "model": "Prius",
+    "trim": "XLE FWD",
+    "market": "US",
+    "engine": "2.0L Dynamic Force inline-4 with Toyota Hybrid System",
+    "fuel": "hybrid",
+    "drivetrain": "FWD",
+    "transmission": "electronically controlled continuously variable transmission (eCVT)",
+    "gears": 0,
+    "seats": 5,
+    "doors": 4,
+    "powerHp": 194,
+    "torqueNm": 188,
+    "curbWeightKg": 1435,
+    "lengthMm": 4600,
+    "wheelbaseMm": 2751,
+    "sources": [
+      {
+        "label": "Toyota 2024 Prius eBrochure",
+        "url": "https://www.toyota.com/content/dam/toyota/brochures/pdf/2024/prius_ebrochure.pdf"
+      },
+      {
+        "label": "Toyota USA 2024 Prius newsroom",
+        "url": "https://pressroom.toyota.com/stunning-style-and-elevated-efficiency-the-2024-toyota-prius/"
+      }
+    ],
+    "notes": "Toyota lists 194 net hp for FWD hybrid. Curb weight 3,164 lb (1,435 kg), five seats, 181.1-in length (4,600 mm), 108.3-in wheelbase (2,751 mm). Torque is the 2.0L engine-only 139 lb-ft (188 Nm converted); combined hybrid system torque is not specified. Four passenger doors; hatch excluded. eCVT has no fixed gear count."
+  },
+  {
+    "id": "honda-fit-sport-2019",
+    "name": "2019 Honda Fit Sport CVT",
+    "category": "hatchback",
+    "year": 2019,
+    "market": "Canada",
+    "fuel": "petrol",
+    "seats": 5,
+    "doors": 4,
+    "make": "Honda",
+    "model": "Fit",
+    "trim": "Sport CVT",
+    "segment": "subcompact hatchback",
+    "engine": "1.5L direct-injection DOHC i-VTEC inline-4",
+    "drivetrain": "FWD",
+    "transmission": "Continuously variable transmission (CVT) with paddle shifters",
+    "gears": 0,
+    "powerHp": 128,
+    "torqueNm": 153,
+    "curbWeightKg": 1184,
+    "lengthMm": 4100,
+    "wheelbaseMm": 2530,
+    "sources": [
+      {
+        "label": "Honda Canada 2019 Fit factory specification sheet, distributed by Harmony Honda",
+        "url": "https://di-uploads-pod2.dealerinspire.com/harmonyhonda/uploads/2018/07/2019-Fit.pdf"
+      }
+    ],
+    "notes": "Canadian Sport CVT specification: 128 SAE hp, 113 lb-ft (153 Nm), 1,184 kg curb weight, 4,100 mm length and 2,530 mm wheelbase. The manual variant has different output and weight. Regular gasoline; five seats. Four passenger doors; hatch excluded. CVT has no fixed gear count."
+  },
+  {
+    "id": "volkswagen-jetta-sport-2024",
+    "name": "2024 Volkswagen Jetta Sport 1.5T 6MT",
+    "category": "sedan",
+    "year": 2024,
+    "market": "US",
+    "fuel": "petrol",
+    "seats": 5,
+    "doors": 4,
+    "make": "Volkswagen",
+    "model": "Jetta",
+    "trim": "Sport 1.5T 6MT",
+    "segment": "compact sedan",
+    "engine": "1.5L TSI turbocharged direct-injection inline-4",
+    "drivetrain": "FWD",
+    "transmission": "6-speed manual",
+    "gears": 6,
+    "powerHp": 158,
+    "torqueNm": 249,
+    "curbWeightKg": null,
+    "lengthMm": 4738,
+    "wheelbaseMm": 2686,
+    "sources": [
+      {
+        "label": "Volkswagen of America 2024 Jetta order guide",
+        "url": "https://volkswagenorderguides.com/wp-content/uploads/2023/10/2024_Volkswagen_Jetta_Order_Guide.pdf"
+      },
+      {
+        "label": "Volkswagen Canada MY24 Jetta guide (shared body dimensions)",
+        "url": "https://www.vw.ca/idhub/content/dam/onehub_pkw/importers/ca/2023/en/showroom/my24-general/buyers-guides/MY24_BG_Jetta_EN_Nov20.pdf"
+      }
+    ],
+    "notes": "US Sport with the 6-speed manual: 158 hp and 184 lb-ft (249 Nm). The US order guide confirms FWD and the Sport manual configuration. Shared body dimensions come from VW’s Canadian MY24 guide; its Canadian trim weights are not assigned to the US Sport, so exact curb weight remains unverified. Four passenger doors."
+  },
+  {
+    "id": "toyota-sienna-xle-2024",
+    "name": "2024 Toyota Sienna XLE FWD",
+    "category": "minivan",
+    "year": 2024,
+    "market": "US",
+    "fuel": "hybrid",
+    "seats": 8,
+    "doors": 4,
+    "make": "Toyota",
+    "model": "Sienna",
+    "trim": "XLE FWD, eight-passenger",
+    "segment": "hybrid family minivan",
+    "engine": "2.5L DOHC D-4S inline-4 with Toyota Hybrid System",
+    "drivetrain": "FWD",
+    "transmission": "Electronically controlled continuously variable transmission (eCVT)",
+    "gears": 0,
+    "powerHp": 245,
+    "torqueNm": null,
+    "curbWeightKg": 2098,
+    "lengthMm": 5174,
+    "wheelbaseMm": 3061,
+    "sources": [
+      {
+        "label": "Toyota 2024 Sienna eBrochure",
+        "url": "https://www.toyota.com/content/dam/toyota/brochures/pdf/2024/sienna_ebrochure.pdf"
+      },
+      {
+        "label": "Toyota USA 2024 Sienna model introduction",
+        "url": "https://pressroom.toyota.com/seize-the-day-in-style-with-the-2024-toyota-sienna/"
+      }
+    ],
+    "notes": "245 hp is net hybrid system output. The brochure does not publish combined hybrid torque. This record selects the eight-passenger FWD XLE; seven-passenger configurations also exist. Published XLE curb weight is 4,625 lb (2,098 kg). Length 203.7 in and wheelbase 120.5 in are converted to mm. Four passenger doors, including the two sliding doors; rear liftgate excluded. eCVT has no fixed gear count."
+  },
+  {
+    "id": "honda-odyssey-exl-2024",
+    "name": "2024 Honda Odyssey EX-L",
+    "category": "minivan",
+    "year": 2024,
+    "market": "US",
+    "fuel": "petrol",
+    "seats": 8,
+    "doors": 4,
+    "make": "Honda",
+    "model": "Odyssey",
+    "trim": "EX-L",
+    "segment": "three-row family minivan",
+    "engine": "3.5L direct-injection SOHC i-VTEC V6",
+    "drivetrain": "FWD",
+    "transmission": "10-speed automatic",
+    "gears": 10,
+    "powerHp": 280,
+    "torqueNm": 355,
+    "curbWeightKg": 2053,
+    "lengthMm": 5212,
+    "wheelbaseMm": 3000,
+    "sources": [
+      {
+        "label": "Honda 2024 Odyssey factory specifications",
+        "url": "https://www.hondainfocenter.com/2024/Odyssey/Feature-Guide/Specifications/"
+      }
+    ],
+    "notes": "Honda EX-L column: 280 SAE hp, 262 lb-ft (355 Nm), 4,526 lb (2,053 kg) curb weight, eight seats and a 10-speed automatic. Regular gasoline. Length 205.2 in and wheelbase 118.1 in are converted to mm. Four passenger doors, including two sliding doors; liftgate excluded."
+  },
+  {
+    "id": "subaru-outback-wilderness-2024",
+    "name": "2024 Subaru Outback Wilderness AWD",
+    "category": "wagon",
+    "year": 2024,
+    "market": "US",
+    "fuel": "petrol",
+    "seats": 5,
+    "doors": 4,
+    "make": "Subaru",
+    "model": "Outback",
+    "trim": "Wilderness AWD",
+    "segment": "all-terrain family wagon",
+    "engine": "2.4L turbocharged direct-injection SUBARU BOXER flat-4",
+    "drivetrain": "AWD",
+    "transmission": "Lineartronic high-torque CVT with eight simulated manual ratios",
+    "gears": 0,
+    "powerHp": 260,
+    "torqueNm": 376,
+    "curbWeightKg": 1779,
+    "lengthMm": 4859,
+    "wheelbaseMm": 2746,
+    "sources": [
+      {
+        "label": "Subaru of America 2024 Outback brochure",
+        "url": "https://www.subaru.com/content/dam/subaru/downloads/pdf/brochures/2024/MY24_Outback_Brochure.pdf"
+      }
+    ],
+    "notes": "Wilderness uses the 260 hp turbo engine with 277 lb-ft (376 Nm), standard AWD and regular gasoline. Subaru lists base curb weight at 3,922 lb (1,779 kg). Wilderness-specific length is 191.3 in; wheelbase is 108.1 in. CVT has simulated paddle-shift ratios, not eight fixed gears. Four passenger doors; liftgate excluded."
+  },
+  {
+    "id": "ford-f150-xlt-v8-2024",
+    "name": "2024 Ford F-150 XLT SuperCrew 4x4 5.0 V8 5.5-ft bed",
+    "category": "pickup",
+    "year": 2024,
+    "market": "US",
+    "fuel": "petrol",
+    "seats": 6,
+    "doors": 4,
+    "make": "Ford",
+    "model": "F-150",
+    "trim": "XLT SuperCrew 4x4 5.0 V8, 5.5-ft bed",
+    "segment": "full-size crew-cab pickup",
+    "engine": "5.0L Ti-VCT naturally aspirated V8",
+    "drivetrain": "4WD",
+    "transmission": "10-speed SelectShift automatic",
+    "gears": 10,
+    "powerHp": 400,
+    "torqueNm": 556,
+    "curbWeightKg": null,
+    "lengthMm": 5885,
+    "wheelbaseMm": 3693,
+    "sources": [
+      {
+        "label": "Ford 2024 F-150 towing guide (5.0L output)",
+        "url": "https://www.ford.com/content/dam/brand_ford/en_us/brand/towing/pdf/2024-Ford-F-150-Towing-Guide-V3.pdf"
+      },
+      {
+        "label": "Ford Pro 2024 F-150 technical specifications",
+        "url": "https://content.fordpro.com/content/dam/fordpro/us/en-us/pdf/showroom/trucks/f-150/2024/2024_Ford_F-150_Tech_Specs.pdf"
+      }
+    ],
+    "notes": "5.0L V8: 400 hp and 410 lb-ft (556 Nm). SuperCrew short bed: 231.7-in length and 145.4-in wheelbase converted to mm. This record selects the six-seat bench configuration; five-seat layouts also exist. Exact XLT 4x4 equipment-dependent curb weight is unverified. Four passenger doors; cargo tailgate excluded."
+  },
+  {
+    "id": "toyota-tacoma-trd-offroad-2024",
+    "name": "2024 Toyota Tacoma TRD Off-Road Double Cab 4x4 5-ft bed i-FORCE nonhybrid automatic",
+    "category": "pickup",
+    "year": 2024,
+    "market": "US",
+    "fuel": "petrol",
+    "seats": 5,
+    "doors": 4,
+    "make": "Toyota",
+    "model": "Tacoma",
+    "trim": "TRD Off-Road Double Cab 4x4, 5-ft bed, i-FORCE automatic",
+    "segment": "midsize off-road pickup",
+    "engine": "2.4L i-FORCE turbocharged inline-4",
+    "drivetrain": "4WD",
+    "transmission": "8-speed automatic",
+    "gears": 8,
+    "powerHp": 278,
+    "torqueNm": 430,
+    "curbWeightKg": 2100,
+    "lengthMm": 5410,
+    "wheelbaseMm": 3350,
+    "sources": [
+      {
+        "label": "Toyota 2024 Tacoma eBrochure, TRD Off-Road and specification tables",
+        "url": "https://www.toyota.com/content/dam/toyota/brochures/pdf/2024/tacoma_ebrochure.pdf"
+      }
+    ],
+    "notes": "Nonhybrid automatic: 278 hp and 317 lb-ft (430 Nm). Base curb weight 4,630 lb (2,100 kg), from the TRD Off-Road 5-ft-bed i-FORCE automatic column. Length 213 in and wheelbase 131.9 in converted to mm. The hybrid and manual have different output and weight. Four passenger doors; cargo tailgate excluded."
+  },
+  {
+    "id": "ford-maverick-xl-hybrid-2024",
+    "name": "2024 Ford Maverick XL Hybrid FWD",
+    "category": "pickup",
+    "year": 2024,
+    "market": "US",
+    "fuel": "hybrid",
+    "seats": 5,
+    "doors": 4,
+    "make": "Ford",
+    "model": "Maverick",
+    "trim": "XL Hybrid FWD SuperCrew",
+    "segment": "compact hybrid pickup",
+    "engine": "2.5L Atkinson-cycle inline-4 with electric traction motor",
+    "drivetrain": "FWD",
+    "transmission": "PowerSplit electronic continuously variable transmission (eCVT)",
+    "gears": 0,
+    "powerHp": 191,
+    "torqueNm": 210,
+    "curbWeightKg": null,
+    "lengthMm": 5072,
+    "wheelbaseMm": 3076,
+    "sources": [
+      {
+        "label": "Ford 2024 Maverick US order guide, archived dealer PDF",
+        "url": "https://dealerimages.dealereprocess.com/image/upload/v1700240442/2024_Maverick_qki2wk.pdf"
+      },
+      {
+        "label": "Ford Mexico 2024 Maverick Hybrid catalogue (shared hybrid output)",
+        "url": "https://www.ford.mx/content/dam/Ford/website-assets/latam/mx/nameplate/maverick-hev/2024/pdf/ford-maverick-hev-2024-catalogo-descargable.pdf"
+      },
+      {
+        "label": "Chastang Ford 2024 XL SuperCrew fleet specification (shared body dimensions), Texas City archive",
+        "url": "https://public.destinyhosted.com/texasdocs/2024/CC/20241106_6875/7483_New_Maverick_October_2024.pdf"
+      }
+    ],
+    "notes": "191 hp is combined hybrid output. Torque is engine-only 155 lb-ft (210 Nm); engine-only power is 162 hp. US order guide confirms XL hybrid FWD/eCVT availability. Body dimensions use the shared XL SuperCrew body; the linked fleet quote has a gasoline engine, so its powertrain and weight are not used. Hybrid XL curb weight is unverified. Four passenger doors; cargo tailgate excluded."
+  },
+  {
+    "id": "ford-bronco-outer-banks-2024",
+    "name": "2024 Ford Bronco Outer Banks four-door 2.3 automatic 4x4",
+    "category": "suv",
+    "year": 2024,
+    "market": "Mexico",
+    "fuel": "petrol",
+    "seats": 5,
+    "doors": 4,
+    "make": "Ford",
+    "model": "Bronco",
+    "trim": "Outer Banks four-door 2.3 automatic 4x4",
+    "segment": "midsize off-road SUV",
+    "engine": "2.3L EcoBoost turbocharged inline-4",
+    "drivetrain": "4WD",
+    "transmission": "10-speed SelectShift automatic",
+    "gears": 10,
+    "powerHp": 300,
+    "torqueNm": 441,
+    "curbWeightKg": null,
+    "lengthMm": 4811,
+    "wheelbaseMm": 2950,
+    "sources": [
+      {
+        "label": "Ford Mexico 2024 Bronco catalogue, Outer Banks 2.3 specification",
+        "url": "https://www.ford.mx/content/dam/Ford/website-assets/latam/mx/nameplate/bronco/2024/pdf/ford-bronco-2024-catalogo-descargable.pdf"
+      },
+      {
+        "label": "Ford 2024 Bronco body builders layout book, archived copy",
+        "url": "https://www.bronco6g.com/forum/attachments/2024-ford-bronco-equipment-installation-guide-pdf.613940/"
+      }
+    ],
+    "notes": "Mexico-market Outer Banks four-door with the 2.3L engine and ten-speed automatic. 300 hp and 325 lb-ft (441 Nm) are premium-fuel ratings. Body dimensions use Ford’s four-door layout book. Exact equipment/roof-dependent curb weight is unverified. Five seats; four passenger doors, rear tailgate excluded."
+  },
+  {
+    "id": "hyundai-ioniq5-se-rwd-2024",
+    "name": "2024 Hyundai Ioniq 5 SE Long Range RWD",
+    "category": "suv",
+    "year": 2024,
+    "market": "US",
+    "fuel": "electric",
+    "seats": 5,
+    "doors": 4,
+    "make": "Hyundai",
+    "model": "Ioniq 5",
+    "trim": "SE Long Range RWD, 77.4 kWh",
+    "segment": "electric family crossover",
+    "engine": "Rear permanent-magnet synchronous electric motor, 77.4-kWh battery",
+    "drivetrain": "RWD",
+    "transmission": "Single-speed reduction gear",
+    "gears": 1,
+    "powerHp": 225,
+    "torqueNm": 350,
+    "curbWeightKg": 1930,
+    "lengthMm": 4636,
+    "wheelbaseMm": 3000,
+    "sources": [
+      {
+        "label": "Hyundai Motor America 2024 IONIQ 5 factory specification guide, archived copy",
+        "url": "https://manuals.plus/m/24cabb557d0262d6bf92218c2d1688df797f5ffc015ddbf32b45a42a6a196810"
+      }
+    ],
+    "notes": "SE Long Range RWD: 168 kW / 225 hp and 350 Nm. Hyundai lists 4,255 lb (1,930 kg) curb weight for this configuration; the Standard Range and AWD entries differ. Length 182.5 in and wheelbase 118.1 in converted to mm. Five seats. Four passenger doors; liftgate excluded."
+  },
+  {
+    "id": "kia-ev6-wind-rwd-2024",
+    "name": "2024 Kia EV6 Wind RWD",
+    "category": "suv",
+    "year": 2024,
+    "market": "US",
+    "fuel": "electric",
+    "seats": 5,
+    "doors": 4,
+    "make": "Kia",
+    "model": "EV6",
+    "trim": "Wind RWD, 77.4 kWh",
+    "segment": "electric family crossover",
+    "engine": "Rear permanent-magnet synchronous electric motor, 77.4-kWh battery",
+    "drivetrain": "RWD",
+    "transmission": "Single-speed gear reduction unit",
+    "gears": 1,
+    "powerHp": 225,
+    "torqueNm": 350,
+    "curbWeightKg": 1930,
+    "lengthMm": 4681,
+    "wheelbaseMm": 2901,
+    "sources": [
+      {
+        "label": "Kia America 2024 EV6 specification table, Wind RWD column",
+        "url": "https://www.kiamedia.com/us/en/models/ev6/2024/specifications"
+      }
+    ],
+    "notes": "Wind RWD: 225 hp and 258 lb-ft (350 Nm), with a 77.4-kWh battery. Kia lists minimum curb weight at 4,255 lb (1,930 kg); optional equipment can increase it. Length 184.3 in and wheelbase 114.2 in converted to mm. Five seats. Four passenger doors; liftgate excluded."
+  },
+  {
+    "id": "mazda-mx5-club-2024",
+    "name": "2024 Mazda MX-5 Miata Club 6MT",
+    "category": "convertible",
+    "year": 2024,
+    "market": "US",
+    "fuel": "petrol",
+    "seats": 2,
+    "doors": 2,
+    "make": "Mazda",
+    "model": "MX-5 Miata",
+    "trim": "Club soft top 6MT",
+    "segment": "two-seat roadster",
+    "engine": "2.0L Skyactiv-G DOHC inline-4",
+    "drivetrain": "RWD",
+    "transmission": "6-speed Skyactiv-MT manual",
+    "gears": 6,
+    "powerHp": 181,
+    "torqueNm": 205,
+    "curbWeightKg": 1074,
+    "lengthMm": 3914,
+    "wheelbaseMm": 2309,
+    "sources": [
+      {
+        "label": "Mazda USA 2024 MX-5 specification deck, final revision",
+        "url": "https://filecache.mediaroom.com/mr5mr_mazdausa2/223524/download/2024%20MX-5%20Spec%20Deck.pdf"
+      }
+    ],
+    "notes": "Soft-top manual configuration: 181 SAE hp and 151 lb-ft (205 Nm). Mazda’s final deck lists Federal-spec manual curb weight at 2,368 lb (1,074 kg); RF figures are not used. Length 154.1 in without license plate holder and wheelbase 90.9 in converted to mm. Premium fuel recommended. Two seats and two passenger doors."
+  },
+  {
+    "id": "toyota-gr86-premium-2024",
+    "name": "2024 Toyota GR86 Premium 6MT",
+    "category": "coupe",
+    "year": 2024,
+    "market": "US",
+    "fuel": "petrol",
+    "seats": 4,
+    "doors": 2,
+    "make": "Toyota",
+    "model": "GR86",
+    "trim": "Premium 6MT",
+    "segment": "compact rear-drive sports coupe",
+    "engine": "2.4L FA24 naturally aspirated D-4S flat-4",
+    "drivetrain": "RWD",
+    "transmission": "6-speed manual",
+    "gears": 6,
+    "powerHp": 228,
+    "torqueNm": 249,
+    "curbWeightKg": null,
+    "lengthMm": 4265,
+    "wheelbaseMm": 2575,
+    "sources": [
+      {
+        "label": "Toyota 2024 GR86 eBrochure, Premium specification column",
+        "url": "https://www.toyota.com/content/dam/toyota/brochures/pdf/2024/gr86_ebrochure.pdf"
+      }
+    ],
+    "notes": "228 hp and 184 lb-ft (249 Nm), rated on premium fuel. Four-seat coupe with six-speed manual and Torsen limited-slip differential. Toyota lists 4,265 mm length and 2,575 mm wheelbase. Curb weight is unverified: the brochure’s 3,748-lb Premium figure is gross vehicle weight rating and is not curb weight. Two passenger doors."
+  },
+  {
+    "id": "subaru-wrx-premium-2024",
+    "name": "2024 Subaru WRX Premium 6MT",
+    "category": "sedan",
+    "year": 2024,
+    "market": "US",
+    "fuel": "petrol",
+    "seats": 5,
+    "doors": 4,
+    "make": "Subaru",
+    "model": "WRX",
+    "trim": "Premium 6MT",
+    "segment": "all-wheel-drive sports sedan",
+    "engine": "2.4L direct-injection turbocharged SUBARU BOXER flat-4",
+    "drivetrain": "AWD",
+    "transmission": "6-speed manual",
+    "gears": 6,
+    "powerHp": 271,
+    "torqueNm": 350,
+    "curbWeightKg": 1523,
+    "lengthMm": 4669,
+    "wheelbaseMm": 2672,
+    "sources": [
+      {
+        "label": "Subaru of America 2024 WRX brochure",
+        "url": "https://www.subaru.com/content/dam/subaru/downloads/pdf/brochures/2024/2024_WRX_Brochure_031924.pdf"
+      }
+    ],
+    "notes": "271 hp and 258 lb-ft (350 Nm). WRX Premium manual base curb weight is 3,358 lb (1,523 kg); the automatic is heavier. Length 183.8 in and wheelbase 105.2 in converted to mm. Premium gasoline. Five seats and four passenger doors."
+  },
+  {
+    "id": "dodge-challenger-scat-pack-2023",
+    "name": "2023 Dodge Challenger R/T Scat Pack 6MT",
+    "category": "coupe",
+    "year": 2023,
+    "market": "US",
+    "fuel": "petrol",
+    "seats": 5,
+    "doors": 2,
+    "make": "Dodge",
+    "model": "Challenger",
+    "trim": "R/T Scat Pack 6MT, standard-width body",
+    "segment": "V8 muscle coupe",
+    "engine": "6.4L 392 HEMI naturally aspirated V8",
+    "drivetrain": "RWD",
+    "transmission": "Tremec 6-speed manual",
+    "gears": 6,
+    "powerHp": 485,
+    "torqueNm": 644,
+    "curbWeightKg": 1915,
+    "lengthMm": 5027,
+    "wheelbaseMm": 2946,
+    "sources": [
+      {
+        "label": "Stellantis 2023 Challenger factory specification sheet, archived in press-kit PDF",
+        "url": "https://www.autoevolution.com/pdf/news_attachements/2024-dodge-charger-coupe-vs-2023-dodge-challenger-comparison-big-changes-ahead-230345.pdf"
+      }
+    ],
+    "notes": "Standard-width R/T Scat Pack manual: 485 SAE net hp, 644 Nm and factory curb weight 1,915 kg (4,223 lb). Premium 91-octane fuel required. Factory dimensions are 5,027 mm length and 2,946 mm wheelbase. Five seats, two passenger doors. Widebody, automatic and seat-delete 1320 configurations have different weights."
+  }
+]

@@ -1,0 +1,182 @@
+{
+  "bmw-m3-competition-2024": {
+    "file": "bmw-m3-competition-2024-2d.png",
+    "width": 2070,
+    "height": 760,
+    "bounds": [
+      21,
+      109,
+      2018,
+      620
+    ],
+    "wheels": [
+      {
+        "x": 451,
+        "y": 572,
+        "radius": 125
+      },
+      {
+        "x": 1693,
+        "y": 573,
+        "radius": 125
+      }
+    ],
+    "paintColor": "#08784d",
+    "facing": "right",
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/bmw-m3-competition-2024.png",
+    "referenceUrls": [
+      "https://bmw.autostar.com.br/novos/m3-competition-2024"
+    ]
+  },
+  "audi-rs3-sedan-2024": {
+    "file": "audi-rs3-sedan-2024-2d.png",
+    "width": 2172,
+    "height": 724,
+    "bounds": [
+      32,
+      61,
+      2091,
+      645
+    ],
+    "wheels": [
+      {
+        "x": 460,
+        "y": 530,
+        "radius": 130
+      },
+      {
+        "x": 1689,
+        "y": 530,
+        "radius": 130
+      }
+    ],
+    "paintColor": "#f6df00",
+    "facing": "right",
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/audi-rs3-sedan-2024.png",
+    "referenceUrls": [
+      "https://www.autobild.es/motor/comparativa-audi-rs3-sedan-bmw-m240i-xdrive-coupe-mercedes-amg-45-s_6391376_1.html"
+    ]
+  },
+  "mercedes-amg-a45s-2024": {
+    "file": "mercedes-amg-a45s-2024-2d.png",
+    "width": 2172,
+    "height": 724,
+    "bounds": [
+      0,
+      9,
+      2143,
+      715
+    ],
+    "wheels": [
+      {
+        "x": 395,
+        "y": 530,
+        "radius": 138
+      },
+      {
+        "x": 1728,
+        "y": 530,
+        "radius": 138
+      }
+    ],
+    "paintColor": "#f4d500",
+    "referenceUrls": [
+      "https://www.larevueautomobile.com/photos/mercedes-amg-a-45-s-4matic-le-petit-monstre-jaune-a-l-essai.htm"
+    ],
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/mercedes-amg-a45s-2024.png",
+    "facing": "right"
+  },
+  "mazda-rx7-fd-1995": {
+    "file": "mazda-rx7-fd-1995-2d.png",
+    "width": 2172,
+    "height": 724,
+    "bounds": [
+      11,
+      53,
+      2138,
+      671
+    ],
+    "wheels": [
+      {
+        "x": 468,
+        "y": 517,
+        "radius": 153
+      },
+      {
+        "x": 1715,
+        "y": 520,
+        "radius": 153
+      }
+    ],
+    "paintColor": "#f3ca00",
+    "referenceUrls": [
+      "https://rhdspecialties.com/products/1997-mazda-rx7-fd"
+    ],
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/mazda-rx7-fd-1995.png",
+    "facing": "right"
+  },
+  "toyota-supra-rz-1998": {
+    "file": "toyota-supra-rz-1998-2d.png",
+    "width": 2172,
+    "height": 724,
+    "bounds": [
+      38,
+      3,
+      2101,
+      703
+    ],
+    "wheels": [
+      {
+        "x": 525,
+        "y": 519,
+        "radius": 150
+      },
+      {
+        "x": 1748,
+        "y": 519,
+        "radius": 150
+      }
+    ],
+    "paintColor": "#ff7b00",
+    "referenceUrls": [
+      "https://bullboostperformance.com/pages/1994-toyota-supra-sz-5-speed-jza80"
+    ],
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/toyota-supra-rz-1998.png",
+    "facing": "right"
+  },
+  "nissan-skyline-gtr-r34-1999": {
+    "file": "nissan-skyline-gtr-r34-1999-2d.png",
+    "width": 2172,
+    "height": 724,
+    "bounds": [
+      0,
+      9,
+      2145,
+      715
+    ],
+    "wheels": [
+      {
+        "x": 465,
+        "y": 526,
+        "radius": 145
+      },
+      {
+        "x": 1687,
+        "y": 526,
+        "radius": 145
+      }
+    ],
+    "paintColor": "#0862dd",
+    "referenceUrls": [
+      "https://www.iconicauctioneers.com/1999-nissan-skyline-r34-gt-r-rec13775-1-nec-1124"
+    ],
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/nissan-skyline-gtr-r34-1999.png",
+    "facing": "right"
+  }
+}

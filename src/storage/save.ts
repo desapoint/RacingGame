@@ -1,5 +1,6 @@
 import { data, carById, partById } from '../data/config';
 import { createOwned } from '../game/garage';
+import { resolveCarAliases } from './car-aliases';
 import type { SaveEnvelope } from '../types';
 
 const KEY = 'redline.profile.v1';
@@ -157,6 +158,8 @@ export function parseSave(raw: string): SaveEnvelope {
     seen.add(candidate.schemaVersion);
     candidate = migrations[candidate.schemaVersion](structuredClone(candidate));
   }
+  validateSave(candidate);
+  resolveCarAliases(candidate);
   validateSave(candidate);
   return candidate;
 }

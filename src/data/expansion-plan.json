@@ -1,0 +1,152 @@
+[
+  {
+    "id": "toyota-rav4-xle-awd-2024",
+    "name": "2024 Toyota RAV4 XLE AWD",
+    "category": "suv"
+  },
+  {
+    "id": "honda-crv-exl-awd-2024",
+    "name": "2024 Honda CR-V EX-L AWD 1.5T",
+    "category": "suv"
+  },
+  {
+    "id": "mazda-cx5-turbo-premium-2024",
+    "name": "2024 Mazda CX-5 Turbo Premium AWD",
+    "category": "suv"
+  },
+  {
+    "id": "subaru-forester-sport-2024",
+    "name": "2024 Subaru Forester Sport AWD",
+    "category": "suv"
+  },
+  {
+    "id": "kia-telluride-sx-awd-2024",
+    "name": "2024 Kia Telluride SX AWD",
+    "category": "suv"
+  },
+  {
+    "id": "hyundai-palisade-calligraphy-2024",
+    "name": "2024 Hyundai Palisade Calligraphy AWD",
+    "category": "suv"
+  },
+  {
+    "id": "ford-explorer-st-2024",
+    "name": "2024 Ford Explorer ST 4WD",
+    "category": "suv"
+  },
+  {
+    "id": "chevrolet-tahoe-z71-2024",
+    "name": "2024 Chevrolet Tahoe Z71 4WD 5.3 V8",
+    "category": "suv"
+  },
+  {
+    "id": "jeep-wrangler-rubicon-2024",
+    "name": "2024 Jeep Wrangler Unlimited Rubicon 3.6 automatic",
+    "category": "suv"
+  },
+  {
+    "id": "volvo-xc90-b6-plus-2024",
+    "name": "2024 Volvo XC90 B6 Plus AWD",
+    "category": "suv"
+  },
+  {
+    "id": "toyota-camry-se-2024",
+    "name": "2024 Toyota Camry SE FWD 2.5",
+    "category": "sedan"
+  },
+  {
+    "id": "honda-accord-ex-2024",
+    "name": "2024 Honda Accord EX 1.5T",
+    "category": "sedan"
+  },
+  {
+    "id": "hyundai-elantra-sel-2024",
+    "name": "2024 Hyundai Elantra SEL 2.0",
+    "category": "sedan"
+  },
+  {
+    "id": "nissan-altima-sr-2024",
+    "name": "2024 Nissan Altima 2.5 SR FWD",
+    "category": "sedan"
+  },
+  {
+    "id": "toyota-prius-xle-2024",
+    "name": "2024 Toyota Prius XLE FWD",
+    "category": "hatchback"
+  },
+  {
+    "id": "honda-fit-sport-2019",
+    "name": "2019 Honda Fit Sport CVT",
+    "category": "hatchback"
+  },
+  {
+    "id": "volkswagen-jetta-sport-2024",
+    "name": "2024 Volkswagen Jetta Sport 1.5T 6MT",
+    "category": "sedan"
+  },
+  {
+    "id": "toyota-sienna-xle-2024",
+    "name": "2024 Toyota Sienna XLE FWD",
+    "category": "minivan"
+  },
+  {
+    "id": "honda-odyssey-exl-2024",
+    "name": "2024 Honda Odyssey EX-L",
+    "category": "minivan"
+  },
+  {
+    "id": "subaru-outback-wilderness-2024",
+    "name": "2024 Subaru Outback Wilderness AWD",
+    "category": "wagon"
+  },
+  {
+    "id": "ford-f150-xlt-v8-2024",
+    "name": "2024 Ford F-150 XLT SuperCrew 4x4 5.0 V8 5.5-ft bed",
+    "category": "pickup"
+  },
+  {
+    "id": "toyota-tacoma-trd-offroad-2024",
+    "name": "2024 Toyota Tacoma TRD Off-Road Double Cab 4x4 5-ft bed i-FORCE nonhybrid automatic",
+    "category": "pickup"
+  },
+  {
+    "id": "ford-maverick-xl-hybrid-2024",
+    "name": "2024 Ford Maverick XL Hybrid FWD",
+    "category": "pickup"
+  },
+  {
+    "id": "ford-bronco-outer-banks-2024",
+    "name": "2024 Ford Bronco Outer Banks four-door 2.3 automatic 4x4",
+    "category": "suv"
+  },
+  {
+    "id": "hyundai-ioniq5-se-rwd-2024",
+    "name": "2024 Hyundai Ioniq 5 SE Long Range RWD",
+    "category": "suv"
+  },
+  {
+    "id": "kia-ev6-wind-rwd-2024",
+    "name": "2024 Kia EV6 Wind RWD",
+    "category": "suv"
+  },
+  {
+    "id": "mazda-mx5-club-2024",
+    "name": "2024 Mazda MX-5 Miata Club 6MT",
+    "category": "convertible"
+  },
+  {
+    "id": "toyota-gr86-premium-2024",
+    "name": "2024 Toyota GR86 Premium 6MT",
+    "category": "coupe"
+  },
+  {
+    "id": "subaru-wrx-premium-2024",
+    "name": "2024 Subaru WRX Premium 6MT",
+    "category": "sedan"
+  },
+  {
+    "id": "dodge-challenger-scat-pack-2023",
+    "name": "2023 Dodge Challenger R/T Scat Pack 6MT",
+    "category": "coupe"
+  }
+]
