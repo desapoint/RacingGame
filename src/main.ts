@@ -37,6 +37,9 @@ class App {
       (action) => this.raceAction(action),
       (active) => {
         this.race?.setThrottle(active);
+        this.root
+          .querySelector<HTMLButtonElement>('[data-action="throttle"]')
+          ?.classList.toggle('held', active);
         this.updateHud();
       },
       () => !!this.race && !this.race.finished,
@@ -588,7 +591,7 @@ class App {
             ? race.falseStart
               ? race.feedback
               : player.throttleHeld
-                ? `STAGING · ${Math.round(player.rpm)} RPM · RELEASE SPACE TO LET RPM FALL`
+                ? 'THROTTLE OPEN · RELEASE SPACE TO LET RPM FALL'
                 : 'STAGING IN NEUTRAL · HOLD SPACE FOR THROTTLE'
             : !player.launched
               ? 'GREEN · PRESS GEAR UP TO ENGAGE FIRST'
@@ -597,7 +600,7 @@ class App {
                 : race.time < race.feedbackUntil
                   ? race.feedback
                   : player.wheelSlip > 0.16 && player.distance < 55
-                    ? `WHEELSPIN · ${Math.round(player.wheelSlip * 100)}% SLIP · GRIP IS BUILDING`
+                    ? 'WHEELSPIN · GRIP IS BUILDING'
                     : player.rpm >= player.engine.redlineRpm
                       ? 'REDLINE · SHIFT UP'
                       : 'Build speed. Watch the tach and shift lights.',
