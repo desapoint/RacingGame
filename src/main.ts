@@ -613,6 +613,9 @@ class App {
             ? 'SHIFT NOW'
             : 'SHIFT',
     );
+    const shiftLightBar = document.getElementById('shift-lights');
+    shiftLightBar?.classList.toggle('single', player.stats.shiftLight === 1);
+    shiftLightBar?.classList.toggle('multi', player.stats.shiftLight === 2);
     const shiftLights = document.querySelectorAll<HTMLElement>('#shift-lights i');
     const lightProgress = Math.max(
       0,
