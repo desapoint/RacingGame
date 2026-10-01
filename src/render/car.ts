@@ -52,7 +52,8 @@ async function prepare(spec: CarSpriteSpec): Promise<PreparedCar> {
     top = 254 - height * scale;
   const body = canvas(),
     ctx = body.getContext('2d', { willReadFrequently: true })!;
-  ctx.imageSmoothingEnabled = false;
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
   ctx.save();
   if (spec.facing === 'left') {
     ctx.translate(WIDTH, 0);
@@ -77,6 +78,8 @@ async function prepare(spec: CarSpriteSpec): Promise<PreparedCar> {
       centerY = top + (wheel.y - y) * scale;
     const image = canvas(Math.ceil(radius * 2 + 4), Math.ceil(radius * 2 + 4));
     const context = image.getContext('2d')!;
+    context.imageSmoothingEnabled = true;
+    context.imageSmoothingQuality = 'high';
     context.beginPath();
     context.arc(image.width / 2, image.height / 2, radius, 0, Math.PI * 2);
     context.clip();
@@ -263,7 +266,8 @@ export function drawCar(
   const sprite = prepared.get(car.art);
   if (!sprite) return;
   ctx.save();
-  ctx.imageSmoothingEnabled = false;
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
   ctx.fillStyle = '#00000050';
   ctx.beginPath();
   ctx.ellipse(
