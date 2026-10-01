@@ -58,3 +58,9 @@ Reference input: `src/assets/cars/reference/kia-forte-2022-official.jpg`; prompt
 Reference input: `src/assets/cars/reference/mustang-boss-302-1969-reference.jpg`.
 
 > Make a vintage 2D racing game sprite based closely on the supplied real 1969 Ford Mustang Boss 302 photo. Exact classic Mustang fastback body shape: long flat hood, low roof arcing into fastback rear, short deck, period side windows and rear louver cues, chrome bumpers, 1969 Mustang nose, black Boss 302 hockey-stick side stripe/hood accent and period Magnum 500 style wheels. Deep bright red paint. Strict side-on orthographic, front facing right, no perspective. Preserve the actual proportions and details visible in the reference. Crisp polished detailed but game-readable automotive illustration, car only and fully visible, centered. True transparent alpha, no checkerboard/background/floor/shadow, no added text or watermark.
+
+## 2026-10-01 — User-supplied Mazda3 and Forte 2D replacements
+
+The current game sprites are `src/assets/cars/mazda3-turbo-sedan-2021-2d.png` (red Mazda3) and `src/assets/cars/kia-forte-gt-sedan-2022-2d.png` (orange Forte), supplied by the user. Both original uploads are retained unchanged at 2172 × 724 with transparent alpha and face right. The earlier realistic images and prompts above remain reference history.
+
+`street-metadata.json` assigns the new files to the existing stable art IDs, marks them `cartoon-2d`, links the realistic archives, and records new alpha bounds and wheel crop geometry in upload coordinates. Regenerate the optimized WebPs and embedded catalog with `npm run assets:prepare`, then rebuild the offline release with `npm run build`. The car IDs and config art assignments remain stable for existing saves.
