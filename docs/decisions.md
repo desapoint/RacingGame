@@ -58,3 +58,11 @@ See [getting-started.md](getting-started.md) for controls, commands, source layo
 - **Deploy from `main`:** A GitHub Actions workflow runs on pushes to `main` (and manual dispatch), installs locked npm dependencies, runs `npm run build`, uploads only `dist/`, and deploys that artifact to the `github-pages` environment.
 - **Offline release remains supported:** GitHub Pages is an additional distribution path. Preserve the existing directly opened two-file release (`dist/index.html` plus `dist/config.js`) and its no-runtime-network requirements.
 
+
+
+## 2026-09-30 — Automotive-first interface
+
+- **Car-themed controls:** General UI chrome uses dashboard, switchgear, metal, tire/wheel, and instrument-cluster cues rather than glossy app-style cards. Keep the treatment lightweight in CSS and reuse the existing procedural car artwork instead of adding runtime image downloads.
+- **Analog race instruments:** The race HUD presents speed and RPM as analog gauges with live needles, with gear and elapsed time styled as physical console instruments. Preserve the 20 Hz HUD update limit and reduced-motion behavior.
+- **Physical drag staging:** The starting-light display is a vertical drag-racing Christmas tree with pre-stage/stage, sequential amber, green, and red lamps, positioned beside the rendered start line so it moves with the track after launch.
+- **Timing-slip results:** Race results are presented as a drag-strip/timing-slip surface with lane separators and a checkered finish marker while retaining all four simulated drivers and the existing race-result data.
