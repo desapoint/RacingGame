@@ -4,7 +4,7 @@ import { accrueIdle, careerReward, claimIdle, eligible } from './game/economy';
 import { Race } from './game/race';
 import { Controls, type Action } from './input/controls';
 import { Renderer } from './render/renderer';
-import { drawCar, prepareCarSprites } from './render/car';
+import { drawCarPreview, prepareCarSprites } from './render/car';
 import { SaveRepository, downloadSave, parseSave } from './storage/save';
 import { LiveryEditor } from './ui/livery';
 import * as ui from './ui/screens';
@@ -89,6 +89,11 @@ class App {
     window.addEventListener('resize', () => {
       this.renderer?.resize();
       this.draw();
+      document
+        .querySelectorAll<HTMLCanvasElement>('.dealer-canvas')
+        .forEach((canvas) =>
+          drawCarPreview(canvas, carById.get(canvas.dataset.car!)!),
+        );
     });
     setInterval(() => {
       if (this.save) void this.persist();
@@ -190,7 +195,7 @@ class App {
           document
             .querySelectorAll<HTMLCanvasElement>('.dealer-canvas')
             .forEach((canvas) =>
-              drawCar(canvas.getContext('2d')!, carById.get(canvas.dataset.car!)!),
+              drawCarPreview(canvas, carById.get(canvas.dataset.car!)!),
             );
           if (status) status.textContent = '';
         })
