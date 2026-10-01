@@ -143,6 +143,7 @@ test('launch RPM produces distinct wheelspin and drivetrain-load behavior', () =
     const race = new Race(owned, data.events[0].rivals, 'normal', () => 0.5, 'manual');
     race.time = 0;
     race.player.rpm = rpm;
+    race.setThrottle(true);
     race.shift();
     const initialRpm = race.player.rpm;
     let peakSlip = 0;
