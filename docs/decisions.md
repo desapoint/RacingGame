@@ -51,3 +51,10 @@ See [getting-started.md](getting-started.md) for controls, commands, source layo
 - **JSON source, classic-script release data:** Keep `src/data/game-data.json` as the canonical development config. Build generates `dist/config.js` with `globalThis.REDLINE_CONFIG = <JSON object>;`. The release bundle reads that object instead of embedding a copy. Edits to the release config take effect after reload without a rebuild; subsequent builds regenerate it from the source JSON.
 - **Preserve direct-file compatibility:** Load the config using a relative classic `<script src="./config.js">` before the game starts. Do not use `fetch`, XHR, module imports, or `crossorigin` to read local configuration. Copy both release files together. Missing or invalid configuration must show a readable startup error.
 - **Verify external edits:** Tests cover changing starting funds and car horsepower in a copied config without modifying HTML, plus missing/invalid config handling and complete offline races from root, release, and relocated two-file packages.
+
+## 2026-09-30 — GitHub Pages deployment
+
+- **Playable web deployment:** Publish the production `dist/` output to GitHub Pages so the current game is playable from the repository's Pages URL without cloning or installing dependencies.
+- **Deploy from `main`:** A GitHub Actions workflow runs on pushes to `main` (and manual dispatch), installs locked npm dependencies, runs `npm run build`, uploads only `dist/`, and deploys that artifact to the `github-pages` environment.
+- **Offline release remains supported:** GitHub Pages is an additional distribution path. Preserve the existing directly opened two-file release (`dist/index.html` plus `dist/config.js`) and its no-runtime-network requirements.
+
