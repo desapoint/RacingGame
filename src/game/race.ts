@@ -156,7 +156,7 @@ export class Race {
   update(dt: number): void {
     if (this.paused || this.finished) return;
     this.time += dt;
-    if (!this.player.launched) this.player.rpm = 3300 + (Math.sin(this.time * 3.2) + 1) * 1450;
+    if (!this.player.launched) this.player.rpm = this.player.owned?.launch ?? 4800;
     if (this.time < 0) return;
     for (const racer of this.racers) {
       if (racer.finish) continue;
