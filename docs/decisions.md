@@ -80,3 +80,11 @@ See [getting-started.md](getting-started.md) for controls, commands, source layo
 - **Analog race instruments:** The race HUD presents speed and RPM as analog gauges with live needles, with gear and elapsed time styled as physical console instruments. Preserve the 20 Hz HUD update limit and reduced-motion behavior.
 - **Physical drag staging:** The starting-light display is a vertical drag-racing Christmas tree with pre-stage/stage, sequential amber, green, and red lamps, positioned beside the rendered start line so it moves with the track after launch.
 - **Timing-slip results:** Race results are presented as a drag-strip/timing-slip surface with lane separators and a checkered finish marker while retaining all four simulated drivers and the existing race-result data.
+
+## 2026-09-30 — Race instruments, sprite presentation, and mobile controls
+
+- **Analog tachometer:** The race HUD uses a conventional circular 0–8 ×1000 RPM tachometer with numbered ticks, a needle, and a fixed redline arc beginning at 6,800 RPM. Do not reintroduce the horizontal RPM/shift bar.
+- **Stable staging RPM:** Before launch, the player holds the configured launch RPM instead of an automatic oscillation. This keeps the instrument reading and pre-start UI stable and makes the garage launch tune directly visible at the strip.
+- **Crisp, larger sprite presentation:** Keep the lightweight low-resolution sprite atlases, but scale them with nearest-neighbor rendering and display the race cars larger. This preserves the intentional pixel detail without blur while retaining the small download and low hardware cost.
+- **Mobile race controls stay reachable:** During an active race on narrow screens, Launch, Shift, and Nitrous stay in a fixed safe-area-aware control dock. The dock disappears when the race finishes so it cannot cover the timing slip.
+
