@@ -10,6 +10,7 @@ function drive(race: Race, skilled = true) {
   for (let tick = 0; tick < 8000 && !race.finished; tick++) {
     if (race.time < 0)
       race.setThrottle(race.player.rpm < (race.player.owned?.launch ?? race.player.engine.redlineRpm * 0.68));
+    else race.setThrottle(true);
     race.update(1 / 120);
     if (race.time >= 0.08 && !race.player.launched) race.launch();
     if (skilled && race.player.gear > 0 && race.player.rpm >= race.player.shiftTarget) race.shift();
@@ -170,6 +171,31 @@ test('launch RPM produces distinct wheelspin and drivetrain-load behavior', () =
   const stockHigh = sample(6400);
   const tireHigh = sample(6400, 'tires-1');
   assert.ok(tireHigh.slip < stockHigh.slip, 'better tires settle launch slip sooner');
+});
+
+test('releasing throttle in gear lowers both RPM and road speed', () => {
+  const race = new Race(
+    createOwned(data.cars[0]),
+    data.events[0].rivals,
+    'normal',
+    () => 0.5,
+    'manual',
+  );
+  race.time = 0;
+  race.player.rpm = 4700;
+  race.setThrottle(true);
+  race.shift();
+  for (let i = 0; i < 180; i++) race.update(1 / 120);
+
+  const poweredRpm = race.player.rpm;
+  const poweredSpeed = race.player.speed;
+  assert.ok(poweredSpeed > 2, 'car builds speed under throttle');
+
+  race.setThrottle(false);
+  for (let i = 0; i < 120; i++) race.update(1 / 120);
+
+  assert.ok(race.player.rpm < poweredRpm, 'RPM falls when Space is released');
+  assert.ok(race.player.speed < poweredSpeed, 'road speed falls while coasting in gear');
 });
 
 test('shift-light equipment is purchasable and changes race guidance capability', () => {
