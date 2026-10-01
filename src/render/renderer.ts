@@ -172,16 +172,53 @@ export class Renderer {
     );
     ctx.fillStyle = '#cbb7ff';
     ctx.fillText('YOU', 228, 321);
-    if (race.time < 0.8) {
-      const active = race.time >= 0;
-      ctx.fillStyle = '#101116e8';
-      ctx.fillRect(470, 35, 160, 68);
-      for (let i = 0; i < 3; i++) {
-        ctx.fillStyle = active ? '#b8ed8e' : race.time > -3 + i ? '#f4b875' : '#37343f';
-        ctx.beginPath();
-        ctx.arc(506 + i * 43, 69, 13, 0, Math.PI * 2);
-        ctx.fill();
-      }
+    const startX = 352 - race.player.distance * 7;
+    if (startX > -90 && startX < 1160) {
+      ctx.fillStyle = '#e9e3d6aa';
+      ctx.fillRect(startX, 269, 4, 191);
+      ctx.fillStyle = '#e9e3d644';
+      ctx.fillRect(startX - 8, 269, 20, 5);
+    }
+    if (race.time < 0.85 && startX > -90) {
+      const treeX = startX + 54;
+      const poleTop = 126;
+      const poleBottom = 354;
+      ctx.fillStyle = '#121416';
+      ctx.fillRect(treeX - 7, poleTop, 14, poleBottom - poleTop);
+      ctx.fillStyle = '#74716a';
+      ctx.fillRect(treeX - 2, poleTop, 4, poleBottom - poleTop);
+      ctx.fillStyle = '#8a8780';
+      ctx.fillRect(treeX - 28, poleBottom - 4, 56, 7);
+      ctx.fillRect(treeX - 18, poleBottom - 12, 36, 6);
+
+      const lamp = (y: number, lit: boolean, color: string, radius = 10) => {
+        ctx.fillStyle = '#090a0b';
+        ctx.fillRect(treeX - 31, y - 14, 62, 28);
+        for (const x of [treeX - 15, treeX + 15]) {
+          ctx.fillStyle = lit ? color : '#2a2926';
+          ctx.beginPath();
+          ctx.arc(x, y, radius, 0, Math.PI * 2);
+          ctx.fill();
+          if (lit) {
+            ctx.strokeStyle = color + '55';
+            ctx.lineWidth = 5;
+            ctx.stroke();
+          }
+        }
+      };
+      lamp(145, true, '#efe7c1', 6);
+      lamp(166, race.time > -3.25, '#efe7c1', 6);
+      lamp(202, race.time > -3, '#f2aa32');
+      lamp(232, race.time > -2, '#f2aa32');
+      lamp(262, race.time > -1, '#f2aa32');
+      lamp(299, race.time >= 0 && !race.falseStart, '#67cf6f');
+      lamp(329, race.falseStart, '#e44f43');
+
+      ctx.fillStyle = '#c8c2b6';
+      ctx.font = 'bold 8px monospace';
+      ctx.textAlign = 'center';
+      ctx.fillText('PRE', treeX, 120);
+      ctx.textAlign = 'left';
     }
     if (race.paused) {
       ctx.fillStyle = '#111217cf';
