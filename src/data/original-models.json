@@ -1,0 +1,541 @@
+[
+  {
+    "id": "honda-civic-si-2023",
+    "name": "2023 Honda Civic Si",
+    "year": 2023,
+    "category": "sedan",
+    "segment": "Compact sport sedan",
+    "make": "Honda",
+    "model": "Civic",
+    "trim": "Si",
+    "market": "US",
+    "engine": "1.5L turbocharged inline-4",
+    "fuel": "petrol",
+    "drivetrain": "FWD",
+    "transmission": "6-speed manual",
+    "gears": 6,
+    "seats": 5,
+    "doors": 4,
+    "powerHp": 200,
+    "torqueNm": 260,
+    "curbWeightKg": 1339,
+    "sources": [
+      {
+        "label": "Honda 2023 Civic Si specifications and comparison",
+        "url": "https://www.hondainfocenter.com/-/media/Honda-Sales-Tool-Media-Folder/Images/2023-Civic-Si/PDFs/2023-Honda-Civic-Si-vs-2023-Subaru-WRX.ashx"
+      }
+    ],
+    "notes": "192 lb-ft and 2,952 lb converted to Nm and kg, rounded. Factory specification for the US Si."
+  },
+  {
+    "id": "volkswagen-golf-gti-2024",
+    "name": "2024 Volkswagen Golf GTI",
+    "year": 2024,
+    "category": "hatchback",
+    "segment": "Compact hot hatch",
+    "make": "Volkswagen",
+    "model": "Golf",
+    "trim": "GTI DSG",
+    "market": "New Zealand",
+    "engine": "2.0L TSI turbocharged inline-4",
+    "fuel": "petrol",
+    "drivetrain": "FWD",
+    "transmission": "7-speed DSG dual-clutch automatic",
+    "gears": 7,
+    "seats": 5,
+    "doors": 4,
+    "powerHp": 241,
+    "torqueNm": 370,
+    "curbWeightKg": null,
+    "sources": [
+      {
+        "label": "Volkswagen Golf GTI MY2024 specification sheet",
+        "url": "https://www.volkswagen.co.nz/idhub/content/dam/onehub_pkw/importers/nz/pv/spec-sheets/march-2024/Golf%20GTI%20MY24%20Spec%20Sheet%20-%2010%20Apr.pdf"
+      }
+    ],
+    "notes": "180 kW converted to mechanical hp. The source publishes 1,342 kg tare weight, which is not presented as curb weight. Passenger doors exclude the tailgate."
+  },
+  {
+    "id": "toyota-gr-corolla-2024",
+    "name": "2024 Toyota GR Corolla",
+    "year": 2024,
+    "category": "hatchback",
+    "segment": "Compact hot hatch",
+    "make": "Toyota",
+    "model": "GR Corolla",
+    "trim": "Circuit Edition",
+    "market": "US",
+    "engine": "1.6L G16E-GTS turbocharged inline-3",
+    "fuel": "petrol",
+    "drivetrain": "AWD",
+    "transmission": "6-speed intelligent manual (iMT)",
+    "gears": 6,
+    "seats": 5,
+    "doors": 4,
+    "powerHp": 300,
+    "torqueNm": 370,
+    "curbWeightKg": 1482,
+    "sources": [
+      {
+        "label": "Toyota 2024 GR Corolla eBrochure",
+        "url": "https://www.toyota.com/content/dam/toyota/brochures/pdf/2024/gr-corolla_ebrochure.pdf"
+      }
+    ],
+    "notes": "Circuit Edition: 3,268 lb curb weight and 273 lb-ft converted to kg and Nm. Passenger doors exclude the tailgate.",
+    "lengthMm": 4409,
+    "wheelbaseMm": 2639
+  },
+  {
+    "id": "mazda3-turbo-sedan-2021",
+    "name": "2021 Mazda3 Turbo Sedan",
+    "year": 2021,
+    "category": "sedan",
+    "segment": "Compact turbo sedan",
+    "make": "Mazda",
+    "model": "Mazda3",
+    "trim": "2.5 Turbo AWD sedan",
+    "market": "US",
+    "engine": "2.5L Skyactiv-G turbocharged inline-4",
+    "fuel": "petrol",
+    "drivetrain": "AWD",
+    "transmission": "6-speed Skyactiv-Drive automatic",
+    "gears": 6,
+    "seats": 5,
+    "doors": 4,
+    "powerHp": 250,
+    "torqueNm": 434,
+    "curbWeightKg": 1533,
+    "sources": [
+      {
+        "label": "Mazda 2021 Mazda3 Turbo announcement",
+        "url": "https://news.mazdausa.com/2020-07-08-2021-Mazda3-2-5-Turbo-Refined-Performance"
+      },
+      {
+        "label": "Mazda 2021 Mazda3 vehicle information",
+        "url": "https://news.mazdausa.com/vehicles-2021-mazda3"
+      },
+      {
+        "label": "Mazda 2021 Mazda3 2.5 Turbo factory specification deck",
+        "url": "https://filecache.mediaroom.com/mr5mr_mazdausa2/223249/download/2021%20Mazda3%20Spec%20Deck.pdf"
+      }
+    ],
+    "notes": "Premium-fuel rating: 250 hp and 320 lb-ft (434 Nm). Regular fuel: 227 hp and 310 lb-ft. Sedan curb weight 3,379 lb converted to 1,533 kg; length 183.5 in and wheelbase 107.3 in converted to millimeters. Game balance retains its original approximate mass.",
+    "lengthMm": 4661,
+    "wheelbaseMm": 2725
+  },
+  {
+    "id": "kia-forte-gt-sedan-2022",
+    "name": "2022 Kia Forte GT Sedan",
+    "year": 2022,
+    "category": "sedan",
+    "segment": "Compact sport sedan",
+    "make": "Kia",
+    "model": "Forte",
+    "trim": "GT 7DCT",
+    "market": "US",
+    "engine": "1.6L turbocharged inline-4",
+    "fuel": "petrol",
+    "drivetrain": "FWD",
+    "transmission": "7-speed dual-clutch automatic",
+    "gears": 7,
+    "seats": 5,
+    "doors": 4,
+    "powerHp": 201,
+    "torqueNm": 264,
+    "curbWeightKg": 1366,
+    "sources": [
+      {
+        "label": "Kia 2022 Forte factory specifications",
+        "url": "https://www.kiamedia.com/us/es/media/specifications/20027/2022-kia-forte-specifications"
+      }
+    ],
+    "notes": "GT automatic minimum curb weight: 3,012 lb; options increase weight. Torque 195 lb-ft converted to 264 Nm."
+  },
+  {
+    "id": "ford-mustang-boss302-1969",
+    "name": "1969 Ford Mustang Boss 302",
+    "year": 1969,
+    "category": "coupe",
+    "segment": "Classic muscle coupe",
+    "make": "Ford",
+    "model": "Mustang",
+    "trim": "Boss 302 SportsRoof",
+    "market": "US",
+    "engine": "302 cu in (4.9L) naturally aspirated V8",
+    "fuel": "petrol",
+    "drivetrain": "RWD",
+    "transmission": "4-speed manual",
+    "gears": 4,
+    "seats": 4,
+    "doors": 2,
+    "powerHp": 290,
+    "torqueNm": null,
+    "curbWeightKg": null,
+    "sources": [
+      {
+        "label": "Ford Mustang milestones",
+        "url": "https://media.ford.com/content/dam/fordmedia/North%20America/US/2013/12/05/Mustang_Milestones.pdf"
+      }
+    ],
+    "notes": "290 hp is the period gross rating, not a modern SAE net measurement. The historical summary does not establish curb weight or torque for this exact car."
+  },
+  {
+    "id": "bmw-m3-competition-2024",
+    "name": "2024 BMW M3 Competition",
+    "year": 2024,
+    "category": "sedan",
+    "segment": "Performance sport sedan",
+    "make": "BMW",
+    "model": "M3",
+    "trim": "Competition rear-wheel drive",
+    "market": "Europe",
+    "engine": "3.0L twin-turbocharged inline-6",
+    "fuel": "petrol",
+    "drivetrain": "RWD",
+    "transmission": "8-speed M Steptronic automatic",
+    "gears": 8,
+    "seats": 5,
+    "doors": 4,
+    "powerHp": 503,
+    "torqueNm": 650,
+    "curbWeightKg": 1730,
+    "sources": [
+      {
+        "label": "BMW M3 technical data, May 2024",
+        "url": "https://www.press.bmwgroup.com/global/article/attachment/T0442275EN/616773"
+      }
+    ],
+    "notes": "510 PS converted to mechanical hp. Weight uses DIN without driver; EU weight including the standard driver allowance is 1,805 kg.",
+    "lengthMm": 4794,
+    "wheelbaseMm": 2857
+  },
+  {
+    "id": "audi-rs3-sedan-2024",
+    "name": "2024 Audi RS3 Sedan",
+    "year": 2024,
+    "category": "sedan",
+    "segment": "Compact performance sedan",
+    "make": "Audi",
+    "model": "RS 3",
+    "trim": "Sedan TFSI quattro",
+    "market": "Germany",
+    "engine": "2.5L turbocharged inline-5",
+    "fuel": "petrol",
+    "drivetrain": "AWD",
+    "transmission": "7-speed S tronic dual-clutch automatic",
+    "gears": 7,
+    "seats": 5,
+    "doors": 4,
+    "powerHp": 394,
+    "torqueNm": 500,
+    "curbWeightKg": 1570,
+    "sources": [
+      {
+        "label": "Audi RS 3 Sedan technical data, October 2023",
+        "url": "https://www.audi-mediacenter.com/system/production/car_motorizations/468/file_en/1d135b0858d0dbde3c70b0690ae8652197730017/eTD-Audi-RS3-Sedan-TFSI_231027.pdf"
+      }
+    ],
+    "notes": "German-market 400 PS converted to mechanical hp. Unladen weight excludes driver. Regional power ratings differ; game balance retains its original rating.",
+    "lengthMm": 4542,
+    "wheelbaseMm": 2631
+  },
+  {
+    "id": "mercedes-amg-a45s-2024",
+    "name": "2024 Mercedes-AMG A45 S",
+    "year": 2024,
+    "category": "hatchback",
+    "segment": "Performance hot hatch",
+    "make": "Mercedes-AMG",
+    "model": "A 45 S",
+    "trim": "4MATIC+",
+    "market": "Europe",
+    "engine": "2.0L turbocharged inline-4",
+    "fuel": "petrol",
+    "drivetrain": "AWD",
+    "transmission": "8-speed AMG SPEEDSHIFT DCT",
+    "gears": 8,
+    "seats": 5,
+    "doors": 4,
+    "powerHp": 415,
+    "torqueNm": 500,
+    "curbWeightKg": null,
+    "sources": [
+      {
+        "label": "Mercedes-AMG 2024 A 45 S Limited Edition",
+        "url": "https://media.mercedes-benz.com/article/27149ab8-3964-446b-8f73-d6acba5b8a72"
+      },
+      {
+        "label": "Mercedes-AMG A 45 technical introduction",
+        "url": "https://media.mercedes-benz.com/article/19e630dc-5835-4576-9d36-06a4b2c8b9fc"
+      }
+    ],
+    "notes": "421 PS converted to mechanical hp. Performance figures identify the A 45 S powertrain; exact 2024 curb weight is not confirmed. Passenger doors exclude the tailgate."
+  },
+  {
+    "id": "mazda-rx7-fd-1995",
+    "name": "1995 Mazda RX-7 Type R",
+    "year": 1995,
+    "category": "coupe",
+    "segment": "Classic rotary sports coupe",
+    "make": "Mazda",
+    "model": "RX-7 (FD)",
+    "trim": "Type R, early 1995",
+    "market": "Japan",
+    "engine": "1.3L 13B-REW sequential twin-turbo two-rotor engine",
+    "fuel": "petrol",
+    "drivetrain": "RWD",
+    "transmission": "5-speed manual",
+    "gears": 5,
+    "seats": 4,
+    "doors": 2,
+    "powerHp": 252,
+    "torqueNm": 294,
+    "curbWeightKg": 1260,
+    "sources": [
+      {
+        "label": "Toyota GAZOO historical Type R catalog, sold through March 1995",
+        "url": "https://gazoo.com/catalog/maker/MAZDA/EFINI_RX7/199112/2501180/"
+      },
+      {
+        "label": "Mazda FD RX-7 history",
+        "url": "https://www.mazda.com/ja/about/history/greatcar/rx-7/03/"
+      }
+    ],
+    "notes": "Early-1995 Type R specification (August 1993 to March 1995 catalog period). 255 PS converted to mechanical hp. Two passenger doors; rear hatch excluded.",
+    "lengthMm": 4280,
+    "wheelbaseMm": 2425
+  },
+  {
+    "id": "porsche-911-turbo-s-2024",
+    "name": "2024 Porsche 911 Turbo S",
+    "year": 2024,
+    "category": "coupe",
+    "segment": "Rear-engined super sports coupe",
+    "make": "Porsche",
+    "model": "911",
+    "trim": "Turbo S Coupe (992.1)",
+    "market": "Europe",
+    "engine": "3.8L twin-turbocharged flat-6",
+    "fuel": "petrol",
+    "drivetrain": "AWD",
+    "transmission": "8-speed Porsche Doppelkupplung (PDK)",
+    "gears": 8,
+    "seats": 4,
+    "doors": 2,
+    "powerHp": 641,
+    "torqueNm": 800,
+    "curbWeightKg": 1640,
+    "sources": [
+      {
+        "label": "Porsche 992.1 Turbo S press kit",
+        "url": "https://newsroom.porsche.com/dam/jcr%3A17f739a0-1faf-49fc-a298-eb739bde18ac/PAG-911-Turbo-S_PM_EN.pdf"
+      }
+    ],
+    "notes": "650 PS converted to mechanical hp. Describes the non-hybrid 992.1 generation sold in 2024. Porsche publishes 1,640 kg unladen weight according to DIN for the Coupe; optional equipment can change actual weight."
+  },
+  {
+    "id": "nissan-gtr-nismo-2024",
+    "name": "2024 Nissan GT-R Nismo",
+    "year": 2024,
+    "category": "coupe",
+    "segment": "All-wheel-drive super sports coupe",
+    "make": "Nissan",
+    "model": "GT-R",
+    "trim": "NISMO",
+    "market": "US",
+    "engine": "3.8L VR38DETT twin-turbocharged V6",
+    "fuel": "petrol",
+    "drivetrain": "AWD",
+    "transmission": "6-speed dual-clutch automatic",
+    "gears": 6,
+    "seats": 4,
+    "doors": 2,
+    "powerHp": 600,
+    "torqueNm": 652,
+    "curbWeightKg": 1754,
+    "sources": [
+      {
+        "label": "Nissan 2024 GT-R press kit and specifications",
+        "url": "https://usa.nissannews.com/en-US/releases/2024-nissan-gt-r-press-kit"
+      }
+    ],
+    "notes": "NISMO curb weight 3,867 lb and 481 lb-ft converted to kg and Nm. Premium fuel required for the factory performance rating."
+  },
+  {
+    "id": "chevrolet-corvette-z06-2024",
+    "name": "2024 Chevrolet Corvette Z06",
+    "year": 2024,
+    "category": "coupe",
+    "segment": "Mid-engined sports coupe",
+    "make": "Chevrolet",
+    "model": "Corvette",
+    "trim": "Z06 Coupe",
+    "market": "US",
+    "engine": "5.5L LT6 naturally aspirated DOHC V8",
+    "fuel": "petrol",
+    "drivetrain": "RWD",
+    "transmission": "8-speed dual-clutch automatic",
+    "gears": 8,
+    "seats": 2,
+    "doors": 2,
+    "powerHp": 670,
+    "torqueNm": 624,
+    "curbWeightKg": null,
+    "sources": [
+      {
+        "label": "Chevrolet 2024 Corvette Z06 factory specification sheet",
+        "url": "https://media.chevrolet.com/content/dam/Media/images/US/Vehicles/Chevrolet/Cars/Corvette_Z06/2024/2024-Chevrolet-Corvette-Z06-082323.pdf"
+      }
+    ],
+    "notes": "460 lb-ft converted to 624 Nm. Curb weight varies with options and is not confirmed in this specification sheet.",
+    "wheelbaseMm": 2723
+  },
+  {
+    "id": "toyota-supra-rz-1998",
+    "name": "1998 Toyota Supra RZ",
+    "year": 1998,
+    "category": "coupe",
+    "segment": "Classic twin-turbo sports coupe",
+    "make": "Toyota",
+    "model": "Supra",
+    "trim": "RZ (JZA80)",
+    "market": "Japan",
+    "engine": "3.0L 2JZ-GTE VVT-i twin-turbocharged inline-6",
+    "fuel": "petrol",
+    "drivetrain": "RWD",
+    "transmission": "6-speed manual",
+    "gears": 6,
+    "seats": 4,
+    "doors": 2,
+    "powerHp": 276,
+    "torqueNm": 451,
+    "curbWeightKg": 1510,
+    "sources": [
+      {
+        "label": "Toyota historical Supra RZ catalog, August 1997 to August 1999",
+        "url": "https://toyota.jp/ucar/catalog/brand-TOYOTA/car-SUPRA/199708/1000971/"
+      }
+    ],
+    "notes": "280 PS converted to mechanical hp. This is the VVT-i RZ specification sold in 1998. Two passenger doors; rear hatch excluded.",
+    "lengthMm": 4520,
+    "wheelbaseMm": 2550
+  },
+  {
+    "id": "nissan-skyline-gtr-r34-1999",
+    "name": "1999 Nissan Skyline GT-R V-Spec",
+    "year": 1999,
+    "category": "coupe",
+    "segment": "Classic all-wheel-drive sports coupe",
+    "make": "Nissan",
+    "model": "Skyline GT-R",
+    "trim": "V-spec (BNR34)",
+    "market": "Japan",
+    "engine": "2.6L RB26DETT twin-turbocharged inline-6",
+    "fuel": "petrol",
+    "drivetrain": "AWD",
+    "transmission": "6-speed manual",
+    "gears": 6,
+    "seats": 4,
+    "doors": 2,
+    "powerHp": 276,
+    "torqueNm": 392,
+    "curbWeightKg": 1560,
+    "sources": [
+      {
+        "label": "Toyota GAZOO historical 1999 Skyline GT-R V-spec catalog",
+        "url": "https://gazoo.com/catalog/maker/NISSAN/SKYLINE/199805/1501419/"
+      }
+    ],
+    "notes": "280 PS converted to mechanical hp. Road-going V-spec, with period declared output.",
+    "lengthMm": 4600,
+    "wheelbaseMm": 2665
+  },
+  {
+    "id": "ferrari-296-gtb-2024",
+    "name": "2024 Ferrari 296 GTB",
+    "year": 2024,
+    "category": "coupe",
+    "segment": "Plug-in hybrid supercar",
+    "make": "Ferrari",
+    "model": "296",
+    "trim": "GTB",
+    "market": "Europe",
+    "engine": "3.0L twin-turbocharged V6 with electric motor",
+    "fuel": "plug-in hybrid",
+    "drivetrain": "RWD",
+    "transmission": "8-speed dual-clutch automatic",
+    "gears": 8,
+    "seats": 2,
+    "doors": 2,
+    "powerHp": 819,
+    "torqueNm": 740,
+    "curbWeightKg": null,
+    "sources": [
+      {
+        "label": "Ferrari 296 GTB factory technical release",
+        "url": "https://www.ferrari.com/content/dam/ferrari-fcom/old/pdf/CS_296_GTB_final_gbr.pdf"
+      }
+    ],
+    "notes": "830 CV combined system output converted to mechanical hp. Ferrari quotes 1,470 kg dry weight with optional lightweight content, not curb weight.",
+    "lengthMm": 4565,
+    "wheelbaseMm": 2600
+  },
+  {
+    "id": "lamborghini-revuelto-2024",
+    "name": "2024 Lamborghini Revuelto",
+    "year": 2024,
+    "category": "coupe",
+    "segment": "Plug-in hybrid V12 supercar",
+    "make": "Lamborghini",
+    "model": "Revuelto",
+    "trim": "LB744",
+    "market": "Europe",
+    "engine": "6.5L naturally aspirated V12 with three electric motors",
+    "fuel": "plug-in hybrid",
+    "drivetrain": "AWD",
+    "transmission": "8-speed dual-clutch automatic",
+    "gears": 8,
+    "seats": 2,
+    "doors": 2,
+    "powerHp": 1001,
+    "torqueNm": 725,
+    "curbWeightKg": null,
+    "sources": [
+      {
+        "label": "Lamborghini Revuelto 2024 brochure",
+        "url": "https://www.lamborghini.com/original/DAM/lamborghini/facelift_2019/model_detail/revuelto/2024/brochure/07_23/REVUELTO_DIGITAL_BROCHURE_EN_2024.pdf"
+      }
+    ],
+    "notes": "1,015 CV combined system output converted to mechanical hp. The 725 Nm figure is for the combustion engine only. Published 1,772 kg is dry weight, not curb weight.",
+    "lengthMm": 4947,
+    "wheelbaseMm": 2779
+  },
+  {
+    "id": "mclaren-750s-2024",
+    "name": "2024 McLaren 750S",
+    "year": 2024,
+    "category": "coupe",
+    "segment": "Mid-engined supercar",
+    "make": "McLaren",
+    "model": "750S",
+    "trim": "Coupe",
+    "market": "Global",
+    "engine": "4.0L twin-turbocharged V8",
+    "fuel": "petrol",
+    "drivetrain": "RWD",
+    "transmission": "7-speed Seamless Shift Gearbox dual-clutch automatic",
+    "gears": 7,
+    "seats": 2,
+    "doors": 2,
+    "powerHp": 740,
+    "torqueNm": 800,
+    "curbWeightKg": 1389,
+    "sources": [
+      {
+        "label": "McLaren 750S factory technical specifications",
+        "url": "https://cars.mclaren.com/us_en/750s"
+      }
+    ],
+    "notes": "750 PS / 740 bhp. DIN kerb weight is 1,389 kg; the lighter 1,277 kg figure is dry weight."
+  }
+]

@@ -1,111 +1,255 @@
 import type { CarDef, OwnedCar } from '../types';
-import { CAR_BODY_ATLAS, CAR_PAINT_MASK_ATLAS, WHEEL_ATLAS, WHEEL_META } from './sprite-data';
+import { spriteCatalog } from '../assets/cars/catalog';
+import type { CarSpriteSpec, SpriteWheel } from './sprite-types';
+import { findPaintPixels, recolorPixels } from './sprite-paint';
 
-const COLUMNS = 6;
-const CAR_CELL_WIDTH = 80;
-const CAR_CELL_HEIGHT = 30;
-const WHEEL_CELL = 32;
-const carAtlas = new Image();
-const paintMaskAtlas = new Image();
-const wheelAtlas = new Image();
-let preloadPromise: Promise<void> | undefined;
-const tintCache = new Map<string, HTMLCanvasElement>();
-const liveryCache = new WeakMap<OwnedCar, { signature: string; canvas: HTMLCanvasElement }>();
+const WIDTH = 800,
+  HEIGHT = 300;
+interface Wheel extends SpriteWheel {
+  image: HTMLCanvasElement;
+}
+interface PreparedCar {
+  body: HTMLCanvasElement;
+  pixels: ImageData;
+  mask: Uint8Array;
+  maskCanvas: HTMLCanvasElement;
+  wheels: Wheel[];
+  paintColor: string;
+  left: number;
+  right: number;
+  bottom: number;
+}
+interface Appearance {
+  paint: string;
+  accent: string;
+  painted: HTMLCanvasElement;
+  composed: HTMLCanvasElement;
+  marks: OwnedCar['marks'];
+  count: number;
+  points: number;
+}
+const prepared = new Map<string, PreparedCar>();
+const MAX_PREPARED = 12;
+let preparationQueue: Promise<void> = Promise.resolve();
+type Cosmetics = Pick<OwnedCar, 'paint' | 'accent' | 'marks'>;
+const appearances = new Map<Cosmetics, Appearance>();
+const factoryPaint = new Map<string, Cosmetics>();
 
-function loadImage(image: HTMLImageElement, src: string): Promise<void> {
-  return new Promise((resolve, reject) => {
-    image.onload = () => resolve();
-    image.onerror = () => reject(new Error('Unable to decode car sprite atlas.'));
-    image.src = src;
-    if (image.complete && image.naturalWidth) resolve();
-  });
+function canvas(width = WIDTH, height = HEIGHT): HTMLCanvasElement {
+  const result = document.createElement('canvas');
+  result.width = width;
+  result.height = height;
+  return result;
 }
 
-export function preloadCarSprites(): Promise<void> {
-  if (!preloadPromise)
-    preloadPromise = Promise.all([
-      loadImage(carAtlas, CAR_BODY_ATLAS),
-      loadImage(paintMaskAtlas, CAR_PAINT_MASK_ATLAS),
-      loadImage(wheelAtlas, WHEEL_ATLAS),
-    ]).then(() => undefined);
-  return preloadPromise;
-}
-
-function cell(index: number, width: number, height: number): [number, number, number, number] {
-  const zero = index - 1;
-  return [(zero % COLUMNS) * width, Math.floor(zero / COLUMNS) * height, width, height];
-}
-
-function tintLayer(index: number, color: string, lower = false): HTMLCanvasElement {
-  const key = `${index}:${color}:${lower ? 'lower' : 'body'}`;
-  const cached = tintCache.get(key);
-  if (cached) return cached;
-  const canvas = document.createElement('canvas');
-  canvas.width = CAR_CELL_WIDTH;
-  canvas.height = CAR_CELL_HEIGHT;
-  const ctx = canvas.getContext('2d')!;
-  const [sx, sy, sw, sh] = cell(index, CAR_CELL_WIDTH, CAR_CELL_HEIGHT);
-  ctx.drawImage(paintMaskAtlas, sx, sy, sw, sh, 0, 0, sw, sh);
-  ctx.globalCompositeOperation = 'source-in';
-  ctx.fillStyle = color;
-  const lowerY = Math.round(CAR_CELL_HEIGHT * 0.64);
-  ctx.fillRect(0, lower ? lowerY : 0, sw, lower ? sh - lowerY : sh);
-  ctx.globalCompositeOperation = 'source-over';
-  tintCache.set(key, canvas);
-  if (tintCache.size > 96) tintCache.delete(tintCache.keys().next().value!);
-  return canvas;
-}
-
-function liveryLayer(car: CarDef, owned: OwnedCar): HTMLCanvasElement | undefined {
-  if (!owned.marks.length) return undefined;
-  const points = owned.marks.reduce((sum, mark) => sum + mark.points.length, 0);
-  const last = owned.marks.at(-1);
-  const signature = `${owned.marks.length}:${points}:${last?.color ?? ''}:${last?.width ?? 0}`;
-  const cached = liveryCache.get(owned);
-  if (cached?.signature === signature) return cached.canvas;
-  const canvas = document.createElement('canvas');
-  canvas.width = CAR_CELL_WIDTH;
-  canvas.height = CAR_CELL_HEIGHT;
-  const ctx = canvas.getContext('2d')!;
-  ctx.scale(CAR_CELL_WIDTH / 800, CAR_CELL_HEIGHT / 300);
-  for (const mark of owned.marks) {
-    ctx.strokeStyle = mark.color;
-    ctx.lineWidth = mark.width;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    ctx.beginPath();
-    mark.points.forEach(([x, y], i) => (i ? ctx.lineTo(x, y) : ctx.moveTo(x, y)));
-    if (mark.points.length === 1) ctx.lineTo(mark.points[0][0] + 0.1, mark.points[0][1]);
-    ctx.stroke();
+async function prepare(spec: CarSpriteSpec): Promise<PreparedCar> {
+  const image = new Image();
+  image.src = spec.url;
+  await image.decode();
+  const [x, y, width, height] = spec.bounds;
+  const scale = Math.min(700 / width, 235 / height);
+  const left = (WIDTH - width * scale) / 2,
+    top = 254 - height * scale;
+  const body = canvas(),
+    ctx = body.getContext('2d', { willReadFrequently: true })!;
+  ctx.imageSmoothingEnabled = false;
+  ctx.save();
+  if (spec.facing === 'left') {
+    ctx.translate(WIDTH, 0);
+    ctx.scale(-1, 1);
   }
-  ctx.setTransform(1, 0, 0, 1, 0, 0);
-  ctx.globalCompositeOperation = 'destination-in';
-  const [sx, sy, sw, sh] = cell(car.spriteIndex, CAR_CELL_WIDTH, CAR_CELL_HEIGHT);
-  ctx.drawImage(paintMaskAtlas, sx, sy, sw, sh, 0, 0, sw, sh);
+  ctx.drawImage(
+    image,
+    (x * image.naturalWidth) / spec.width,
+    (y * image.naturalHeight) / spec.height,
+    (width * image.naturalWidth) / spec.width,
+    (height * image.naturalHeight) / spec.height,
+    left,
+    top,
+    width * scale,
+    height * scale,
+  );
+  ctx.restore();
+  const wheels = spec.wheels.map((wheel) => {
+    const radius = wheel.radius * scale;
+    const sourceX = left + (wheel.x - x) * scale;
+    const centerX = spec.facing === 'left' ? WIDTH - sourceX : sourceX,
+      centerY = top + (wheel.y - y) * scale;
+    const image = canvas(Math.ceil(radius * 2 + 4), Math.ceil(radius * 2 + 4));
+    const context = image.getContext('2d')!;
+    context.beginPath();
+    context.arc(image.width / 2, image.height / 2, radius, 0, Math.PI * 2);
+    context.clip();
+    context.drawImage(
+      body,
+      centerX - image.width / 2,
+      centerY - image.height / 2,
+      image.width,
+      image.height,
+      0,
+      0,
+      image.width,
+      image.height,
+    );
+    return { x: centerX, y: centerY, radius, image };
+  });
+  // Body and wheels become separate parts once at load, preserving the generated stock rims.
+  ctx.globalCompositeOperation = 'destination-out';
+  for (const wheel of wheels) {
+    ctx.beginPath();
+    ctx.arc(wheel.x, wheel.y, wheel.radius * 0.99, 0, Math.PI * 2);
+    ctx.fill();
+  }
   ctx.globalCompositeOperation = 'source-over';
-  liveryCache.set(owned, { signature, canvas });
-  return canvas;
+  const pixels = ctx.getImageData(0, 0, WIDTH, HEIGHT);
+  const mask = findPaintPixels(pixels, spec.paintColor);
+  const maskCanvas = canvas(),
+    maskContext = maskCanvas.getContext('2d')!;
+  const maskPixels = maskContext.createImageData(WIDTH, HEIGHT);
+  for (let index = 0; index < mask.length; index++) {
+    const offset = index * 4;
+    maskPixels.data[offset] = maskPixels.data[offset + 1] = maskPixels.data[offset + 2] = 255;
+    maskPixels.data[offset + 3] = mask[index];
+  }
+  maskContext.putImageData(maskPixels, 0, 0);
+  // The decoder image is no longer retained once preparation returns.
+  return {
+    body,
+    pixels,
+    mask,
+    maskCanvas,
+    wheels,
+    paintColor: spec.paintColor,
+    left,
+    right: left + width * scale,
+    bottom: 254,
+  };
 }
 
-function wheelSpriteIndex(car: CarDef, owned?: OwnedCar): number {
-  if (owned?.wheels === 1) return 10;
-  if (owned?.wheels === 2) return 30;
-  return car.spriteIndex;
+export async function prepareCarSprites(
+  cars: CarDef[],
+  progress?: (done: number, total: number) => void,
+  current: () => boolean = () => true,
+): Promise<void> {
+  const work = async () => {
+    for (const [index, car] of cars.entries()) {
+      if (!current()) return;
+      const spec = spriteCatalog[car.art];
+      if (!spec)
+        throw new Error(`No sprite installed for ${car.name}. Check its art ID in config.js.`);
+      const sprite = prepared.get(car.art) ?? (await prepare(spec));
+      prepared.delete(car.art);
+      prepared.set(car.art, sprite);
+      while (prepared.size > MAX_PREPARED) prepared.delete(prepared.keys().next().value!);
+      progress?.(index + 1, cars.length);
+    }
+  };
+  preparationQueue = preparationQueue.then(work, work);
+  return preparationQueue;
+}
+
+function appearance(owned: Cosmetics, sprite: PreparedCar): HTMLCanvasElement {
+  let result = appearances.get(owned);
+  const recolor = !result || result.paint !== owned.paint || result.accent !== owned.accent;
+  if (!result) {
+    result = {
+      paint: '',
+      accent: '',
+      painted: canvas(),
+      composed: canvas(),
+      marks: owned.marks,
+      count: -1,
+      points: -1,
+    };
+    appearances.set(owned, result);
+    while (appearances.size > 8) appearances.delete(appearances.keys().next().value!);
+  }
+  if (recolor) {
+    const ctx = result.painted.getContext('2d')!;
+    ctx.clearRect(0, 0, WIDTH, HEIGHT);
+    if (owned.paint.toLowerCase() === sprite.paintColor.toLowerCase())
+      ctx.drawImage(sprite.body, 0, 0);
+    else
+      ctx.putImageData(
+        recolorPixels(sprite.pixels, sprite.mask, owned.paint, sprite.paintColor),
+        0,
+        0,
+      );
+    // A second color affects only the painted lower sill, preserving glass and fixed trim.
+    if (owned.accent !== '#343345') {
+      const trim = recolorPixels(sprite.pixels, sprite.mask, owned.accent, sprite.paintColor);
+      ctx.putImageData(trim, 0, 0, 0, Math.round(sprite.bottom - 36), WIDTH, 9);
+    }
+    result.paint = owned.paint;
+    result.accent = owned.accent;
+  }
+  const points = owned.marks.at(-1)?.points.length ?? 0;
+  if (
+    recolor ||
+    result.marks !== owned.marks ||
+    result.count !== owned.marks.length ||
+    result.points !== points
+  ) {
+    const ctx = result.composed.getContext('2d')!;
+    ctx.clearRect(0, 0, WIDTH, HEIGHT);
+    // Draw all livery ink first, then mask it to body paint, excluding glass, lights and wheels.
+    for (const mark of owned.marks) {
+      ctx.strokeStyle = mark.color;
+      ctx.lineWidth = mark.width;
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+      ctx.beginPath();
+      mark.points.forEach(([x, y], index) => (index ? ctx.lineTo(x, y) : ctx.moveTo(x, y)));
+      if (mark.points.length === 1) ctx.lineTo(mark.points[0][0] + 0.1, mark.points[0][1]);
+      ctx.stroke();
+    }
+    ctx.globalCompositeOperation = 'destination-in';
+    ctx.drawImage(sprite.maskCanvas, 0, 0);
+    ctx.globalCompositeOperation = 'destination-over';
+    ctx.drawImage(result.painted, 0, 0);
+    ctx.globalCompositeOperation = 'source-over';
+    result.marks = owned.marks;
+    result.count = owned.marks.length;
+    result.points = points;
+  }
+  return result.composed;
 }
 
 function drawWheel(
   ctx: CanvasRenderingContext2D,
-  index: number,
-  x: number,
-  y: number,
-  diameter: number,
+  wheel: Wheel,
   rotation: number,
+  style: number,
 ): void {
-  const [sx, sy, sw, sh] = cell(index, WHEEL_CELL, WHEEL_CELL);
   ctx.save();
-  ctx.translate(x, y);
+  ctx.translate(wheel.x, wheel.y);
   ctx.rotate(rotation);
-  ctx.drawImage(wheelAtlas, sx, sy, sw, sh, -diameter / 2, -diameter / 2, diameter, diameter);
+  ctx.drawImage(wheel.image, -wheel.image.width / 2, -wheel.image.height / 2);
+  if (style === 1) {
+    const rim = wheel.radius * 0.66;
+    ctx.fillStyle = '#15171a';
+    ctx.beginPath();
+    ctx.arc(0, 0, rim, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#c4a069';
+    ctx.lineWidth = Math.max(2, wheel.radius * 0.07);
+    for (let spoke = 0; spoke < 10; spoke++) {
+      ctx.rotate(Math.PI / 5);
+      ctx.beginPath();
+      ctx.moveTo(rim * 0.13, 0);
+      ctx.lineTo(rim * 0.94, 0);
+      ctx.stroke();
+    }
+    ctx.fillStyle = '#ad8c55';
+    ctx.beginPath();
+    ctx.arc(0, 0, rim * 0.15, 0, Math.PI * 2);
+    ctx.fill();
+  } else if (style === 2) {
+    ctx.fillStyle = '#080a0e88';
+    ctx.beginPath();
+    ctx.arc(0, 0, wheel.radius * 0.7, 0, Math.PI * 2);
+    ctx.fill();
+  }
   ctx.restore();
 }
 
@@ -116,39 +260,39 @@ export function drawCar(
   rotation = 0,
   nitro = false,
 ): void {
+  const sprite = prepared.get(car.art);
+  if (!sprite) return;
   ctx.save();
-  ctx.fillStyle = '#00000066';
+  ctx.imageSmoothingEnabled = false;
+  ctx.fillStyle = '#00000050';
   ctx.beginPath();
-  ctx.ellipse(400, 258, 330, 15, 0, 0, Math.PI * 2);
+  ctx.ellipse(
+    (sprite.left + sprite.right) / 2,
+    sprite.bottom + 2,
+    (sprite.right - sprite.left) * 0.46,
+    7,
+    0,
+    0,
+    Math.PI * 2,
+  );
   ctx.fill();
   if (nitro) {
     ctx.fillStyle = '#c3b1ff';
     ctx.beginPath();
-    ctx.moveTo(88, 226);
-    ctx.lineTo(18, 242);
-    ctx.lineTo(92, 252);
+    ctx.moveTo(sprite.left + 10, sprite.bottom - 27);
+    ctx.lineTo(sprite.left - 55, sprite.bottom - 20);
+    ctx.lineTo(sprite.left + 10, sprite.bottom - 12);
     ctx.fill();
-    ctx.fillStyle = '#fff1cb';
-    ctx.fillRect(58, 238, 38, 6);
   }
-
-  const [leftWheelX, rightWheelX, wheelY, diameter] = WHEEL_META[car.spriteIndex - 1];
-  const wheelIndex = wheelSpriteIndex(car, owned);
-  drawWheel(ctx, wheelIndex, leftWheelX, wheelY, diameter, rotation);
-  drawWheel(ctx, wheelIndex, rightWheelX, wheelY, diameter, rotation);
-
-  const [sx, sy, sw, sh] = cell(car.spriteIndex, CAR_CELL_WIDTH, CAR_CELL_HEIGHT);
-  ctx.drawImage(carAtlas, sx, sy, sw, sh, 0, 0, 800, 300);
-  const paint = owned?.paint ?? car.color;
-  ctx.globalAlpha = 0.72;
-  ctx.drawImage(tintLayer(car.spriteIndex, paint), 0, 0, 800, 300);
-  ctx.globalAlpha = 1;
-  if (owned?.accent) {
-    ctx.globalAlpha = 0.48;
-    ctx.drawImage(tintLayer(car.spriteIndex, owned.accent, true), 0, 0, 800, 300);
-    ctx.globalAlpha = 1;
+  for (const wheel of sprite.wheels) drawWheel(ctx, wheel, rotation, owned?.wheels ?? 0);
+  let cosmetics: Cosmetics | undefined = owned;
+  if (!cosmetics && car.color.toLowerCase() !== sprite.paintColor.toLowerCase()) {
+    cosmetics = factoryPaint.get(car.id);
+    if (!cosmetics || cosmetics.paint !== car.color) {
+      cosmetics = { paint: car.color, accent: '#343345', marks: [] };
+      factoryPaint.set(car.id, cosmetics);
+    }
   }
-  const livery = owned ? liveryLayer(car, owned) : undefined;
-  if (livery) ctx.drawImage(livery, 0, 0, 800, 300);
+  ctx.drawImage(cosmetics ? appearance(cosmetics, sprite) : sprite.body, 0, 0);
   ctx.restore();
 }

@@ -1,0 +1,301 @@
+{
+  "toyota-rav4-xle-awd-2024-used": {
+    "file": "toyota-rav4-xle-awd-2024-used-2d.png",
+    "width": 1774,
+    "height": 887,
+    "bounds": [11, 129, 1755, 662],
+    "wheels": [
+      {
+        "x": 374,
+        "y": 642,
+        "radius": 145
+      },
+      {
+        "x": 1384,
+        "y": 642,
+        "radius": 145
+      }
+    ],
+    "paintColor": "#0752c4",
+    "facing": "right",
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/toyota-rav4-xle-awd-2024-used.png",
+    "referenceUrls": [
+      "https://img.sm360.ca/ir/w640h390c/images/newcar/ca/2024/toyota/rav4/xle-/suv/exteriorColors/2024_toyota_rav4-2-xle-awd_ext_001_01g3.png",
+      "https://www.mccluretoyota.com/en/new-catalog/toyota/2024-toyota-rav4-xle-id25737"
+    ]
+  },
+  "honda-crv-exl-awd-2024-used": {
+    "file": "honda-crv-exl-awd-2024-used-2d.png",
+    "width": 1774,
+    "height": 887,
+    "bounds": [1, 144, 1766, 669],
+    "wheels": [
+      {
+        "x": 367,
+        "y": 654,
+        "radius": 145
+      },
+      {
+        "x": 1427,
+        "y": 657,
+        "radius": 145
+      }
+    ],
+    "paintColor": "#073b91",
+    "facing": "right",
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/honda-crv-exl-awd-2024-used.png",
+    "referenceUrls": [
+      "https://img.sm360.ca/ir/w640h390c/images/newcar/ca/2024/honda/cr-v/ex-l/suv/exteriorColors/2024_honda_cr-v_ex-l_001_b-640m.png",
+      "https://www.ledesporthonda.ca/en/new-catalog/honda/2024-honda-cr-v-ex-l-id25384"
+    ]
+  },
+  "mazda-cx5-turbo-premium-2024-used": {
+    "file": "mazda-cx5-turbo-premium-2024-used-2d.png",
+    "width": 2172,
+    "height": 724,
+    "bounds": [97, 11, 1918, 713],
+    "wheels": [
+      {
+        "x": 470,
+        "y": 560,
+        "radius": 147
+      },
+      {
+        "x": 1650,
+        "y": 560,
+        "radius": 147
+      }
+    ],
+    "paintColor": "#c91522",
+    "facing": "left",
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/mazda-cx5-turbo-premium-2024-used.png",
+    "referenceUrls": [
+      "https://di-uploads-pod38.dealerinspire.com/theautobarnmazdaofevanston/uploads/2024/05/2024-Mazda-CX-5-2.5-Turbo-Signature-In-Machine-Gray-Metallic-Banner.jpg",
+      "https://www.mazdaofchicagoland.com/cx-5-turbo-signature-model-review/"
+    ]
+  },
+  "hyundai-palisade-calligraphy-2024-used": {
+    "file": "hyundai-palisade-calligraphy-2024-used-2d.png",
+    "width": 1774,
+    "height": 887,
+    "bounds": [3, 144, 1771, 650],
+    "wheels": [
+      { "x": 383, "y": 646, "radius": 144 },
+      { "x": 1445, "y": 648, "radius": 144 }
+    ],
+    "paintColor": "#25272b",
+    "facing": "right",
+    "referenceUrls": [
+      "https://img.sm360.ca/ir/w640h390c/images/newcar/ca/2024/hyundai/palisade/preferred-/suv/exteriorColors/2024_palisade_1-preferred_ext_001_p7v.png"
+    ],
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/hyundai-palisade-calligraphy-2024-used.png"
+  },
+  "kia-telluride-sx-awd-2024-used": {
+    "file": "kia-telluride-sx-awd-2024-used-2d.png",
+    "width": 1683,
+    "height": 935,
+    "bounds": [0, 184, 1683, 644],
+    "wheels": [
+      { "x": 340, "y": 679, "radius": 130 },
+      { "x": 1376, "y": 678, "radius": 130 }
+    ],
+    "paintColor": "#063f81",
+    "facing": "right",
+    "referenceUrls": [
+      "https://img.sm360.ca/images/newcar/ca/2024/kia/telluride/sx-limited-/suv/main/2024_KIA_Telluride_SX-Limitee_MAIN.png",
+      "https://www.groupesimpson.com/fr/catalogue-neuf/kia/kia-telluride-sx-limited-2024-id25475"
+    ],
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/kia-telluride-sx-awd-2024.png"
+  },
+  "subaru-forester-sport-2024-used": {
+    "file": "subaru-forester-sport-2024-used-2d.png",
+    "width": 1774,
+    "height": 887,
+    "bounds": [7, 123, 1756, 702],
+    "wheels": [
+      { "x": 358, "y": 674, "radius": 127 },
+      { "x": 1407, "y": 674, "radius": 127 }
+    ],
+    "paintColor": "#075bd0",
+    "facing": "left",
+    "referenceUrls": [
+      "https://img.sm360.ca/ir/w640h390c/images/newcar/ca/2024/subaru/forester/sport/suv/exteriorColors/2024_subaru_forester_sport_ext_001_4s.png",
+      "https://www.beaucesubaru.com/en/new-catalog/subaru/2024-subaru-forester-sport-id26957"
+    ],
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/subaru-forester-sport-2024.png"
+  },
+  "ford-explorer-st-2024-used": {
+    "file": "ford-explorer-st-2024-used-2d.png",
+    "width": 2078,
+    "height": 757,
+    "bounds": [12, 39, 2042, 709],
+    "wheels": [
+      { "x": 470, "y": 570, "radius": 130 },
+      { "x": 1675, "y": 570, "radius": 130 }
+    ],
+    "paintColor": "#0752c4",
+    "facing": "right",
+    "referenceUrls": [
+      "https://img.sm360.ca/ir/w640h390c/images/newcar/ca/2024/ford/explorer/st/cuv/exteriorColors/2024_ford_explorer_st_001_m7.png",
+      "https://www.eliteford.com/fr/catalogue-neuf/ford/ford-explorer-st-2024-id27288"
+    ],
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/ford-explorer-st-2024.png"
+  },
+  "chevrolet-tahoe-z71-2024-used": {
+    "file": "chevrolet-tahoe-z71-2024-used-2d.png",
+    "width": 1774,
+    "height": 887,
+    "bounds": [0, 121, 1774, 689],
+    "wheels": [
+      { "x": 405, "y": 657, "radius": 125 },
+      { "x": 1450, "y": 659, "radius": 125 }
+    ],
+    "paintColor": "#07552f",
+    "facing": "right",
+    "referenceUrls": [
+      "https://www.demontrondmitsubishi.com/assets/stock/colormatched/transparent/1280/cc_2024chs11_03_1280/cc_2024chs110018_03_1280_g1w.png?bg-color=FFFFFF&timestamp=0001-01-01T00%3A00%3A00&width=400+400w",
+      "https://www.chevrolet.com/suvs/previous-year/tahoe?x-bodystyle=tahoe&x-modelyear=2024"
+    ],
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/chevrolet-tahoe-z71-2024.png"
+  },
+  "jeep-wrangler-rubicon-2024-used": {
+    "file": "jeep-wrangler-rubicon-2024-used-2d.png",
+    "width": 2043,
+    "height": 770,
+    "bounds": [43, 24, 1974, 736],
+    "wheels": [
+      { "x": 433, "y": 571, "radius": 130 },
+      { "x": 1730, "y": 570, "radius": 130 }
+    ],
+    "paintColor": "#e21b24",
+    "facing": "right",
+    "referenceUrls": [
+      "https://www.stellantisoaxaca.com.mx/static/agency-go-virtual/Jeep/Wrangler/2024/Colores/2024-jeep-vlp-modelizer-rubicon-4-puertas-blanco-mx-full.jpg",
+      "https://www.jeep.com/wrangler.html",
+      "https://blog.stellantisnorthamerica.com/2023/04/05/jeep-brand-introduces-new-2024-wrangler/"
+    ],
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/jeep-wrangler-rubicon-2024.png"
+  },
+  "toyota-camry-se-2024-used": {
+    "file": "toyota-camry-se-2024-used-2d.png",
+    "width": 1774,
+    "height": 887,
+    "bounds": [24, 193, 1727, 545],
+    "wheels": [
+      { "x": 390, "y": 595, "radius": 120 },
+      { "x": 1405, "y": 597, "radius": 120 }
+    ],
+    "paintColor": "#d30d19",
+    "facing": "right",
+    "referenceUrls": [
+      "https://www.graydaniels.com/assets/stock/colormatched/transparent/1280/cc_2024toc02_03_1280/cc_2024toc020012_03_1280_040.png?bg-color=FFFFFF&timestamp=0001-01-01T00%3A00%3A00&width=400+400w",
+      "https://pressroom.toyota.com/2024-toyota-camry-style-and-performance-in-americas-best-selling-midsize-sedan/",
+      "https://www.toyota.com/content/dam/toyota/brochures/pdf/2024/camry_ebrochure.pdf"
+    ],
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/toyota-camry-se-2024.png"
+  },
+  "honda-accord-ex-2024-used": {
+    "file": "honda-accord-ex-2024-used-2d.png",
+    "width": 2048,
+    "height": 768,
+    "bounds": [41, 102, 1980, 619],
+    "wheels": [
+      { "x": 467, "y": 573, "radius": 120 },
+      { "x": 1643, "y": 573, "radius": 120 }
+    ],
+    "paintColor": "#1249a3",
+    "facing": "right",
+    "referenceUrls": [
+      "https://media.dealeralchemist.com/jellies/Honda/Accord%20Sedan/C447668_BU_Side.png?auto=compress%2Cformat",
+      "https://www.hondainfocenter.com/2024/Accord/Feature-Guide/Specifications/",
+      "https://www.hondainfocenter.com/2024/Accord/Feature-Guide/Engine-Chassis-Features/Turbocharged-1-5-liter-Engine/"
+    ],
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/honda-accord-ex-2024.png"
+  },
+  "volvo-xc90-b6-plus-2024-used": {
+    "file": "volvo-xc90-b6-plus-2024-used-2d.png",
+    "width": 1774,
+    "height": 887,
+    "bounds": [14, 138, 1745, 661],
+    "wheels": [
+      { "x": 365, "y": 652, "radius": 125 },
+      { "x": 1444, "y": 653, "radius": 125 }
+    ],
+    "paintColor": "#12447c",
+    "facing": "right",
+    "referenceUrls": [
+      "https://apruhonice.s3.eu-central-1.amazonaws.com/42/4298054b-b125-4a5e-be7a-a0b5cf5fa2f0.full.jpg",
+      "https://www.volvocars.com/us/cars/xc90/specifications/",
+      "https://www.volvocars.com/files/cs/v3/assets/blt0feaa88e629251fc/bltae8b2f62e4d70686/66eb042044ba3379a77f646e/xc90-my24-26-10-2023.pdf?branch=prod_alias"
+    ],
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/volvo-xc90-b6-plus-2024.png"
+  },
+  "hyundai-elantra-sel-2024-used": {
+    "file": "hyundai-elantra-sel-2024-used-2d.png",
+    "width": 2048,
+    "height": 768,
+    "bounds": [17, 95, 2015, 643],
+    "wheels": [
+      { "x": 447, "y": 575, "radius": 120 },
+      { "x": 1686, "y": 580, "radius": 120 }
+    ],
+    "paintColor": "#04b9e1",
+    "facing": "right",
+    "referenceUrls": [
+      "https://www.hyundaiofkennesaw.com/assets/stock/colormatched/transparent/1280/cc_2024hyc02_03_1280/cc_2024hyc022006090_03_1280_pe2.png?bg-color=FFFFFF&timestamp=0001-01-01T00%3A00%3A00&width=400+400w",
+      "https://www.hyundaiusa.com/us/en/vehicles/elantra/compare-specs/spec_config_page"
+    ],
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/hyundai-elantra-sel-2024.png"
+  },
+  "nissan-altima-sr-2024-used": {
+    "file": "nissan-altima-sr-2024-used-2d.png",
+    "width": 1774,
+    "height": 887,
+    "bounds": [20, 202, 1738, 551],
+    "wheels": [
+      { "x": 395, "y": 613, "radius": 108 },
+      { "x": 1432, "y": 613, "radius": 108 }
+    ],
+    "paintColor": "#0875d1",
+    "facing": "right",
+    "referenceUrls": [
+      "https://img.sm360.ca/ir/w640h390c/images/newcar/ca/2024/nissan/altima/sr/sedan/exteriorColors/2024_nissan_altima_2-sr_ext_001_ray.png",
+      "https://www.oneillnissan.com/en/new-catalog/nissan/2024-nissan-altima-sr-id25452",
+      "https://usa.nissannews.com/en-US/releases/2024-nissan-altima-specifications"
+    ],
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/nissan-altima-sr-2024.png"
+  },
+  "toyota-prius-xle-2024-used": {
+    "file": "toyota-prius-xle-2024-used-2d.png",
+    "width": 1997,
+    "height": 787,
+    "bounds": [30, 95, 1941, 632],
+    "wheels": [
+      { "x": 381, "y": 567, "radius": 115 },
+      { "x": 1586, "y": 568, "radius": 115 }
+    ],
+    "paintColor": "#6837c6",
+    "facing": "right",
+    "referenceUrls": [
+      "https://file.kelleybluebookimages.com/kbb/base/evox/CP/52726/2024-Toyota-Prius-side_52726_001_2400x1800_089.png",
+      "https://www.toyota.com/content/dam/toyota/brochures/pdf/2024/prius_ebrochure.pdf",
+      "https://pressroom.toyota.com/stunning-style-and-elevated-efficiency-the-2024-toyota-prius/"
+    ],
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/toyota-prius-xle-2024.png"
+  }
+}

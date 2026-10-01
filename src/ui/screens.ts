@@ -3,15 +3,8 @@ import { statsFor } from '../game/garage';
 import { eligible } from '../game/economy';
 import type { OwnedCar, Profile, Screen, Slot } from '../types';
 
-export const money = (amount: number) => Math.floor(amount).toLocaleString('en-US');
-export const escape = (value: string) =>
-  value.replace(
-    /[&<>"']/g,
-    (char) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]!,
-  );
-export const button = (text: string, action: string, id = '', cls = '', disabled = false) =>
-  `<button class="${cls}" data-action="${action}" data-id="${id}" ${disabled ? 'disabled' : ''}>${text}</button>`;
-const tag = (text: string, cls = '') => `<span class="tag ${cls}">${text}</span>`;
+import { money, escape, button, tag } from './format';
+export { money, escape, button } from './format';
 export const difficultySelect = (p: Profile) =>
   `<label class="difficulty">Difficulty <select aria-label="Race difficulty" id="difficulty">${['easy', 'normal', 'hard'].map((mode) => `<option value="${mode}" ${p.settings.difficulty === mode ? 'selected' : ''}>${mode[0].toUpperCase() + mode.slice(1)}</option>`).join('')}</select></label>`;
 export function shell(p: Profile, screen: Screen, status: string): string {
@@ -38,11 +31,11 @@ export function garage(p: Profile, owned: OwnedCar, editor: boolean): string {
     )
     .join(
       '',
-    )}</select></label></div>${unavailable.length ? `<div class="notice">${unavailable.length} unavailable car ID(s) preserved in your save.</div>` : ''}<div class="garage-layout"><section class="car-showcase panel"><div class="showcase-title"><div>${tag(`${division.name.toUpperCase()} CLASS`)}<h2>${car.name}</h2><p>${car.tagline}</p></div><span class="serial">${String(data.cars.indexOf(car) + 1).padStart(2, '0')}<small>/ ${data.cars.length}</small></span></div><canvas id="garage-canvas" aria-label="Side view of your ${car.name}. ${editor ? 'Draw a livery with a pointer.' : ''}"></canvas><div class="car-specs">${[
+    )}</select></label></div>${unavailable.length ? `<div class="notice">${unavailable.length} unavailable car ID(s) preserved in your save.</div>` : ''}<div class="garage-layout"><section class="car-showcase panel"><div class="showcase-title"><div>${tag(`${division.name.toUpperCase()} CLASS · ${car.era === 'classic' ? 'CLASSIC' : car.year}`)}<h2>${car.name}</h2><p>${car.tagline}</p>${button('Specs & condition ↗', 'specs', car.id, 'text-button')}</div><span class="serial">${String(data.cars.indexOf(car) + 1).padStart(2, '0')}<small>/ ${data.cars.length}</small></span></div><canvas id="garage-canvas" aria-label="Side view of your ${car.name}. ${editor ? 'Draw a livery with a pointer.' : ''}"></canvas><div class="car-specs">${[
     ['POWER', stats.power, 'HP'],
     ['WEIGHT', money(stats.mass), 'KG'],
-    ['TOP SPEED', Math.round(stats.maxSpeed * 3.6), 'KM/H'],
-    ['GEARBOX', '6', 'SPEED'],
+    ['RACE SPEED', Math.round(stats.maxSpeed * 3.6), 'KM/H'],
+    ['RACE GEARS', '6', 'SPEED'],
   ]
     .map(
       ([label, value, unit]) =>
@@ -63,7 +56,7 @@ export function garage(p: Profile, owned: OwnedCar, editor: boolean): string {
     })
     .join(
       '',
-    )}</div><div class="setup-grid"><section class="panel setup-panel"><div class="section-heading"><h2>Fine tune</h2>${tag('FREE')}</div><label class="range-label" for="launch-tune">Launch RPM <strong id="launch-value">${owned.launch} RPM</strong></label><input type="range" id="launch-tune" min="${data.tuning.launch.min}" max="${data.tuning.launch.max}" step="100" value="${owned.launch}"><div class="range-ends"><span>GRIP</span><span>AGGRESSION</span></div><label class="range-label" for="drive-tune">Final drive <strong id="drive-value">${owned.drive.toFixed(2)}</strong></label><input type="range" id="drive-tune" min="${data.tuning.drive.min}" max="${data.tuning.drive.max}" step="0.05" value="${owned.drive}"><div class="range-ends"><span>TOP SPEED</span><span>ACCELERATION</span></div></section><section class="panel setup-panel"><div class="section-heading"><h2>Make a statement</h2>${tag('PAINT SHOP')}</div><div class="paint-controls"><label>Body<input id="body-color" type="color" value="${owned.paint}"></label><label>Lower trim<input id="accent-color" type="color" value="${owned.accent}"></label><label>Wheels<select id="wheels"><option value="0" ${owned.wheels === 0 ? 'selected' : ''}>Factory wheel</option><option value="1" ${owned.wheels === 1 ? 'selected' : ''}>Bronze five-spoke</option><option value="2" ${owned.wheels === 2 ? 'selected' : ''}>Black five-spoke</option></select></label></div><div class="livery-tools">${button(editor ? 'Done drawing ✓' : 'Draw a livery ↗', 'editor', '', 'secondary')}${editor ? `<label class="ink-label">Ink<input type="color" id="ink-color" value="#f4efdd"></label>` : ''}${button('Undo mark', 'undo', '', 'text-button', !owned.marks.length)}${button('Clear', 'clear-livery', '', 'text-button', !owned.marks.length)}</div><p class="hint">${editor ? 'Draw directly on the car above. Up to 80 strokes.' : 'Paint and liveries are free. Your style shouldn’t cost a win.'}</p></section></div>`;
+    )}</div><div class="setup-grid"><section class="panel setup-panel"><div class="section-heading"><h2>Fine tune</h2>${tag('FREE')}</div><label class="range-label" for="launch-tune">Launch RPM <strong id="launch-value">${owned.launch} RPM</strong></label><input type="range" id="launch-tune" min="${data.tuning.launch.min}" max="${data.tuning.launch.max}" step="100" value="${owned.launch}"><div class="range-ends"><span>GRIP</span><span>AGGRESSION</span></div><label class="range-label" for="drive-tune">Final drive <strong id="drive-value">${owned.drive.toFixed(2)}</strong></label><input type="range" id="drive-tune" min="${data.tuning.drive.min}" max="${data.tuning.drive.max}" step="0.05" value="${owned.drive}"><div class="range-ends"><span>TOP SPEED</span><span>ACCELERATION</span></div></section><section class="panel setup-panel"><div class="section-heading"><h2>Make a statement</h2>${tag('PAINT SHOP')}</div><div class="paint-controls"><label>Body<input id="body-color" type="color" value="${owned.paint}"></label><label>Lower trim<input id="accent-color" type="color" value="${owned.accent}"></label><label>Wheels<select id="wheels"><option value="0" ${owned.wheels === 0 ? 'selected' : ''}>Factory wheels</option><option value="1" ${owned.wheels === 1 ? 'selected' : ''}>Mesh / bronze</option><option value="2" ${owned.wheels === 2 ? 'selected' : ''}>Factory / black</option></select></label></div><div class="livery-tools">${button(editor ? 'Done drawing ✓' : 'Draw a livery ↗', 'editor', '', 'secondary')}${editor ? `<label class="ink-label">Ink<input type="color" id="ink-color" value="#f4efdd"></label>` : ''}${button('Undo mark', 'undo', '', 'text-button', !owned.marks.length)}${button('Clear', 'clear-livery', '', 'text-button', !owned.marks.length)}</div><p class="hint">${editor ? 'Draw directly on the car above. Up to 80 strokes.' : 'Paint and liveries are free. Your style shouldn’t cost a win.'}</p></section></div>`;
 }
 export function career(p: Profile, owned: OwnedCar): string {
   return `<div class="page-heading"><div><div class="eyebrow">EARN YOUR PLACE</div><h1>The ladder<span class="heading-dot">.</span></h1><p>Four divisions. Twenty races. One name at the top.</p></div>${difficultySelect(p)}</div><div class="career-summary panel"><div><span class="eyebrow">CAREER PROGRESS</span><h2>${p.unlocked} <small>/ 20 events cleared</small></h2></div><div class="career-progress"><i style="width:${p.unlocked * 5}%"></i></div><div><strong>${p.wins}</strong><span>WINS</span></div><div><strong>${p.races}</strong><span>STARTS</span></div></div><p class="hint career-hint">Podium finishes unlock the next event. Each event ranks four drivers; your featured rival runs beside you. Retries are always free.</p>${data.classes
@@ -81,15 +74,6 @@ export function career(p: Profile, owned: OwnedCar): string {
           .join('')}</div></section>`,
     )
     .join('')}`;
-}
-export function dealership(p: Profile): string {
-  return `<div class="page-heading"><div><div class="eyebrow">FIND YOUR NEXT CHAPTER</div><h1>Fresh metal<span class="heading-dot">.</span></h1><p>${data.cars.length} cars. Find the one that feels like you.</p></div><span class="tag">FIND YOUR NEXT FAVORITE.</span></div><div class="dealer-grid">${data.cars
-    .map((car) => {
-      const owned = p.cars.some((c) => c.id === car.id),
-        locked = car.class > Math.floor(p.unlocked / 5);
-      return `<article class="dealer-card panel">${tag(data.classes[car.class].name.toUpperCase())}<canvas class="dealer-canvas" data-car="${car.id}" width="800" height="300" aria-label="${car.name}"></canvas><div class="dealer-details"><h2>${car.name}</h2><p>${car.tagline}</p><div class="dealer-stats"><span>${car.power} HP</span><span>${car.mass} KG</span><span>${Math.round(car.maxSpeed * 3.6)} KM/H</span></div>${button(owned ? (p.selected === car.id ? 'Selected ✓' : 'Select car →') : locked ? 'Complete previous division' : `Buy car <span>C ${money(car.price)}</span>`, 'buy-car', car.id, owned ? 'secondary wide' : 'primary wide', locked || (!owned && p.cash < car.price) || p.selected === car.id)}</div></article>`;
-    })
-    .join('')}</div>`;
 }
 export function jobs(p: Profile): string {
   const facility = data.idle[p.idle.level],

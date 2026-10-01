@@ -541,14 +541,6 @@ main {
   background: #25252e;
   border-color: #ffffff13;
 }
-.danger {
-  background: #3a2228;
-  border-color: #d9748455;
-  color: #f0b3bd;
-}
-.danger:hover {
-  background: #4a2932;
-}
 .wide {
   width: 100%;
   justify-content: space-between;
@@ -1039,14 +1031,6 @@ main {
 .storage-state {
   color: var(--green);
   font-size: 11px;
-}
-.reset-zone {
-  margin-top: 28px;
-  padding-top: 22px;
-  border-top: 1px solid var(--line);
-}
-.settings-grid .reset-zone p {
-  margin: 8px 0 15px;
 }
 .notice {
   padding: 14px;
@@ -2031,8 +2015,194 @@ dialog p {
   }
 }
 
+/* The expanded roster keeps twelve cards on screen at a time. */
+.dealer-filters {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 16px;
+  padding: 20px;
+}
+.dealer-filters label {
+  display: grid;
+  gap: 8px;
+  color: var(--muted, #aaa5b5);
+  font-size: 12px;
+}
+.dealer-filters select,
+.dealer-filters input {
+  width: 100%;
+  min-width: 0;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 9px 12px;
+  background: #24232d;
+  color: #eeebf4;
+}
+.dealer-summary {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0;
+  color: #a9a3b6;
+  font-size: 12px;
+}
+.dealer-card {
+  display: flex;
+  flex-direction: column;
+}
+.dealer-details {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+.dealer-details .dealer-stats {
+  margin-top: auto;
+}
+.dealer-details h2 {
+  margin-bottom: 8px;
+}
+.dealer-details p {
+  margin-bottom: 20px;
+}
+.spec-button {
+  margin-bottom: 10px;
+}
+.condition-label {
+  font-size: 11px;
+  font-weight: 650;
+  margin: 6px 0 10px;
+}
+.condition-standard {
+  color: #b8d6b0;
+}
+.condition-used {
+  color: #e7c38c;
+}
+.condition-rusty {
+  color: #eda38c;
+}
+.dealer-pagination {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  margin: 30px 0;
+}
+.empty-roster {
+  padding: 40px;
+  text-align: center;
+}
+dialog.vehicle-modal {
+  width: min(850px, calc(100vw - 32px));
+  max-width: 850px;
+  max-height: 90vh;
+  overflow: auto;
+}
+.spec-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 18px;
+}
+.spec-heading button {
+  flex-shrink: 0;
+}
+.vehicle-modal h3 {
+  margin: 26px 0 14px;
+}
+.spec-sheet {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 24px;
+  margin: 0;
+}
+.spec-sheet > div {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.spec-sheet dt {
+  font-size: 11px;
+  color: #aaa3b8;
+  margin-bottom: 6px;
+}
+.spec-sheet dd {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.spec-game-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  margin: 20px 0;
+}
+.spec-game-stats span {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11px;
+  color: #aaa3b8;
+}
+.spec-game-stats strong {
+  color: #f0eaf8;
+  font-size: 17px;
+}
+.spec-table-scroll {
+  overflow-x: auto;
+}
+.condition-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  white-space: nowrap;
+}
+.condition-table th,
+.condition-table td {
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--line);
+}
+.condition-table th {
+  font-weight: 600;
+}
+.selected-condition {
+  background: #b89aeb12;
+  color: #d1b4ff;
+}
+.spec-sources {
+  margin: 20px 0;
+  font-size: 12px;
+}
+.spec-sources summary {
+  cursor: pointer;
+}
+.spec-sources li {
+  margin: 10px 0;
+}
+.spec-sources a {
+  color: #c5a8f5;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 900px) {
+  .dealer-filters {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 550px) {
+  .dealer-filters {
+    grid-template-columns: 1fr;
+  }
+  .spec-sheet {
+    grid-template-columns: 1fr;
+  }
+  .vehicle-modal {
+    padding: 20px;
+  }
+}
 
-/* 2026-09-30 automotive UI pass: dashboard hardware, analog gauges, and drag-strip timing */
+/* 2026-10-01 integrated automotive UI + race HUD pass */
 :root {
   --panel: #1b1d1d;
   --line: #d8d0bf1c;
@@ -2043,9 +2213,7 @@ dialog p {
   background: #101211;
 }
 body {
-  background:
-    radial-gradient(circle at 75% 0%, #2b2c2926, transparent 34rem),
-    #101211;
+  background: radial-gradient(circle at 75% 0%, #2b2c2926, transparent 34rem), #101211;
 }
 button,
 .button {
@@ -2057,24 +2225,26 @@ button,
   letter-spacing: .65px;
 }
 button:hover,
-.button:hover {
-  background: linear-gradient(#393c3a, #272927);
-}
+.button:hover { background: linear-gradient(#393c3a, #272927); }
 button.primary,
 .button.primary {
   color: #fff7ec;
   background: linear-gradient(#d85845, #a83428);
   border-color: #ef8a7966;
 }
+.danger {
+  color: #ffe1dc;
+  background: linear-gradient(#6e2a26, #431d1a);
+  border-color: #d9748455;
+}
+.danger:hover { background: linear-gradient(#7f302a, #52211d); }
 select,
 input[type='color'] {
   border-radius: 3px;
   background-color: #191b1a;
   border-color: #bdb7aa2b;
 }
-input[type='range'] {
-  accent-color: #d85845;
-}
+input[type='range'] { accent-color: #d85845; }
 .sidebar {
   background:
     linear-gradient(135deg, #ffffff05 25%, transparent 25%) 0 0/8px 8px,
@@ -2083,35 +2253,20 @@ input[type='range'] {
   border-right: 3px solid #2e302e;
   box-shadow: inset -1px 0 #bdb7aa18;
 }
-.brand {
-  font-family: "Arial Narrow", Arial, sans-serif;
-  font-style: italic;
-}
-.brand-mark {
-  color: #d85845;
-}
-.nav-label {
-  color: #878277;
-}
-.nav-item {
-  border: 1px solid transparent;
-  border-radius: 2px;
-}
+.brand { font-family: "Arial Narrow", Arial, sans-serif; font-style: italic; }
+.brand-mark { color: #d85845; }
+.nav-label { color: #878277; }
+.nav-item { border: 1px solid transparent; border-radius: 2px; }
 .nav-item.active {
   color: #f2ece1;
   background: linear-gradient(90deg, #d8584524, transparent);
   border-color: #d8584535;
   box-shadow: inset 3px 0 #d85845;
 }
-.nav-dot {
-  background: #d85845;
-  border-radius: 1px;
-}
+.nav-dot { background: #d85845; border-radius: 1px; }
 .club-card {
   border-radius: 3px;
-  background:
-    repeating-linear-gradient(120deg, #ffffff03 0 2px, transparent 2px 7px),
-    #202220;
+  background: repeating-linear-gradient(120deg, #ffffff03 0 2px, transparent 2px 7px), #202220;
   border-color: #c9c1b51f;
 }
 .topbar {
@@ -2131,36 +2286,16 @@ input[type='range'] {
   color: #d85845;
   box-shadow: inset 0 0 0 2px #111;
 }
-h1,
-h2,
-h3,
-.eyebrow,
-.tag,
-.breadcrumb {
-  font-family: "Arial Narrow", Arial, sans-serif;
-}
-h1,
-h2 {
-  text-transform: uppercase;
-  font-style: italic;
-}
-.heading-dot {
-  color: #d85845;
-}
-.eyebrow {
-  color: #c8a792;
-}
+h1, h2, h3, .eyebrow, .tag, .breadcrumb { font-family: "Arial Narrow", Arial, sans-serif; }
+h1, h2 { text-transform: uppercase; font-style: italic; }
+.heading-dot { color: #d85845; }
+.eyebrow { color: #c8a792; }
 .panel {
   position: relative;
   border-radius: 4px;
   border-color: #d4ccbd20;
-  background:
-    linear-gradient(100deg, #ffffff05, transparent 30%),
-    #1b1d1d;
-  box-shadow:
-    inset 0 1px #ffffff08,
-    inset 0 -1px #0008,
-    0 4px 14px #0003;
+  background: linear-gradient(100deg, #ffffff05, transparent 30%), #1b1d1d;
+  box-shadow: inset 0 1px #ffffff08, inset 0 -1px #0008, 0 4px 14px #0003;
 }
 .panel::after {
   content: "";
@@ -2175,31 +2310,25 @@ h2 {
   box-shadow: inset 1px 1px #aaa59a, 0 0 0 1px #090a09;
   pointer-events: none;
 }
-.tag {
-  border-radius: 2px;
-  border-color: #d8584533;
-  background: #d8584512;
-  color: #e3b19e;
-}
+.tag { border-radius: 2px; border-color: #d8584533; background: #d8584512; color: #e3b19e; }
 .car-showcase,
-.showcase-title {
-  background:
-    linear-gradient(110deg, #282a27, #171918);
-}
+.showcase-title { background: linear-gradient(110deg, #282a27, #171918); }
+.dealer-card,
+.job-card,
+.garage-side .quick-race { background: linear-gradient(140deg, #292b28, #181a18); }
 .part-icon,
 .credit-icon,
-.nav-icon {
-  filter: saturate(.75);
-}
+.nav-icon { filter: saturate(.75); }
+.reset-zone { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); }
+.settings-grid .reset-zone p { margin: 8px 0 15px; }
+
 .race-panel {
   border: 4px solid #30332f;
   background: #111312;
   box-shadow: inset 0 0 0 1px #77726835, 0 10px 30px #0005;
 }
 .race-top {
-  background:
-    repeating-linear-gradient(90deg, #ffffff03 0 1px, transparent 1px 5px),
-    #181a18;
+  background: repeating-linear-gradient(90deg, #ffffff03 0 1px, transparent 1px 5px), #181a18;
   border-bottom: 1px solid #5a5b553b;
   font-family: monospace;
 }
@@ -2209,10 +2338,14 @@ h2 {
   background: #0b0c0b;
   box-shadow: inset 0 1px 3px #000;
 }
-.distance-bar i {
-  background: repeating-linear-gradient(90deg, #e6ded1 0 12px, #1c1e1c 12px 24px);
-}
+.distance-bar i { background: repeating-linear-gradient(90deg, #e6ded1 0 12px, #1c1e1c 12px 24px); }
 .race-feedback {
+  box-sizing: border-box;
+  height: 52px;
+  min-height: 52px;
+  display: grid;
+  place-items: center;
+  line-height: 1.35;
   color: #f0e7da;
   background: #151816;
   border-top: 3px solid #2e302d;
@@ -2232,10 +2365,7 @@ h2 {
   border-top: 4px solid #2e312d;
   align-items: center;
 }
-.gauge {
-  --needle-angle: -120deg;
-  min-width: 0;
-}
+.gauge { --needle-angle: -120deg; min-width: 0; }
 .gauge-face {
   width: min(100%, 190px);
   aspect-ratio: 1;
@@ -2247,11 +2377,7 @@ h2 {
     radial-gradient(circle, #111310 0 54%, transparent 55%),
     repeating-conic-gradient(from 240deg, #d9d1c1 0deg 1deg, transparent 1deg 12deg),
     #181b17;
-  box-shadow:
-    inset 0 0 0 2px #080908,
-    inset 0 0 24px #000,
-    0 2px 0 #060706,
-    0 0 0 1px #777268;
+  box-shadow: inset 0 0 0 2px #080908, inset 0 0 24px #000, 0 2px 0 #060706, 0 0 0 1px #777268;
   overflow: hidden;
 }
 .gauge-face::before {
@@ -2264,13 +2390,13 @@ h2 {
 .tach-gauge .gauge-face::after {
   content: "";
   position: absolute;
-  width: 27%;
-  height: 5px;
-  right: 8%;
-  top: 32%;
-  transform: rotate(48deg);
-  background: #a03a31;
-  box-shadow: 0 0 7px #a03a3155;
+  z-index: 1;
+  inset: 5%;
+  border-radius: 50%;
+  background: conic-gradient(from 240deg, transparent 0deg 204deg, #d85845 204deg 240deg, transparent 240deg 360deg);
+  -webkit-mask: radial-gradient(circle, transparent 0 78%, #000 79% 88%, transparent 89%);
+  mask: radial-gradient(circle, transparent 0 78%, #000 79% 88%, transparent 89%);
+  filter: drop-shadow(0 0 2px #d8584566);
 }
 .gauge-caption {
   position: absolute;
@@ -2333,51 +2459,53 @@ h2 {
   background: radial-gradient(circle, #262925 35%, #0b0c0b 38%);
   box-shadow: 0 1px 3px #000;
 }
-.gauge-scale {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  font: 7px monospace;
-  color: #b4aea2;
-}
-.gauge-scale span {
-  position: absolute;
-  bottom: 15%;
-}
+.gauge-scale { position: absolute; inset: 0; z-index: 2; font: 7px monospace; color: #b4aea2; }
+.gauge-scale span { position: absolute; bottom: 15%; }
 .gauge-scale span:first-child { left: 18%; }
 .gauge-scale span:nth-child(2) { left: 47%; }
 .gauge-scale span:last-child { right: 16%; }
+.tach-numbers {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  color: #d0c9bc;
+  font: 700 clamp(7px, .65vw, 10px) monospace;
+  text-shadow: 0 1px 2px #000;
+  pointer-events: none;
+}
+.tach-numbers span { position: absolute; transform: translate(-50%, -50%); }
+.tach-numbers span:nth-child(1) { left: 16%; top: 72%; }
+.tach-numbers span:nth-child(2) { left: 10%; top: 56%; }
+.tach-numbers span:nth-child(3) { left: 14%; top: 38%; }
+.tach-numbers span:nth-child(4) { left: 25%; top: 24%; }
+.tach-numbers span:nth-child(5) { left: 44%; top: 17%; }
+.tach-numbers span:nth-child(6) { left: 63%; top: 20%; }
+.tach-numbers span:nth-child(7) { left: 78%; top: 33%; }
+.tach-numbers span:nth-child(8) { left: 86%; top: 51%; }
+.tach-numbers span:nth-child(9) { left: 80%; top: 69%; }
+.tach-numbers .redline-number { color: #e06658; }
+.tach-gauge .gauge-caption { top: 43%; font-size: 7px; }
+.tach-gauge strong { top: 55%; }
+.tach-gauge small { top: 71%; font-size: 6px; }
 .shift-callout {
   position: absolute;
   z-index: 6;
   left: 50%;
-  top: 9%;
+  bottom: 7%;
   transform: translateX(-50%);
   white-space: nowrap;
-  color: #d5c8b3;
-  background: #0d0f0d;
-  border: 1px solid #6c675e;
-  padding: 3px 6px;
-  font: 7px monospace;
-  letter-spacing: .5px;
+  color: #b9b2a7;
+  font: 700 7px monospace;
+  letter-spacing: .8px;
 }
-.tach-gauge.perfect .shift-callout {
-  color: #0d170c;
-  background: #91c86f;
-  border-color: #bce59e;
-}
-.tach-gauge.redline .shift-callout {
-  color: #fff3ed;
-  background: #a8372d;
-  border-color: #e45b4d;
-}
+.tach-gauge.perfect .shift-callout { color: #91c86f; }
+.tach-gauge.redline .shift-callout { color: #e36052; }
 .gear-console,
 .odometer {
   min-height: 118px;
   border: 3px solid #3b3e39;
   border-radius: 4px;
-  background:
-    linear-gradient(#0d0f0d, #171a16);
+  background: linear-gradient(#0d0f0d, #171a16);
   box-shadow: inset 0 0 0 1px #070807, 0 2px #070807;
   display: flex;
   flex-direction: column;
@@ -2385,78 +2513,31 @@ h2 {
   align-items: center;
 }
 .gear-console > span,
-.odometer > span {
-  color: #8e897f;
-  font: 700 8px monospace;
-  letter-spacing: 1px;
-}
-.gear-console strong {
-  font: 800 48px "Arial Narrow", Arial, sans-serif;
-  color: #f1e9db;
-  line-height: 1;
-  margin: 8px 0 3px;
-}
+.odometer > span { color: #8e897f; font: 700 8px monospace; letter-spacing: 1px; }
+.gear-console strong { font: 800 48px "Arial Narrow", Arial, sans-serif; color: #f1e9db; line-height: 1; margin: 8px 0 3px; }
 .gear-console small,
-.odometer small {
-  margin: 0;
-  color: #817d75;
-  font: 7px monospace;
-}
-.shift-gate {
-  display: flex;
-  gap: 5px;
-  margin-top: 8px;
-}
-.shift-gate i {
-  width: 11px;
-  height: 3px;
-  background: #6a675f;
-  box-shadow: 0 6px #6a675f;
-}
-.odometer strong {
-  font: 700 clamp(20px, 2vw, 31px) monospace;
-  color: #eadfc7;
-  margin: 13px 0 5px;
-  letter-spacing: -1px;
-}
+.odometer small { margin: 0; color: #817d75; font: 7px monospace; }
+.shift-gate { display: flex; gap: 5px; margin-top: 8px; }
+.shift-gate i { width: 11px; height: 3px; background: #6a675f; box-shadow: 0 6px #6a675f; }
+.odometer strong { font: 700 clamp(20px, 2vw, 31px) monospace; color: #eadfc7; margin: 13px 0 5px; letter-spacing: -1px; }
 .race-controls button {
+  min-width: 0;
   border-radius: 3px;
   min-height: 72px;
-  background:
-    linear-gradient(#2f322f, #1b1d1b);
+  background: linear-gradient(#2f322f, #1b1d1b);
   border: 2px solid #3c3f3b;
   box-shadow: inset 0 1px #ffffff12, 0 3px #090a09;
 }
-.race-controls .primary {
-  background: linear-gradient(#bf4335, #8f2e25);
-  border-color: #df675a66;
-}
-.race-controls kbd {
-  border-radius: 2px;
-  background: #101210;
-  border-color: #777268;
-}
-.results.timing-slip {
-  padding: 0;
-  background: #181a18;
-  border: 4px solid #30332f;
-}
-.results.timing-slip::after {
-  right: 9px;
-  top: 9px;
-}
+.race-controls .primary { background: linear-gradient(#bf4335, #8f2e25); border-color: #df675a66; }
+.race-controls kbd { border-radius: 2px; background: #101210; border-color: #777268; }
+
+.results.timing-slip { padding: 0; background: #181a18; border: 4px solid #30332f; }
+.results.timing-slip::after { right: 9px; top: 9px; }
 .timing-slip .results-heading,
 .timing-slip .result-stats,
-.timing-slip .result-actions {
-  margin-left: 28px;
-  margin-right: 28px;
-}
-.timing-slip .results-heading {
-  padding-top: 28px;
-}
-.timing-slip .result-stats {
-  border-color: #c9c1b51b;
-}
+.timing-slip .result-actions { margin-left: 28px; margin-right: 28px; }
+.timing-slip .results-heading { padding-top: 28px; }
+.timing-slip .result-stats { border-color: #c9c1b51b; }
 .strip-header {
   display: flex;
   justify-content: space-between;
@@ -2465,8 +2546,7 @@ h2 {
   padding: 9px 28px;
   border-top: 1px solid #5c5e5738;
   border-bottom: 1px solid #5c5e5738;
-  background:
-    repeating-linear-gradient(90deg, #e6ded1 0 14px, #171918 14px 28px);
+  background: repeating-linear-gradient(90deg, #e6ded1 0 14px, #171918 14px 28px);
   color: #f3eadb;
   font: 800 8px monospace;
   letter-spacing: 1.1px;
@@ -2492,8 +2572,7 @@ h2 {
   bottom: 0;
   right: 7%;
   width: 22px;
-  background:
-    conic-gradient(#eee6d7 25%, #151715 0 50%, #eee6d7 0 75%, #151715 0) 0 0/12px 12px;
+  background: conic-gradient(#eee6d7 25%, #151715 0 50%, #eee6d7 0 75%, #151715 0) 0 0/12px 12px;
   opacity: .7;
 }
 .drag-strip-results .standing {
@@ -2504,9 +2583,7 @@ h2 {
   background: transparent;
   color: #e7dfd1;
 }
-.drag-strip-results .standing:last-child {
-  border-bottom: 0;
-}
+.drag-strip-results .standing:last-child { border-bottom: 0; }
 .drag-strip-results .standing > strong {
   width: 27px;
   height: 27px;
@@ -2522,70 +2599,64 @@ h2 {
   background: linear-gradient(90deg, #d8584524, transparent 75%);
   box-shadow: inset 4px 0 #d85845;
 }
-.result-reward {
-  color: #91c86f;
-  font-family: monospace;
-}
-.result-actions {
-  padding-bottom: 28px;
-}
+.result-reward { color: #91c86f; font-family: monospace; }
+.result-actions { padding-bottom: 28px; }
+
 @media (max-width: 760px) {
-  .instrument-cluster {
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    padding: 16px;
-  }
-  .gauge-face {
-    max-width: 150px;
-  }
+  .race-feedback { height: 48px; min-height: 48px; padding: 8px 10px; }
+  .instrument-cluster { grid-template-columns: 1fr 1fr; gap: 12px; padding: 16px; }
+  .gauge-face { max-width: 150px; }
   .gear-console,
-  .odometer {
-    min-height: 82px;
+  .odometer { min-height: 82px; }
+  .gear-console strong { font-size: 34px; }
+  .dashboard .race-time { display: flex; }
+  .race-controls {
+    position: fixed;
+    z-index: 40;
+    left: 8px;
+    right: 8px;
+    bottom: max(8px, env(safe-area-inset-bottom));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+    margin: 0;
+    padding: 8px;
+    border: 1px solid #77726866;
+    border-radius: 5px;
+    background: #101210f2;
+    box-shadow: 0 8px 28px #000b, inset 0 1px #ffffff0d;
+    backdrop-filter: blur(5px);
   }
-  .gear-console strong {
-    font-size: 34px;
+  .race-controls.finished { display: none; }
+  .race-controls button {
+    min-height: 62px;
+    padding: 10px 6px;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    flex-direction: column;
   }
-  .dashboard .race-time {
-    display: flex;
-  }
-  .strip-header {
-    padding: 8px 16px;
-    font-size: 7px;
-  }
+  .race-controls button > span { text-align: center; font-size: 12px; line-height: 1.15; }
+  .race-controls kbd,
+  .race-controls small { display: none; }
+  .race-controls .control-shift { min-height: 68px; }
+  .race-note { margin-bottom: 92px; }
+  .strip-header { padding: 8px 16px; font-size: 7px; }
   .timing-slip .results-heading,
   .timing-slip .result-stats,
-  .timing-slip .result-actions {
-    margin-left: 16px;
-    margin-right: 16px;
-  }
-  .drag-strip-results {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
+  .timing-slip .result-actions { margin-left: 16px; margin-right: 16px; }
+  .drag-strip-results { padding-left: 16px; padding-right: 16px; }
 }
 @media (max-width: 480px) {
-  .instrument-cluster {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    padding: 12px 8px;
-  }
-  .gauge-face {
-    max-width: 128px;
-  }
-  .gauge strong {
-    font-size: 19px;
-  }
-  .shift-callout {
-    font-size: 6px;
-    padding: 2px 4px;
-  }
+  .instrument-cluster { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); padding: 12px 8px; }
+  .gauge-face { max-width: 128px; }
+  .gauge strong { font-size: 19px; }
   .gear-console,
-  .odometer {
-    min-height: 72px;
-  }
-  .strip-header span:last-child {
-    display: none;
-  }
-  .drag-strip-results .standing {
-    padding-right: 28px;
-  }
+  .odometer { min-height: 72px; }
+  .strip-header span:last-child { display: none; }
+  .drag-strip-results .standing { padding-right: 28px; }
+}
+@media (max-width: 420px) {
+  .race-controls { left: 5px; right: 5px; gap: 5px; padding: 6px; }
+  .race-controls button { min-height: 58px; padding: 8px 4px; }
+  .race-controls button > span { font-size: 11px; }
 }
