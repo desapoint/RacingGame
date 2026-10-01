@@ -6,24 +6,35 @@ import type { CarDef, OwnedCar } from '../types';
 export class Renderer {
   private ctx: CanvasRenderingContext2D;
   private background = document.createElement('canvas');
+  private renderScale = 1;
   width = 1100;
   height = 460;
   constructor(public canvas: HTMLCanvasElement) {
     this.ctx = canvas.getContext('2d', { alpha: false })!;
     this.resize();
-    this.buildBackground();
   }
   resize(): void {
-    const ratio = Math.min(devicePixelRatio || 1, 1.5);
-    this.canvas.width = this.width * ratio;
-    this.canvas.height = this.height * ratio;
+    const displayWidth = this.canvas.getBoundingClientRect().width || this.width;
+    const cssScale = displayWidth / this.width;
+    const ratio = Math.max(0.25, (window.devicePixelRatio || 1) * cssScale);
+    const backingWidth = Math.max(1, Math.round(this.width * ratio));
+    const backingHeight = Math.max(1, Math.round(this.height * ratio));
+    if (this.canvas.width !== backingWidth) this.canvas.width = backingWidth;
+    if (this.canvas.height !== backingHeight) this.canvas.height = backingHeight;
+    this.renderScale = ratio;
     this.ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    this.ctx.imageSmoothingEnabled = true;
+    this.ctx.imageSmoothingQuality = 'high';
+    this.buildBackground();
   }
   private buildBackground(): void {
     const c = this.background;
-    c.width = this.width;
-    c.height = this.height;
+    c.width = Math.max(1, Math.round(this.width * this.renderScale));
+    c.height = Math.max(1, Math.round(this.height * this.renderScale));
     const ctx = c.getContext('2d')!;
+    ctx.setTransform(this.renderScale, 0, 0, this.renderScale, 0, 0);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
     const sky = ctx.createLinearGradient(0, 0, 0, 300);
     sky.addColorStop(0, '#121614');
     sky.addColorStop(1, '#30342f');
@@ -113,7 +124,7 @@ export class Renderer {
   }
   race(race: Race, reducedMotion: boolean): void {
     const ctx = this.ctx;
-    ctx.drawImage(this.background, 0, 0);
+    ctx.drawImage(this.background, 0, 0, this.width, this.height);
     const scroll = reducedMotion ? 0 : race.player.distance * 7;
     ctx.fillStyle = '#aaa0b254';
     for (let i = -1; i < 15; i++) ctx.fillRect(i * 110 - (scroll % 110), 349, 58, 3);
