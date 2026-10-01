@@ -5,7 +5,8 @@ import { findPaintPixels, recolorPixels } from './sprite-paint';
 
 const WIDTH = 800,
   HEIGHT = 300,
-  HIGH_DETAIL_SCALE = 2;
+  MIN_DETAIL_SCALE = 2,
+  MAX_DETAIL_SCALE = 3;
 interface Wheel extends SpriteWheel {
   image: HTMLCanvasElement;
   drawWidth: number;
@@ -149,9 +150,13 @@ export async function prepareCarSprites(
   current: () => boolean = () => true,
 ): Promise<void> {
   const work = async () => {
-    // Detail views need a denser backing bitmap. Dealer grids stay at 1x because
-    // each 800x300 logical car is already displayed substantially smaller.
-    const pixelScale = cars.length <= 2 ? HIGH_DETAIL_SCALE : 1;
+    // Detail views track display density up to 3x. Dealer grids use a lower
+    // density because each 800x300 logical car is displayed substantially smaller.
+    const deviceScale = Math.max(1, window.devicePixelRatio || 1);
+    const pixelScale =
+      cars.length <= 2
+        ? Math.min(MAX_DETAIL_SCALE, Math.max(MIN_DETAIL_SCALE, deviceScale))
+        : Math.min(1.5, Math.max(1, deviceScale / 2));
     for (const [index, car] of cars.entries()) {
       if (!current()) return;
       const spec = spriteCatalog[car.art];
@@ -337,4 +342,23 @@ export function drawCar(
   }
   ctx.drawImage(cosmetics ? appearance(cosmetics, sprite) : sprite.body, 0, 0, WIDTH, HEIGHT);
   ctx.restore();
+}
+
+
+/** Draw a dealership/list preview with a backing store matched to its CSS size and DPR. */
+export function drawCarPreview(canvas: HTMLCanvasElement, car: CarDef): void {
+  const bounds = canvas.getBoundingClientRect();
+  const displayWidth = bounds.width || WIDTH;
+  const displayHeight = bounds.height || displayWidth * (HEIGHT / WIDTH);
+  const deviceScale = Math.max(1, window.devicePixelRatio || 1);
+  const backingWidth = Math.max(1, Math.round(displayWidth * deviceScale));
+  const backingHeight = Math.max(1, Math.round(displayHeight * deviceScale));
+  if (canvas.width !== backingWidth) canvas.width = backingWidth;
+  if (canvas.height !== backingHeight) canvas.height = backingHeight;
+  const ctx = canvas.getContext('2d')!;
+  ctx.setTransform(backingWidth / WIDTH, 0, 0, backingHeight / HEIGHT, 0, 0);
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+  ctx.clearRect(0, 0, WIDTH, HEIGHT);
+  drawCar(ctx, car);
 }
