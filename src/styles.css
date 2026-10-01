@@ -2366,48 +2366,42 @@ h1, h2 { text-transform: uppercase; font-style: italic; }
   border-top: 4px solid #2e312d;
   align-items: center;
 }
-.gauge { --needle-angle: -120deg; min-width: 0; }
+.gauge {
+  --needle-angle: -120deg;
+  --redline-angle: 72deg;
+  min-width: 0;
+}
 .gauge-face {
-  width: min(100%, 190px);
-  aspect-ratio: 1;
+  width: min(100%, 205px);
+  aspect-ratio: 1.18;
   margin: auto;
   position: relative;
-  border-radius: 50%;
+  border-radius: 48% 48% 18% 18% / 66% 66% 24% 24%;
   border: clamp(5px, .55vw, 8px) solid #3c3e39;
+  clip-path: polygon(3% 16%, 12% 6%, 30% 1%, 70% 1%, 88% 6%, 97% 16%, 100% 72%, 90% 91%, 10% 91%, 0 72%);
   background:
-    radial-gradient(circle, #111310 0 54%, transparent 55%),
-    repeating-conic-gradient(from 240deg, #d9d1c1 0deg 1deg, transparent 1deg 12deg),
-    #181b17;
-  box-shadow: inset 0 0 0 2px #080908, inset 0 0 24px #000, 0 2px 0 #060706, 0 0 0 1px #777268;
+    radial-gradient(ellipse at 50% 52%, #101210 0 50%, transparent 51%),
+    repeating-conic-gradient(from 240deg at 50% 52%, #e8e2d7 0deg 1deg, transparent 1deg 7.5deg),
+    linear-gradient(#1a1d19, #10120f);
+  box-shadow:
+    inset 0 0 0 2px #080908,
+    inset 0 0 26px #000,
+    0 3px 0 #060706,
+    0 0 0 1px #777268;
   overflow: hidden;
 }
 .gauge-face::before {
   content: "";
   position: absolute;
-  inset: 13%;
-  border-radius: 50%;
-  border: 1px solid #ddd4c326;
-}
-.tach-gauge .gauge-face::after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  inset: 5%;
-  border-radius: 50%;
-  background: conic-gradient(
-    from 240deg,
-    transparent 0deg var(--redline-start, 204deg),
-    #ff4a38 var(--redline-start, 204deg) 240deg,
-    transparent 240deg 360deg
-  );
-  -webkit-mask: radial-gradient(circle, transparent 0 73%, #000 74% 91%, transparent 92%);
-  mask: radial-gradient(circle, transparent 0 73%, #000 74% 91%, transparent 92%);
-  filter: drop-shadow(0 0 5px #ff4a38aa);
+  inset: 15% 13% 13%;
+  border-radius: 48% 48% 22% 22% / 62% 62% 28% 28%;
+  border: 1px solid #ddd4c31f;
+  pointer-events: none;
 }
 .gauge-caption {
   position: absolute;
   z-index: 2;
-  top: 25%;
+  top: 28%;
   left: 0;
   right: 0;
   text-align: center;
@@ -2417,7 +2411,7 @@ h1, h2 { text-transform: uppercase; font-style: italic; }
 }
 .gauge strong {
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   left: 0;
   right: 0;
   top: 58%;
@@ -2429,7 +2423,7 @@ h1, h2 { text-transform: uppercase; font-style: italic; }
 }
 .gauge small {
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   left: 0;
   right: 0;
   top: 75%;
@@ -2441,13 +2435,13 @@ h1, h2 { text-transform: uppercase; font-style: italic; }
 }
 .gauge-needle {
   position: absolute;
-  z-index: 4;
+  z-index: 6;
   width: 3px;
-  height: 34%;
+  height: 37%;
   left: 50%;
-  bottom: 50%;
+  bottom: 48%;
   border-radius: 2px 2px 0 0;
-  background: #d85845;
+  background: linear-gradient(#f27362, #c53d32);
   box-shadow: 0 0 5px #d8584566;
   transform-origin: 50% 100%;
   transform: translateX(-50%) rotate(var(--needle-angle));
@@ -2455,46 +2449,112 @@ h1, h2 { text-transform: uppercase; font-style: italic; }
 }
 .gauge-hub {
   position: absolute;
-  z-index: 5;
-  width: 15%;
+  z-index: 7;
+  width: 14%;
   aspect-ratio: 1;
-  left: 42.5%;
-  top: 42.5%;
+  left: 43%;
+  top: 45%;
   border: 3px solid #454842;
   border-radius: 50%;
   background: radial-gradient(circle, #262925 35%, #0b0c0b 38%);
   box-shadow: 0 1px 3px #000;
 }
-.gauge-scale { position: absolute; inset: 0; z-index: 2; font: 7px monospace; color: #b4aea2; }
-.gauge-scale span { position: absolute; bottom: 15%; }
-.gauge-scale span:first-child { left: 18%; }
-.gauge-scale span:nth-child(2) { left: 47%; }
-.gauge-scale span:last-child { right: 16%; }
-.tach-range {
+.gauge-scale {
   position: absolute;
   inset: 0;
-  z-index: 2;
-  color: #d0c9bc;
-  font: 700 clamp(7px, .65vw, 10px) monospace;
+  z-index: 3;
+  font: 7px monospace;
+  color: #b4aea2;
+}
+.gauge-scale span { position: absolute; bottom: 15%; }
+.gauge-scale span:first-child { left: 13%; }
+.gauge-scale span:nth-child(2) { left: 47%; }
+.gauge-scale span:last-child { right: 13%; }
+
+.tach-major {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  color: #f0ebe2;
+  font: 700 clamp(8px, .75vw, 12px) "Arial Narrow", Arial, sans-serif;
+  font-style: italic;
   text-shadow: 0 1px 2px #000;
   pointer-events: none;
 }
-.tach-range span { position: absolute; }
-.tach-range span:first-child { left: 15%; bottom: 19%; }
-.tach-range span:nth-child(2) {
-  right: 8%;
-  top: 27%;
-  color: #ff6757;
-  font-size: 8px;
-  text-shadow: 0 0 6px #ff4a38aa;
+.tach-major span { position: absolute; }
+.tach-major span:nth-child(1) { left: 11%; bottom: 18%; }
+.tach-major span:nth-child(2) { left: 7%; top: 51%; }
+.tach-major span:nth-child(3) { left: 12%; top: 30%; }
+.tach-major span:nth-child(4) { left: 27%; top: 15%; }
+.tach-major span:nth-child(5) { left: 47%; top: 8%; }
+.tach-major span:nth-child(6) { right: 27%; top: 15%; }
+.tach-major span:nth-child(7) { right: 12%; top: 30%; }
+.tach-major span:nth-child(8) { right: 7%; top: 51%; }
+.tach-major span:nth-child(9) { right: 11%; bottom: 18%; }
+
+.tach-redline-label {
+  position: absolute;
+  z-index: 5;
+  right: 7%;
+  top: 36%;
+  color: #ff5a5f;
+  font: 800 7px monospace;
+  letter-spacing: .7px;
+  text-shadow: 0 0 5px #ff33445f;
+  transform: rotate(5deg);
 }
-.tach-range span:last-child { right: 16%; bottom: 18%; color: #b8b1a6; }
+
+.redline-segments,
+.redline-marker {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+.redline-segments i,
+.redline-marker::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 48%;
+  width: 6px;
+  height: 40%;
+  transform-origin: 50% 100%;
+  background: linear-gradient(to top, transparent 0 77%, #f23a43 78% 100%);
+  filter: drop-shadow(0 0 2px #f23a4377);
+}
+.redline-segments i:nth-child(1) {
+  transform: translateX(-50%) rotate(var(--redline-angle));
+}
+.redline-segments i:nth-child(2) {
+  transform: translateX(-50%) rotate(calc(var(--redline-angle) + 6deg));
+}
+.redline-segments i:nth-child(3) {
+  transform: translateX(-50%) rotate(calc(var(--redline-angle) + 12deg));
+}
+.redline-segments i:nth-child(4) {
+  transform: translateX(-50%) rotate(calc(var(--redline-angle) + 18deg));
+}
+.redline-segments i:nth-child(5) {
+  transform: translateX(-50%) rotate(calc(var(--redline-angle) + 24deg));
+}
+.redline-segments i:nth-child(6) {
+  transform: translateX(-50%) rotate(calc(var(--redline-angle) + 30deg));
+}
+.redline-marker::before {
+  width: 3px;
+  height: 43%;
+  background: linear-gradient(to top, transparent 0 69%, #ff7479 70% 100%);
+  transform: translateX(-50%) rotate(var(--redline-angle));
+  filter: drop-shadow(0 0 4px #ff3344aa);
+}
+
 .shift-lights {
   position: absolute;
-  z-index: 7;
-  top: 9%;
-  left: 27%;
-  right: 27%;
+  z-index: 9;
+  top: 7%;
+  left: 30%;
+  right: 30%;
   display: flex;
   justify-content: center;
   gap: 4px;
@@ -2523,12 +2583,17 @@ h1, h2 { text-transform: uppercase; font-style: italic; }
 }
 .shift-lights.single i:not(:last-child) { display: none; }
 .shift-lights.single i:last-child { width: 30px; }
-.tach-gauge .gauge-caption { top: 43%; font-size: 7px; }
-.tach-gauge strong { top: 55%; }
-.tach-gauge small { top: 71%; font-size: 6px; }
+
+.tach-gauge .gauge-caption {
+  top: 45%;
+  font-size: 7px;
+  color: #d4cec1;
+}
+.tach-gauge strong { top: 57%; }
+.tach-gauge small { top: 73%; font-size: 6px; }
 .shift-callout {
   position: absolute;
-  z-index: 6;
+  z-index: 8;
   left: 50%;
   bottom: 7%;
   transform: translateX(-50%);
@@ -2538,8 +2603,18 @@ h1, h2 { text-transform: uppercase; font-style: italic; }
   letter-spacing: .8px;
 }
 .tach-gauge.perfect .shift-callout { color: #91c86f; }
-.tach-gauge.redline .shift-callout { color: #ff6654; text-shadow: 0 0 7px #ff4a38aa; }
-.tach-gauge.redline .gauge-face { box-shadow: inset 0 0 0 2px #080908, inset 0 0 30px #ff34251f, 0 0 0 2px #ff4a3855, 0 2px 0 #060706; }
+.tach-gauge.redline .shift-callout {
+  color: #ff6654;
+  text-shadow: 0 0 7px #ff4a38aa;
+}
+.tach-gauge.redline .gauge-face {
+  box-shadow:
+    inset 0 0 0 2px #080908,
+    inset 0 0 34px #ff34251b,
+    0 3px 0 #060706,
+    0 0 0 1px #777268;
+}
+
 .gear-console,
 .odometer {
   min-height: 118px;
