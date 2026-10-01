@@ -8,9 +8,11 @@ import { freshSave, parseSave, validateSave } from '../src/storage/save';
 
 function drive(race: Race, skilled = true) {
   for (let tick = 0; tick < 8000 && !race.finished; tick++) {
+    if (race.time < 0)
+      race.setThrottle(race.player.rpm < (race.player.owned?.launch ?? race.player.engine.redlineRpm * 0.68));
     race.update(1 / 120);
     if (race.time >= 0.08 && !race.player.launched) race.launch();
-    if (skilled && race.player.rpm >= 6350) race.shift();
+    if (skilled && race.player.gear > 0 && race.player.rpm >= race.player.shiftTarget) race.shift();
     if (race.player.distance > 60) race.nitro();
   }
   assert.ok(race.finished, 'race resolves in bounded time');
@@ -89,6 +91,70 @@ test('jump start is penalized and pause freezes state', () => {
   drive(race);
   assert.ok(race.player.reaction >= 0.75);
 });
+test('staging throttle is manual and RPM falls again when released', () => {
+  const race = new Race(createOwned(data.cars[0]), data.events[0].rivals, 'normal', () => 0.5);
+  const idle = race.player.rpm;
+  race.setThrottle(true);
+  for (let i = 0; i < 90; i++) race.update(1 / 120);
+  const raised = race.player.rpm;
+  assert.ok(raised > idle + 1000);
+  assert.equal(race.player.gear, 0);
+  race.setThrottle(false);
+  for (let i = 0; i < 45; i++) race.update(1 / 120);
+  assert.ok(race.player.rpm < raised);
+  assert.ok(race.player.rpm >= race.player.engine.idleRpm);
+});
+
+test('manual-start mode stays neutral on green until first gear is selected', () => {
+  const race = new Race(
+    createOwned(data.cars[0]),
+    data.events[0].rivals,
+    'normal',
+    () => 0.5,
+    'manual',
+  );
+  race.setThrottle(true);
+  while (race.time < 0.05) race.update(1 / 120);
+  assert.equal(race.player.gear, 0);
+  assert.equal(race.player.launched, false);
+  race.shift();
+  assert.equal(race.player.gear, 1);
+  assert.equal(race.player.launched, true);
+});
+
+test('high-RPM launch uses continuous wheel slip while still moving forward', () => {
+  const owned = createOwned(data.cars[0]);
+  const race = new Race(owned, data.events[0].rivals, 'normal', () => 0.5);
+  race.setThrottle(true);
+  while (race.time < 0.02) race.update(1 / 120);
+  for (let i = 0; i < 30; i++) race.update(1 / 120);
+  assert.ok(race.player.wheelSlip > 0);
+  assert.ok(race.player.wheelSlip <= 1);
+  assert.ok(race.player.speed > 0);
+  assert.ok(race.player.distance > 0);
+  assert.ok(race.player.traction > 0);
+});
+
+test('shift-light equipment is purchasable and changes race guidance capability', () => {
+  const car = carById.get(data.starter)!;
+  const owned = createOwned(car);
+  const profile = freshSave().payload;
+  profile.cash = 100_000;
+  buyPart(profile, owned, 'shiftlight-single');
+  assert.equal(statsFor(car, owned).shiftLight, 1);
+  buyPart(profile, owned, 'shiftlight-multi');
+  assert.equal(statsFor(car, owned).shiftLight, 2);
+});
+
+test('rev limiter and RPM fall configuration resolve from the car engine profile', () => {
+  const race = new Race(createOwned(data.cars[0]), data.events[0].rivals, 'normal', () => 0.5);
+  race.setThrottle(true);
+  for (let i = 0; i < 900; i++) race.update(1 / 120);
+  assert.ok(race.player.rpm <= race.player.engine.limitRpm + 100);
+  assert.ok(race.player.engine.rpmFallRate > 0);
+  assert.ok(race.player.engine.redlineRpm < race.player.engine.tachMaxRpm);
+});
+
 test('idle handles caps, repeat claims, twelve hours and backwards clocks', () => {
   const now = 1_800_000_000_000,
     profile = freshSave(now).payload;
