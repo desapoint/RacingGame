@@ -34,6 +34,7 @@ export interface Racer {
   throttleHeld: boolean;
   clutch: number;
   wheelSlip: number;
+  wheelSpeed: number;
   traction: number;
   limiterCut: number;
   launchRpm: number;
@@ -89,6 +90,7 @@ export class Race {
         throttleHeld: false,
         clutch: 0,
         wheelSlip: 0,
+        wheelSpeed: 0,
         traction: 1,
         limiterCut: 0,
         launchRpm: engine.idleRpm,
@@ -199,7 +201,8 @@ export class Race {
     racer.launched = true;
     racer.gear = 1;
     racer.launchRpm = racer.rpm;
-    racer.clutch = 0.04;
+    racer.clutch = 0.06;
+    racer.wheelSpeed = racer.speed;
     racer.reaction =
       racer === this.player ? this.time + (this.falseStart ? 0.75 : 0) : Math.max(0, this.time);
     racer.shiftDelay = racer === this.player && this.falseStart ? 0.75 : 0;
@@ -252,6 +255,7 @@ export class Race {
     }
     racer.rpm = clamp(racer.rpm, racer.engine.idleRpm, racer.engine.limitRpm + 90);
     racer.wheelSlip = 0;
+    racer.wheelSpeed = racer.speed;
     racer.traction = 1;
   }
 
@@ -267,24 +271,49 @@ export class Race {
     const gearIndex = racer.gear - 1;
     const gearTop = (racer.stats.maxSpeed * GEAR_TOP[gearIndex]) / drive;
     const rpmSpan = Math.max(1, racer.engine.redlineRpm - racer.engine.idleRpm);
-    const wheelSpeed =
-      gearTop * clamp((racer.rpm - racer.engine.idleRpm) / rpmSpan, 0, 1.18);
-    const rawSlip = Math.max(0, wheelSpeed - racer.speed) / Math.max(1.5, wheelSpeed, racer.speed);
-    racer.wheelSlip = clamp(rawSlip, 0, 1);
-
     const tireGrip = clamp(racer.stats.grip, 0.45, 2.2);
-    const optimumSlip = 0.08 + 0.035 / tireGrip;
+
+    // The driven wheel has its own surface speed. It does not instantly jump to the
+    // speed implied by engine RPM when first gear is engaged.
+    racer.clutch = Math.min(
+      1,
+      racer.clutch + dt / (0.5 + Math.max(0, 1 - tireGrip) * 0.18),
+    );
+    const engineWheelSpeed =
+      gearTop * clamp((racer.rpm - racer.engine.idleRpm) / rpmSpan, 0, 1.18);
+    const clutchTransfer = (2.8 + racer.clutch * 4.2) * racer.clutch;
+    racer.wheelSpeed +=
+      (engineWheelSpeed - racer.wheelSpeed) * Math.min(1, clutchTransfer * dt);
+
+    // Slip is continuous and based on excess driven-wheel surface speed, rather than
+    // a boolean. The saturating denominator avoids treating every launch from rest as
+    // identical 100% wheelspin.
+    const slipSpeed = Math.max(0, racer.wheelSpeed - racer.speed);
+    racer.wheelSlip = clamp(slipSpeed / (slipSpeed + 4.5), 0, 1);
+    const optimumSlip = 0.11;
     const slipEfficiency =
       racer.wheelSlip <= optimumSlip
-        ? 0.8 + (racer.wheelSlip / Math.max(0.01, optimumSlip)) * 0.2
-        : clamp(1 - (racer.wheelSlip - optimumSlip) * (0.72 / tireGrip), 0.34, 1);
+        ? 0.9 + (racer.wheelSlip / optimumSlip) * 0.1
+        : clamp(
+            1 - (racer.wheelSlip - optimumSlip) * (0.82 / Math.max(0.65, tireGrip)),
+            0.38,
+            1,
+          );
     racer.traction = clamp(slipEfficiency * Math.min(1.12, tireGrip), 0.25, 1.12);
+
+    // Road grip continuously pulls the tire surface back toward vehicle speed.
+    // Better tires do this more strongly, so wheelspin settles sooner without a
+    // discrete "grip returned" event.
+    const roadCoupling =
+      (2.7 + tireGrip * 2.4) * (0.42 + slipEfficiency * 0.58);
+    racer.wheelSpeed +=
+      (racer.speed - racer.wheelSpeed) * Math.min(1, roadCoupling * dt);
 
     const requestedThrottle = racer.shiftDelay > 0 ? 0.08 : 1;
     const throttle = this.limiterThrottle(racer, requestedThrottle, dt);
     const torque = torqueFactor(racer.engine, racer.rpm);
     const power = powerFactor(racer.engine, racer.rpm);
-    const curve = torque * 0.58 + power * 0.42;
+    const curve = torque * 0.6 + power * 0.4;
     const nitro = racer.nitroActive && racer.nitroLeft > 0;
     if (nitro) racer.nitroLeft = Math.max(0, racer.nitroLeft - dt);
 
@@ -299,30 +328,42 @@ export class Race {
           throttle *
           (nitro ? 1.38 : 1);
     const tractionCap =
-      (6.8 + Math.min(2.2, racer.speed * 0.035)) * tireGrip * slipEfficiency;
-    const force = Math.min(driveAccel, tractionCap);
+      (7 + Math.min(2.5, racer.speed * 0.04)) * tireGrip;
+    const force = Math.min(driveAccel, tractionCap) * slipEfficiency;
     const drag = 0.0011 * racer.speed * racer.speed;
     const previousDistance = racer.distance;
-    racer.speed = Math.max(0, Math.min(gearTop * 1.035, racer.speed + (force - drag) * dt));
+    racer.speed = Math.max(
+      0,
+      Math.min(gearTop * 1.035, racer.speed + (force - drag) * dt),
+    );
     racer.distance += racer.speed * dt;
     racer.elapsed += dt;
 
-    racer.clutch = Math.min(1, racer.clutch + dt / (0.42 + Math.max(0, 1 - tireGrip) * 0.18));
-    const roadRpm =
+    // Engine RPM follows the driven wheel through the clutch. During a launch this
+    // produces the expected engagement drop; during wheelspin it follows the faster
+    // spinning wheel; as wheel speed converges with road speed the RPM is already
+    // converging too, so reaching zero slip does not cause a sudden extra RPM jump.
+    const wheelRpm =
       racer.engine.idleRpm +
-      clamp(racer.speed / Math.max(0.1, gearTop), 0, 1.12) * rpmSpan;
-    const gripCoupling = clamp(1 - racer.wheelSlip * 0.78, 0.16, 1) * clamp(tireGrip, 0.65, 1.35);
-    const couplingRate =
-      (1.5 + (racer.engine.rpmFallRate / 3600) * 3.1) * racer.clutch * gripCoupling;
+      clamp(racer.wheelSpeed / Math.max(0.1, gearTop), 0, 1.18) * rpmSpan;
+    const gripCoupling = clamp(1 - racer.wheelSlip * 0.5, 0.45, 1);
+    const rpmCoupling =
+      (2.1 + (racer.engine.rpmFallRate / 3600) * 4.4) *
+      racer.clutch *
+      gripCoupling;
 
-    racer.rpm += racer.engine.rpmRiseRate * throttle * (0.16 + curve * 0.12) * dt;
-    racer.rpm += (roadRpm - racer.rpm) * Math.min(1, couplingRate * dt);
+    racer.rpm += racer.engine.rpmRiseRate * throttle * (0.09 + curve * 0.08) * dt;
+    racer.rpm += (wheelRpm - racer.rpm) * Math.min(1, rpmCoupling * dt);
     if (racer.shiftDelay > 0)
       racer.rpm = Math.max(
         racer.engine.idleRpm,
-        racer.rpm - racer.engine.rpmFallRate * 0.3 * dt,
+        racer.rpm - racer.engine.rpmFallRate * 0.32 * dt,
       );
-    racer.rpm = clamp(racer.rpm, racer.engine.idleRpm * 0.82, racer.engine.limitRpm + 100);
+    racer.rpm = clamp(
+      racer.rpm,
+      racer.engine.idleRpm * 0.82,
+      racer.engine.limitRpm + 100,
+    );
     racer.shiftDelay = Math.max(0, racer.shiftDelay - dt);
 
     if (racer.distance >= data.distance) {
