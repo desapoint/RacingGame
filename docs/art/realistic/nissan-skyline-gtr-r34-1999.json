@@ -1,0 +1,29 @@
+{
+  "id": "nissan-skyline-gtr-r34-1999",
+  "stage": "realistic-reference",
+  "file": "nissan-skyline-gtr-r34-1999.png",
+  "width": 2172,
+  "height": 724,
+  "bounds": [
+    76,
+    90,
+    2032,
+    593
+  ],
+  "wheels": [
+    {
+      "x": 503,
+      "y": 540,
+      "radius": 133
+    },
+    {
+      "x": 1694,
+      "y": 538,
+      "radius": 133
+    }
+  ],
+  "paintColor": "#0862dd",
+  "referenceUrls": [
+    "https://www.iconicauctioneers.com/1999-nissan-skyline-r34-gt-r-rec13775-1-nec-1124"
+  ]
+}

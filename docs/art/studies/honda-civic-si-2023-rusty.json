@@ -1,0 +1,22 @@
+{
+  "id": "honda-civic-si-2023",
+  "stage": "rusty-game-2d-study",
+  "spec": {
+    "file": "honda-civic-si-2023-rusty-2d.png",
+    "width": 1946,
+    "height": 808,
+    "bounds": [25, 124, 1897, 606],
+    "wheels": [
+      { "x": 405, "y": 588, "radius": 120 },
+      { "x": 1570, "y": 589, "radius": 120 }
+    ],
+    "paintColor": "#d91b22",
+    "facing": "right",
+    "referenceUrls": [
+      "https://platform.cstatic-images.com/xxlarge/in/v2/stock_photos/ab6caf3f-e4cf-49d6-9c2f-867da2fa63bb/ff8ca6d2-32a6-4b44-8f31-66fe236f70f8.png",
+      "https://www.cars.com/research/honda-civic_si-2023/"
+    ],
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/honda-civic-si-2023.png"
+  }
+}

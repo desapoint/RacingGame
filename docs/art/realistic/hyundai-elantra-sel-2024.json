@@ -1,0 +1,29 @@
+{
+  "file": "hyundai-elantra-sel-2024.png",
+  "width": 2048,
+  "height": 768,
+  "bounds": [
+    44,
+    110,
+    1967,
+    616
+  ],
+  "wheels": [
+    {
+      "x": 447,
+      "y": 571,
+      "radius": 124
+    },
+    {
+      "x": 1685,
+      "y": 570,
+      "radius": 124
+    }
+  ],
+  "paintColor": "#04b9e1",
+  "facing": "right",
+  "referenceUrls": [
+    "https://www.hyundaiofkennesaw.com/assets/stock/colormatched/transparent/1280/cc_2024hyc02_03_1280/cc_2024hyc022006090_03_1280_pe2.png?bg-color=FFFFFF&timestamp=0001-01-01T00%3A00%3A00&width=400+400w",
+    "https://www.hyundaiusa.com/us/en/vehicles/elantra/compare-specs/spec_config_page"
+  ]
+}

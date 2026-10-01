@@ -1,0 +1,29 @@
+{
+  "file": "toyota-sienna-xle-2024.png",
+  "width": 1774,
+  "height": 887,
+  "bounds": [
+    25,
+    175,
+    1726,
+    637
+  ],
+  "wheels": [
+    {
+      "x": 360,
+      "y": 643,
+      "radius": 111
+    },
+    {
+      "x": 1370,
+      "y": 643,
+      "radius": 111
+    }
+  ],
+  "paintColor": "#f1f1ee",
+  "facing": "left",
+  "referenceUrls": [
+    "https://autoimage.capitalone.com/stock-media/evox/2024-Toyota-Sienna-XSE_AWD_7_Passenger-040-53534_cc2400_001_040.png",
+    "https://www.capitalone.com/cars/vehicle-details/2024/Toyota/Sienna/XLE/5TDJRKEC9RS215377"
+  ]
+}

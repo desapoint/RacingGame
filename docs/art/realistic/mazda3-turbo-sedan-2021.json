@@ -1,0 +1,30 @@
+{
+  "id": "mazda3-turbo-sedan-2021",
+  "stage": "realistic-reference",
+  "file": "mazda3-turbo-sedan-2021.png",
+  "width": 1933,
+  "height": 813,
+  "bounds": [
+    35,
+    108,
+    1869,
+    603
+  ],
+  "wheels": [
+    {
+      "x": 411,
+      "y": 574,
+      "radius": 122
+    },
+    {
+      "x": 1569,
+      "y": 575,
+      "radius": 122
+    }
+  ],
+  "paintColor": "#c91420",
+  "referenceUrls": [
+    "https://cdn.motor1.com/images/mgl/b3jkl/s1/2021-mazda3-turbo-first-drive.jpg",
+    "https://www.jdpower.com/cars/2021/mazda/mazda3"
+  ]
+}

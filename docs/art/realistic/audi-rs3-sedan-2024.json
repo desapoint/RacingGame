@@ -1,0 +1,29 @@
+{
+  "id": "audi-rs3-sedan-2024",
+  "stage": "realistic-reference",
+  "file": "audi-rs3-sedan-2024.png",
+  "width": 2172,
+  "height": 724,
+  "bounds": [
+    67,
+    93,
+    2002,
+    613
+  ],
+  "wheels": [
+    {
+      "x": 495,
+      "y": 557,
+      "radius": 134
+    },
+    {
+      "x": 1677,
+      "y": 558,
+      "radius": 134
+    }
+  ],
+  "paintColor": "#f6df00",
+  "referenceUrls": [
+    "https://www.autobild.es/motor/comparativa-audi-rs3-sedan-bmw-m240i-xdrive-coupe-mercedes-amg-45-s_6391376_1.html"
+  ]
+}

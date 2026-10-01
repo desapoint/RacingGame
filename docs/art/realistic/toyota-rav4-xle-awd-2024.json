@@ -1,0 +1,31 @@
+{
+  "id": "toyota-rav4-xle-awd-2024",
+  "stage": "realistic-reference",
+  "file": "toyota-rav4-xle-awd-2024.png",
+  "width": 1774,
+  "height": 887,
+  "bounds": [
+    16,
+    134,
+    1739,
+    645
+  ],
+  "wheels": [
+    {
+      "x": 365,
+      "y": 637,
+      "radius": 120
+    },
+    {
+      "x": 1412,
+      "y": 637,
+      "radius": 120
+    }
+  ],
+  "paintColor": "#0752c4",
+  "referenceUrls": [
+    "https://img.sm360.ca/ir/w640h390c/images/newcar/ca/2024/toyota/rav4/xle-/suv/exteriorColors/2024_toyota_rav4-2-xle-awd_ext_001_01g3.png",
+    "https://www.mccluretoyota.com/en/new-catalog/toyota/2024-toyota-rav4-xle-id25737"
+  ],
+  "facing": "right"
+}

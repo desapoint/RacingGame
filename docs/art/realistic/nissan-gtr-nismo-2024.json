@@ -1,0 +1,29 @@
+{
+  "id": "nissan-gtr-nismo-2024",
+  "stage": "realistic-reference",
+  "file": "nissan-gtr-nismo-2024.png",
+  "width": 2048,
+  "height": 768,
+  "bounds": [
+    21,
+    85,
+    2005,
+    616
+  ],
+  "wheels": [
+    {
+      "x": 400,
+      "y": 538,
+      "radius": 145
+    },
+    {
+      "x": 1646,
+      "y": 538,
+      "radius": 145
+    }
+  ],
+  "paintColor": "#075bdc",
+  "referenceUrls": [
+    "https://www.baysidenissan.ca/en/new-catalog/nissan/2024-nissan-gt-r-nismo-appearance-package-id25431"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "file": "honda-accord-ex-2024.png",
+  "width": 2048,
+  "height": 768,
+  "bounds": [
+    48,
+    109,
+    1961,
+    603
+  ],
+  "wheels": [
+    {
+      "x": 466,
+      "y": 570,
+      "radius": 122
+    },
+    {
+      "x": 1641,
+      "y": 570,
+      "radius": 122
+    }
+  ],
+  "paintColor": "#1249a3",
+  "facing": "right",
+  "referenceUrls": [
+    "https://media.dealeralchemist.com/jellies/Honda/Accord%20Sedan/C447668_BU_Side.png?auto=compress%2Cformat",
+    "https://www.hondainfocenter.com/2024/Accord/Feature-Guide/Specifications/",
+    "https://www.hondainfocenter.com/2024/Accord/Feature-Guide/Engine-Chassis-Features/Turbocharged-1-5-liter-Engine/"
+  ]
+}

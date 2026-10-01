@@ -1,0 +1,30 @@
+{
+  "id": "hyundai-palisade-calligraphy-2024",
+  "stage": "realistic-reference",
+  "file": "hyundai-palisade-calligraphy-2024.png",
+  "width": 1774,
+  "height": 887,
+  "bounds": [
+    23,
+    158,
+    1725,
+    628
+  ],
+  "wheels": [
+    {
+      "x": 389,
+      "y": 644,
+      "radius": 124
+    },
+    {
+      "x": 1428,
+      "y": 644,
+      "radius": 124
+    }
+  ],
+  "paintColor": "#25272b",
+  "facing": "right",
+  "referenceUrls": [
+    "https://img.sm360.ca/ir/w640h390c/images/newcar/ca/2024/hyundai/palisade/preferred-/suv/exteriorColors/2024_palisade_1-preferred_ext_001_p7v.png"
+  ]
+}

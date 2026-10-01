@@ -1,0 +1,29 @@
+{
+  "file": "ford-f150-xlt-v8-2024.png",
+  "width": 1774,
+  "height": 887,
+  "bounds": [
+    13,
+    0,
+    1745,
+    863
+  ],
+  "wheels": [
+    {
+      "x": 315,
+      "y": 653,
+      "radius": 126
+    },
+    {
+      "x": 1370,
+      "y": 653,
+      "radius": 126
+    }
+  ],
+  "paintColor": "#06478e",
+  "facing": "left",
+  "referenceUrls": [
+    "https://img.sm360.ca/ir/w640h390c/images/newcar/ca/2024/ford/f-150/xlt/pickup/exteriorColors/2024_ford_f-150_xlt-crew-5_001_hx.png",
+    "https://www.eliteford.com/fr/catalogue-neuf/ford/ford-f-150-xlt-2024-id27076"
+  ]
+}

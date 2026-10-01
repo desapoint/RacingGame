@@ -1,0 +1,30 @@
+{
+  "id": "mclaren-750s-2024",
+  "stage": "realistic-reference",
+  "file": "mclaren-750s-2024.png",
+  "width": 2172,
+  "height": 724,
+  "bounds": [
+    28,
+    91,
+    2109,
+    616
+  ],
+  "wheels": [
+    {
+      "x": 431,
+      "y": 529,
+      "radius": 142
+    },
+    {
+      "x": 1736,
+      "y": 540,
+      "radius": 148
+    }
+  ],
+  "paintColor": "#ff7900",
+  "referenceUrls": [
+    "https://domcar.com.cy/en/catalog/auto/19351/"
+  ],
+  "facing": "left"
+}

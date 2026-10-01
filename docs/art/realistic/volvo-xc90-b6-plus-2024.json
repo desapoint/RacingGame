@@ -1,0 +1,30 @@
+{
+  "file": "volvo-xc90-b6-plus-2024.png",
+  "width": 1774,
+  "height": 887,
+  "bounds": [
+    31,
+    164,
+    1703,
+    620
+  ],
+  "wheels": [
+    {
+      "x": 365,
+      "y": 652,
+      "radius": 125
+    },
+    {
+      "x": 1444,
+      "y": 653,
+      "radius": 125
+    }
+  ],
+  "paintColor": "#12447c",
+  "facing": "right",
+  "referenceUrls": [
+    "https://apruhonice.s3.eu-central-1.amazonaws.com/42/4298054b-b125-4a5e-be7a-a0b5cf5fa2f0.full.jpg",
+    "https://www.volvocars.com/us/cars/xc90/specifications/",
+    "https://www.volvocars.com/files/cs/v3/assets/blt0feaa88e629251fc/bltae8b2f62e4d70686/66eb042044ba3379a77f646e/xc90-my24-26-10-2023.pdf?branch=prod_alias"
+  ]
+}

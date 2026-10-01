@@ -1,0 +1,29 @@
+{
+  "id": "ferrari-296-gtb-2024",
+  "stage": "realistic-reference",
+  "file": "ferrari-296-gtb-2024.png",
+  "width": 2172,
+  "height": 724,
+  "bounds": [
+    40,
+    74,
+    2092,
+    569
+  ],
+  "wheels": [
+    {
+      "x": 389,
+      "y": 465,
+      "radius": 150
+    },
+    {
+      "x": 1677,
+      "y": 470,
+      "radius": 144
+    }
+  ],
+  "paintColor": "#ed101a",
+  "referenceUrls": [
+    "https://www.ferrariofnaples.com/inventory/certified-used-2024-ferrari-296-gtb-base-rwd-2d-coupe-zff99slaxr0304576/"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "id": "mazda-rx7-fd-1995",
+  "stage": "realistic-reference",
+  "file": "mazda-rx7-fd-1995.png",
+  "width": 2172,
+  "height": 724,
+  "bounds": [
+    20,
+    66,
+    2124,
+    617
+  ],
+  "wheels": [
+    {
+      "x": 466,
+      "y": 518,
+      "radius": 145
+    },
+    {
+      "x": 1745,
+      "y": 523,
+      "radius": 141
+    }
+  ],
+  "paintColor": "#f3ca00",
+  "referenceUrls": [
+    "https://rhdspecialties.com/products/1997-mazda-rx7-fd"
+  ]
+}

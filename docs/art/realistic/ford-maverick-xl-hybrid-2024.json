@@ -1,0 +1,29 @@
+{
+  "file": "ford-maverick-xl-hybrid-2024.png",
+  "width": 1774,
+  "height": 887,
+  "bounds": [
+    18,
+    19,
+    1755,
+    868
+  ],
+  "wheels": [
+    {
+      "x": 346,
+      "y": 650,
+      "radius": 131
+    },
+    {
+      "x": 1366,
+      "y": 650,
+      "radius": 131
+    }
+  ],
+  "paintColor": "#0964ce",
+  "facing": "left",
+  "referenceUrls": [
+    "https://img.sm360.ca/images/newcar/ca/2024/ford/maverick-hybride/xl/pickup/exteriorColors/2024_ford_maverick-hybride_xl_001_bam.png",
+    "https://www.eliteford.com/fr/catalogue-neuf/ford/ford-maverick-hybride-xl-2024-id25921"
+  ]
+}

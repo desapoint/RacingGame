@@ -1,0 +1,29 @@
+{
+  "id": "toyota-supra-rz-1998",
+  "stage": "realistic-reference",
+  "file": "toyota-supra-rz-1998.png",
+  "width": 2172,
+  "height": 724,
+  "bounds": [
+    46,
+    77,
+    2091,
+    606
+  ],
+  "wheels": [
+    {
+      "x": 525,
+      "y": 524,
+      "radius": 140
+    },
+    {
+      "x": 1748,
+      "y": 524,
+      "radius": 140
+    }
+  ],
+  "paintColor": "#ff7b00",
+  "referenceUrls": [
+    "https://bullboostperformance.com/pages/1994-toyota-supra-sz-5-speed-jza80"
+  ]
+}

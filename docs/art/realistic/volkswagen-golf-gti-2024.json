@@ -1,0 +1,30 @@
+{
+  "id": "volkswagen-golf-gti-2024",
+  "stage": "realistic-reference",
+  "file": "volkswagen-golf-gti-2024.png",
+  "width": 1717,
+  "height": 916,
+  "bounds": [
+    11,
+    189,
+    1692,
+    592
+  ],
+  "wheels": [
+    {
+      "x": 299,
+      "y": 638,
+      "radius": 123
+    },
+    {
+      "x": 1376,
+      "y": 638,
+      "radius": 123
+    }
+  ],
+  "paintColor": "#dc171f",
+  "referenceUrls": [
+    "https://cdn.motor1.com/images/mgl/8AN21W/s1/vw-golf-gti-2024.webp",
+    "https://www.autoevolution.com/news/2024-vw-golf-gti-pricing-announced-costs-new-bmw-3-series-money-233882.html"
+  ]
+}

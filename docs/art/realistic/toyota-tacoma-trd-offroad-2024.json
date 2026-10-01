@@ -1,0 +1,29 @@
+{
+  "file": "toyota-tacoma-trd-offroad-2024.png",
+  "width": 1774,
+  "height": 887,
+  "bounds": [
+    0,
+    18,
+    1774,
+    799
+  ],
+  "wheels": [
+    {
+      "x": 327,
+      "y": 665,
+      "radius": 143
+    },
+    {
+      "x": 1393,
+      "y": 665,
+      "radius": 143
+    }
+  ],
+  "paintColor": "#0751c6",
+  "facing": "left",
+  "referenceUrls": [
+    "https://res.cloudinary.com/localautomotivemedia/image/upload/c_scale%2Cw_400%2Cdpr_3.0%2Cf_auto%2Cq_auto%2Cd_fallback.jpg/v1732051715/car-reviews/2024_Toyota_Tacoma_side_sino6v",
+    "https://www.lacar.com/reviews/2024-toyota-tacoma-trd-off-road"
+  ]
+}

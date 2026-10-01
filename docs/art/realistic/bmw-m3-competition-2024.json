@@ -1,0 +1,29 @@
+{
+  "id": "bmw-m3-competition-2024",
+  "stage": "realistic-reference",
+  "file": "bmw-m3-competition-2024.png",
+  "width": 2172,
+  "height": 724,
+  "bounds": [
+    49,
+    68,
+    2066,
+    638
+  ],
+  "wheels": [
+    {
+      "x": 502,
+      "y": 550,
+      "radius": 137
+    },
+    {
+      "x": 1792,
+      "y": 550,
+      "radius": 137
+    }
+  ],
+  "paintColor": "#08784d",
+  "referenceUrls": [
+    "https://bmw.autostar.com.br/novos/m3-competition-2024"
+  ]
+}

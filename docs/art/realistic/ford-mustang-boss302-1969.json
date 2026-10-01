@@ -1,0 +1,30 @@
+{
+  "id": "ford-mustang-boss302-1969",
+  "stage": "realistic-reference",
+  "file": "ford-mustang-boss302-1969.png",
+  "width": 2052,
+  "height": 766,
+  "bounds": [
+    27,
+    137,
+    1998,
+    569
+  ],
+  "wheels": [
+    {
+      "x": 457,
+      "y": 552,
+      "radius": 117
+    },
+    {
+      "x": 1663,
+      "y": 552,
+      "radius": 117
+    }
+  ],
+  "paintColor": "#d81f1e",
+  "referenceUrls": [
+    "https://res.cloudinary.com/mecum/image/upload/v1669823128/auctions/fl22/fl0122-494122/1713947_8.jpg",
+    "https://www.mecum.com/lots/FL0122-494122/1969-ford-mustang-boss-302-fastback/"
+  ]
+}

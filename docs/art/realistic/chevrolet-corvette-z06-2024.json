@@ -1,0 +1,29 @@
+{
+  "id": "chevrolet-corvette-z06-2024",
+  "stage": "realistic-reference",
+  "file": "chevrolet-corvette-z06-2024.png",
+  "width": 2172,
+  "height": 724,
+  "bounds": [
+    89,
+    116,
+    2032,
+    549
+  ],
+  "wheels": [
+    {
+      "x": 459,
+      "y": 506,
+      "radius": 140
+    },
+    {
+      "x": 1688,
+      "y": 510,
+      "radius": 140
+    }
+  ],
+  "paintColor": "#ffd000",
+  "referenceUrls": [
+    "https://www.autocar.co.uk/car-review/chevrolet/corvette-z06"
+  ]
+}

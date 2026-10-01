@@ -1,0 +1,30 @@
+{
+  "file": "honda-fit-sport-2019.png",
+  "width": 1967,
+  "height": 799,
+  "bounds": [
+    16,
+    19,
+    1911,
+    760
+  ],
+  "wheels": [
+    {
+      "x": 330,
+      "y": 635,
+      "radius": 103
+    },
+    {
+      "x": 1545,
+      "y": 635,
+      "radius": 103
+    }
+  ],
+  "paintColor": "#111318",
+  "facing": "right",
+  "referenceUrls": [
+    "https://images.hgmsites.net/med/2019-honda-fit_100652191_m.jpg",
+    "https://www.hondainfocenter.com/2019/Fit/Feature-Guide/Specifications/",
+    "https://automobiles.honda.com/-/media/Honda-Automobiles/Vehicles/2019/Fit/Brochure/FINAL-MY19-Fit-Brochure-Model-Site2.pdf"
+  ]
+}

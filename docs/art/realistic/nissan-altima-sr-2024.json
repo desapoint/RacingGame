@@ -1,0 +1,30 @@
+{
+  "file": "nissan-altima-sr-2024.png",
+  "width": 1774,
+  "height": 887,
+  "bounds": [
+    30,
+    205,
+    1714,
+    530
+  ],
+  "wheels": [
+    {
+      "x": 395,
+      "y": 613,
+      "radius": 108
+    },
+    {
+      "x": 1432,
+      "y": 613,
+      "radius": 108
+    }
+  ],
+  "paintColor": "#0875d1",
+  "facing": "right",
+  "referenceUrls": [
+    "https://img.sm360.ca/ir/w640h390c/images/newcar/ca/2024/nissan/altima/sr/sedan/exteriorColors/2024_nissan_altima_2-sr_ext_001_ray.png",
+    "https://www.oneillnissan.com/en/new-catalog/nissan/2024-nissan-altima-sr-id25452",
+    "https://usa.nissannews.com/en-US/releases/2024-nissan-altima-specifications"
+  ]
+}

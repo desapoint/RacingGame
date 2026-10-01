@@ -1,0 +1,29 @@
+{
+  "file": "subaru-outback-wilderness-2024.png",
+  "width": 1774,
+  "height": 887,
+  "bounds": [
+    0,
+    24,
+    1774,
+    830
+  ],
+  "wheels": [
+    {
+      "x": 363,
+      "y": 659,
+      "radius": 128
+    },
+    {
+      "x": 1370,
+      "y": 659,
+      "radius": 128
+    }
+  ],
+  "paintColor": "#0756c4",
+  "facing": "left",
+  "referenceUrls": [
+    "https://www.autoblog.com/.image/w_3840%2Cq_auto%3Agood%2Cc_limit/MjA5MTEzODM4MDA3NzU2NjQ0/2022%2520Subaru%2520Outback%2520Wilderness%2520profile.jpg",
+    "https://www.autoblog.com/reviews/2024-subaru-outback-review"
+  ]
+}

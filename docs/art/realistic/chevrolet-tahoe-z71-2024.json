@@ -1,0 +1,29 @@
+{
+  "file": "chevrolet-tahoe-z71-2024.png",
+  "width": 1774,
+  "height": 887,
+  "bounds": [
+    7,
+    142,
+    1750,
+    657
+  ],
+  "wheels": [
+    {
+      "x": 405,
+      "y": 657,
+      "radius": 130
+    },
+    {
+      "x": 1450,
+      "y": 659,
+      "radius": 130
+    }
+  ],
+  "paintColor": "#07552f",
+  "facing": "right",
+  "referenceUrls": [
+    "https://www.demontrondmitsubishi.com/assets/stock/colormatched/transparent/1280/cc_2024chs11_03_1280/cc_2024chs110018_03_1280_g1w.png?bg-color=FFFFFF&timestamp=0001-01-01T00%3A00%3A00&width=400+400w",
+    "https://www.chevrolet.com/suvs/previous-year/tahoe?x-bodystyle=tahoe&x-modelyear=2024"
+  ]
+}

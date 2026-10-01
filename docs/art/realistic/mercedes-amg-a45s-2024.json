@@ -1,0 +1,29 @@
+{
+  "id": "mercedes-amg-a45s-2024",
+  "stage": "realistic-reference",
+  "file": "mercedes-amg-a45s-2024.png",
+  "width": 2172,
+  "height": 724,
+  "bounds": [
+    68,
+    51,
+    2055,
+    659
+  ],
+  "wheels": [
+    {
+      "x": 422,
+      "y": 554,
+      "radius": 138
+    },
+    {
+      "x": 1751,
+      "y": 553,
+      "radius": 138
+    }
+  ],
+  "paintColor": "#f4d500",
+  "referenceUrls": [
+    "https://www.larevueautomobile.com/photos/mercedes-amg-a-45-s-4matic-le-petit-monstre-jaune-a-l-essai.htm"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "file": "ford-explorer-st-2024.png",
+  "width": 1606,
+  "height": 979,
+  "bounds": [
+    11,
+    215,
+    1573,
+    581
+  ],
+  "wheels": [
+    {
+      "x": 360,
+      "y": 654,
+      "radius": 125
+    },
+    {
+      "x": 1307,
+      "y": 654,
+      "radius": 125
+    }
+  ],
+  "paintColor": "#0752c4",
+  "facing": "right",
+  "referenceUrls": [
+    "https://img.sm360.ca/ir/w640h390c/images/newcar/ca/2024/ford/explorer/st/cuv/exteriorColors/2024_ford_explorer_st_001_m7.png",
+    "https://www.eliteford.com/fr/catalogue-neuf/ford/ford-explorer-st-2024-id27288"
+  ]
+}

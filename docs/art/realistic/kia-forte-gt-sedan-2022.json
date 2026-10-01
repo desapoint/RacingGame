@@ -1,0 +1,30 @@
+{
+  "id": "kia-forte-gt-sedan-2022",
+  "stage": "realistic-reference",
+  "file": "kia-forte-gt-sedan-2022.png",
+  "width": 1994,
+  "height": 789,
+  "bounds": [
+    34,
+    106,
+    1906,
+    614
+  ],
+  "wheels": [
+    {
+      "x": 417,
+      "y": 581,
+      "radius": 121
+    },
+    {
+      "x": 1578,
+      "y": 582,
+      "radius": 121
+    }
+  ],
+  "paintColor": "#e56c12",
+  "referenceUrls": [
+    "https://www.kiamedia.com/us/en/media/photos/17929/2022-forte-22",
+    "https://images.caricos.com/k/kia/2022_kia_forte/images/2560x1440/2022_kia_forte_12_2560x1440.jpg"
+  ]
+}

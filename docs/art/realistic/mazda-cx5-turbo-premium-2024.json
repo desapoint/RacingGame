@@ -1,0 +1,31 @@
+{
+  "id": "mazda-cx5-turbo-premium-2024",
+  "stage": "realistic-reference",
+  "file": "mazda-cx5-turbo-premium-2024.png",
+  "width": 2172,
+  "height": 724,
+  "bounds": [
+    108,
+    19,
+    1898,
+    697
+  ],
+  "wheels": [
+    {
+      "x": 475,
+      "y": 563,
+      "radius": 140
+    },
+    {
+      "x": 1663,
+      "y": 563,
+      "radius": 140
+    }
+  ],
+  "paintColor": "#c91522",
+  "referenceUrls": [
+    "https://di-uploads-pod38.dealerinspire.com/theautobarnmazdaofevanston/uploads/2024/05/2024-Mazda-CX-5-2.5-Turbo-Signature-In-Machine-Gray-Metallic-Banner.jpg",
+    "https://www.mazdaofchicagoland.com/cx-5-turbo-signature-model-review/"
+  ],
+  "facing": "left"
+}

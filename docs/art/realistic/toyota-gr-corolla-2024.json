@@ -1,0 +1,31 @@
+{
+  "id": "toyota-gr-corolla-2024",
+  "stage": "realistic-reference",
+  "file": "toyota-gr-corolla-2024.png",
+  "width": 1672,
+  "height": 941,
+  "bounds": [
+    16,
+    206,
+    1640,
+    585
+  ],
+  "facing": "left",
+  "wheels": [
+    {
+      "x": 339,
+      "y": 659,
+      "radius": 114
+    },
+    {
+      "x": 1382,
+      "y": 660,
+      "radius": 114
+    }
+  ],
+  "paintColor": "#0875d1",
+  "referenceUrls": [
+    "https://www.motortrend.com/uploads/2023/06/2024-Toyota-GR-Corolla-13.png",
+    "https://pressroom.toyota.com/album/2024-toyota-gr-corolla/"
+  ]
+}

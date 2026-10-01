@@ -1,0 +1,29 @@
+{
+  "id": "lamborghini-revuelto-2024",
+  "stage": "realistic-reference",
+  "file": "lamborghini-revuelto-2024.png",
+  "width": 2160,
+  "height": 728,
+  "bounds": [
+    14,
+    129,
+    2114,
+    524
+  ],
+  "wheels": [
+    {
+      "x": 412,
+      "y": 484,
+      "radius": 148
+    },
+    {
+      "x": 1653,
+      "y": 504,
+      "radius": 137
+    }
+  ],
+  "paintColor": "#14dc08",
+  "referenceUrls": [
+    "https://www.supervettura.com/Car-Details/2024-Lamborghini-Revuelto/240"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "file": "honda-odyssey-exl-2024.png",
+  "width": 1606,
+  "height": 979,
+  "bounds": [
+    0,
+    37,
+    1580,
+    900
+  ],
+  "wheels": [
+    {
+      "x": 359,
+      "y": 650,
+      "radius": 119
+    },
+    {
+      "x": 1244,
+      "y": 650,
+      "radius": 119
+    }
+  ],
+  "paintColor": "#383b40",
+  "facing": "left",
+  "referenceUrls": [
+    "https://img.sm360.ca/ir/w640h390c/images/newcar/ca/2024/honda/odyssey/ex-l-/minivan/exteriorColors/2024_honda_odyssey_ex-l_001_nh797m.png",
+    "https://www.centuryhonda.ca/en/new-catalog/honda/2024-honda-odyssey-ex-l-id25763"
+  ]
+}

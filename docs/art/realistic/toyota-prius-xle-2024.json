@@ -1,0 +1,30 @@
+{
+  "file": "toyota-prius-xle-2024.png",
+  "width": 1997,
+  "height": 788,
+  "bounds": [
+    44,
+    93,
+    1912,
+    616
+  ],
+  "wheels": [
+    {
+      "x": 381,
+      "y": 558,
+      "radius": 115
+    },
+    {
+      "x": 1595,
+      "y": 560,
+      "radius": 115
+    }
+  ],
+  "paintColor": "#6837c6",
+  "facing": "right",
+  "referenceUrls": [
+    "https://file.kelleybluebookimages.com/kbb/base/evox/CP/52726/2024-Toyota-Prius-side_52726_001_2400x1800_089.png",
+    "https://www.toyota.com/content/dam/toyota/brochures/pdf/2024/prius_ebrochure.pdf",
+    "https://pressroom.toyota.com/stunning-style-and-elevated-efficiency-the-2024-toyota-prius/"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "file": "jeep-wrangler-rubicon-2024.png",
+  "width": 2043,
+  "height": 770,
+  "bounds": [
+    66,
+    30,
+    1924,
+    731
+  ],
+  "wheels": [
+    {
+      "x": 438,
+      "y": 570,
+      "radius": 131
+    },
+    {
+      "x": 1730,
+      "y": 570,
+      "radius": 131
+    }
+  ],
+  "paintColor": "#e21b24",
+  "facing": "right",
+  "referenceUrls": [
+    "https://www.stellantisoaxaca.com.mx/static/agency-go-virtual/Jeep/Wrangler/2024/Colores/2024-jeep-vlp-modelizer-rubicon-4-puertas-blanco-mx-full.jpg",
+    "https://www.jeep.com/wrangler.html",
+    "https://blog.stellantisnorthamerica.com/2023/04/05/jeep-brand-introduces-new-2024-wrangler/"
+  ]
+}

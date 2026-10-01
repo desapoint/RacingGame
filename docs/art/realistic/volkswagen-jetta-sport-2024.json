@@ -1,0 +1,29 @@
+{
+  "file": "volkswagen-jetta-sport-2024.png",
+  "width": 1774,
+  "height": 887,
+  "bounds": [
+    16,
+    69,
+    1742,
+    818
+  ],
+  "wheels": [
+    {
+      "x": 334,
+      "y": 647,
+      "radius": 113
+    },
+    {
+      "x": 1318,
+      "y": 647,
+      "radius": 113
+    }
+  ],
+  "paintColor": "#1262bd",
+  "facing": "left",
+  "referenceUrls": [
+    "https://images.hgmsites.net/med/2024-volkswagen-jetta-sport-auto-side-exterior-view_100933467_m.webp",
+    "https://www.thecarconnection.com/overview/volkswagen_jetta_2024"
+  ]
+}

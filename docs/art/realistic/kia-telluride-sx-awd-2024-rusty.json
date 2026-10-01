@@ -1,0 +1,31 @@
+{
+  "id": "kia-telluride-sx-awd-2024-rusty",
+  "stage": "realistic-reference",
+  "file": "kia-telluride-sx-awd-2024-rusty.png",
+  "width": 1683,
+  "height": 935,
+  "bounds": [
+    9,
+    190,
+    1665,
+    623
+  ],
+  "wheels": [
+    {
+      "x": 344,
+      "y": 678,
+      "radius": 115
+    },
+    {
+      "x": 1377,
+      "y": 678,
+      "radius": 115
+    }
+  ],
+  "paintColor": "#063f81",
+  "facing": "right",
+  "referenceUrls": [
+    "https://img.sm360.ca/images/newcar/ca/2024/kia/telluride/sx-limited-/suv/main/2024_KIA_Telluride_SX-Limitee_MAIN.png",
+    "https://www.groupesimpson.com/fr/catalogue-neuf/kia/kia-telluride-sx-limited-2024-id25475"
+  ]
+}

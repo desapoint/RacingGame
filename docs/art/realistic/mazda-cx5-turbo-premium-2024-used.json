@@ -1,0 +1,31 @@
+{
+  "id": "mazda-cx5-turbo-premium-2024-used",
+  "stage": "realistic-reference",
+  "file": "mazda-cx5-turbo-premium-2024-used.png",
+  "width": 2172,
+  "height": 724,
+  "bounds": [
+    105,
+    17,
+    1894,
+    699
+  ],
+  "wheels": [
+    {
+      "x": 476,
+      "y": 558,
+      "radius": 137
+    },
+    {
+      "x": 1583,
+      "y": 558,
+      "radius": 137
+    }
+  ],
+  "paintColor": "#c91522",
+  "facing": "left",
+  "referenceUrls": [
+    "https://di-uploads-pod38.dealerinspire.com/theautobarnmazdaofevanston/uploads/2024/05/2024-Mazda-CX-5-2.5-Turbo-Signature-In-Machine-Gray-Metallic-Banner.jpg",
+    "https://www.mazdaofchicagoland.com/cx-5-turbo-signature-model-review/"
+  ]
+}

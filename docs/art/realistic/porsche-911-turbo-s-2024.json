@@ -1,0 +1,29 @@
+{
+  "id": "porsche-911-turbo-s-2024",
+  "stage": "realistic-reference",
+  "file": "porsche-911-turbo-s-2024.png",
+  "width": 2048,
+  "height": 768,
+  "bounds": [
+    46,
+    124,
+    1936,
+    582
+  ],
+  "wheels": [
+    {
+      "x": 466,
+      "y": 539,
+      "radius": 145
+    },
+    {
+      "x": 1582,
+      "y": 547,
+      "radius": 145
+    }
+  ],
+  "paintColor": "#0872ef",
+  "referenceUrls": [
+    "https://www.vegasautogallery.com/used-vehicle-2024-porsche-911-turbo-s-c-3669/"
+  ]
+}

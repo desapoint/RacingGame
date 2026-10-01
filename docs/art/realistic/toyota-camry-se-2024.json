@@ -1,0 +1,30 @@
+{
+  "file": "toyota-camry-se-2024.png",
+  "width": 1774,
+  "height": 887,
+  "bounds": [
+    32,
+    199,
+    1705,
+    518
+  ],
+  "wheels": [
+    {
+      "x": 390,
+      "y": 595,
+      "radius": 109
+    },
+    {
+      "x": 1405,
+      "y": 597,
+      "radius": 109
+    }
+  ],
+  "paintColor": "#d30d19",
+  "facing": "right",
+  "referenceUrls": [
+    "https://www.graydaniels.com/assets/stock/colormatched/transparent/1280/cc_2024toc02_03_1280/cc_2024toc020012_03_1280_040.png?bg-color=FFFFFF&timestamp=0001-01-01T00%3A00%3A00&width=400+400w",
+    "https://pressroom.toyota.com/2024-toyota-camry-style-and-performance-in-americas-best-selling-midsize-sedan/",
+    "https://www.toyota.com/content/dam/toyota/brochures/pdf/2024/camry_ebrochure.pdf"
+  ]
+}

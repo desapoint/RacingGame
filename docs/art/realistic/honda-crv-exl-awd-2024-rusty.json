@@ -1,0 +1,31 @@
+{
+  "id": "honda-crv-exl-awd-2024-rusty",
+  "stage": "realistic-reference",
+  "file": "honda-crv-exl-awd-2024-rusty.png",
+  "width": 1774,
+  "height": 887,
+  "bounds": [
+    22,
+    155,
+    1729,
+    657
+  ],
+  "wheels": [
+    {
+      "x": 414,
+      "y": 678,
+      "radius": 122
+    },
+    {
+      "x": 1418,
+      "y": 678,
+      "radius": 122
+    }
+  ],
+  "paintColor": "#073b91",
+  "facing": "right",
+  "referenceUrls": [
+    "https://img.sm360.ca/ir/w640h390c/images/newcar/ca/2024/honda/cr-v/ex-l/suv/exteriorColors/2024_honda_cr-v_ex-l_001_b-640m.png",
+    "https://www.ledesporthonda.ca/en/new-catalog/honda/2024-honda-cr-v-ex-l-id25384"
+  ]
+}

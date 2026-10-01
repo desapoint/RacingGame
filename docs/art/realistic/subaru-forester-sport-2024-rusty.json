@@ -1,0 +1,31 @@
+{
+  "id": "subaru-forester-sport-2024-rusty",
+  "stage": "realistic-reference",
+  "file": "subaru-forester-sport-2024-rusty.png",
+  "width": 1606,
+  "height": 979,
+  "bounds": [
+    11,
+    153,
+    1587,
+    640
+  ],
+  "wheels": [
+    {
+      "x": 323,
+      "y": 687,
+      "radius": 112
+    },
+    {
+      "x": 1280,
+      "y": 685,
+      "radius": 112
+    }
+  ],
+  "paintColor": "#075bd0",
+  "facing": "left",
+  "referenceUrls": [
+    "https://img.sm360.ca/ir/w640h390c/images/newcar/ca/2024/subaru/forester/sport/suv/exteriorColors/2024_subaru_forester_sport_ext_001_4s.png",
+    "https://www.beaucesubaru.com/en/new-catalog/subaru/2024-subaru-forester-sport-id26957"
+  ]
+}
