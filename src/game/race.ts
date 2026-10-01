@@ -281,7 +281,12 @@ export class Race {
     );
     const engineWheelSpeed =
       gearTop * clamp((racer.rpm - racer.engine.idleRpm) / rpmSpan, 0, 1.18);
-    const clutchTransfer = (2.8 + racer.clutch * 4.2) * racer.clutch;
+    const driverThrottle =
+      racer === this.player ? (racer.throttleHeld ? 1 : 0) : 1;
+    const clutchTransfer =
+      (2.8 + racer.clutch * 4.2) *
+      racer.clutch *
+      (0.25 + driverThrottle * 0.75);
     racer.wheelSpeed +=
       (engineWheelSpeed - racer.wheelSpeed) * Math.min(1, clutchTransfer * dt);
 
@@ -309,7 +314,8 @@ export class Race {
     racer.wheelSpeed +=
       (racer.speed - racer.wheelSpeed) * Math.min(1, roadCoupling * dt);
 
-    const requestedThrottle = racer.shiftDelay > 0 ? 0.08 : 1;
+    const requestedThrottle =
+      racer.shiftDelay > 0 ? Math.min(driverThrottle, 0.08) : driverThrottle;
     const throttle = this.limiterThrottle(racer, requestedThrottle, dt);
     const torque = torqueFactor(racer.engine, racer.rpm);
     const power = powerFactor(racer.engine, racer.rpm);
@@ -330,7 +336,15 @@ export class Race {
     const tractionCap =
       (7 + Math.min(2.5, racer.speed * 0.04)) * tireGrip;
     const force = Math.min(driveAccel, tractionCap) * slipEfficiency;
-    const drag = 0.0011 * racer.speed * racer.speed;
+    const aeroDrag = 0.0011 * racer.speed * racer.speed;
+    const rollingDrag = racer.speed > 0.15 ? 0.16 + racer.speed * 0.002 : 0;
+    const engineBrake =
+      throttle <= 0.01 && racer.clutch > 0.55
+        ? (0.65 +
+            clamp(racer.rpm / racer.engine.redlineRpm, 0, 1.25) * 1.25) *
+          (GEAR_RATIOS[gearIndex] / GEAR_RATIOS[0])
+        : 0;
+    const drag = aeroDrag + rollingDrag + engineBrake;
     const previousDistance = racer.distance;
     racer.speed = Math.max(
       0,
@@ -353,6 +367,11 @@ export class Race {
       gripCoupling;
 
     racer.rpm += racer.engine.rpmRiseRate * throttle * (0.09 + curve * 0.08) * dt;
+    if (throttle <= 0.01)
+      racer.rpm = Math.max(
+        racer.engine.idleRpm,
+        racer.rpm - racer.engine.rpmFallRate * 0.34 * dt,
+      );
     racer.rpm += (wheelRpm - racer.rpm) * Math.min(1, rpmCoupling * dt);
     if (racer.shiftDelay > 0)
       racer.rpm = Math.max(
