@@ -159,10 +159,13 @@ test('launch RPM produces distinct wheelspin and drivetrain-load behavior', () =
   };
 
   const low = sample(2400);
+  const balanced = sample(4700);
   const high = sample(6400);
   assert.ok(high.peakSlip > low.peakSlip + 0.08, 'higher launch RPM creates more wheelspin');
   assert.ok(low.rpm < low.initialRpm, 'engaging first loads the engine at low RPM');
   assert.ok(high.speed > 0 && low.speed > 0, 'wheelspin and bogging still produce forward motion');
+  assert.ok(balanced.speed > low.speed, 'a balanced launch outruns a bogged launch initially');
+  assert.ok(balanced.speed > high.speed, 'a balanced launch outruns excessive wheelspin initially');
 
   const stockHigh = sample(6400);
   const tireHigh = sample(6400, 'tires-1');
