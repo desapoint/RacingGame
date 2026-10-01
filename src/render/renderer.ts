@@ -147,6 +147,16 @@ export class Renderer {
           ctx.fillRect(finishX + col * 9, 269 + row * 15, 9, 15);
         }
     }
+    const startX = 352 - race.player.distance * 7;
+    if (startX > -90 && startX < 1160) {
+      ctx.fillStyle = '#e9e3d6aa';
+      ctx.fillRect(startX, 269, 4, 191);
+      ctx.fillStyle = '#e9e3d644';
+      ctx.fillRect(startX - 8, 269, 20, 5);
+    }
+
+    // Depth order at the tree is deliberate: opponent -> tree -> player.
+    // The player's lane is closest to the camera, so their car must cover the pole.
     const rival = race.racers[1];
     const rivalX = Math.max(
       -280,
@@ -163,33 +173,7 @@ export class Renderer {
       rival.nitroActive && rival.nitroLeft > 0,
     );
     ctx.restore();
-    ctx.save();
-    ctx.translate(65, 270);
-    ctx.scale(0.68, 0.68);
-    drawCar(
-      ctx,
-      race.player.car,
-      race.player.owned,
-      reducedMotion ? 0 : race.player.distance * 2,
-      race.player.nitroActive && race.player.nitroLeft > 0,
-    );
-    ctx.restore();
-    ctx.fillStyle = '#beb8c9';
-    ctx.font = '11px monospace';
-    ctx.fillText(
-      `${rival.name.toUpperCase()}  /  ${rival.car.name.toUpperCase()}`,
-      Math.max(20, rivalX + 82),
-      205,
-    );
-    ctx.fillStyle = '#e16a58';
-    ctx.fillText('YOU', 205, 291);
-    const startX = 352 - race.player.distance * 7;
-    if (startX > -90 && startX < 1160) {
-      ctx.fillStyle = '#e9e3d6aa';
-      ctx.fillRect(startX, 269, 4, 191);
-      ctx.fillStyle = '#e9e3d644';
-      ctx.fillRect(startX - 8, 269, 20, 5);
-    }
+
     if (race.time < 0.85 && startX > -90) {
       const treeX = startX + 54;
       const poleTop = 126;
@@ -229,6 +213,28 @@ export class Renderer {
       ctx.fillText('PRE', treeX, 120);
       ctx.textAlign = 'left';
     }
+
+    ctx.save();
+    ctx.translate(65, 270);
+    ctx.scale(0.68, 0.68);
+    drawCar(
+      ctx,
+      race.player.car,
+      race.player.owned,
+      reducedMotion ? 0 : race.player.distance * 2,
+      race.player.nitroActive && race.player.nitroLeft > 0,
+    );
+    ctx.restore();
+
+    ctx.fillStyle = '#beb8c9';
+    ctx.font = '11px monospace';
+    ctx.fillText(
+      `${rival.name.toUpperCase()}  /  ${rival.car.name.toUpperCase()}`,
+      Math.max(20, rivalX + 82),
+      205,
+    );
+    ctx.fillStyle = '#e16a58';
+    ctx.fillText('YOU', 205, 291);
     if (race.paused) {
       ctx.fillStyle = '#111217cf';
       ctx.fillRect(0, 0, 1100, 460);
