@@ -240,6 +240,26 @@ class App {
       this.toast('Save exported. Keep the JSON file as your backup.');
       return;
     }
+    if (action === 'reset-progression') {
+      if (
+        !confirm(
+          'Reset all progression? This permanently deletes your credits, cars, upgrades, race results, career unlocks, workshop progress, preferences, and local save history. This cannot be undone unless you exported a backup.',
+        )
+      )
+        return;
+      const fresh = await this.repository.reset();
+      if (!fresh) {
+        this.toast('Reset failed. Your current profile has been kept.');
+        return;
+      }
+      this.save = fresh;
+      this.stopRace();
+      this.screen = 'garage';
+      this.editing = false;
+      this.render();
+      this.toast('Progress reset. A brand-new save has been created.');
+      return;
+    }
     if (action === 'recovery') {
       downloadSave(this.repository.recovery ?? '', 'redline-recovery.json');
       return;
