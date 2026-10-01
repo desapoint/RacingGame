@@ -57,3 +57,10 @@ See [getting-started.md](getting-started.md) for controls, commands, source layo
 - **Destructive reset lives in Settings:** Provide a clearly labeled reset-progression action alongside save import/export. Require an explicit confirmation before changing storage.
 - **Reset means a brand-new profile:** Use the same `freshSave()` path as a first launch and replace the persisted profile through `SaveRepository`. This resets credits, owned cars and upgrades, tuning and liveries, career unlocks/results, workshop and idle progress, race statistics, preferences, timestamps, and save ID; it is not a career-only reset.
 - **Recovery mode can be abandoned intentionally:** A successful reset may replace an unreadable stored save and clears the recovery block. Exported JSON backups are external files and are never deleted by the in-game reset.
+
+## 2026-09-30 — GitHub Pages deployment
+
+- **Playable web deployment:** Publish the production `dist/` output to GitHub Pages so the current game is playable from the repository's Pages URL without cloning or installing dependencies.
+- **Deploy from `main`:** A GitHub Actions workflow runs on pushes to `main` (and manual dispatch), installs locked npm dependencies, runs `npm run build`, uploads only `dist/`, and deploys that artifact to the `github-pages` environment.
+- **Offline release remains supported:** GitHub Pages is an additional distribution path. Preserve the existing directly opened two-file release (`dist/index.html` plus `dist/config.js`) and its no-runtime-network requirements.
+
