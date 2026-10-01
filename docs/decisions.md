@@ -59,3 +59,24 @@ See [getting-started.md](getting-started.md) for controls, commands, source layo
 - **Stable sprite mapping:** Car definitions use a unique integer `spriteIndex` from 1 through 30. Stable car IDs remain the save/config reference; the sprite index only selects the matching atlas cell.
 - **Compact layered atlases:** Car bodies and paint masks use 6 × 5 atlases with 80 × 30 cells, while wheels use a separate 6 × 5 atlas with 32 × 32 cells. The three optimized atlases total 55,586 bytes. Separate wheels preserve rotation and wheel-style choices, and the renderer retains the existing 800 × 300 logical car space so saved paint/livery coordinates remain compatible.
 - **Offline packaging:** The release keeps code and CSS in `dist/index.html`, editable data in `dist/config.js`, and copies the three local atlases into `dist/assets/`. The release therefore requires the HTML, config, and assets directory together but still makes no runtime network requests.
+
+## 2026-09-29 — Explicit full progression reset
+
+- **Destructive reset lives in Settings:** Provide a clearly labeled reset-progression action alongside save import/export. Require an explicit confirmation before changing storage.
+- **Reset means a brand-new profile:** Use the same `freshSave()` path as a first launch and replace the persisted profile through `SaveRepository`. This resets credits, owned cars and upgrades, tuning and liveries, career unlocks/results, workshop and idle progress, race statistics, preferences, timestamps, and save ID; it is not a career-only reset.
+- **Recovery mode can be abandoned intentionally:** A successful reset may replace an unreadable stored save and clears the recovery block. Exported JSON backups are external files and are never deleted by the in-game reset.
+
+## 2026-09-30 — GitHub Pages deployment
+
+- **Playable web deployment:** Publish the production `dist/` output to GitHub Pages so the current game is playable from the repository's Pages URL without cloning or installing dependencies.
+- **Deploy from `main`:** A GitHub Actions workflow runs on pushes to `main` (and manual dispatch), installs locked npm dependencies, runs `npm run build`, uploads only `dist/`, and deploys that artifact to the `github-pages` environment.
+- **Offline release remains supported:** GitHub Pages is an additional distribution path. Preserve the existing directly opened two-file release (`dist/index.html` plus `dist/config.js`) and its no-runtime-network requirements.
+
+
+
+## 2026-09-30 — Automotive-first interface
+
+- **Car-themed controls:** General UI chrome uses dashboard, switchgear, metal, tire/wheel, and instrument-cluster cues rather than glossy app-style cards. Keep the treatment lightweight in CSS and reuse the existing procedural car artwork instead of adding runtime image downloads.
+- **Analog race instruments:** The race HUD presents speed and RPM as analog gauges with live needles, with gear and elapsed time styled as physical console instruments. Preserve the 20 Hz HUD update limit and reduced-motion behavior.
+- **Physical drag staging:** The starting-light display is a vertical drag-racing Christmas tree with pre-stage/stage, sequential amber, green, and red lamps, positioned beside the rendered start line so it moves with the track after launch.
+- **Timing-slip results:** Race results are presented as a drag-strip/timing-slip surface with lane separators and a checkered finish marker while retaining all four simulated drivers and the existing race-result data.

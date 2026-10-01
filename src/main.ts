@@ -241,6 +241,26 @@ class App {
       this.toast('Save exported. Keep the JSON file as your backup.');
       return;
     }
+    if (action === 'reset-progression') {
+      if (
+        !confirm(
+          'Reset all progression? This permanently deletes your credits, cars, upgrades, race results, career unlocks, workshop progress, preferences, and local save history. This cannot be undone unless you exported a backup.',
+        )
+      )
+        return;
+      const fresh = await this.repository.reset();
+      if (!fresh) {
+        this.toast('Reset failed. Your current profile has been kept.');
+        return;
+      }
+      this.save = fresh;
+      this.stopRace();
+      this.screen = 'garage';
+      this.editing = false;
+      this.render();
+      this.toast('Progress reset. A brand-new save has been created.');
+      return;
+    }
     if (action === 'recovery') {
       downloadSave(this.repository.recovery ?? '', 'redline-recovery.json');
       return;
@@ -348,7 +368,7 @@ class App {
       this.profile.settings.difficulty,
     );
     const main = document.querySelector<HTMLElement>('#main')!;
-    main.innerHTML = `<div class="page-heading race-heading"><div><div class="eyebrow">${context.type.toUpperCase()} / ${this.profile.settings.difficulty.toUpperCase()}</div><h1>${context.title}<span class="heading-dot">.</span></h1><p>¼ mile · ${carById.get(owned.id)!.name} · Featured rival: ${this.race.racers[1].name}</p></div>${ui.button('Pause <kbd>Esc</kbd>', 'pause', '', 'secondary')}</div><section class="panel race-panel"><div class="race-top"><span id="race-status">STAGING</span><div class="distance-bar"><i id="distance-fill"></i></div><span id="race-distance">0 / 402 M</span></div><canvas id="race-canvas" aria-label="Two lane drag race"></canvas><div class="race-feedback" id="race-feedback" role="status">Wait for green. Time your launch.</div><div class="dashboard"><div class="speed"><span>SPEED</span><strong id="speed">0</strong><small>KM/H</small></div><div class="tachometer"><div class="tach-label"><span id="rpm">3,000 RPM</span><span id="shift-label">LAUNCH WINDOW</span></div><div class="tach-track"><div id="tach-fill"></div><i id="shift-window"></i></div><div class="tach-scale"><span>0</span><span>2</span><span>4</span><span>6</span><span>8 × 1,000</span></div></div><div class="gear"><span>GEAR</span><strong id="gear">1</strong><small>/ 6</small></div><div class="race-time"><span>ELAPSED</span><strong id="elapsed">0.000</strong><small>SECONDS</small></div></div></section><div class="race-controls">${ui.button('<kbd>Space</kbd><span>Launch<small>On green · match the RPM window</small></span>', 'launch', '', 'secondary')}${ui.button('<kbd>↑</kbd><span>Shift up<small>6,100–6,800 RPM · Shift also works</small></span>', 'shift', '', 'primary')}${ui.button('<kbd>N</kbd><span>Nitrous<small id="nitro-label">' + (this.race.player.nitroLeft ? 'Ready to use' : 'Install a system in the garage') + '</small></span>', 'nitro', '', 'secondary', !this.race.player.nitroLeft)}</div><p class="race-note">Reaction time counts toward placement. Jumping the lights adds a 0.75 s penalty. All three rivals run the same distance.</p>`;
+    main.innerHTML = `<div class="page-heading race-heading"><div><div class="eyebrow">${context.type.toUpperCase()} / ${this.profile.settings.difficulty.toUpperCase()}</div><h1>${context.title}<span class="heading-dot">.</span></h1><p>¼ mile · ${carById.get(owned.id)!.name} · Featured rival: ${this.race.racers[1].name}</p></div>${ui.button('Pause <kbd>Esc</kbd>', 'pause', '', 'secondary')}</div><section class="panel race-panel"><div class="race-top"><span id="race-status">STAGING</span><div class="distance-bar"><i id="distance-fill"></i></div><span id="race-distance">0 / 402 M</span></div><canvas id="race-canvas" aria-label="Two lane drag race"></canvas><div class="race-feedback" id="race-feedback" role="status">Wait for green. Time your launch.</div><div class="dashboard instrument-cluster"><div class="gauge speed-gauge" id="speed-gauge"><div class="gauge-face"><span class="gauge-caption">SPEED</span><i class="gauge-needle"></i><i class="gauge-hub"></i><strong id="speed">0</strong><small>KM/H</small><div class="gauge-scale"><span>0</span><span>160</span><span>320</span></div></div></div><div class="gauge tach-gauge" id="tach-gauge"><div class="gauge-face"><span class="gauge-caption">TACH</span><i class="gauge-needle"></i><i class="gauge-hub"></i><strong id="rpm">3,000</strong><small>RPM</small><div class="gauge-scale"><span>0</span><span>4K</span><span>8K</span></div><span class="shift-callout" id="shift-label">LAUNCH WINDOW</span></div></div><div class="gear-console"><span>GEAR</span><strong id="gear">1</strong><small>6-SPEED</small><div class="shift-gate" aria-hidden="true"><i></i><i></i><i></i></div></div><div class="race-time odometer"><span>RUN TIMER</span><strong id="elapsed">0.000</strong><small>SECONDS</small></div></div></section><div class="race-controls">${ui.button('<kbd>Space</kbd><span>Launch<small>On green · match the RPM window</small></span>', 'launch', '', 'secondary')}${ui.button('<kbd>↑</kbd><span>Shift up<small>6,100–6,800 RPM · Shift also works</small></span>', 'shift', '', 'primary')}${ui.button('<kbd>N</kbd><span>Nitrous<small id="nitro-label">' + (this.race.player.nitroLeft ? 'Ready to use' : 'Install a system in the garage') + '</small></span>', 'nitro', '', 'secondary', !this.race.player.nitroLeft)}</div><p class="race-note">Reaction time counts toward placement. Jumping the lights adds a 0.75 s penalty. All three rivals run the same distance.</p>`;
     this.renderer = new Renderer(document.querySelector<HTMLCanvasElement>('#race-canvas')!);
     window.scrollTo(0, 0);
     this.lastHud = 0;
@@ -396,9 +416,24 @@ class App {
     };
     set('speed', Math.round(player.speed * 3.6).toString());
     set('gear', player.gear.toString());
-    set('rpm', `${ui.money(player.rpm)} RPM`);
+    set('rpm', ui.money(player.rpm));
     set('elapsed', player.elapsed.toFixed(3));
     set('race-distance', `${Math.floor(player.distance)} / 402 M`);
+    const speedGauge = document.getElementById('speed-gauge');
+    if (speedGauge)
+      speedGauge.style.setProperty(
+        '--needle-angle',
+        `${-120 + Math.min(1, (player.speed * 3.6) / 320) * 240}deg`,
+      );
+    const tachGauge = document.getElementById('tach-gauge');
+    if (tachGauge) {
+      tachGauge.style.setProperty(
+        '--needle-angle',
+        `${-120 + Math.min(1, player.rpm / 8000) * 240}deg`,
+      );
+      tachGauge.classList.toggle('perfect', player.rpm >= 6100 && player.rpm <= 6800);
+      tachGauge.classList.toggle('redline', player.rpm > 6800);
+    }
     set(
       'race-status',
       race.finished
@@ -499,7 +534,7 @@ class App {
       .querySelector('#main')!
       .insertAdjacentHTML(
         'beforeend',
-        `<section class="panel results" id="race-results" tabindex="-1"><div class="results-heading"><div><span class="eyebrow">${place === 1 ? 'THAT’S HOW IT’S DONE' : place <= 3 ? 'ON THE PODIUM' : 'ANOTHER RUN, ANOTHER LESSON'}</span><h2>${place === 1 ? 'You took the win.' : `P${place}. Keep chasing.`}</h2><p>${context.type === 'career' ? (place <= 3 ? 'Next event unlocked. Your story continues.' : 'A podium unlocks the next event. Retry for free.') : context.type === 'job' ? 'Shift complete. Your payout is in the bank.' : 'Practice complete. Try a different setup or take on the ladder.'}</p></div><div class="result-reward">+ C ${ui.money(reward)}<span>RACE REWARD</span></div></div><div class="result-stats"><div><span>REACTION</span><strong>${player.launched ? player.reaction.toFixed(3) : '—'} <small>s</small></strong></div><div><span>ELAPSED TIME</span><strong>${player.elapsed.toFixed(3)} <small>s</small></strong></div><div><span>TRAP SPEED</span><strong>${player.trap.toFixed(1)} <small>km/h</small></strong></div><div><span>PERFECT SHIFTS</span><strong>${race.shifts.filter((s) => s === 'Perfect shift').length} <small>/ ${race.shifts.length}</small></strong></div></div><div class="standings">${sorted.map((r, i) => `<div class="standing ${r === player ? 'is-player' : ''}"><strong>0${i + 1}</strong><span>${r.name}<small>${r.car.name}</small></span><span>${r.distance < data.distance ? 'DNF' : r.finish.toFixed(3) + ' s'}<small>TOTAL TIME</small></span></div>`).join('')}</div><div class="result-actions">${ui.button('Back to garage', 'nav', 'garage', 'secondary')}${ui.button('Run it back ↻', 'retry', '', 'secondary')}${ui.button('Continue career →', 'nav', 'career', 'primary')}</div></section>`,
+        `<section class="panel results timing-slip" id="race-results" tabindex="-1"><div class="results-heading"><div><span class="eyebrow">${place === 1 ? 'THAT’S HOW IT’S DONE' : place <= 3 ? 'ON THE PODIUM' : 'ANOTHER RUN, ANOTHER LESSON'}</span><h2>${place === 1 ? 'You took the win.' : `P${place}. Keep chasing.`}</h2><p>${context.type === 'career' ? (place <= 3 ? 'Next event unlocked. Your story continues.' : 'A podium unlocks the next event. Retry for free.') : context.type === 'job' ? 'Shift complete. Your payout is in the bank.' : 'Practice complete. Try a different setup or take on the ladder.'}</p></div><div class="result-reward">+ C ${ui.money(reward)}<span>RACE REWARD</span></div></div><div class="result-stats"><div><span>REACTION</span><strong>${player.launched ? player.reaction.toFixed(3) : '—'} <small>s</small></strong></div><div><span>ELAPSED TIME</span><strong>${player.elapsed.toFixed(3)} <small>s</small></strong></div><div><span>TRAP SPEED</span><strong>${player.trap.toFixed(1)} <small>km/h</small></strong></div><div><span>PERFECT SHIFTS</span><strong>${race.shifts.filter((s) => s === 'Perfect shift').length} <small>/ ${race.shifts.length}</small></strong></div></div><div class="strip-header"><span>FINISH ORDER</span><span>402 M DRAG STRIP / OFFICIAL TIMING</span></div><div class="standings drag-strip-results">${sorted.map((r, i) => `<div class="standing ${r === player ? 'is-player' : ''}"><strong>0${i + 1}</strong><span>${r.name}<small>${r.car.name}</small></span><span>${r.distance < data.distance ? 'DNF' : r.finish.toFixed(3) + ' s'}<small>TOTAL TIME</small></span></div>`).join('')}</div><div class="result-actions">${ui.button('Back to garage', 'nav', 'garage', 'secondary')}${ui.button('Run it back ↻', 'retry', '', 'secondary')}${ui.button('Continue career →', 'nav', 'career', 'primary')}</div></section>`,
       );
     document.querySelector<HTMLElement>('#race-results')?.focus({ preventScroll: true });
     document.querySelector('#race-results')?.scrollIntoView({
