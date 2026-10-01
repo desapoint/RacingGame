@@ -117,6 +117,8 @@ export function drawCar(
   nitro = false,
 ): void {
   ctx.save();
+  // Preserve the intentional pixel detail when the tiny source atlas is enlarged.
+  ctx.imageSmoothingEnabled = false;
   ctx.fillStyle = '#00000066';
   ctx.beginPath();
   ctx.ellipse(400, 258, 330, 15, 0, 0, Math.PI * 2);
