@@ -1,0 +1,10 @@
+
+> redline-drag-club@0.1.0 test:browser
+> playwright test tests/browser/silverado.spec.ts
+
+
+Running 1 test using 1 worker
+
+  ✓  1 tests/browser/silverado.spec.ts:8:1 › Silverado loads offline, keeps black stock paint, repaints only its body, and races (26.1s)
+
+  1 passed (26.7s)

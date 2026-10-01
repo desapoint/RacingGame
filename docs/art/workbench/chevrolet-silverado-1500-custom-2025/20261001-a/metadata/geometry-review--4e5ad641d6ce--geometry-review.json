@@ -1,0 +1,37 @@
+{
+  "spriteId": "chevrolet-silverado-1500-custom-2025",
+  "sourceDimensions": [
+    1774,
+    887
+  ],
+  "rawNonzeroAlphaBounds": [
+    0,
+    39,
+    1774,
+    822
+  ],
+  "boundsThresholdAlphaInclusive": 128,
+  "runtimeBounds": [
+    7,
+    166,
+    1758,
+    636
+  ],
+  "wheelCentersAndRadii": [
+    {
+      "x": 337,
+      "y": 652,
+      "radius": 144
+    },
+    {
+      "x": 1440,
+      "y": 652,
+      "radius": 144
+    }
+  ],
+  "review": "Manual wheel centers/radii reviewed against the original native PNG with the geometry overlay. The output has isolated low-alpha pixels well outside the visible truck; runtime bounds therefore use alpha >= 128 (50%) to preserve the complete opaque truck silhouette and avoid fitting invisible specks. The original PNG remains unchanged.",
+  "sourceImage": "src/assets/cars/chevrolet-silverado-1500-custom-2025-2d.png",
+  "realisticReference": "docs/art/realistic/chevrolet-silverado-1500-custom-2025.png",
+  "selectedCartoonCandidate": "cartoon-candidates/attempt-02.png",
+  "paintMask": "paintAreas polygons are native-image coordinates that cover the visible black painted bed, doors, roof and front panels; wheels, glass, lamps and grille remain unmasked."
+}

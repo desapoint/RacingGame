@@ -1,0 +1,10 @@
+Use case: stylized-concept
+Asset type: transparent 2D racing-game sprite, chevrolet-silverado-1500-custom-2025
+Primary request: depict the exact 2025 Chevrolet Silverado 1500 Custom in black as a clean illustrated side-view game sprite.
+Input images: Image 1 is the realistic reference and controls vehicle identity, side profile, facing, framing, wheels and black paint; Image 2 is style-only and controls the game's outlines and simplified cel shading.
+Scene/backdrop: transparent canvas, no ground or cast shadow.
+Subject: one complete right-facing Crew Cab short-bed 4WD Silverado pickup, stock-height suspension, black paint and two full wheels with silver hubs.
+Style/medium: crisp outlined 2D cartoon matching the supplied atlas's bold dark contours, broad simplified painted regions and restrained cel shading; readable at game scale.
+Composition/framing: match Image 1's side-on orthographic angle and framing; fit the complete truck and both tires/hubs with transparent padding.
+Constraints: preserve the Silverado's recognizable 2025 Custom grille, tall four-door cab, short bed, wheelbase and proportions; preserve black body paint; show stock silver wheels; genuine transparent alpha; no extra car, logos as text, watermark, ground, shadow or backdrop.
+Avoid: photorealism, blur, gradients outside the vehicle, glow, scenery, cropping, missing or partial wheels, copying atlas subjects, Trail Boss/ZR2 lift or equipment.

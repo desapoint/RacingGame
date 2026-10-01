@@ -1,0 +1,34 @@
+{
+  "kia-forte-gt-sedan-2022": {
+    "file": "kia-forte-gt-sedan-2022-2d.png",
+    "width": 2170,
+    "height": 725,
+    "bounds": [
+      26,
+      31,
+      2115,
+      678
+    ],
+    "wheels": [
+      {
+        "x": 430,
+        "y": 540,
+        "radius": 162
+      },
+      {
+        "x": 1718,
+        "y": 540,
+        "radius": 162
+      }
+    ],
+    "paintColor": "#a92811",
+    "facing": "right",
+    "referenceUrls": [
+      "https://www.kia.com/us/content/dam/kia/us/brochures/2022-sedans-brochure.pdf",
+      "https://www.kiamedia.com/us/en/media/photos/17929/2022-forte-22"
+    ],
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/kia-forte-gt-sedan-2022.png",
+    "geometryPreview": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/previews/final-geometry.png"
+  }
+}

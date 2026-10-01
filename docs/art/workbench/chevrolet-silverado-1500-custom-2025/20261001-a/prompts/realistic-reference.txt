@@ -1,0 +1,10 @@
+Use case: stylized-concept
+Asset type: transparent realistic model reference for a 2D racing-game sprite
+Primary request: create an accurate 2025 Chevrolet Silverado 1500 Custom Crew Cab short-bed 4WD pickup in black paint, one vehicle only.
+Input images: Image 1 is Chevrolet's official 2025 Silverado Custom render and controls the exact Custom fascia, trim, wheels and 4x4 Crew Cab/short-bed details; Image 2 is Chevrolet's official 2025 Silverado side-view image and controls the model-year side silhouette and proportions.
+Scene/backdrop: genuinely transparent background, no ground or cast shadow.
+Subject: complete Silverado 1500, four-door Crew Cab, short bed, 4WD stance, facing right, stock 20-inch bright-silver aluminum wheels, black painted body. Preserve the short box, four full-size doors, tall modern pickup cab, high hood, stock-height suspension, horizontal Chevrolet grille, stacked corner lamps and modern Silverado bed/taillamp proportions. This is the Custom trim, not Custom Trail Boss or ZR2.
+Style/medium: realistic polished automotive illustration/reference, faithful to the official references.
+Composition/framing: strict orthographic side profile, full vehicle and both wheels visible, centered with transparent padding.
+Constraints: deep black paint with readable restrained highlights; no lift, no off-road tires, no trailer, no accessories, no extra vehicle, no text, no watermark, no scenery; true alpha.
+Avoid: three-quarter view, perspective, cropped vehicle, incorrect cab or bed, Trail Boss/ZR2 equipment, invented decals.

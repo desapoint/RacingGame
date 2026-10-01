@@ -121,35 +121,36 @@
   },
   "kia-forte-gt-sedan-2022": {
     "file": "kia-forte-gt-sedan-2022-2d.png",
-    "width": 2172,
-    "height": 724,
+    "width": 2170,
+    "height": 725,
     "bounds": [
-      24,
+      26,
       31,
-      2122,
-      693
+      2115,
+      678
     ],
     "wheels": [
       {
         "x": 430,
-        "y": 539,
+        "y": 540,
         "radius": 162
       },
       {
-        "x": 1720,
+        "x": 1718,
         "y": 540,
         "radius": 162
       }
     ],
-    "paintColor": "#e56c12",
+    "paintColor": "#a92811",
     "referenceUrls": [
       "https://www.kiamedia.com/us/en/media/photos/17929/2022-forte-22",
-      "https://images.caricos.com/k/kia/2022_kia_forte/images/2560x1440/2022_kia_forte_12_2560x1440.jpg"
+      "https://images.caricos.com/k/kia/2022_kia_forte/images/2560x1440/2022_kia_forte_12_2560x1440.jpg",
+      "https://www.kia.com/us/content/dam/kia/us/brochures/2022-sedans-brochure.pdf"
     ],
     "facing": "right",
     "renderStyle": "cartoon-2d",
     "realisticReference": "docs/art/realistic/kia-forte-gt-sedan-2022.png",
-    "artworkSource": "User-supplied illustrated sprite, 2026-10-01"
+    "artworkSource": "User-supplied illustrated sprite corrected with OpenAI ImageGen, 2026-10-01; workbench docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/ preserves the prior and selected stages. Fire Orange hue is a visual approximation sampled from Kia's official brochure swatch, not a verified factory RGB value."
   },
   "ford-mustang-boss302-1969": {
     "file": "ford-mustang-boss302-1969.png",

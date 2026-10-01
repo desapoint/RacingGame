@@ -1,0 +1,6 @@
+
+> redline-drag-club@0.1.0 build
+> tsc --noEmit && node scripts/build.mjs
+
+Offline release: dist/index.html (6692.0 KB)
+Offline release: dist/config.js (87.4 KB)

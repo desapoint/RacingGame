@@ -1,0 +1,183 @@
+{
+  "honda-civic-si-2023": {
+    "file": "honda-civic-si-2023-2d.png",
+    "width": 1946,
+    "height": 808,
+    "bounds": [
+      15,
+      117,
+      1920,
+      619
+    ],
+    "wheels": [
+      {
+        "x": 408,
+        "y": 585,
+        "radius": 113
+      },
+      {
+        "x": 1575,
+        "y": 590,
+        "radius": 113
+      }
+    ],
+    "paintColor": "#d91b22",
+    "referenceUrls": [
+      "https://platform.cstatic-images.com/xxlarge/in/v2/stock_photos/ab6caf3f-e4cf-49d6-9c2f-867da2fa63bb/ff8ca6d2-32a6-4b44-8f31-66fe236f70f8.png",
+      "https://www.cars.com/research/honda-civic_si-2023/"
+    ],
+    "facing": "right",
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/honda-civic-si-2023.png"
+  },
+  "volkswagen-golf-gti-2024": {
+    "file": "volkswagen-golf-gti-2024.png",
+    "width": 1717,
+    "height": 916,
+    "bounds": [
+      11,
+      189,
+      1692,
+      592
+    ],
+    "wheels": [
+      {
+        "x": 299,
+        "y": 638,
+        "radius": 123
+      },
+      {
+        "x": 1376,
+        "y": 638,
+        "radius": 123
+      }
+    ],
+    "paintColor": "#dc171f",
+    "referenceUrls": [
+      "https://cdn.motor1.com/images/mgl/8AN21W/s1/vw-golf-gti-2024.webp",
+      "https://www.autoevolution.com/news/2024-vw-golf-gti-pricing-announced-costs-new-bmw-3-series-money-233882.html"
+    ]
+  },
+  "toyota-gr-corolla-2024": {
+    "file": "toyota-gr-corolla-2024.png",
+    "width": 1672,
+    "height": 941,
+    "bounds": [
+      16,
+      206,
+      1640,
+      585
+    ],
+    "facing": "left",
+    "wheels": [
+      {
+        "x": 339,
+        "y": 659,
+        "radius": 114
+      },
+      {
+        "x": 1382,
+        "y": 660,
+        "radius": 114
+      }
+    ],
+    "paintColor": "#0875d1",
+    "referenceUrls": [
+      "https://www.motortrend.com/uploads/2023/06/2024-Toyota-GR-Corolla-13.png",
+      "https://pressroom.toyota.com/album/2024-toyota-gr-corolla/"
+    ]
+  },
+  "mazda3-turbo-sedan-2021": {
+    "file": "mazda3-turbo-sedan-2021-2d.png",
+    "width": 2172,
+    "height": 724,
+    "bounds": [
+      32,
+      21,
+      2107,
+      687
+    ],
+    "wheels": [
+      {
+        "x": 447,
+        "y": 527,
+        "radius": 159
+      },
+      {
+        "x": 1728,
+        "y": 528,
+        "radius": 159
+      }
+    ],
+    "paintColor": "#c91420",
+    "referenceUrls": [
+      "https://cdn.motor1.com/images/mgl/b3jkl/s1/2021-mazda3-turbo-first-drive.jpg",
+      "https://www.jdpower.com/cars/2021/mazda/mazda3"
+    ],
+    "facing": "right",
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/mazda3-turbo-sedan-2021.png",
+    "artworkSource": "User-supplied illustrated sprite, 2026-10-01"
+  },
+  "kia-forte-gt-sedan-2022": {
+    "file": "kia-forte-gt-sedan-2022-2d.png",
+    "width": 2170,
+    "height": 725,
+    "bounds": [
+      26,
+      31,
+      2115,
+      678
+    ],
+    "wheels": [
+      {
+        "x": 430,
+        "y": 540,
+        "radius": 162
+      },
+      {
+        "x": 1718,
+        "y": 540,
+        "radius": 162
+      }
+    ],
+    "paintColor": "#a92811",
+    "referenceUrls": [
+      "https://www.kiamedia.com/us/en/media/photos/17929/2022-forte-22",
+      "https://images.caricos.com/k/kia/2022_kia_forte/images/2560x1440/2022_kia_forte_12_2560x1440.jpg",
+      "https://www.kia.com/us/content/dam/kia/us/brochures/2022-sedans-brochure.pdf"
+    ],
+    "facing": "right",
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/kia-forte-gt-sedan-2022.png",
+    "artworkSource": "User-supplied illustrated sprite corrected with OpenAI ImageGen, 2026-10-01; workbench docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/ preserves the prior and selected stages. Fire Orange hue is a visual approximation sampled from Kia's official brochure swatch, not a verified factory RGB value."
+  },
+  "ford-mustang-boss302-1969": {
+    "file": "ford-mustang-boss302-1969.png",
+    "width": 2052,
+    "height": 766,
+    "bounds": [
+      27,
+      137,
+      1998,
+      569
+    ],
+    "wheels": [
+      {
+        "x": 457,
+        "y": 552,
+        "radius": 117
+      },
+      {
+        "x": 1663,
+        "y": 552,
+        "radius": 117
+      }
+    ],
+    "paintColor": "#d81f1e",
+    "referenceUrls": [
+      "https://res.cloudinary.com/mecum/image/upload/v1669823128/auctions/fl22/fl0122-494122/1713947_8.jpg",
+      "https://www.mecum.com/lots/FL0122-494122/1969-ford-mustang-boss-302-fastback/"
+    ]
+  }
+}

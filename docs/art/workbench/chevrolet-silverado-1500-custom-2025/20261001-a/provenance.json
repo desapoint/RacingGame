@@ -1,0 +1,925 @@
+{
+  "schemaVersion": 1,
+  "modelId": "chevrolet-silverado-1500-custom-2025",
+  "runId": "20261001-a",
+  "createdAtUtc": "2026-10-01T17:08:11Z",
+  "status": "in-progress",
+  "agent": {
+    "model": "gpt-6-luna",
+    "reasoningEffort": "high",
+    "workers": 1,
+    "imageTool": "built-in image_gen"
+  },
+  "preservation": {
+    "sourceArchives": "immutable byte copies",
+    "runtimeCopies": "derived and may be lossy; never replace source archives",
+    "generativeReproducibility": "future model runs may produce different pixels"
+  },
+  "artifacts": [
+    {
+      "artifactId": "inputs:official-custom-reference:c4194fec1784",
+      "stage": "inputs",
+      "role": "official-custom-reference",
+      "path": "inputs/official-custom-reference--c4194fec1784--chevrolet-silverado-custom-2025.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/references/chevrolet-silverado-custom-2025.png",
+      "sourceUrl": null,
+      "sha256": "c4194fec1784e8b848137e466e05bb58a223979aedc9285e042edbca0391d9ba",
+      "bytes": 606572,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:08:11Z"
+    },
+    {
+      "artifactId": "inputs:official-side-reference:2e018bc241b2",
+      "stage": "inputs",
+      "role": "official-side-reference",
+      "path": "inputs/official-side-reference--2e018bc241b2--chevrolet-silverado-1500-2025-official.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/references/chevrolet-silverado-1500-2025-official.png",
+      "sourceUrl": null,
+      "sha256": "2e018bc241b2424250cdab4d64abd985ded2e51baf81abe4d6fe283433c23586",
+      "bytes": 183429,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:08:11Z"
+    },
+    {
+      "artifactId": "inputs:style-atlas:f106c5d1630e",
+      "stage": "inputs",
+      "role": "style-atlas",
+      "path": "inputs/style-atlas--f106c5d1630e--sports-car-side-sprite-atlas.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/style-reference/sports-car-side-sprite-atlas.png",
+      "sourceUrl": null,
+      "sha256": "f106c5d1630ec04384d38164390a5fe567be5b4b779bd822d94d8bf6a6d3a4a5",
+      "bytes": 1852843,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:08:11Z"
+    },
+    {
+      "artifactId": "inputs:previous-street-metadata:1b271f0153e9",
+      "stage": "inputs",
+      "role": "previous-street-metadata",
+      "path": "inputs/previous-street-metadata--1b271f0153e9--street-metadata.json",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/street-metadata.json",
+      "sourceUrl": null,
+      "sha256": "1b271f0153e900d0caf5a6180a1b32f4ac39ebdfc0422d87cb7b0f712dfc0c24",
+      "bytes": 4290,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:08:11Z"
+    },
+    {
+      "artifactId": "inputs:previous-game-config:2c419bef4bec",
+      "stage": "inputs",
+      "role": "previous-game-config",
+      "path": "inputs/previous-game-config--2c419bef4bec--game-data.json",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/data/game-data.json",
+      "sourceUrl": null,
+      "sha256": "2c419bef4bec8326313c476ee80da90a10dad2e81b6d1d6ca70c2a05224acc86",
+      "bytes": 86604,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:08:11Z"
+    },
+    {
+      "artifactId": "inputs:previous-catalog:1742f64b0e87",
+      "stage": "inputs",
+      "role": "previous-catalog",
+      "path": "inputs/previous-catalog--1742f64b0e87--catalog.ts",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/catalog.ts",
+      "sourceUrl": null,
+      "sha256": "1742f64b0e87c1e149c7ab01796c5674d544be22b8542bff91686748685e63fb",
+      "bytes": 14806,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:08:11Z"
+    },
+    {
+      "artifactId": "inputs:previous-payload-chunk:18d58ffc05ba",
+      "stage": "inputs",
+      "role": "previous-payload-chunk",
+      "path": "inputs/previous-payload-chunk--18d58ffc05ba--chunk-1.ts",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/payloads/chunk-1.ts",
+      "sourceUrl": null,
+      "sha256": "18d58ffc05babee11fd052cb1e92c62b057754c939bfa6e1ecc55c60c999df9f",
+      "bytes": 332929,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:08:11Z"
+    },
+    {
+      "artifactId": "prompts:realistic-reference:7f4c281cd4c6",
+      "stage": "prompts",
+      "role": "realistic-reference",
+      "path": "prompts/realistic-reference--7f4c281cd4c6--realistic-reference.txt",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/chevrolet-silverado-1500-custom-2025/20261001-a/prompts/realistic-reference.txt",
+      "sourceUrl": null,
+      "sha256": "7f4c281cd4c60ea31c8ec36112e1a8786757cc268a62268258c0b5ac3e47e6a6",
+      "bytes": 1561,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:10:47Z"
+    },
+    {
+      "artifactId": "prompts:standard:010c5c5ee6e3",
+      "stage": "prompts",
+      "role": "standard",
+      "path": "prompts/standard--010c5c5ee6e3--standard.txt",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/chevrolet-silverado-1500-custom-2025/20261001-a/prompts/standard.txt",
+      "sourceUrl": null,
+      "sha256": "010c5c5ee6e353e0ea6023a7356f39e410c4749a7c894c9dd99ffa9e17ae327f",
+      "bytes": 1434,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:10:48Z"
+    },
+    {
+      "artifactId": "realistic-candidates:attempt-01:0a7021790126",
+      "stage": "realistic-candidates",
+      "role": "attempt-01",
+      "path": "realistic-candidates/attempt-01--0a7021790126--attempt-01.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/chevrolet-silverado-1500-custom-2025/20261001-a/realistic-candidates/attempt-01.png",
+      "sourceUrl": null,
+      "sha256": "0a7021790126e3030f14e1f62bd56b9dc31b77088dea6e4127f08a0dc9d4e84c",
+      "bytes": 991264,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:13:27Z"
+    },
+    {
+      "artifactId": "realistic-candidates:attempt-02:f9cadc0f50b6",
+      "stage": "realistic-candidates",
+      "role": "attempt-02",
+      "path": "realistic-candidates/attempt-02--f9cadc0f50b6--attempt-02.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/chevrolet-silverado-1500-custom-2025/20261001-a/realistic-candidates/attempt-02.png",
+      "sourceUrl": null,
+      "sha256": "f9cadc0f50b6bfd98198032878d2e329ccc1a4ca92e0706aa0f2999acbb6eb2c",
+      "bytes": 1011278,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:13:27Z"
+    },
+    {
+      "artifactId": "realistic-candidates:selected-realistic:f9cadc0f50b6",
+      "stage": "realistic-candidates",
+      "role": "selected-realistic",
+      "path": "realistic-candidates/selected-realistic--f9cadc0f50b6--chevrolet-silverado-1500-custom-2025.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/realistic/chevrolet-silverado-1500-custom-2025.png",
+      "sourceUrl": null,
+      "sha256": "f9cadc0f50b6bfd98198032878d2e329ccc1a4ca92e0706aa0f2999acbb6eb2c",
+      "bytes": 1011278,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:15:02Z"
+    },
+    {
+      "artifactId": "cartoon-candidates:attempt-01:6c748bb2d78a",
+      "stage": "cartoon-candidates",
+      "role": "attempt-01",
+      "path": "cartoon-candidates/attempt-01--6c748bb2d78a--attempt-01.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/chevrolet-silverado-1500-custom-2025/20261001-a/cartoon-candidates/attempt-01.png",
+      "sourceUrl": null,
+      "sha256": "6c748bb2d78a14d4590ceeae813415348094c6b09d4a666c895fcb922606498c",
+      "bytes": 977629,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:16:15Z"
+    },
+    {
+      "artifactId": "prompts:standard-attempt-02:b8a53ce727eb",
+      "stage": "prompts",
+      "role": "standard-attempt-02",
+      "path": "prompts/standard-attempt-02--b8a53ce727eb--standard-attempt-02.txt",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/chevrolet-silverado-1500-custom-2025/20261001-a/prompts/standard-attempt-02.txt",
+      "sourceUrl": null,
+      "sha256": "b8a53ce727ebc3e28cfaa0022f75106ec79d8edc93045830d840245ffadeea05",
+      "bytes": 1744,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:16:50Z"
+    },
+    {
+      "artifactId": "cartoon-candidates:attempt-02:de4f8028166a",
+      "stage": "cartoon-candidates",
+      "role": "attempt-02",
+      "path": "cartoon-candidates/attempt-02--de4f8028166a--attempt-02.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/chevrolet-silverado-1500-custom-2025/20261001-a/cartoon-candidates/attempt-02.png",
+      "sourceUrl": null,
+      "sha256": "de4f8028166a5ca206802a70d3a5f4fd9438e17fd56f50e4d893f915cacc667e",
+      "bytes": 945617,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:18:04Z"
+    },
+    {
+      "artifactId": "inputs:expansion-plan-before:a6dd61901a29",
+      "stage": "inputs",
+      "role": "expansion-plan-before",
+      "path": "inputs/expansion-plan-before--a6dd61901a29--expansion-plan.json",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/data/expansion-plan.json",
+      "sourceUrl": null,
+      "sha256": "a6dd61901a293f613ae352b9c2dc8e54462d7cb253772a6b1f7ebd0ae1612208",
+      "bytes": 3616,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:23:23Z"
+    },
+    {
+      "artifactId": "inputs:expansion-models-before:c3bae33d092e",
+      "stage": "inputs",
+      "role": "expansion-models-before",
+      "path": "inputs/expansion-models-before--c3bae33d092e--expansion-models.json",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/data/expansion-models.json",
+      "sourceUrl": null,
+      "sha256": "c3bae33d092eebc488e35643e4d90d7fa584452c22ceef57b67e00ff2220a1e2",
+      "bytes": 38917,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:23:23Z"
+    },
+    {
+      "artifactId": "inputs:expansion-clean-metadata-before:fab9db490951",
+      "stage": "inputs",
+      "role": "expansion-clean-metadata-before",
+      "path": "inputs/expansion-clean-metadata-before--fab9db490951--expansion-clean-metadata.json",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/expansion-clean-metadata.json",
+      "sourceUrl": null,
+      "sha256": "fab9db490951f646c4108aad2f344975413f74e0ff7fe2d3e08edc80bbc13d13",
+      "bytes": 15294,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:23:23Z"
+    },
+    {
+      "artifactId": "inputs:asset-preparation-script-before:9c33b0e8761f",
+      "stage": "inputs",
+      "role": "asset-preparation-script-before",
+      "path": "inputs/asset-preparation-script-before--9c33b0e8761f--prepare-car-assets.mjs",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/scripts/prepare-car-assets.mjs",
+      "sourceUrl": null,
+      "sha256": "9c33b0e8761f46955e30cd77d9689e7a7b40bba7f145f6b635bc13253054261e",
+      "bytes": 5067,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:23:23Z"
+    },
+    {
+      "artifactId": "inputs:roster-assembler-before:eaac526817b3",
+      "stage": "inputs",
+      "role": "roster-assembler-before",
+      "path": "inputs/roster-assembler-before--eaac526817b3--assemble-roster.mjs",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/scripts/assemble-roster.mjs",
+      "sourceUrl": null,
+      "sha256": "eaac526817b3aaf4e5d0fb636dc98707c9fd1e75508f05e699319af82df5157a",
+      "bytes": 5939,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:23:23Z"
+    },
+    {
+      "artifactId": "inputs:sprite-types-before:5000ac7652ee",
+      "stage": "inputs",
+      "role": "sprite-types-before",
+      "path": "inputs/sprite-types-before--5000ac7652ee--sprite-types.ts",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/render/sprite-types.ts",
+      "sourceUrl": null,
+      "sha256": "5000ac7652eea81eeda14d9c62f722447166415baafa096c5b88cbd552435ab7",
+      "bytes": 296,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:23:24Z"
+    },
+    {
+      "artifactId": "inputs:sprite-paint-before:d3eb2768d49d",
+      "stage": "inputs",
+      "role": "sprite-paint-before",
+      "path": "inputs/sprite-paint-before--d3eb2768d49d--sprite-paint.ts",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/render/sprite-paint.ts",
+      "sourceUrl": null,
+      "sha256": "d3eb2768d49d457e2943a407b01a331631c43c34e8fa9e2db4e11e1589ab52d7",
+      "bytes": 3582,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:23:24Z"
+    },
+    {
+      "artifactId": "inputs:car-renderer-before:497fbe25be76",
+      "stage": "inputs",
+      "role": "car-renderer-before",
+      "path": "inputs/car-renderer-before--497fbe25be76--car.ts",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/render/car.ts",
+      "sourceUrl": null,
+      "sha256": "497fbe25be761274c0e551638be684344353c32647ea71efbec4e8f5c3304387",
+      "bytes": 12286,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:23:24Z"
+    },
+    {
+      "artifactId": "inputs:catalog-before-silverado-runtime:1742f64b0e87",
+      "stage": "inputs",
+      "role": "catalog-before-silverado-runtime",
+      "path": "inputs/catalog-before-silverado-runtime--1742f64b0e87--catalog.ts",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/catalog.ts",
+      "sourceUrl": null,
+      "sha256": "1742f64b0e87c1e149c7ab01796c5674d544be22b8542bff91686748685e63fb",
+      "bytes": 14806,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:29:20Z"
+    },
+    {
+      "artifactId": "inputs:payload-chunk-19-before-silverado:ceb047360aa4",
+      "stage": "inputs",
+      "role": "payload-chunk-19-before-silverado",
+      "path": "inputs/payload-chunk-19-before-silverado--ceb047360aa4--chunk-19.ts",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/payloads/chunk-19.ts",
+      "sourceUrl": null,
+      "sha256": "ceb047360aa466dade350301ffca8b4cd988e0f9952e2663e3ac7b58f799b7d7",
+      "bytes": 201920,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:29:20Z"
+    },
+    {
+      "artifactId": "cartoon-candidates:selected-standard-final:de4f8028166a",
+      "stage": "cartoon-candidates",
+      "role": "selected-standard-final",
+      "path": "cartoon-candidates/selected-standard-final--de4f8028166a--chevrolet-silverado-1500-custom-2025-2d.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/chevrolet-silverado-1500-custom-2025-2d.png",
+      "sourceUrl": null,
+      "sha256": "de4f8028166a5ca206802a70d3a5f4fd9438e17fd56f50e4d893f915cacc667e",
+      "bytes": 945617,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:32:47Z"
+    },
+    {
+      "artifactId": "metadata:expansion-clean-record:0f7c1788cc0c",
+      "stage": "metadata",
+      "role": "expansion-clean-record",
+      "path": "metadata/expansion-clean-record--0f7c1788cc0c--expansion-clean-metadata.json",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/expansion-clean-metadata.json",
+      "sourceUrl": null,
+      "sha256": "0f7c1788cc0c3244251ccd27fb753254c684b45de1d63ecb48c0dfceedd0c171",
+      "bytes": 18326,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:32:47Z"
+    },
+    {
+      "artifactId": "metadata:factory-sheet:e31366b693cf",
+      "stage": "metadata",
+      "role": "factory-sheet",
+      "path": "metadata/factory-sheet--e31366b693cf--expansion-models.json",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/data/expansion-models.json",
+      "sourceUrl": null,
+      "sha256": "e31366b693cf8d19aea660c5af1536a517ea09cbe05af65a0ad13d1e90a21fbb",
+      "bytes": 40856,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:32:48Z"
+    },
+    {
+      "artifactId": "metadata:model-plan:f27f8d41068d",
+      "stage": "metadata",
+      "role": "model-plan",
+      "path": "metadata/model-plan--f27f8d41068d--expansion-plan.json",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/data/expansion-plan.json",
+      "sourceUrl": null,
+      "sha256": "f27f8d41068d01efc1696cec2eb2b7a64f104c321f120126c473a8fb6627d57c",
+      "bytes": 3819,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:32:48Z"
+    },
+    {
+      "artifactId": "previews:wheel-geometry-reviewed:5616123d474d",
+      "stage": "previews",
+      "role": "wheel-geometry-reviewed",
+      "path": "previews/wheel-geometry-reviewed--5616123d474d--wheel-geometry-reviewed.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/chevrolet-silverado-1500-custom-2025/20261001-a/previews/wheel-geometry-reviewed.png",
+      "sourceUrl": null,
+      "sha256": "5616123d474de65ff26dcce1fbaa3ece25e0ae08e9f7ab6f22e5d2bdea84d213",
+      "bytes": 920663,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:32:48Z"
+    },
+    {
+      "artifactId": "metadata:geometry-review:4e5ad641d6ce",
+      "stage": "metadata",
+      "role": "geometry-review",
+      "path": "metadata/geometry-review--4e5ad641d6ce--geometry-review.json",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/chevrolet-silverado-1500-custom-2025/20261001-a/metadata/geometry-review.json",
+      "sourceUrl": null,
+      "sha256": "4e5ad641d6ce650dd46cfc6515b35fc9db2f957c5e8baa1fd6168031a87e6523",
+      "bytes": 1208,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:32:48Z"
+    },
+    {
+      "artifactId": "other:model-record-readme:5552f54337fa",
+      "stage": "other",
+      "role": "model-record-readme",
+      "path": "other/model-record-readme--5552f54337fa--README.md",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/chevrolet-silverado-1500-custom-2025/20261001-a/README.md",
+      "sourceUrl": null,
+      "sha256": "5552f54337fabebc8a7c2744bed144c41de908205a21ca36f13c91f2f6ee08af",
+      "bytes": 2351,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:32:48Z"
+    },
+    {
+      "artifactId": "runtime:optimized-webp-derived:d16895d69e2d",
+      "stage": "runtime",
+      "role": "optimized-webp-derived",
+      "path": "runtime/optimized-webp-derived--d16895d69e2d--chevrolet-silverado-1500-custom-2025.webp",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/chevrolet-silverado-1500-custom-2025/20261001-a/runtime/chevrolet-silverado-1500-custom-2025.webp",
+      "sourceUrl": null,
+      "sha256": "d16895d69e2dafd857fd7caf789525b79386dc162f7becf601d078aa40424db3",
+      "bytes": 69608,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:32:48Z"
+    },
+    {
+      "artifactId": "runtime:final-canonical-webp:d16895d69e2d",
+      "stage": "runtime",
+      "role": "final-canonical-webp",
+      "path": "runtime/final-canonical-webp--d16895d69e2d--chevrolet-silverado-1500-custom-2025.webp",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/optimized/chevrolet-silverado-1500-custom-2025.webp",
+      "sourceUrl": null,
+      "sha256": "d16895d69e2dafd857fd7caf789525b79386dc162f7becf601d078aa40424db3",
+      "bytes": 69608,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:56:15Z"
+    },
+    {
+      "artifactId": "runtime:final-catalog:8f7036e36ef4",
+      "stage": "runtime",
+      "role": "final-catalog",
+      "path": "runtime/final-catalog--8f7036e36ef4--catalog.ts",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/catalog.ts",
+      "sourceUrl": null,
+      "sha256": "8f7036e36ef40c23cd258b7673b4e6af8350d61150612deea5a4c54a662b53e4",
+      "bytes": 15372,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:56:19Z"
+    },
+    {
+      "artifactId": "runtime:final-payload-chunk-19:b19efca7847d",
+      "stage": "runtime",
+      "role": "final-payload-chunk-19",
+      "path": "runtime/final-payload-chunk-19--b19efca7847d--chunk-19.ts",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/payloads/chunk-19.ts",
+      "sourceUrl": null,
+      "sha256": "b19efca7847db4e198c399b4f463a7925f7aa0662f49e1ad320793750f4eae11",
+      "bytes": 294760,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:56:26Z"
+    },
+    {
+      "artifactId": "runtime:final-offline-html:eacccd9b66d2",
+      "stage": "runtime",
+      "role": "final-offline-html",
+      "path": "runtime/final-offline-html--eacccd9b66d2--index.html",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/dist/index.html",
+      "sourceUrl": null,
+      "sha256": "eacccd9b66d289825e7a25b8a295dd8322246e2d6f5d5c99bcc8c4abdfe6da31",
+      "bytes": 6852641,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:56:29Z"
+    },
+    {
+      "artifactId": "runtime:final-editable-config:e4e1113ce18b",
+      "stage": "runtime",
+      "role": "final-editable-config",
+      "path": "runtime/final-editable-config--e4e1113ce18b--config.js",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/dist/config.js",
+      "sourceUrl": null,
+      "sha256": "e4e1113ce18b87241ccfef18e057258a6ff9d65234230cf4bbc0fbabb008982a",
+      "bytes": 89447,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:56:32Z"
+    },
+    {
+      "artifactId": "cartoon-candidates:final-selected-standard-source:de4f8028166a",
+      "stage": "cartoon-candidates",
+      "role": "final-selected-standard-source",
+      "path": "cartoon-candidates/final-selected-standard-source--de4f8028166a--chevrolet-silverado-1500-custom-2025-2d.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/chevrolet-silverado-1500-custom-2025-2d.png",
+      "sourceUrl": null,
+      "sha256": "de4f8028166a5ca206802a70d3a5f4fd9438e17fd56f50e4d893f915cacc667e",
+      "bytes": 945617,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:56:36Z"
+    },
+    {
+      "artifactId": "metadata:final-sprite-metadata:0f7c1788cc0c",
+      "stage": "metadata",
+      "role": "final-sprite-metadata",
+      "path": "metadata/final-sprite-metadata--0f7c1788cc0c--expansion-clean-metadata.json",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/expansion-clean-metadata.json",
+      "sourceUrl": null,
+      "sha256": "0f7c1788cc0c3244251ccd27fb753254c684b45de1d63ecb48c0dfceedd0c171",
+      "bytes": 18326,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:56:40Z"
+    },
+    {
+      "artifactId": "metadata:final-factory-sheet:e31366b693cf",
+      "stage": "metadata",
+      "role": "final-factory-sheet",
+      "path": "metadata/final-factory-sheet--e31366b693cf--expansion-models.json",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/data/expansion-models.json",
+      "sourceUrl": null,
+      "sha256": "e31366b693cf8d19aea660c5af1536a517ea09cbe05af65a0ad13d1e90a21fbb",
+      "bytes": 40856,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:56:43Z"
+    },
+    {
+      "artifactId": "metadata:final-model-plan:f27f8d41068d",
+      "stage": "metadata",
+      "role": "final-model-plan",
+      "path": "metadata/final-model-plan--f27f8d41068d--expansion-plan.json",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/data/expansion-plan.json",
+      "sourceUrl": null,
+      "sha256": "f27f8d41068d01efc1696cec2eb2b7a64f104c321f120126c473a8fb6627d57c",
+      "bytes": 3819,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:56:48Z"
+    },
+    {
+      "artifactId": "metadata:final-game-config:8cd89073e5d5",
+      "stage": "metadata",
+      "role": "final-game-config",
+      "path": "metadata/final-game-config--8cd89073e5d5--game-data.json",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/data/game-data.json",
+      "sourceUrl": null,
+      "sha256": "8cd89073e5d535d36f95cc70fca38addbc81b834acc670d1891200d68a512934",
+      "bytes": 89205,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:56:52Z"
+    },
+    {
+      "artifactId": "metadata:final-decisions:da94c6516c8b",
+      "stage": "metadata",
+      "role": "final-decisions",
+      "path": "metadata/final-decisions--da94c6516c8b--decisions.md",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/decisions.md",
+      "sourceUrl": null,
+      "sha256": "da94c6516c8b2b14efd41f530539bd2f2a0172de06b405fe8bf56cd8ce3d8434",
+      "bytes": 19206,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:56:55Z"
+    },
+    {
+      "artifactId": "other:final-asset-preparer:9fb1982d24da",
+      "stage": "other",
+      "role": "final-asset-preparer",
+      "path": "other/final-asset-preparer--9fb1982d24da--prepare-car-assets.mjs",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/scripts/prepare-car-assets.mjs",
+      "sourceUrl": null,
+      "sha256": "9fb1982d24da001fc4964f7a116d67e9408fe94b8c9cc4c89789cd75e58cb962",
+      "bytes": 5691,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:56:59Z"
+    },
+    {
+      "artifactId": "other:final-roster-assembler:c39b067863d1",
+      "stage": "other",
+      "role": "final-roster-assembler",
+      "path": "other/final-roster-assembler--c39b067863d1--assemble-roster.mjs",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/scripts/assemble-roster.mjs",
+      "sourceUrl": null,
+      "sha256": "c39b067863d12bcc5ba8e61011ddc5162e275ca2c78311857b0684536dff9a81",
+      "bytes": 6513,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:57:02Z"
+    },
+    {
+      "artifactId": "other:final-renderer:5b6f28ebceb5",
+      "stage": "other",
+      "role": "final-renderer",
+      "path": "other/final-renderer--5b6f28ebceb5--car.ts",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/render/car.ts",
+      "sourceUrl": null,
+      "sha256": "5b6f28ebceb55327745a05c463dead59b0f797db36238f27a640e150fd14b7f3",
+      "bytes": 13455,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:57:06Z"
+    },
+    {
+      "artifactId": "other:final-sprite-types:969675ecfa72",
+      "stage": "other",
+      "role": "final-sprite-types",
+      "path": "other/final-sprite-types--969675ecfa72--sprite-types.ts",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/render/sprite-types.ts",
+      "sourceUrl": null,
+      "sha256": "969675ecfa72747a603d1f2162c3966154fcac9e07bd25396d107453cb5f0328",
+      "bytes": 423,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:57:10Z"
+    },
+    {
+      "artifactId": "validation:silverado-browser-test:609b9c4ce647",
+      "stage": "validation",
+      "role": "silverado-browser-test",
+      "path": "validation/silverado-browser-test--609b9c4ce647--silverado.spec.ts",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/tests/browser/silverado.spec.ts",
+      "sourceUrl": null,
+      "sha256": "609b9c4ce647766428f603bfc15dc6122d2deb31cc9b2f37c089ca5910ac1aaa",
+      "bytes": 5331,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T17:57:13Z"
+    },
+    {
+      "artifactId": "validation:runtime-byte-verifier-catalog-indexes:9c3fec981c9d",
+      "stage": "validation",
+      "role": "runtime-byte-verifier-catalog-indexes",
+      "path": "validation/runtime-byte-verifier-catalog-indexes--9c3fec981c9d--verify-runtime.py",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/chevrolet-silverado-1500-custom-2025/20261001-a/validation/verify-runtime.py",
+      "sourceUrl": null,
+      "sha256": "9c3fec981c9d647ef72cda9d568e1be5c30944d62c220a0f2b72c4afece8faeb",
+      "bytes": 2070,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:03:04Z"
+    },
+    {
+      "artifactId": "validation:runtime-byte-result-all-59:004aaa8ab66a",
+      "stage": "validation",
+      "role": "runtime-byte-result-all-59",
+      "path": "validation/runtime-byte-result-all-59--004aaa8ab66a--runtime-integrity.log",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/chevrolet-silverado-1500-custom-2025/20261001-a/validation/runtime-integrity.log",
+      "sourceUrl": null,
+      "sha256": "004aaa8ab66a0a7fd92fdc96cb73e993d84c25623b831ac9b30df95b6f051d3f",
+      "bytes": 265,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:03:04Z"
+    }
+  ],
+  "selections": [
+    {
+      "stage": "realistic-candidates",
+      "artifactId": "realistic-candidates:attempt-02:f9cadc0f50b6",
+      "path": "realistic-candidates/attempt-02--f9cadc0f50b6--attempt-02.png",
+      "sha256": "f9cadc0f50b6bfd98198032878d2e329ccc1a4ca92e0706aa0f2999acbb6eb2c",
+      "atUtc": "2026-10-01T17:14:51Z"
+    },
+    {
+      "stage": "cartoon-candidates",
+      "artifactId": "cartoon-candidates:attempt-02:de4f8028166a",
+      "path": "cartoon-candidates/attempt-02--de4f8028166a--attempt-02.png",
+      "sha256": "de4f8028166a5ca206802a70d3a5f4fd9438e17fd56f50e4d893f915cacc667e",
+      "atUtc": "2026-10-01T17:18:39Z"
+    }
+  ],
+  "events": [
+    {
+      "type": "run-initialized",
+      "atUtc": "2026-10-01T17:08:11Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:official-custom-reference:c4194fec1784",
+      "atUtc": "2026-10-01T17:08:11Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:official-side-reference:2e018bc241b2",
+      "atUtc": "2026-10-01T17:08:11Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:style-atlas:f106c5d1630e",
+      "atUtc": "2026-10-01T17:08:11Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:previous-street-metadata:1b271f0153e9",
+      "atUtc": "2026-10-01T17:08:11Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:previous-game-config:2c419bef4bec",
+      "atUtc": "2026-10-01T17:08:11Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:previous-catalog:1742f64b0e87",
+      "atUtc": "2026-10-01T17:08:11Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:previous-payload-chunk:18d58ffc05ba",
+      "atUtc": "2026-10-01T17:08:11Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "prompts:realistic-reference:7f4c281cd4c6",
+      "atUtc": "2026-10-01T17:10:47Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "prompts:standard:010c5c5ee6e3",
+      "atUtc": "2026-10-01T17:10:48Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "realistic-candidates:attempt-01:0a7021790126",
+      "atUtc": "2026-10-01T17:13:27Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "realistic-candidates:attempt-02:f9cadc0f50b6",
+      "atUtc": "2026-10-01T17:13:27Z"
+    },
+    {
+      "type": "artifact-selected",
+      "stage": "realistic-candidates",
+      "artifactId": "realistic-candidates:attempt-02:f9cadc0f50b6",
+      "path": "realistic-candidates/attempt-02--f9cadc0f50b6--attempt-02.png",
+      "sha256": "f9cadc0f50b6bfd98198032878d2e329ccc1a4ca92e0706aa0f2999acbb6eb2c",
+      "atUtc": "2026-10-01T17:14:51Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "realistic-candidates:selected-realistic:f9cadc0f50b6",
+      "atUtc": "2026-10-01T17:15:02Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "cartoon-candidates:attempt-01:6c748bb2d78a",
+      "atUtc": "2026-10-01T17:16:15Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "prompts:standard-attempt-02:b8a53ce727eb",
+      "atUtc": "2026-10-01T17:16:50Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "cartoon-candidates:attempt-02:de4f8028166a",
+      "atUtc": "2026-10-01T17:18:04Z"
+    },
+    {
+      "type": "artifact-selected",
+      "stage": "cartoon-candidates",
+      "artifactId": "cartoon-candidates:attempt-02:de4f8028166a",
+      "path": "cartoon-candidates/attempt-02--de4f8028166a--attempt-02.png",
+      "sha256": "de4f8028166a5ca206802a70d3a5f4fd9438e17fd56f50e4d893f915cacc667e",
+      "atUtc": "2026-10-01T17:18:39Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:expansion-plan-before:a6dd61901a29",
+      "atUtc": "2026-10-01T17:23:23Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:expansion-models-before:c3bae33d092e",
+      "atUtc": "2026-10-01T17:23:23Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:expansion-clean-metadata-before:fab9db490951",
+      "atUtc": "2026-10-01T17:23:23Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:asset-preparation-script-before:9c33b0e8761f",
+      "atUtc": "2026-10-01T17:23:23Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:roster-assembler-before:eaac526817b3",
+      "atUtc": "2026-10-01T17:23:23Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:sprite-types-before:5000ac7652ee",
+      "atUtc": "2026-10-01T17:23:24Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:sprite-paint-before:d3eb2768d49d",
+      "atUtc": "2026-10-01T17:23:24Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:car-renderer-before:497fbe25be76",
+      "atUtc": "2026-10-01T17:23:24Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:catalog-before-silverado-runtime:1742f64b0e87",
+      "atUtc": "2026-10-01T17:29:20Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:payload-chunk-19-before-silverado:ceb047360aa4",
+      "atUtc": "2026-10-01T17:29:20Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "cartoon-candidates:selected-standard-final:de4f8028166a",
+      "atUtc": "2026-10-01T17:32:47Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "metadata:expansion-clean-record:0f7c1788cc0c",
+      "atUtc": "2026-10-01T17:32:47Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "metadata:factory-sheet:e31366b693cf",
+      "atUtc": "2026-10-01T17:32:48Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "metadata:model-plan:f27f8d41068d",
+      "atUtc": "2026-10-01T17:32:48Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "previews:wheel-geometry-reviewed:5616123d474d",
+      "atUtc": "2026-10-01T17:32:48Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "metadata:geometry-review:4e5ad641d6ce",
+      "atUtc": "2026-10-01T17:32:48Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "other:model-record-readme:5552f54337fa",
+      "atUtc": "2026-10-01T17:32:48Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "runtime:optimized-webp-derived:d16895d69e2d",
+      "atUtc": "2026-10-01T17:32:48Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "runtime:final-canonical-webp:d16895d69e2d",
+      "atUtc": "2026-10-01T17:56:15Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "runtime:final-catalog:8f7036e36ef4",
+      "atUtc": "2026-10-01T17:56:19Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "runtime:final-payload-chunk-19:b19efca7847d",
+      "atUtc": "2026-10-01T17:56:26Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "runtime:final-offline-html:eacccd9b66d2",
+      "atUtc": "2026-10-01T17:56:29Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "runtime:final-editable-config:e4e1113ce18b",
+      "atUtc": "2026-10-01T17:56:32Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "cartoon-candidates:final-selected-standard-source:de4f8028166a",
+      "atUtc": "2026-10-01T17:56:36Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "metadata:final-sprite-metadata:0f7c1788cc0c",
+      "atUtc": "2026-10-01T17:56:40Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "metadata:final-factory-sheet:e31366b693cf",
+      "atUtc": "2026-10-01T17:56:43Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "metadata:final-model-plan:f27f8d41068d",
+      "atUtc": "2026-10-01T17:56:48Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "metadata:final-game-config:8cd89073e5d5",
+      "atUtc": "2026-10-01T17:56:52Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "metadata:final-decisions:da94c6516c8b",
+      "atUtc": "2026-10-01T17:56:55Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "other:final-asset-preparer:9fb1982d24da",
+      "atUtc": "2026-10-01T17:56:59Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "other:final-roster-assembler:c39b067863d1",
+      "atUtc": "2026-10-01T17:57:02Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "other:final-renderer:5b6f28ebceb5",
+      "atUtc": "2026-10-01T17:57:06Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "other:final-sprite-types:969675ecfa72",
+      "atUtc": "2026-10-01T17:57:10Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:silverado-browser-test:609b9c4ce647",
+      "atUtc": "2026-10-01T17:57:13Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:runtime-byte-verifier-catalog-indexes:9c3fec981c9d",
+      "atUtc": "2026-10-01T18:03:04Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:runtime-byte-result-all-59:004aaa8ab66a",
+      "atUtc": "2026-10-01T18:03:04Z"
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+# Preserve exact bytes for hash-verified art archives.
+docs/art/workbench/** -text

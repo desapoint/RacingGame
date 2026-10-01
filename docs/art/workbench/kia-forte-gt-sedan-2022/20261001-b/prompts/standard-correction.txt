@@ -1,0 +1,12 @@
+Use case: stylized-concept correction of an existing car sprite
+Asset: kia-forte-gt-sedan-2022-2d.png, same stable ID
+Primary request: correct the factory rocker / side-sill detail and match the 2022 stock Fire Orange appearance, while changing nothing else.
+Image 1 is the exact current illustrated Kia sprite; preserve its complete side-on right-facing 2022 Kia Forte GT sedan identity, exact wheel placement, roofline, windows, front and rear details, body shape, framing, and transparent canvas.
+Image 2 is Kia Americaºw^~)Þus official 2022 Forte GT/GT-Line exterior photo; use only to check the GT front design, black high-gloss trim treatment, and black sill accent.
+Image 3 is the existing exact side-profile realistic reference for this same model; use it only to preserve model proportions, side view and wheels.
+Image 4 is the existing game sprite atlas; use it only for illustration line weight and cel shading.
+Factory detail: preserve the orange body-colored rocker/sill molding but add the missing continuous black high-gloss accent/lower skirt along the GTºw^~)Þus side sill between the wheel arches; make it visually distinct, correctly aligned below the doors, and integrated with both ends of the wheel openings. Do not turn the whole side sill black or change the GT into a GT-Line.
+Paint: retain the 2022 Kia Fire Orange palette appearance and match the gamféÝyø§yÙs existing stock orange #e56c12 exactly as the base hue; the orange GT is a requested custom combination because the official materials do not let us verify GT-specific Fire Orange availability.
+Composition: preserve the existing exact canvas size and silhouette placement; one complete vehicle, both full tires and hubs visible, no crop, transparent background.
+Style: crisp illustrated 2D sprite, same restrained highlights, dark outlines, and simplified shapes as the existing sprite and atlas. Keep bright silver multi-spoke rims and all original model-specific details.
+Constraints: true alpha, no backdrop, ground or shadow; no text, watermark, stripes, new trim or decals. Make only the side-skirt correction and precise orange-palette match.

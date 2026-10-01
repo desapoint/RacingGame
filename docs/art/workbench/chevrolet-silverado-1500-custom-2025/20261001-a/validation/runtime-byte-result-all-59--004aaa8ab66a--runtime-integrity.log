@@ -1,0 +1,8 @@
+canonical_webp_sha256=d16895d69e2dafd857fd7caf789525b79386dc162f7becf601d078aa40424db3
+canonical_webp_bytes=69608
+preserved_chunk1_payloads=3
+preserved_chunk19_payloads=2
+new_chunk19_payloads=3
+unchanged_catalog_entries=59
+embedded_webp_byte_equal=true
+result=PASS

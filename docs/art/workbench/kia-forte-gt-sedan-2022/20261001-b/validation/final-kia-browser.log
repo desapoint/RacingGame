@@ -1,0 +1,10 @@
+
+> redline-drag-club@0.1.0 test:browser
+> playwright test tests/browser/kia-forte-fire-orange.spec.ts
+
+
+Running 1 test using 1 worker
+
+  ✓  1 tests/browser/kia-forte-fire-orange.spec.ts:9:1 › Kia Fire Orange stock sprite keeps its black GT side skirt through repaint, livery, and offline racing (29.5s)
+
+  1 passed (30.2s)

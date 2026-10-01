@@ -101,3 +101,11 @@ See [getting-started.md](getting-started.md) for controls, commands, source layo
 ## 2026-10-01 — Supplied Mazda3 and Forte gameplay artwork
 
 - **Use the supplied illustrations:** The red 2021 Mazda3 Turbo Sedan and orange 2022 Kia Forte GT Sedan now use the user-supplied transparent `-2d.png` artwork. Preserve those uploads unchanged and retain the earlier realistic references. Their existing stable car/art IDs continue to resolve through the generated catalog; source metadata must use the new native dimensions, bounds and wheel centers so previews, paint customization and rotating wheels stay aligned.
+
+## 2026-10-01 — Single-condition entries and achromatic paint regions
+
+- **Requested condition scope:** Expansion plan entries may declare a conditions array. When omitted, all configured conditions remain the default; when declared, roster assembly creates only those requested variants. This keeps a Standard-only model in future assemblies when the user asks for no worn variants.
+- **Neutral body paint:** For an achromatic or near-black sprite that hue-based recoloring cannot reliably isolate, per-sprite metadata may provide native-coordinate paintAreas polygons. Rasterize them once during sprite preparation; preserve wheel, glass, lamp and trim colors, and do not scan pixels during racing. Use thresholded visible bounds only when outlying low-alpha noise would distort the runtime fit, and document the threshold while retaining the untouched source PNG.
+
+
+Art workbench archives are tracked with Git text conversion disabled. Provenance hashes cover exact bytes, including metadata and runtime snapshots, so future checkouts must preserve archived line endings.

@@ -1,0 +1,1114 @@
+{
+  "schemaVersion": 1,
+  "modelId": "kia-forte-gt-sedan-2022",
+  "runId": "20261001-b",
+  "createdAtUtc": "2026-10-01T18:06:27Z",
+  "status": "in-progress",
+  "agent": {
+    "model": "gpt-6-luna",
+    "reasoningEffort": "high",
+    "workers": 1,
+    "imageTool": "built-in image_gen"
+  },
+  "preservation": {
+    "sourceArchives": "immutable byte copies",
+    "runtimeCopies": "derived and may be lossy; never replace source archives",
+    "generativeReproducibility": "future model runs may produce different pixels"
+  },
+  "artifacts": [
+    {
+      "artifactId": "inputs:prior-sprite:dab000e454a6",
+      "stage": "inputs",
+      "role": "prior-sprite",
+      "path": "inputs/prior-sprite--dab000e454a6--kia-forte-gt-sedan-2022-2d.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/kia-forte-gt-sedan-2022-2d.png",
+      "sourceUrl": null,
+      "sha256": "dab000e454a6b19408ac77fa018fda2d15e009075f9dbddf60ad0a5a5e31f826",
+      "bytes": 1450059,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:06:27Z"
+    },
+    {
+      "artifactId": "inputs:prior-realistic:9b8a0e368096",
+      "stage": "inputs",
+      "role": "prior-realistic",
+      "path": "inputs/prior-realistic--9b8a0e368096--kia-forte-gt-sedan-2022.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/realistic/kia-forte-gt-sedan-2022.png",
+      "sourceUrl": null,
+      "sha256": "9b8a0e3680963045bb90ed22d8cbc4567f7ea752fcb47c7faf1837bb9357e872",
+      "bytes": 1432827,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:06:27Z"
+    },
+    {
+      "artifactId": "inputs:prior-street-metadata:1b271f0153e9",
+      "stage": "inputs",
+      "role": "prior-street-metadata",
+      "path": "inputs/prior-street-metadata--1b271f0153e9--street-metadata.json",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/street-metadata.json",
+      "sourceUrl": null,
+      "sha256": "1b271f0153e900d0caf5a6180a1b32f4ac39ebdfc0422d87cb7b0f712dfc0c24",
+      "bytes": 4290,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:06:27Z"
+    },
+    {
+      "artifactId": "inputs:prior-game-config:8cd89073e5d5",
+      "stage": "inputs",
+      "role": "prior-game-config",
+      "path": "inputs/prior-game-config--8cd89073e5d5--game-data.json",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/data/game-data.json",
+      "sourceUrl": null,
+      "sha256": "8cd89073e5d535d36f95cc70fca38addbc81b834acc670d1891200d68a512934",
+      "bytes": 89205,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:06:27Z"
+    },
+    {
+      "artifactId": "inputs:prior-catalog:8f7036e36ef4",
+      "stage": "inputs",
+      "role": "prior-catalog",
+      "path": "inputs/prior-catalog--8f7036e36ef4--catalog.ts",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/catalog.ts",
+      "sourceUrl": null,
+      "sha256": "8f7036e36ef40c23cd258b7673b4e6af8350d61150612deea5a4c54a662b53e4",
+      "bytes": 15372,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:06:27Z"
+    },
+    {
+      "artifactId": "inputs:prior-payload-chunk-1:18d58ffc05ba",
+      "stage": "inputs",
+      "role": "prior-payload-chunk-1",
+      "path": "inputs/prior-payload-chunk-1--18d58ffc05ba--chunk-1.ts",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/payloads/chunk-1.ts",
+      "sourceUrl": null,
+      "sha256": "18d58ffc05babee11fd052cb1e92c62b057754c939bfa6e1ecc55c60c999df9f",
+      "bytes": 332929,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:06:27Z"
+    },
+    {
+      "artifactId": "inputs:prior-optimized-webp:3bb4aeac2b59",
+      "stage": "inputs",
+      "role": "prior-optimized-webp",
+      "path": "inputs/prior-optimized-webp--3bb4aeac2b59--kia-forte-gt-sedan-2022.webp",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/optimized/kia-forte-gt-sedan-2022.webp",
+      "sourceUrl": null,
+      "sha256": "3bb4aeac2b599f28b4b0ef74ba13235b87e3da83f75af78aacf9f8ab0d6b2961",
+      "bytes": 96014,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:06:27Z"
+    },
+    {
+      "artifactId": "inputs:style-atlas:f106c5d1630e",
+      "stage": "inputs",
+      "role": "style-atlas",
+      "path": "inputs/style-atlas--f106c5d1630e--sports-car-side-sprite-atlas.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/style-reference/sports-car-side-sprite-atlas.png",
+      "sourceUrl": null,
+      "sha256": "f106c5d1630ec04384d38164390a5fe567be5b4b779bd822d94d8bf6a6d3a4a5",
+      "bytes": 1852843,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:06:27Z"
+    },
+    {
+      "artifactId": "prompts:standard-correction-v2:abe1e69b00e7",
+      "stage": "prompts",
+      "role": "standard-correction-v2",
+      "path": "prompts/standard-correction-v2--abe1e69b00e7--standard-correction-v2.txt",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/prompts/standard-correction-v2.txt",
+      "sourceUrl": null,
+      "sha256": "abe1e69b00e72ed0e3cfeceeeaf416b8522c008f95ac17a9b9f7b301f1e849ea",
+      "bytes": 2325,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:20:47Z"
+    },
+    {
+      "artifactId": "prompts:unselected-mojibake-draft:9154c36e7a35",
+      "stage": "prompts",
+      "role": "unselected-mojibake-draft",
+      "path": "prompts/unselected-mojibake-draft--9154c36e7a35--unselected-mojibake-draft.txt",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/prompts/unselected-mojibake-draft.txt",
+      "sourceUrl": null,
+      "sha256": "9154c36e7a35923d4bd4ed72d579c87a4748db179e110863c307fff684d83153",
+      "bytes": 2135,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:20:47Z"
+    },
+    {
+      "artifactId": "references:official-brochure-pdf:1e1ef806ed9a",
+      "stage": "references",
+      "role": "official-brochure-pdf",
+      "path": "references/official-brochure-pdf--1e1ef806ed9a--kia-2022-sedans-brochure.pdf",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/inputs/kia-2022-sedans-brochure.pdf",
+      "sourceUrl": "https://www.kia.com/us/content/dam/kia/us/brochures/2022-sedans-brochure.pdf",
+      "sha256": "1e1ef806ed9a0d10422e04c3186cd3b4da29a70f19872cafc456f804c9dfc23b",
+      "bytes": 1986604,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:20:48Z"
+    },
+    {
+      "artifactId": "references:official-brochure-page-render:d99cdf881b96",
+      "stage": "references",
+      "role": "official-brochure-page-render",
+      "path": "references/official-brochure-page-render--d99cdf881b96--kia-brochure-page10.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/references/kia-brochure-page10.png",
+      "sourceUrl": "https://www.kia.com/us/content/dam/kia/us/brochures/2022-sedans-brochure.pdf",
+      "sha256": "d99cdf881b9683edd290eea8ba8e813fa22c28628f8fdff6b1ef5e9efe5c0a23",
+      "bytes": 1447075,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:20:48Z"
+    },
+    {
+      "artifactId": "references:official-fire-orange-swatch-crop:bd7ef15c57f0",
+      "stage": "references",
+      "role": "official-fire-orange-swatch-crop",
+      "path": "references/official-fire-orange-swatch-crop--bd7ef15c57f0--kia-brochure-fire-orange-swatch.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/references/kia-brochure-fire-orange-swatch.png",
+      "sourceUrl": "https://www.kia.com/us/content/dam/kia/us/brochures/2022-sedans-brochure.pdf",
+      "sha256": "bd7ef15c57f06dc20527abae6615bcadbeb5b5b0814710e17c673bea76962681",
+      "bytes": 14520,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:20:48Z"
+    },
+    {
+      "artifactId": "references:kia-photo-17929:11ea7130f41c",
+      "stage": "references",
+      "role": "kia-photo-17929",
+      "path": "references/kia-photo-17929--11ea7130f41c--kia-media-photo-17929.jpg",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/inputs/kia-media-photo-17929.jpg",
+      "sourceUrl": "https://www.kiamedia.com/us/en/media/photos/17929/2022-forte-22",
+      "sha256": "11ea7130f41ca13846bdcd4e364ce59ae14bc31e3c41b8c90690522de51fd1cb",
+      "bytes": 255727,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:20:48Z"
+    },
+    {
+      "artifactId": "references:kia-photo-17911:2786dc37e7e2",
+      "stage": "references",
+      "role": "kia-photo-17911",
+      "path": "references/kia-photo-17911--2786dc37e7e2--kia-media-photo-17911.jpg",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/inputs/kia-media-photo-17911.jpg",
+      "sourceUrl": "https://www.kiamedia.com/us/en/media/photos/17911/2022-forte-4",
+      "sha256": "2786dc37e7e25b7b7de22fa606fba726140ad5b2eebe5468bd54d13cae819034",
+      "bytes": 182900,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:20:48Z"
+    },
+    {
+      "artifactId": "cartoon-candidates:attempt-01:ef7ef908eec3",
+      "stage": "cartoon-candidates",
+      "role": "attempt-01",
+      "path": "cartoon-candidates/attempt-01--ef7ef908eec3--attempt-01.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/cartoon-candidates/attempt-01.png",
+      "sourceUrl": null,
+      "sha256": "ef7ef908eec310316c2daf0b563ffa93a35f157bcb184a3633b4f51a2d46265b",
+      "bytes": 1474307,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:24:20Z"
+    },
+    {
+      "artifactId": "cartoon-candidates:attempt-02:64bd1ebaad9f",
+      "stage": "cartoon-candidates",
+      "role": "attempt-02",
+      "path": "cartoon-candidates/attempt-02--64bd1ebaad9f--attempt-02.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/cartoon-candidates/attempt-02.png",
+      "sourceUrl": null,
+      "sha256": "64bd1ebaad9fee942fc0255235d1f03740e0652245b8e8ec21895aa0ca81d0a6",
+      "bytes": 1447753,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:24:20Z"
+    },
+    {
+      "artifactId": "prompts:fire-orange-correction:7e007ee24c03",
+      "stage": "prompts",
+      "role": "fire-orange-correction",
+      "path": "prompts/fire-orange-correction--7e007ee24c03--fire-orange-correction.txt",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/prompts/fire-orange-correction.txt",
+      "sourceUrl": null,
+      "sha256": "7e007ee24c03f39e10095ed85dad99cad8b869166a222b270dd2d51a955e05bb",
+      "bytes": 1324,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:24:50Z"
+    },
+    {
+      "artifactId": "cartoon-candidates:attempt-03-fire-orange:08bb49f44a7a",
+      "stage": "cartoon-candidates",
+      "role": "attempt-03-fire-orange",
+      "path": "cartoon-candidates/attempt-03-fire-orange--08bb49f44a7a--attempt-03.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/cartoon-candidates/attempt-03.png",
+      "sourceUrl": null,
+      "sha256": "08bb49f44a7a10e06ffcff4f233c96993ffd0af6ca94f864a8263958b1bf8472",
+      "bytes": 1477423,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T18:25:56Z"
+    },
+    {
+      "artifactId": "references:kia-photo-17930:b3bd8d72ac08",
+      "stage": "references",
+      "role": "kia-photo-17930",
+      "path": "references/kia-photo-17930--b3bd8d72ac08--kia-media-photo-17930.jpg",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/inputs/kia-media-photo-17930.jpg",
+      "sourceUrl": "https://www.kiamedia.com/us/en/download/17930/low/jpg/",
+      "sha256": "b3bd8d72ac0827d8a0ef57e1d769da49923a9209ea35c20ab3efc3dda7173b99",
+      "bytes": 163140,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:30:35Z"
+    },
+    {
+      "artifactId": "references:kia-photo-17931:a5680f6e3df6",
+      "stage": "references",
+      "role": "kia-photo-17931",
+      "path": "references/kia-photo-17931--a5680f6e3df6--kia-media-photo-17931.jpg",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/inputs/kia-media-photo-17931.jpg",
+      "sourceUrl": "https://www.kiamedia.com/us/en/download/17931/low/jpg/",
+      "sha256": "a5680f6e3df66b95765936bd17f19f02ed4dc84a4e9b154b5c465ae57b53b614",
+      "bytes": 263737,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:30:35Z"
+    },
+    {
+      "artifactId": "references:kia-photo-17932:f48d2c5fb1bb",
+      "stage": "references",
+      "role": "kia-photo-17932",
+      "path": "references/kia-photo-17932--f48d2c5fb1bb--kia-media-photo-17932.jpg",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/inputs/kia-media-photo-17932.jpg",
+      "sourceUrl": "https://www.kiamedia.com/us/en/download/17932/low/jpg/",
+      "sha256": "f48d2c5fb1bb73018eab62a40f8b671b2aa72becfce5ad2ae338d001f2656087",
+      "bytes": 197304,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:30:35Z"
+    },
+    {
+      "artifactId": "references:kia-photo-17911-html:5729ff0d5caa",
+      "stage": "references",
+      "role": "kia-photo-17911-html",
+      "path": "references/kia-photo-17911-html--5729ff0d5caa--kia-media-photo-17911.html",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/inputs/kia-media-photo-17911.html",
+      "sourceUrl": "https://www.kiamedia.com/us/en/media/photos/17911/2022-forte-4",
+      "sha256": "5729ff0d5caa232e852c71b33dc82f78406bad3cc19b909d040deb3408db38f7",
+      "bytes": 262521,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:30:36Z"
+    },
+    {
+      "artifactId": "references:kia-pricing-html:fd2dd5db67a5",
+      "stage": "references",
+      "role": "kia-pricing-html",
+      "path": "references/kia-pricing-html--fd2dd5db67a5--kia-2022-forte-pricing.html",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/inputs/kia-2022-forte-pricing.html",
+      "sourceUrl": "https://www.kiamedia.com/us/en/models/forte/2022/pricing",
+      "sha256": "fd2dd5db67a5039787fd1575e85d25d147e99e92439a06a4c10a44362060a482",
+      "bytes": 285287,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:30:36Z"
+    },
+    {
+      "artifactId": "cartoon-candidates:canonical-selected-kia-png:08bb49f44a7a",
+      "stage": "cartoon-candidates",
+      "role": "canonical-selected-kia-png",
+      "path": "cartoon-candidates/canonical-selected-kia-png--08bb49f44a7a--kia-forte-gt-sedan-2022-2d.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/kia-forte-gt-sedan-2022-2d.png",
+      "sourceUrl": null,
+      "sha256": "08bb49f44a7a10e06ffcff4f233c96993ffd0af6ca94f864a8263958b1bf8472",
+      "bytes": 1477423,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:28Z"
+    },
+    {
+      "artifactId": "metadata:selected-native-geometry:3b7803de3ee6",
+      "stage": "metadata",
+      "role": "selected-native-geometry",
+      "path": "metadata/selected-native-geometry--3b7803de3ee6--selected-geometry.json",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/metadata/selected-geometry.json",
+      "sourceUrl": null,
+      "sha256": "3b7803de3ee6c8ca4b358e6398c3913ad825cde57eecd91398e847a1c1867d2c",
+      "bytes": 852,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:28Z"
+    },
+    {
+      "artifactId": "previews:final-wheel-geometry-overlay:cddf18133d67",
+      "stage": "previews",
+      "role": "final-wheel-geometry-overlay",
+      "path": "previews/final-wheel-geometry-overlay--cddf18133d67--final-geometry.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/previews/final-geometry.png",
+      "sourceUrl": null,
+      "sha256": "cddf18133d67228cd8deea714ac6ad5c0954e865e183e553fd09cd64a3db7941",
+      "bytes": 1449571,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:29Z"
+    },
+    {
+      "artifactId": "metadata:final-street-metadata:9fafe5fbb2e6",
+      "stage": "metadata",
+      "role": "final-street-metadata",
+      "path": "metadata/final-street-metadata--9fafe5fbb2e6--street-metadata.json",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/street-metadata.json",
+      "sourceUrl": null,
+      "sha256": "9fafe5fbb2e65632ac5785a43f465555600258e0482d5a08819aec5375da05cc",
+      "bytes": 4636,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:29Z"
+    },
+    {
+      "artifactId": "metadata:final-stock-config:2135252a6e89",
+      "stage": "metadata",
+      "role": "final-stock-config",
+      "path": "metadata/final-stock-config--2135252a6e89--game-data.json",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/data/game-data.json",
+      "sourceUrl": null,
+      "sha256": "2135252a6e8947afd33c78bfe56b5909ce1887d4e1e887ff700992f89f167004",
+      "bytes": 89205,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:29Z"
+    },
+    {
+      "artifactId": "runtime:final-catalog:12d0dd0e48dd",
+      "stage": "runtime",
+      "role": "final-catalog",
+      "path": "runtime/final-catalog--12d0dd0e48dd--catalog.ts",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/catalog.ts",
+      "sourceUrl": null,
+      "sha256": "12d0dd0e48dd5fa9de4f64891b82efb872c0dc1eaf9fe38443b94c37f90ecff7",
+      "bytes": 15372,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:29Z"
+    },
+    {
+      "artifactId": "runtime:final-payload-chunk-1:056c2a88a977",
+      "stage": "runtime",
+      "role": "final-payload-chunk-1",
+      "path": "runtime/final-payload-chunk-1--056c2a88a977--chunk-1.ts",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/payloads/chunk-1.ts",
+      "sourceUrl": null,
+      "sha256": "056c2a88a977a94846a743472e14ec852cc4f92638586abdf664acc833bd889f",
+      "bytes": 321441,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:29Z"
+    },
+    {
+      "artifactId": "runtime:final-optimized-kia-webp:8337741fe014",
+      "stage": "runtime",
+      "role": "final-optimized-kia-webp",
+      "path": "runtime/final-optimized-kia-webp--8337741fe014--kia-forte-gt-sedan-2022.webp",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/src/assets/cars/optimized/kia-forte-gt-sedan-2022.webp",
+      "sourceUrl": null,
+      "sha256": "8337741fe014458bf4c1da138ddd3681dbe973c0ea3073a4c9f0a708f43f6837",
+      "bytes": 87398,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:30Z"
+    },
+    {
+      "artifactId": "runtime:built-offline-index:25d6930900d1",
+      "stage": "runtime",
+      "role": "built-offline-index",
+      "path": "runtime/built-offline-index--25d6930900d1--index.html",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/dist/index.html",
+      "sourceUrl": null,
+      "sha256": "25d6930900d1e779f9a96c6783098a81c6b339e3c0d969e94d6bf5ec6501cd26",
+      "bytes": 6841153,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:30Z"
+    },
+    {
+      "artifactId": "runtime:built-offline-config:2bfb3bacf7cd",
+      "stage": "runtime",
+      "role": "built-offline-config",
+      "path": "runtime/built-offline-config--2bfb3bacf7cd--config.js",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/dist/config.js",
+      "sourceUrl": null,
+      "sha256": "2bfb3bacf7cd2db57e4f3fb635bdb03b4eaef66f661f940a15728f1247dc4f39",
+      "bytes": 89447,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:30Z"
+    },
+    {
+      "artifactId": "validation:focused-kia-browser-test-source:c0d50d0f84ba",
+      "stage": "validation",
+      "role": "focused-kia-browser-test-source",
+      "path": "validation/focused-kia-browser-test-source--c0d50d0f84ba--kia-forte-fire-orange.spec.ts",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/tests/browser/kia-forte-fire-orange.spec.ts",
+      "sourceUrl": null,
+      "sha256": "c0d50d0f84ba7f83fdc54ca5783dcc9e97b37493e6a3dd7154a84ce88942dc65",
+      "bytes": 6259,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:30Z"
+    },
+    {
+      "artifactId": "validation:build-log:f6aaf16a4dc2",
+      "stage": "validation",
+      "role": "build-log",
+      "path": "validation/build-log--f6aaf16a4dc2--final-build.log",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/final-build.log",
+      "sourceUrl": null,
+      "sha256": "f6aaf16a4dc20d9a9d2b17dc02f6f8d76f5e5a87da0899eb551c5b5966e8a493",
+      "bytes": 162,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:30Z"
+    },
+    {
+      "artifactId": "validation:unit-test-log:edf8e734598e",
+      "stage": "validation",
+      "role": "unit-test-log",
+      "path": "validation/unit-test-log--edf8e734598e--final-unit-tests.log",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/final-unit-tests.log",
+      "sourceUrl": null,
+      "sha256": "edf8e734598e0e46a983c79a660d497844e2c0e16531226fa2f51e08eab56372",
+      "bytes": 3098,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:31Z"
+    },
+    {
+      "artifactId": "validation:focused-browser-log:3ed5fcff87e0",
+      "stage": "validation",
+      "role": "focused-browser-log",
+      "path": "validation/focused-browser-log--3ed5fcff87e0--final-kia-browser.log",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/final-kia-browser.log",
+      "sourceUrl": null,
+      "sha256": "3ed5fcff87e0959d13c99c388d3809182b7b3d6250c5b8874f9256eb8f93f78e",
+      "bytes": 327,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:31Z"
+    },
+    {
+      "artifactId": "validation:runtime-integrity-log:37fe923dc8c5",
+      "stage": "validation",
+      "role": "runtime-integrity-log",
+      "path": "validation/runtime-integrity-log--37fe923dc8c5--runtime-integrity.log",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/runtime-integrity.log",
+      "sourceUrl": null,
+      "sha256": "37fe923dc8c500b31ec65440104971447cef03fbabf4e1cbb1904ca2d8681241",
+      "bytes": 1069,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:31Z"
+    },
+    {
+      "artifactId": "validation:runtime-integrity-verifier-v2:531641042499",
+      "stage": "validation",
+      "role": "runtime-integrity-verifier-v2",
+      "path": "validation/runtime-integrity-verifier-v2--531641042499--verify-runtime-v2.py",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/verify-runtime-v2.py",
+      "sourceUrl": null,
+      "sha256": "5316410424998d5c6275b6cabf323b62b4e8c91dc4c6e85d52a729a29b47b0f3",
+      "bytes": 5791,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:31Z"
+    },
+    {
+      "artifactId": "validation:runtime-integrity-parser-fix:c03ce71e0e53",
+      "stage": "validation",
+      "role": "runtime-integrity-parser-fix",
+      "path": "validation/runtime-integrity-parser-fix--c03ce71e0e53--fix-integrity-parser.py",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/fix-integrity-parser.py",
+      "sourceUrl": null,
+      "sha256": "c03ce71e0e536474722c84c3a671d550bd15e2cbf7aabd4b0bb77ad86998a939",
+      "bytes": 324,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:31Z"
+    },
+    {
+      "artifactId": "validation:runtime-packager:3a91ea03e8cb",
+      "stage": "validation",
+      "role": "runtime-packager",
+      "path": "validation/runtime-packager--3a91ea03e8cb--package-kia-runtime.py",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/package-kia-runtime.py",
+      "sourceUrl": null,
+      "sha256": "3a91ea03e8cb55610881ca580e10a5c23c2458ac1a27545a72018cc398702f7c",
+      "bytes": 2799,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:32Z"
+    },
+    {
+      "artifactId": "validation:metadata-updater:d7a47f17453c",
+      "stage": "validation",
+      "role": "metadata-updater",
+      "path": "validation/metadata-updater--d7a47f17453c--update-kia-metadata-v2.py",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/update-kia-metadata-v2.py",
+      "sourceUrl": null,
+      "sha256": "d7a47f17453ca506a2e71d8be079571f013195f38fa29b1bfd3fb334e603c62c",
+      "bytes": 2144,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:32Z"
+    },
+    {
+      "artifactId": "validation:camera-and-wheel-test-fix:b9a68fd0caaf",
+      "stage": "validation",
+      "role": "camera-and-wheel-test-fix",
+      "path": "validation/camera-and-wheel-test-fix--b9a68fd0caaf--fix-camera-test.py",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/fix-camera-test.py",
+      "sourceUrl": null,
+      "sha256": "b9a68fd0caaf835e7e3f029a9fba635c9046f0956ca09d248fb49c493cb053ec",
+      "bytes": 2334,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:32Z"
+    },
+    {
+      "artifactId": "validation:livery-skirt-test-extension:24c54d9c551d",
+      "stage": "validation",
+      "role": "livery-skirt-test-extension",
+      "path": "validation/livery-skirt-test-extension--24c54d9c551d--add-livery-stroke.py",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/add-livery-stroke.py",
+      "sourceUrl": null,
+      "sha256": "24c54d9c551d8c0262ce71ccfe6d09708a74a3282caa54d03b950ef97470bb8b",
+      "bytes": 735,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:32Z"
+    },
+    {
+      "artifactId": "validation:browser-kia-stock-fire-orange:2cd4189428eb",
+      "stage": "validation",
+      "role": "browser-kia-stock-fire-orange",
+      "path": "validation/browser-kia-stock-fire-orange--2cd4189428eb--kia-stock-fire-orange.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/screenshots/kia-stock-fire-orange.png",
+      "sourceUrl": null,
+      "sha256": "2cd4189428eb390a71700f247a9527d5ca53e1680faf4891934f9b40eb450b07",
+      "bytes": 481279,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:32Z"
+    },
+    {
+      "artifactId": "validation:browser-kia-repaint:591441f5d146",
+      "stage": "validation",
+      "role": "browser-kia-repaint",
+      "path": "validation/browser-kia-repaint--591441f5d146--kia-repaint.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/screenshots/kia-repaint.png",
+      "sourceUrl": null,
+      "sha256": "591441f5d146ac40ec24af39591d3831f8e955a0a734312a428f6d2ab21c093e",
+      "bytes": 480171,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:33Z"
+    },
+    {
+      "artifactId": "validation:browser-kia-livery:3c511b27b79f",
+      "stage": "validation",
+      "role": "browser-kia-livery",
+      "path": "validation/browser-kia-livery--3c511b27b79f--kia-livery.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/screenshots/kia-livery.png",
+      "sourceUrl": null,
+      "sha256": "3c511b27b79f04dc19666a4fd48a09c5dfc360981797e6e1c2b92b0c92e699cb",
+      "bytes": 480179,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:33Z"
+    },
+    {
+      "artifactId": "validation:browser-kia-race-results:005cfae371f2",
+      "stage": "validation",
+      "role": "browser-kia-race-results",
+      "path": "validation/browser-kia-race-results--005cfae371f2--kia-race-results.png",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/screenshots/kia-race-results.png",
+      "sourceUrl": null,
+      "sha256": "005cfae371f2496268c5411dbab12d0b50940dd46ff221ba1898791e974f3267",
+      "bytes": 549354,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:31:33Z"
+    },
+    {
+      "artifactId": "validation:workflow-archive-final:43dfc0997229",
+      "stage": "validation",
+      "role": "workflow-archive-final",
+      "path": "validation/workflow-archive-final--43dfc0997229--archive-final.py",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/archive-final.py",
+      "sourceUrl": null,
+      "sha256": "43dfc0997229e8401ee787948e77437dc4b51f4ffaf121dc3ab6c8bac7b094fe",
+      "bytes": 2815,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:32:08Z"
+    },
+    {
+      "artifactId": "validation:workflow-fix-archive-stage:2a8bf4b2e937",
+      "stage": "validation",
+      "role": "workflow-fix-archive-stage",
+      "path": "validation/workflow-fix-archive-stage--2a8bf4b2e937--fix-archive-stage.py",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/fix-archive-stage.py",
+      "sourceUrl": null,
+      "sha256": "2a8bf4b2e9379ab869c1c87023c7e991f6fdc3d03f9ab120097d15d587b5c9f0",
+      "bytes": 329,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:32:09Z"
+    },
+    {
+      "artifactId": "validation:workflow-verify-runtime:362be807cd11",
+      "stage": "validation",
+      "role": "workflow-verify-runtime",
+      "path": "validation/workflow-verify-runtime--362be807cd11--verify-runtime.py",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/verify-runtime.py",
+      "sourceUrl": null,
+      "sha256": "362be807cd1112e279ac940edde10caccecedded5d3b51b6dbdebd89bd4d7809",
+      "bytes": 5686,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:32:09Z"
+    },
+    {
+      "artifactId": "validation:workflow-verify-runtime-v2:531641042499",
+      "stage": "validation",
+      "role": "workflow-verify-runtime-v2",
+      "path": "validation/workflow-verify-runtime-v2--531641042499--verify-runtime-v2.py",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/verify-runtime-v2.py",
+      "sourceUrl": null,
+      "sha256": "5316410424998d5c6275b6cabf323b62b4e8c91dc4c6e85d52a729a29b47b0f3",
+      "bytes": 5791,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:32:09Z"
+    },
+    {
+      "artifactId": "validation:workflow-fix-integrity-parser:c03ce71e0e53",
+      "stage": "validation",
+      "role": "workflow-fix-integrity-parser",
+      "path": "validation/workflow-fix-integrity-parser--c03ce71e0e53--fix-integrity-parser.py",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/fix-integrity-parser.py",
+      "sourceUrl": null,
+      "sha256": "c03ce71e0e536474722c84c3a671d550bd15e2cbf7aabd4b0bb77ad86998a939",
+      "bytes": 324,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:32:09Z"
+    },
+    {
+      "artifactId": "validation:workflow-update-kia-metadata:5996e587908b",
+      "stage": "validation",
+      "role": "workflow-update-kia-metadata",
+      "path": "validation/workflow-update-kia-metadata--5996e587908b--update-kia-metadata.py",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/update-kia-metadata.py",
+      "sourceUrl": null,
+      "sha256": "5996e587908b1067a2a1b2c1f1deda0ac343685e6dc95251307ee32a05c4d880",
+      "bytes": 2086,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:32:09Z"
+    },
+    {
+      "artifactId": "validation:workflow-update-kia-metadata-v2:d7a47f17453c",
+      "stage": "validation",
+      "role": "workflow-update-kia-metadata-v2",
+      "path": "validation/workflow-update-kia-metadata-v2--d7a47f17453c--update-kia-metadata-v2.py",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/update-kia-metadata-v2.py",
+      "sourceUrl": null,
+      "sha256": "d7a47f17453ca506a2e71d8be079571f013195f38fa29b1bfd3fb334e603c62c",
+      "bytes": 2144,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:32:10Z"
+    },
+    {
+      "artifactId": "validation:workflow-package-kia-runtime:3a91ea03e8cb",
+      "stage": "validation",
+      "role": "workflow-package-kia-runtime",
+      "path": "validation/workflow-package-kia-runtime--3a91ea03e8cb--package-kia-runtime.py",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/package-kia-runtime.py",
+      "sourceUrl": null,
+      "sha256": "3a91ea03e8cb55610881ca580e10a5c23c2458ac1a27545a72018cc398702f7c",
+      "bytes": 2799,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:32:10Z"
+    },
+    {
+      "artifactId": "validation:workflow-probe-test:a7f2819c92fe",
+      "stage": "validation",
+      "role": "workflow-probe-test",
+      "path": "validation/workflow-probe-test--a7f2819c92fe--probe-test.py",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/probe-test.py",
+      "sourceUrl": null,
+      "sha256": "a7f2819c92fe73db59d66647ac47c5aad2cbf67f1e2b9272fa342aa446e49005",
+      "bytes": 596,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:32:10Z"
+    },
+    {
+      "artifactId": "validation:workflow-probe-screenshot-test:5496361d596a",
+      "stage": "validation",
+      "role": "workflow-probe-screenshot-test",
+      "path": "validation/workflow-probe-screenshot-test--5496361d596a--probe-screenshot-test.py",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/probe-screenshot-test.py",
+      "sourceUrl": null,
+      "sha256": "5496361d596a70f2350c5cf588abc870a6c7736ec1854a9f252be9e472a5c677",
+      "bytes": 436,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:32:10Z"
+    },
+    {
+      "artifactId": "validation:workflow-render-pdf-page:cd4d91866f12",
+      "stage": "validation",
+      "role": "workflow-render-pdf-page",
+      "path": "validation/workflow-render-pdf-page--cd4d91866f12--render-pdf-page.mjs",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/render-pdf-page.mjs",
+      "sourceUrl": null,
+      "sha256": "cd4d91866f12b95273a1d77c55dc1c720ddfbbfe9ebdc0a51ed64b9896db48b2",
+      "bytes": 489,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:32:10Z"
+    },
+    {
+      "artifactId": "validation:workflow-fix-camera-test:b9a68fd0caaf",
+      "stage": "validation",
+      "role": "workflow-fix-camera-test",
+      "path": "validation/workflow-fix-camera-test--b9a68fd0caaf--fix-camera-test.py",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/fix-camera-test.py",
+      "sourceUrl": null,
+      "sha256": "b9a68fd0caaf835e7e3f029a9fba635c9046f0956ca09d248fb49c493cb053ec",
+      "bytes": 2334,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:32:11Z"
+    },
+    {
+      "artifactId": "validation:workflow-add-livery-stroke:24c54d9c551d",
+      "stage": "validation",
+      "role": "workflow-add-livery-stroke",
+      "path": "validation/workflow-add-livery-stroke--24c54d9c551d--add-livery-stroke.py",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/add-livery-stroke.py",
+      "sourceUrl": null,
+      "sha256": "24c54d9c551d8c0262ce71ccfe6d09708a74a3282caa54d03b950ef97470bb8b",
+      "bytes": 735,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:32:11Z"
+    },
+    {
+      "artifactId": "validation:archive-workflow-scripts:1b50f9865f56",
+      "stage": "validation",
+      "role": "archive-workflow-scripts",
+      "path": "validation/archive-workflow-scripts--1b50f9865f56--archive-workflow-scripts.py",
+      "sourcePath": "/home/desapoint/Projets/RacingGame/docs/art/workbench/kia-forte-gt-sedan-2022/20261001-b/validation/archive-workflow-scripts.py",
+      "sourceUrl": null,
+      "sha256": "1b50f9865f5621421d9000233b53912ad439951b0bba60dc3e0bbb1b4b94ae0c",
+      "bytes": 866,
+      "preservation": "byte-for-byte copy; source pixels/encoding preserved",
+      "archivedAtUtc": "2026-10-01T22:34:00Z"
+    }
+  ],
+  "selections": [
+    {
+      "stage": "cartoon-candidates",
+      "artifactId": "cartoon-candidates:attempt-03-fire-orange:08bb49f44a7a",
+      "path": "cartoon-candidates/attempt-03-fire-orange--08bb49f44a7a--attempt-03.png",
+      "sha256": "08bb49f44a7a10e06ffcff4f233c96993ffd0af6ca94f864a8263958b1bf8472",
+      "atUtc": "2026-10-01T18:30:16Z"
+    }
+  ],
+  "events": [
+    {
+      "type": "run-initialized",
+      "atUtc": "2026-10-01T18:06:27Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:prior-sprite:dab000e454a6",
+      "atUtc": "2026-10-01T18:06:27Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:prior-realistic:9b8a0e368096",
+      "atUtc": "2026-10-01T18:06:27Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:prior-street-metadata:1b271f0153e9",
+      "atUtc": "2026-10-01T18:06:27Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:prior-game-config:8cd89073e5d5",
+      "atUtc": "2026-10-01T18:06:27Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:prior-catalog:8f7036e36ef4",
+      "atUtc": "2026-10-01T18:06:27Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:prior-payload-chunk-1:18d58ffc05ba",
+      "atUtc": "2026-10-01T18:06:27Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:prior-optimized-webp:3bb4aeac2b59",
+      "atUtc": "2026-10-01T18:06:27Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "inputs:style-atlas:f106c5d1630e",
+      "atUtc": "2026-10-01T18:06:27Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "prompts:standard-correction-v2:abe1e69b00e7",
+      "atUtc": "2026-10-01T18:20:47Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "prompts:unselected-mojibake-draft:9154c36e7a35",
+      "atUtc": "2026-10-01T18:20:47Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "references:official-brochure-pdf:1e1ef806ed9a",
+      "atUtc": "2026-10-01T18:20:48Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "references:official-brochure-page-render:d99cdf881b96",
+      "atUtc": "2026-10-01T18:20:48Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "references:official-fire-orange-swatch-crop:bd7ef15c57f0",
+      "atUtc": "2026-10-01T18:20:48Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "references:kia-photo-17929:11ea7130f41c",
+      "atUtc": "2026-10-01T18:20:48Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "references:kia-photo-17911:2786dc37e7e2",
+      "atUtc": "2026-10-01T18:20:48Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "cartoon-candidates:attempt-01:ef7ef908eec3",
+      "atUtc": "2026-10-01T18:24:20Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "cartoon-candidates:attempt-02:64bd1ebaad9f",
+      "atUtc": "2026-10-01T18:24:20Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "prompts:fire-orange-correction:7e007ee24c03",
+      "atUtc": "2026-10-01T18:24:50Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "cartoon-candidates:attempt-03-fire-orange:08bb49f44a7a",
+      "atUtc": "2026-10-01T18:25:56Z"
+    },
+    {
+      "type": "artifact-selected",
+      "stage": "cartoon-candidates",
+      "artifactId": "cartoon-candidates:attempt-03-fire-orange:08bb49f44a7a",
+      "path": "cartoon-candidates/attempt-03-fire-orange--08bb49f44a7a--attempt-03.png",
+      "sha256": "08bb49f44a7a10e06ffcff4f233c96993ffd0af6ca94f864a8263958b1bf8472",
+      "atUtc": "2026-10-01T18:30:16Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "references:kia-photo-17930:b3bd8d72ac08",
+      "atUtc": "2026-10-01T22:30:35Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "references:kia-photo-17931:a5680f6e3df6",
+      "atUtc": "2026-10-01T22:30:35Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "references:kia-photo-17932:f48d2c5fb1bb",
+      "atUtc": "2026-10-01T22:30:35Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "references:kia-photo-17911-html:5729ff0d5caa",
+      "atUtc": "2026-10-01T22:30:36Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "references:kia-pricing-html:fd2dd5db67a5",
+      "atUtc": "2026-10-01T22:30:36Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "cartoon-candidates:canonical-selected-kia-png:08bb49f44a7a",
+      "atUtc": "2026-10-01T22:31:28Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "metadata:selected-native-geometry:3b7803de3ee6",
+      "atUtc": "2026-10-01T22:31:28Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "previews:final-wheel-geometry-overlay:cddf18133d67",
+      "atUtc": "2026-10-01T22:31:29Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "metadata:final-street-metadata:9fafe5fbb2e6",
+      "atUtc": "2026-10-01T22:31:29Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "metadata:final-stock-config:2135252a6e89",
+      "atUtc": "2026-10-01T22:31:29Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "runtime:final-catalog:12d0dd0e48dd",
+      "atUtc": "2026-10-01T22:31:29Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "runtime:final-payload-chunk-1:056c2a88a977",
+      "atUtc": "2026-10-01T22:31:29Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "runtime:final-optimized-kia-webp:8337741fe014",
+      "atUtc": "2026-10-01T22:31:30Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "runtime:built-offline-index:25d6930900d1",
+      "atUtc": "2026-10-01T22:31:30Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "runtime:built-offline-config:2bfb3bacf7cd",
+      "atUtc": "2026-10-01T22:31:30Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:focused-kia-browser-test-source:c0d50d0f84ba",
+      "atUtc": "2026-10-01T22:31:30Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:build-log:f6aaf16a4dc2",
+      "atUtc": "2026-10-01T22:31:30Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:unit-test-log:edf8e734598e",
+      "atUtc": "2026-10-01T22:31:31Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:focused-browser-log:3ed5fcff87e0",
+      "atUtc": "2026-10-01T22:31:31Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:runtime-integrity-log:37fe923dc8c5",
+      "atUtc": "2026-10-01T22:31:31Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:runtime-integrity-verifier-v2:531641042499",
+      "atUtc": "2026-10-01T22:31:31Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:runtime-integrity-parser-fix:c03ce71e0e53",
+      "atUtc": "2026-10-01T22:31:31Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:runtime-packager:3a91ea03e8cb",
+      "atUtc": "2026-10-01T22:31:32Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:metadata-updater:d7a47f17453c",
+      "atUtc": "2026-10-01T22:31:32Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:camera-and-wheel-test-fix:b9a68fd0caaf",
+      "atUtc": "2026-10-01T22:31:32Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:livery-skirt-test-extension:24c54d9c551d",
+      "atUtc": "2026-10-01T22:31:32Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:browser-kia-stock-fire-orange:2cd4189428eb",
+      "atUtc": "2026-10-01T22:31:32Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:browser-kia-repaint:591441f5d146",
+      "atUtc": "2026-10-01T22:31:33Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:browser-kia-livery:3c511b27b79f",
+      "atUtc": "2026-10-01T22:31:33Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:browser-kia-race-results:005cfae371f2",
+      "atUtc": "2026-10-01T22:31:33Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:workflow-archive-final:43dfc0997229",
+      "atUtc": "2026-10-01T22:32:08Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:workflow-fix-archive-stage:2a8bf4b2e937",
+      "atUtc": "2026-10-01T22:32:09Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:workflow-verify-runtime:362be807cd11",
+      "atUtc": "2026-10-01T22:32:09Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:workflow-verify-runtime-v2:531641042499",
+      "atUtc": "2026-10-01T22:32:09Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:workflow-fix-integrity-parser:c03ce71e0e53",
+      "atUtc": "2026-10-01T22:32:09Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:workflow-update-kia-metadata:5996e587908b",
+      "atUtc": "2026-10-01T22:32:09Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:workflow-update-kia-metadata-v2:d7a47f17453c",
+      "atUtc": "2026-10-01T22:32:10Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:workflow-package-kia-runtime:3a91ea03e8cb",
+      "atUtc": "2026-10-01T22:32:10Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:workflow-probe-test:a7f2819c92fe",
+      "atUtc": "2026-10-01T22:32:10Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:workflow-probe-screenshot-test:5496361d596a",
+      "atUtc": "2026-10-01T22:32:10Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:workflow-render-pdf-page:cd4d91866f12",
+      "atUtc": "2026-10-01T22:32:10Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:workflow-fix-camera-test:b9a68fd0caaf",
+      "atUtc": "2026-10-01T22:32:11Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:workflow-add-livery-stroke:24c54d9c551d",
+      "atUtc": "2026-10-01T22:32:11Z"
+    },
+    {
+      "type": "artifact-added",
+      "artifactId": "validation:archive-workflow-scripts:1b50f9865f56",
+      "atUtc": "2026-10-01T22:34:00Z"
+    }
+  ]
+}

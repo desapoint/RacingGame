@@ -1,0 +1,104 @@
+
+> redline-drag-club@0.1.0 test
+> tsx --test tests/*.test.ts
+
+TAP version 13
+# Subtest: content is valid, unique and complete
+ok 1 - content is valid, unique and complete
+  ---
+  duration_ms: 2.9789
+  type: 'test'
+  ...
+# Subtest: all 20 career events can be completed sequentially with stock cars on Easy
+ok 2 - all 20 career events can be completed sequentially with stock cars on Easy
+  ---
+  duration_ms: 64.2251
+  type: 'test'
+  ...
+# Subtest: losses pay, do not unlock, and locked events cannot pay
+ok 3 - losses pay, do not unlock, and locked events cannot pay
+  ---
+  duration_ms: 0.1752
+  type: 'test'
+  ...
+# Subtest: every class finishes and skill improves times
+ok 4 - every class finishes and skill improves times
+  ---
+  duration_ms: 18.9582
+  type: 'test'
+  ...
+# Subtest: nitro, tuning and upgrades affect actual performance
+ok 5 - nitro, tuning and upgrades affect actual performance
+  ---
+  duration_ms: 24.783501
+  type: 'test'
+  ...
+# Subtest: jump start is penalized and pause freezes state
+ok 6 - jump start is penalized and pause freezes state
+  ---
+  duration_ms: 5.7126
+  type: 'test'
+  ...
+# Subtest: staging throttle is manual and RPM falls again when released
+ok 7 - staging throttle is manual and RPM falls again when released
+  ---
+  duration_ms: 0.3171
+  type: 'test'
+  ...
+# Subtest: manual-start mode stays neutral on green until first gear is selected
+ok 8 - manual-start mode stays neutral on green until first gear is selected
+  ---
+  duration_ms: 0.4102
+  type: 'test'
+  ...
+# Subtest: high-RPM launch uses continuous wheel slip while still moving forward
+ok 9 - high-RPM launch uses continuous wheel slip while still moving forward
+  ---
+  duration_ms: 0.5183
+  type: 'test'
+  ...
+# Subtest: launch RPM produces distinct wheelspin and drivetrain-load behavior
+ok 10 - launch RPM produces distinct wheelspin and drivetrain-load behavior
+  ---
+  duration_ms: 1.1674
+  type: 'test'
+  ...
+# Subtest: shift-light equipment is purchasable and changes race guidance capability
+ok 11 - shift-light equipment is purchasable and changes race guidance capability
+  ---
+  duration_ms: 0.1993
+  type: 'test'
+  ...
+# Subtest: rev limiter and RPM fall configuration resolve from the car engine profile
+ok 12 - rev limiter and RPM fall configuration resolve from the car engine profile
+  ---
+  duration_ms: 0.7034
+  type: 'test'
+  ...
+# Subtest: idle handles caps, repeat claims, twelve hours and backwards clocks
+ok 13 - idle handles caps, repeat claims, twelve hours and backwards clocks
+  ---
+  duration_ms: 0.2302
+  type: 'test'
+  ...
+# Subtest: save roundtrip preserves unknown owned IDs and rejects malformed nested data
+ok 14 - save roundtrip preserves unknown owned IDs and rejects malformed nested data
+  ---
+  duration_ms: 1.6024
+  type: 'test'
+  ...
+# Subtest: purchases enforce funds and class restrictions; loaner remains available
+ok 15 - purchases enforce funds and class restrictions; loaner remains available
+  ---
+  duration_ms: 0.1663
+  type: 'test'
+  ...
+1..15
+# tests 15
+# suites 0
+# pass 15
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 338.650901

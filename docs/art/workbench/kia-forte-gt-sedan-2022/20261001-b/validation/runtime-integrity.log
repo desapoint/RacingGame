@@ -1,0 +1,39 @@
+{
+  "canonicalPngSha256": "08bb49f44a7a10e06ffcff4f233c96993ffd0af6ca94f864a8263958b1bf8472",
+  "selectedCandidateByteEqual": true,
+  "stockColorMetadataConfigMatch": "#a92811",
+  "canonicalWebpSha256": "8337741fe014458bf4c1da138ddd3681dbe973c0ea3073a4c9f0a708f43f6837",
+  "canonicalWebpBytes": 87398,
+  "embeddedWebpExact": true,
+  "unchangedCatalogMappings": 59,
+  "preexistingChunk1UnchangedSha256": {
+    "0": "6f28541546979ed5b5a58998245c420c70cb1b1c8e2b2d2c0b24c04254fd7cac",
+    "2": "67f07843779553a503c9a84458bc67458087b68e4061fe188756651c7d41da1a"
+  },
+  "silveradoChunk19PreservedSha256": "b19efca7847db4e198c399b4f463a7925f7aa0662f49e1ad320793750f4eae11",
+  "otherRuntimeChunksUnchangedFromHead": [
+    0,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "releaseContainsExactKiaWebp": "dist/index.html",
+  "focusedBrowser": "1 passed; offline request, console, and request-failure assertions passed",
+  "unitTests": "15 passed",
+  "build": "passed",
+  "status": "PASS"
+}

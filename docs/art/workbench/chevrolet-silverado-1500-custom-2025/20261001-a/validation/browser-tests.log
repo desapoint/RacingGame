@@ -1,0 +1,69 @@
+
+> redline-drag-club@0.1.0 test:browser
+> playwright test
+
+
+Running 9 tests using 2 workers
+
+  ✘  2 tests/browser/offline.spec.ts:7:1 › release runs offline from file, customizes, races and saves (16.4s)
+  ✓  1 tests/browser/silverado.spec.ts:8:1 › Silverado loads offline, keeps black stock paint, repaints only its body, and races (26.5s)
+  ✓  3 tests/browser/offline.spec.ts:67:3 › project root opens and finishes a race through file without CORS errors (10.7s)
+  ✓  4 tests/browser/offline.spec.ts:67:3 › portable copy opens and finishes a race through file without CORS errors (10.2s)
+  ✓  5 tests/browser/offline.spec.ts:121:1 › editing the release config changes game balance without rebuilding HTML (5.7s)
+  ✓  6 tests/browser/offline.spec.ts:200:1 › missing or invalid editable config produces a readable startup error (423ms)
+  ✘  7 tests/browser/offline.spec.ts:213:1 › mobile menus fit and touch controls launch, shift and pause (45.0s)
+  ✓  8 tests/browser/offline.spec.ts:241:1 › unreadable storage is preserved and exportable; invalid imports do not replace progress (575ms)
+  ✓  9 tests/browser/offline.spec.ts:268:1 › blocked browser storage reports failure while game and export remain usable (413ms)
+
+
+  1) tests/browser/offline.spec.ts:7:1 › release runs offline from file, customizes, races and saves 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: locator('#race-results')
+    Expected substring: "Next event unlocked"
+    Received string:    "ANOTHER RUN, ANOTHER LESSONP4. Keep chasing.A podium unlocks the next event. Retry for free.+ C 1,500RACE REWARDREACTION0.008 sELAPSED TIME26.948 sTRAP SPEED58.6 km/hPERFECT SHIFTS0 / 0FINISH ORDER402 M DRAG STRIP / OFFICIAL TIMING01Milo Vega2024 Volkswagen Golf GTI14.638 sTOTAL TIME02Rae Collins2024 Toyota GR Corolla14.776 sTOTAL TIME03Jules Park2023 Honda Civic Si15.049 sTOTAL TIME04You2023 Honda Civic Si26.956 sTOTAL TIMEBack to garageRun it back ↻Continue career →"
+    Timeout: 5000ms
+
+    Call log:
+      - Expect "toContainText" locator('#race-results') with timeout 5000ms
+      - waiting for locator('#race-results')
+        14 × locator resolved to <section tabindex="-1" id="race-results" class="panel results timing-slip">…</section>
+           - unexpected value "ANOTHER RUN, ANOTHER LESSONP4. Keep chasing.A podium unlocks the next event. Retry for free.+ C 1,500RACE REWARDREACTION0.008 sELAPSED TIME26.948 sTRAP SPEED58.6 km/hPERFECT SHIFTS0 / 0FINISH ORDER402 M DRAG STRIP / OFFICIAL TIMING01Milo Vega2024 Volkswagen Golf GTI14.638 sTOTAL TIME02Rae Collins2024 Toyota GR Corolla14.776 sTOTAL TIME03Jules Park2023 Honda Civic Si15.049 sTOTAL TIME04You2023 Honda Civic Si26.956 sTOTAL TIMEBack to garageRun it back ↻Continue career →"
+
+
+      55 |   }
+      56 |   await expect(page.locator('#race-results')).toBeVisible();
+    > 57 |   await expect(page.locator('#race-results')).toContainText('Next event unlocked');
+         |                                               ^
+      58 |   await page.screenshot({ path: 'test-results/race-results.png', fullPage: true });
+      59 |   await page.locator('[data-action="nav"][data-id="garage"]').first().click();
+      60 |   await page.reload();
+        at /home/desapoint/Projets/RacingGame/tests/browser/offline.spec.ts:57:47
+
+    Error Context: test-results/offline-release-runs-offli-5f19c--customizes-races-and-saves/error-context.md
+
+  2) tests/browser/offline.spec.ts:213:1 › mobile menus fit and touch controls launch, shift and pause 
+
+    Test timeout of 45000ms exceeded.
+
+    Error: locator.click: Test timeout of 45000ms exceeded.
+    Call log:
+      - waiting for locator('[data-action="launch"]')
+
+
+      223 |   await expect(page.locator('#race-canvas')).toBeVisible();
+      224 |   await page.clock.runFor(3500);
+    > 225 |   await page.locator('[data-action="launch"]').click();
+          |                                                ^
+      226 |   await page.clock.runFor(1500);
+      227 |   expect(Number(await page.locator('#speed').innerText())).toBeGreaterThan(0);
+      228 |   await page.locator('[data-action="shift"]').click();
+        at /home/desapoint/Projets/RacingGame/tests/browser/offline.spec.ts:225:48
+
+    Error Context: test-results/offline-mobile-menus-fit-a-ed90e-rols-launch-shift-and-pause/error-context.md
+
+  2 failed
+    tests/browser/offline.spec.ts:7:1 › release runs offline from file, customizes, races and saves 
+    tests/browser/offline.spec.ts:213:1 › mobile menus fit and touch controls launch, shift and pause 
+  7 passed (1.5m)

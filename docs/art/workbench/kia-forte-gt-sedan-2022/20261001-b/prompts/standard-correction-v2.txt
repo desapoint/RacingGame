@@ -1,0 +1,12 @@
+Use case: stylized-concept correction of an existing car sprite
+Asset: kia-forte-gt-sedan-2022-2d.png, same stable ID
+Primary request: correct the factory rocker / side-sill detail and match the official 2022 Forte Fire Orange palette swatch, changing only those details.
+Image 1 is the exact current illustrated Kia sprite. Preserve its complete side-on right-facing 2022 Kia Forte GT sedan identity, wheel placement, roofline, windows, front and rear details, body shape, framing, proportions and transparent canvas.
+Image 2 is Kia America's official 2022 Forte brochure page. Use the labeled Fire Orange swatch as the visual reference for the orange paint hue. Keep the finished body in this orange palette; do not use the current sprite's approximate color as an exact factory color measurement. The brochure names this color for the Forte palette, but its materials do not establish GT-specific Fire Orange availability or a numeric factory paint value. This is the requested orange GT combination.
+Image 3 is Kia America's official 2022 Forte exterior photo. Use only to check the model's exterior design and trim treatment.
+Image 4 is the existing realistic side-profile reference for this same model; use only to preserve model proportions, side view and wheels.
+Image 5 is the existing game sprite atlas; use only for illustration line weight and cel shading.
+Factory detail: preserve the orange body-colored rocker/sill molding, and add the missing continuous black high-gloss accent/lower skirt along the GT's side sill between the wheel arches. Make it clearly visible, correctly aligned below the doors, and integrated with both ends of the wheel openings. Keep the upper sill body-colored. Do not turn the whole side sill black or change the GT into a GT-Line.
+Composition: preserve the existing exact canvas size and silhouette placement; one complete vehicle, both full tires and hubs visible, no crop, transparent background.
+Style: crisp illustrated 2D sprite, same restrained highlights, dark outlines and simplified shapes as the existing sprite and atlas. Keep bright silver multi-spoke rims and all original model-specific details.
+Constraints: true alpha, no backdrop, ground or shadow; no text, watermark, stripes, new trim or decals. Make only the side-skirt correction and Fire Orange palette match.
