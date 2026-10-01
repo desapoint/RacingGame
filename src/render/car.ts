@@ -4,9 +4,13 @@ import type { CarSpriteSpec, SpriteWheel } from './sprite-types';
 import { findPaintPixels, recolorPixels } from './sprite-paint';
 
 const WIDTH = 800,
-  HEIGHT = 300;
+  HEIGHT = 300,
+  MIN_DETAIL_SCALE = 2,
+  MAX_DETAIL_SCALE = 3;
 interface Wheel extends SpriteWheel {
   image: HTMLCanvasElement;
+  drawWidth: number;
+  drawHeight: number;
 }
 interface PreparedCar {
   body: HTMLCanvasElement;
@@ -18,9 +22,11 @@ interface PreparedCar {
   left: number;
   right: number;
   bottom: number;
+  pixelScale: number;
 }
 interface Appearance {
   paint: string;
+  pixelScale: number;
   accent: string;
   painted: HTMLCanvasElement;
   composed: HTMLCanvasElement;
@@ -35,28 +41,28 @@ type Cosmetics = Pick<OwnedCar, 'paint' | 'accent' | 'marks'>;
 const appearances = new Map<Cosmetics, Appearance>();
 const factoryPaint = new Map<string, Cosmetics>();
 
-function canvas(width = WIDTH, height = HEIGHT): HTMLCanvasElement {
+function canvas(width = WIDTH, height = HEIGHT, pixelScale = 1): HTMLCanvasElement {
   const result = document.createElement('canvas');
-  result.width = width;
-  result.height = height;
+  result.width = Math.ceil(width * pixelScale);
+  result.height = Math.ceil(height * pixelScale);
   return result;
 }
 
-async function prepare(spec: CarSpriteSpec): Promise<PreparedCar> {
+async function prepare(spec: CarSpriteSpec, pixelScale: number): Promise<PreparedCar> {
   const image = new Image();
   image.src = spec.url;
   await image.decode();
   const [x, y, width, height] = spec.bounds;
-  const scale = Math.min(700 / width, 235 / height);
-  const left = (WIDTH - width * scale) / 2,
-    top = 254 - height * scale;
-  const body = canvas(),
+  const fitScale = Math.min(700 / width, 235 / height);
+  const left = (WIDTH - width * fitScale) / 2,
+    top = 254 - height * fitScale;
+  const body = canvas(WIDTH, HEIGHT, pixelScale),
     ctx = body.getContext('2d', { willReadFrequently: true })!;
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = 'high';
   ctx.save();
   if (spec.facing === 'left') {
-    ctx.translate(WIDTH, 0);
+    ctx.translate(body.width, 0);
     ctx.scale(-1, 1);
   }
   ctx.drawImage(
@@ -65,50 +71,58 @@ async function prepare(spec: CarSpriteSpec): Promise<PreparedCar> {
     (y * image.naturalHeight) / spec.height,
     (width * image.naturalWidth) / spec.width,
     (height * image.naturalHeight) / spec.height,
-    left,
-    top,
-    width * scale,
-    height * scale,
+    left * pixelScale,
+    top * pixelScale,
+    width * fitScale * pixelScale,
+    height * fitScale * pixelScale,
   );
   ctx.restore();
   const wheels = spec.wheels.map((wheel) => {
-    const radius = wheel.radius * scale;
-    const sourceX = left + (wheel.x - x) * scale;
+    const radius = wheel.radius * fitScale;
+    const sourceX = left + (wheel.x - x) * fitScale;
     const centerX = spec.facing === 'left' ? WIDTH - sourceX : sourceX,
-      centerY = top + (wheel.y - y) * scale;
-    const image = canvas(Math.ceil(radius * 2 + 4), Math.ceil(radius * 2 + 4));
-    const context = image.getContext('2d')!;
+      centerY = top + (wheel.y - y) * fitScale;
+    const drawWidth = Math.ceil(radius * 2 + 4),
+      drawHeight = drawWidth;
+    const wheelImage = canvas(drawWidth, drawHeight, pixelScale);
+    const context = wheelImage.getContext('2d')!;
     context.imageSmoothingEnabled = true;
     context.imageSmoothingQuality = 'high';
     context.beginPath();
-    context.arc(image.width / 2, image.height / 2, radius, 0, Math.PI * 2);
+    context.arc(wheelImage.width / 2, wheelImage.height / 2, radius * pixelScale, 0, Math.PI * 2);
     context.clip();
     context.drawImage(
       body,
-      centerX - image.width / 2,
-      centerY - image.height / 2,
-      image.width,
-      image.height,
+      (centerX - drawWidth / 2) * pixelScale,
+      (centerY - drawHeight / 2) * pixelScale,
+      drawWidth * pixelScale,
+      drawHeight * pixelScale,
       0,
       0,
-      image.width,
-      image.height,
+      wheelImage.width,
+      wheelImage.height,
     );
-    return { x: centerX, y: centerY, radius, image };
+    return { x: centerX, y: centerY, radius, image: wheelImage, drawWidth, drawHeight };
   });
   // Body and wheels become separate parts once at load, preserving the generated stock rims.
   ctx.globalCompositeOperation = 'destination-out';
   for (const wheel of wheels) {
     ctx.beginPath();
-    ctx.arc(wheel.x, wheel.y, wheel.radius * 0.99, 0, Math.PI * 2);
+    ctx.arc(
+      wheel.x * pixelScale,
+      wheel.y * pixelScale,
+      wheel.radius * 0.99 * pixelScale,
+      0,
+      Math.PI * 2,
+    );
     ctx.fill();
   }
   ctx.globalCompositeOperation = 'source-over';
-  const pixels = ctx.getImageData(0, 0, WIDTH, HEIGHT);
+  const pixels = ctx.getImageData(0, 0, body.width, body.height);
   const mask = findPaintPixels(pixels, spec.paintColor);
-  const maskCanvas = canvas(),
+  const maskCanvas = canvas(WIDTH, HEIGHT, pixelScale),
     maskContext = maskCanvas.getContext('2d')!;
-  const maskPixels = maskContext.createImageData(WIDTH, HEIGHT);
+  const maskPixels = maskContext.createImageData(maskCanvas.width, maskCanvas.height);
   for (let index = 0; index < mask.length; index++) {
     const offset = index * 4;
     maskPixels.data[offset] = maskPixels.data[offset + 1] = maskPixels.data[offset + 2] = 255;
@@ -124,8 +138,9 @@ async function prepare(spec: CarSpriteSpec): Promise<PreparedCar> {
     wheels,
     paintColor: spec.paintColor,
     left,
-    right: left + width * scale,
+    right: left + width * fitScale,
     bottom: 254,
+    pixelScale,
   };
 }
 
@@ -135,12 +150,21 @@ export async function prepareCarSprites(
   current: () => boolean = () => true,
 ): Promise<void> {
   const work = async () => {
+    // Detail views track display density up to 3x. Dealer grids use a lower
+    // density because each 800x300 logical car is displayed substantially smaller.
+    const deviceScale = Math.max(1, window.devicePixelRatio || 1);
+    const pixelScale =
+      cars.length <= 2
+        ? Math.min(MAX_DETAIL_SCALE, Math.max(MIN_DETAIL_SCALE, deviceScale))
+        : Math.min(1.5, Math.max(1, deviceScale / 2));
     for (const [index, car] of cars.entries()) {
       if (!current()) return;
       const spec = spriteCatalog[car.art];
       if (!spec)
         throw new Error(`No sprite installed for ${car.name}. Check its art ID in config.js.`);
-      const sprite = prepared.get(car.art) ?? (await prepare(spec));
+      const cached = prepared.get(car.art);
+      const sprite =
+        cached && cached.pixelScale >= pixelScale ? cached : await prepare(spec, pixelScale);
       prepared.delete(car.art);
       prepared.set(car.art, sprite);
       while (prepared.size > MAX_PREPARED) prepared.delete(prepared.keys().next().value!);
@@ -153,13 +177,13 @@ export async function prepareCarSprites(
 
 function appearance(owned: Cosmetics, sprite: PreparedCar): HTMLCanvasElement {
   let result = appearances.get(owned);
-  const recolor = !result || result.paint !== owned.paint || result.accent !== owned.accent;
-  if (!result) {
+  if (!result || result.pixelScale !== sprite.pixelScale) {
     result = {
       paint: '',
+      pixelScale: sprite.pixelScale,
       accent: '',
-      painted: canvas(),
-      composed: canvas(),
+      painted: canvas(WIDTH, HEIGHT, sprite.pixelScale),
+      composed: canvas(WIDTH, HEIGHT, sprite.pixelScale),
       marks: owned.marks,
       count: -1,
       points: -1,
@@ -167,9 +191,10 @@ function appearance(owned: Cosmetics, sprite: PreparedCar): HTMLCanvasElement {
     appearances.set(owned, result);
     while (appearances.size > 8) appearances.delete(appearances.keys().next().value!);
   }
+  const recolor = result.paint !== owned.paint || result.accent !== owned.accent;
   if (recolor) {
     const ctx = result.painted.getContext('2d')!;
-    ctx.clearRect(0, 0, WIDTH, HEIGHT);
+    ctx.clearRect(0, 0, result.painted.width, result.painted.height);
     if (owned.paint.toLowerCase() === sprite.paintColor.toLowerCase())
       ctx.drawImage(sprite.body, 0, 0);
     else
@@ -181,7 +206,15 @@ function appearance(owned: Cosmetics, sprite: PreparedCar): HTMLCanvasElement {
     // A second color affects only the painted lower sill, preserving glass and fixed trim.
     if (owned.accent !== '#343345') {
       const trim = recolorPixels(sprite.pixels, sprite.mask, owned.accent, sprite.paintColor);
-      ctx.putImageData(trim, 0, 0, 0, Math.round(sprite.bottom - 36), WIDTH, 9);
+      ctx.putImageData(
+        trim,
+        0,
+        0,
+        0,
+        Math.round((sprite.bottom - 36) * sprite.pixelScale),
+        result.painted.width,
+        Math.max(1, Math.round(9 * sprite.pixelScale)),
+      );
     }
     result.paint = owned.paint;
     result.accent = owned.accent;
@@ -194,8 +227,11 @@ function appearance(owned: Cosmetics, sprite: PreparedCar): HTMLCanvasElement {
     result.points !== points
   ) {
     const ctx = result.composed.getContext('2d')!;
-    ctx.clearRect(0, 0, WIDTH, HEIGHT);
-    // Draw all livery ink first, then mask it to body paint, excluding glass, lights and wheels.
+    ctx.clearRect(0, 0, result.composed.width, result.composed.height);
+    // Livery points are stored in the 800x300 logical coordinate space. Scale the
+    // drawing context so their backing pixels retain the same high-DPI density.
+    ctx.save();
+    ctx.scale(sprite.pixelScale, sprite.pixelScale);
     for (const mark of owned.marks) {
       ctx.strokeStyle = mark.color;
       ctx.lineWidth = mark.width;
@@ -206,6 +242,7 @@ function appearance(owned: Cosmetics, sprite: PreparedCar): HTMLCanvasElement {
       if (mark.points.length === 1) ctx.lineTo(mark.points[0][0] + 0.1, mark.points[0][1]);
       ctx.stroke();
     }
+    ctx.restore();
     ctx.globalCompositeOperation = 'destination-in';
     ctx.drawImage(sprite.maskCanvas, 0, 0);
     ctx.globalCompositeOperation = 'destination-over';
@@ -227,7 +264,13 @@ function drawWheel(
   ctx.save();
   ctx.translate(wheel.x, wheel.y);
   ctx.rotate(rotation);
-  ctx.drawImage(wheel.image, -wheel.image.width / 2, -wheel.image.height / 2);
+  ctx.drawImage(
+    wheel.image,
+    -wheel.drawWidth / 2,
+    -wheel.drawHeight / 2,
+    wheel.drawWidth,
+    wheel.drawHeight,
+  );
   if (style === 1) {
     const rim = wheel.radius * 0.66;
     ctx.fillStyle = '#15171a';
@@ -297,6 +340,25 @@ export function drawCar(
       factoryPaint.set(car.id, cosmetics);
     }
   }
-  ctx.drawImage(cosmetics ? appearance(cosmetics, sprite) : sprite.body, 0, 0);
+  ctx.drawImage(cosmetics ? appearance(cosmetics, sprite) : sprite.body, 0, 0, WIDTH, HEIGHT);
   ctx.restore();
+}
+
+
+/** Draw a dealership/list preview with a backing store matched to its CSS size and DPR. */
+export function drawCarPreview(canvas: HTMLCanvasElement, car: CarDef): void {
+  const bounds = canvas.getBoundingClientRect();
+  const displayWidth = bounds.width || WIDTH;
+  const displayHeight = bounds.height || displayWidth * (HEIGHT / WIDTH);
+  const deviceScale = Math.max(1, window.devicePixelRatio || 1);
+  const backingWidth = Math.max(1, Math.round(displayWidth * deviceScale));
+  const backingHeight = Math.max(1, Math.round(displayHeight * deviceScale));
+  if (canvas.width !== backingWidth) canvas.width = backingWidth;
+  if (canvas.height !== backingHeight) canvas.height = backingHeight;
+  const ctx = canvas.getContext('2d')!;
+  ctx.setTransform(backingWidth / WIDTH, 0, 0, backingHeight / HEIGHT, 0, 0);
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+  ctx.clearRect(0, 0, WIDTH, HEIGHT);
+  drawCar(ctx, car);
 }
