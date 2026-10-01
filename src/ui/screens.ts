@@ -16,11 +16,11 @@ export const difficultySelect = (p: Profile) =>
   `<label class="difficulty">Difficulty <select aria-label="Race difficulty" id="difficulty">${['easy', 'normal', 'hard'].map((mode) => `<option value="${mode}" ${p.settings.difficulty === mode ? 'selected' : ''}>${mode[0].toUpperCase() + mode.slice(1)}</option>`).join('')}</select></label>`;
 export function shell(p: Profile, screen: Screen, status: string): string {
   const items = [
-    ['garage', '▱', 'Garage'],
+    ['garage', '◉', 'Garage'],
     ['career', '⚑', 'Career'],
-    ['dealership', '◇', 'Dealership'],
-    ['jobs', '↗', 'Jobs & workshop'],
-    ['settings', '☷', 'Settings'],
+    ['dealership', '▰', 'Dealership'],
+    ['jobs', '⌘', 'Jobs & workshop'],
+    ['settings', '⚙', 'Settings'],
   ];
   return `<aside class="sidebar"><a href="#garage" data-action="nav" data-id="garage" class="brand" aria-label="Redline home"><span class="brand-mark">R<span> /</span></span><span>REDLINE<small>DRAG CLUB</small></span></a><div class="nav-label">YOUR NEXT PERSONAL BEST.</div><nav aria-label="Main navigation">${items.map(([id, icon, label]) => `<button data-action="nav" data-id="${id}" class="nav-item ${screen === id ? 'active' : ''}" ${screen === id ? 'aria-current="page"' : ''}><span class="nav-icon" aria-hidden="true">${icon}</span>${label}${screen === id ? '<span class="nav-dot"></span>' : ''}</button>`).join('')}</nav><div class="sidebar-bottom"><div class="club-card"><span class="online-dot"></span> THE MIDNIGHT CLUB<p>Good cars.<br>Better competition.</p><span class="tiny">¼ MILE. ALL HEART.</span></div><span class="version">V1.0 &nbsp; / &nbsp; OFFLINE READY</span></div></aside><div class="workspace"><header class="topbar"><span class="breadcrumb">THE CLUB <span>/</span> ${items.find((i) => i[0] === screen)?.[2].toUpperCase()}</span><div class="account"><span class="balance-label">YOUR BALANCE</span><span class="credit-icon">C</span><strong id="balance">${money(p.cash)}</strong><div class="avatar" title="Local driver profile">DR</div></div></header><main id="main"></main><footer><span class="save-status" id="save-status">● ${escape(status)}</span><span>NO ENTRY FEES. NO LIMITS.</span></footer></div><div class="toast" id="toast" role="status" hidden></div><dialog id="modal"></dialog>`;
 }
