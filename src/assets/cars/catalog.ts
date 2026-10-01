@@ -1,4 +1,4 @@
-// Runtime catalog generated from the local art workbench. Compact WebP sprites are embedded as data URLs; full-resolution source/reference art remains outside the runtime tree.
+// Runtime catalog generated from full-resolution local art. High-resolution WebP sprites are embedded as data URLs; source/reference PNGs remain checked in separately.
 import type { CarSpriteSpec } from '../../render/sprite-types';
 import payload0 from './payloads/chunk-0';
 import payload1 from './payloads/chunk-1';
