@@ -131,6 +131,14 @@ export function validateConfig(config: GameData = data): void {
         (car.grip === undefined || (Number.isFinite(car.grip) && car.grip > 0 && car.grip <= 3)) &&
         (car.shiftTime === undefined ||
           (Number.isFinite(car.shiftTime) && car.shiftTime >= 0.2 && car.shiftTime <= 2)) &&
+        (car.idleRpm === undefined || (Number.isFinite(car.idleRpm) && car.idleRpm >= 500 && car.idleRpm <= 1800)) &&
+        (car.redlineRpm === undefined || (Number.isFinite(car.redlineRpm) && car.redlineRpm >= 3500 && car.redlineRpm <= 12000)) &&
+        (car.revLimitRpm === undefined || (Number.isFinite(car.revLimitRpm) && car.revLimitRpm >= 3500 && car.revLimitRpm <= 12500)) &&
+        (car.rpmRiseRate === undefined || (Number.isFinite(car.rpmRiseRate) && car.rpmRiseRate > 0 && car.rpmRiseRate <= 20000)) &&
+        (car.rpmFallRate === undefined || (Number.isFinite(car.rpmFallRate) && car.rpmFallRate > 0 && car.rpmFallRate <= 20000)) &&
+        (car.revLimiterType === undefined || ['soft-cut', 'hard-cut', 'vintage-bounce'].includes(car.revLimiterType)) &&
+        (car.revLimiterCutSeconds === undefined || (Number.isFinite(car.revLimiterCutSeconds) && car.revLimiterCutSeconds >= 0 && car.revLimiterCutSeconds <= 1)) &&
+        (car.revLimiterDropRpm === undefined || (Number.isFinite(car.revLimiterDropRpm) && car.revLimiterDropRpm >= 0 && car.revLimiterDropRpm <= 2500)) &&
         (car.category === undefined || categories.includes(car.category)) &&
         (car.condition === undefined || ['standard', 'used', 'rusty'].includes(car.condition)) &&
         (car.modelId === undefined || modelIds.has(car.modelId)) &&
@@ -150,7 +158,7 @@ export function validateConfig(config: GameData = data): void {
   }
   config.parts.forEach((part) =>
     ensure(
-      ['engine', 'transmission', 'tires', 'nitro', 'weight'].includes(part.slot) &&
+      ['engine', 'transmission', 'tires', 'nitro', 'weight', 'electronics'].includes(part.slot) &&
         part.price >= 0 &&
         part.effect > 0 &&
         part.level >= 1 &&
