@@ -368,7 +368,7 @@ class App {
       this.profile.settings.difficulty,
     );
     const main = document.querySelector<HTMLElement>('#main')!;
-    main.innerHTML = `<div class="page-heading race-heading"><div><div class="eyebrow">${context.type.toUpperCase()} / ${this.profile.settings.difficulty.toUpperCase()}</div><h1>${context.title}<span class="heading-dot">.</span></h1><p>¼ mile · ${carById.get(owned.id)!.name} · Featured rival: ${this.race.racers[1].name}</p></div>${ui.button('Pause <kbd>Esc</kbd>', 'pause', '', 'secondary')}</div><section class="panel race-panel"><div class="race-top"><span id="race-status">STAGING</span><div class="distance-bar"><i id="distance-fill"></i></div><span id="race-distance">0 / 402 M</span></div><canvas id="race-canvas" aria-label="Two lane drag race"></canvas><div class="race-feedback" id="race-feedback" role="status">Wait for green. Time your launch.</div><div class="dashboard instrument-cluster"><div class="gauge speed-gauge" id="speed-gauge"><div class="gauge-face"><span class="gauge-caption">SPEED</span><i class="gauge-needle"></i><i class="gauge-hub"></i><strong id="speed">0</strong><small>KM/H</small><div class="gauge-scale"><span>0</span><span>160</span><span>320</span></div></div></div><div class="gauge tach-gauge" id="tach-gauge"><div class="gauge-face"><span class="gauge-caption">TACH</span><i class="gauge-needle"></i><i class="gauge-hub"></i><strong id="rpm">3,000</strong><small>RPM</small><div class="gauge-scale"><span>0</span><span>4K</span><span>8K</span></div><span class="shift-callout" id="shift-label">LAUNCH WINDOW</span></div></div><div class="gear-console"><span>GEAR</span><strong id="gear">1</strong><small>6-SPEED</small><div class="shift-gate" aria-hidden="true"><i></i><i></i><i></i></div></div><div class="race-time odometer"><span>RUN TIMER</span><strong id="elapsed">0.000</strong><small>SECONDS</small></div></div></section><div class="race-controls">${ui.button('<kbd>Space</kbd><span>Launch<small>On green · match the RPM window</small></span>', 'launch', '', 'secondary')}${ui.button('<kbd>↑</kbd><span>Shift up<small>6,100–6,800 RPM · Shift also works</small></span>', 'shift', '', 'primary')}${ui.button('<kbd>N</kbd><span>Nitrous<small id="nitro-label">' + (this.race.player.nitroLeft ? 'Ready to use' : 'Install a system in the garage') + '</small></span>', 'nitro', '', 'secondary', !this.race.player.nitroLeft)}</div><p class="race-note">Reaction time counts toward placement. Jumping the lights adds a 0.75 s penalty. All three rivals run the same distance.</p>`;
+    main.innerHTML = `<div class="page-heading race-heading"><div><div class="eyebrow">${context.type.toUpperCase()} / ${this.profile.settings.difficulty.toUpperCase()}</div><h1>${context.title}<span class="heading-dot">.</span></h1><p>¼ mile · ${carById.get(owned.id)!.name} · Featured rival: ${this.race.racers[1].name}</p></div>${ui.button('Pause <kbd>Esc</kbd>', 'pause', '', 'secondary')}</div><section class="panel race-panel"><div class="race-top"><span id="race-status">STAGING</span><div class="distance-bar"><i id="distance-fill"></i></div><span id="race-distance">0 / 402 M</span></div><canvas id="race-canvas" aria-label="Two lane drag race"></canvas><div class="race-feedback" id="race-feedback" role="status">Wait for green. Time your launch.</div><div class="dashboard instrument-cluster"><div class="gauge speed-gauge" id="speed-gauge"><div class="gauge-face"><span class="gauge-caption">SPEED</span><i class="gauge-needle"></i><i class="gauge-hub"></i><strong id="speed">0</strong><small>KM/H</small><div class="gauge-scale"><span>0</span><span>160</span><span>320</span></div></div></div><div class="gauge tach-gauge" id="tach-gauge"><div class="gauge-face"><span class="gauge-caption">RPM</span><div class="tach-numbers" aria-hidden="true"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span class="redline-number">7</span><span class="redline-number">8</span></div><i class="gauge-needle"></i><i class="gauge-hub"></i><strong id="rpm">3.0</strong><small>×1000 RPM</small><span class="shift-callout" id="shift-label">LAUNCH</span></div></div><div class="gear-console"><span>GEAR</span><strong id="gear">1</strong><small>6-SPEED</small><div class="shift-gate" aria-hidden="true"><i></i><i></i><i></i></div></div><div class="race-time odometer"><span>RUN TIMER</span><strong id="elapsed">0.000</strong><small>SECONDS</small></div></div></section><div class="race-controls">${ui.button('<kbd>Space</kbd><span>Launch<small>On green · hold your launch RPM</small></span>', 'launch', '', 'secondary control-launch')}${ui.button('<kbd>↑</kbd><span>Shift<small>6,100–6,800 RPM · Shift key also works</small></span>', 'shift', '', 'primary control-shift')}${ui.button('<kbd>N</kbd><span>Nitrous<small id="nitro-label">' + (this.race.player.nitroLeft ? 'Ready to use' : 'Install a system in the garage') + '</small></span>', 'nitro', '', 'secondary control-nitro', !this.race.player.nitroLeft)}</div><p class="race-note">Reaction time counts toward placement. Jumping the lights adds a 0.75 s penalty. All three rivals run the same distance.</p>`;
     this.renderer = new Renderer(document.querySelector<HTMLCanvasElement>('#race-canvas')!);
     window.scrollTo(0, 0);
     this.lastHud = 0;
@@ -416,7 +416,7 @@ class App {
     };
     set('speed', Math.round(player.speed * 3.6).toString());
     set('gear', player.gear.toString());
-    set('rpm', ui.money(player.rpm));
+    set('rpm', (player.rpm / 1000).toFixed(1));
     set('elapsed', player.elapsed.toFixed(3));
     set('race-distance', `${Math.floor(player.distance)} / 402 M`);
     const speedGauge = document.getElementById('speed-gauge');
@@ -468,25 +468,26 @@ class App {
                       ? 'REDLINE · SHIFT UP'
                       : 'Build speed. Watch your RPM.',
     );
-    set('shift-label', player.launched ? 'SHIFT WINDOW' : 'LAUNCH WINDOW');
+    set(
+      'shift-label',
+      !player.launched
+        ? 'LAUNCH'
+        : player.rpm >= 6100 && player.rpm <= 6800
+          ? 'SHIFT NOW'
+          : player.rpm > 6800
+            ? 'REDLINE'
+            : 'SHIFT',
+    );
     set(
       'nitro-label',
       player.stats.nitro
         ? `${player.nitroLeft.toFixed(1)} s ${player.nitroActive ? 'remaining' : 'ready'}`
         : 'Install a system in the garage',
     );
-    const bar = document.getElementById('tach-fill');
-    if (bar) {
-      bar.style.width = `${(player.rpm / 8000) * 100}%`;
-      bar.classList.toggle('perfect', player.rpm >= 6100 && player.rpm <= 6800);
-    }
-    const shift = document.getElementById('shift-window');
-    if (shift) {
-      shift.style.left = `${((player.launched ? 6100 : (player.owned?.launch ?? 4800) - 300) / 8000) * 100}%`;
-      shift.style.width = `${((player.launched ? 700 : 600) / 8000) * 100}%`;
-    }
     const distance = document.getElementById('distance-fill');
     if (distance) distance.style.width = `${(player.distance / data.distance) * 100}%`;
+    const raceControls = document.querySelector<HTMLElement>('.race-controls');
+    if (raceControls) raceControls.classList.toggle('finished', race.finished);
     const pause = document.querySelector<HTMLButtonElement>('[data-action="pause"]');
     if (pause) {
       pause.innerHTML = `${race.paused ? 'Resume' : 'Pause'} <kbd>Esc</kbd>`;
