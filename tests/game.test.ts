@@ -135,6 +135,40 @@ test('high-RPM launch uses continuous wheel slip while still moving forward', ()
   assert.ok(race.player.traction > 0);
 });
 
+test('launch RPM produces distinct wheelspin and drivetrain-load behavior', () => {
+  const sample = (rpm: number, tires?: string) => {
+    const owned = createOwned(data.cars[0]);
+    if (tires) owned.parts.tires = tires;
+    const race = new Race(owned, data.events[0].rivals, 'normal', () => 0.5, 'manual');
+    race.time = 0;
+    race.player.rpm = rpm;
+    race.shift();
+    const initialRpm = race.player.rpm;
+    let peakSlip = 0;
+    for (let i = 0; i < 72; i++) {
+      race.update(1 / 120);
+      peakSlip = Math.max(peakSlip, race.player.wheelSlip);
+    }
+    return {
+      peakSlip,
+      slip: race.player.wheelSlip,
+      rpm: race.player.rpm,
+      initialRpm,
+      speed: race.player.speed,
+    };
+  };
+
+  const low = sample(2400);
+  const high = sample(6400);
+  assert.ok(high.peakSlip > low.peakSlip + 0.08, 'higher launch RPM creates more wheelspin');
+  assert.ok(low.rpm < low.initialRpm, 'engaging first loads the engine at low RPM');
+  assert.ok(high.speed > 0 && low.speed > 0, 'wheelspin and bogging still produce forward motion');
+
+  const stockHigh = sample(6400);
+  const tireHigh = sample(6400, 'tires-1');
+  assert.ok(tireHigh.slip < stockHigh.slip, 'better tires settle launch slip sooner');
+});
+
 test('shift-light equipment is purchasable and changes race guidance capability', () => {
   const car = carById.get(data.starter)!;
   const owned = createOwned(car);
