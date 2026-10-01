@@ -1,4 +1,5 @@
 import { drawCar } from './car';
+import { drawDragTree } from './drag-tree';
 import { data } from '../data/config';
 import type { Race } from '../game/race';
 import type { CarDef, OwnedCar } from '../types';
@@ -175,43 +176,10 @@ export class Renderer {
     ctx.restore();
 
     if (race.time < 0.85 && startX > -90) {
-      const treeX = startX + 54;
-      const poleTop = 126;
-      const poleBottom = 354;
-      ctx.fillStyle = '#121416';
-      ctx.fillRect(treeX - 7, poleTop, 14, poleBottom - poleTop);
-      ctx.fillStyle = '#74716a';
-      ctx.fillRect(treeX - 2, poleTop, 4, poleBottom - poleTop);
-      ctx.fillStyle = '#8a8780';
-      ctx.fillRect(treeX - 28, poleBottom - 4, 56, 7);
-      ctx.fillRect(treeX - 18, poleBottom - 12, 36, 6);
-      const lamp = (y: number, lit: boolean, color: string, radius = 10) => {
-        ctx.fillStyle = '#090a0b';
-        ctx.fillRect(treeX - 31, y - 14, 62, 28);
-        for (const x of [treeX - 15, treeX + 15]) {
-          ctx.fillStyle = lit ? color : '#2a2926';
-          ctx.beginPath();
-          ctx.arc(x, y, radius, 0, Math.PI * 2);
-          ctx.fill();
-          if (lit) {
-            ctx.strokeStyle = color + '55';
-            ctx.lineWidth = 5;
-            ctx.stroke();
-          }
-        }
-      };
-      lamp(145, true, '#efe7c1', 6);
-      lamp(166, race.time > -3.25, '#efe7c1', 6);
-      lamp(202, race.time > -3, '#f2aa32');
-      lamp(232, race.time > -2, '#f2aa32');
-      lamp(262, race.time > -1, '#f2aa32');
-      lamp(299, race.time >= 0 && !race.falseStart, '#67cf6f');
-      lamp(329, race.falseStart, '#e44f43');
-      ctx.fillStyle = '#c8c2b6';
-      ctx.font = 'bold 8px monospace';
-      ctx.textAlign = 'center';
-      ctx.fillText('PRE', treeX, 120);
-      ctx.textAlign = 'left';
+      drawDragTree(ctx, startX + 54, 126, {
+        time: race.time,
+        falseStart: race.falseStart,
+      });
     }
 
     ctx.save();
