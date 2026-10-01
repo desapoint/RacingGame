@@ -142,8 +142,8 @@ export class Renderer {
       Math.min(1020, 159 + (rival.distance - race.player.distance) * 7),
     );
     ctx.save();
-    ctx.translate(rivalX, 227);
-    ctx.scale(0.48, 0.48);
+    ctx.translate(rivalX - 55, 185);
+    ctx.scale(0.62, 0.62);
     drawCar(
       ctx,
       rival.car,
@@ -153,8 +153,8 @@ export class Renderer {
     );
     ctx.restore();
     ctx.save();
-    ctx.translate(130, 310);
-    ctx.scale(0.52, 0.52);
+    ctx.translate(65, 270);
+    ctx.scale(0.68, 0.68);
     drawCar(
       ctx,
       race.player.car,
@@ -167,11 +167,11 @@ export class Renderer {
     ctx.font = '11px monospace';
     ctx.fillText(
       `${rival.name.toUpperCase()}  /  ${rival.car.name.toUpperCase()}`,
-      Math.max(20, rivalX + 100),
-      235,
+      Math.max(20, rivalX + 82),
+      205,
     );
     ctx.fillStyle = '#e16a58';
-    ctx.fillText('YOU', 228, 321);
+    ctx.fillText('YOU', 205, 291);
     const startX = 352 - race.player.distance * 7;
     if (startX > -90 && startX < 1160) {
       ctx.fillStyle = '#e9e3d6aa';
