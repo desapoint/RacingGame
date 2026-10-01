@@ -97,3 +97,7 @@ See [getting-started.md](getting-started.md) for controls, commands, source layo
 - **Smooth scaled sprites:** Compact runtime car sprites remain intentionally small for download size, but enlarge them with Canvas 2D image smoothing enabled and `imageSmoothingQuality = "high"`. Do not use nearest-neighbor enlargement for the current illustrated car artwork.
 - **High-DPI cached scenery:** Build the cached race background at the active render scale so static scenery is not upscaled from a lower-resolution offscreen canvas. Rebuild it when the renderer is resized.
 
+
+## 2026-10-01 — Supplied Mazda3 and Forte gameplay artwork
+
+- **Use the supplied illustrations:** The red 2021 Mazda3 Turbo Sedan and orange 2022 Kia Forte GT Sedan now use the user-supplied transparent `-2d.png` artwork. Preserve those uploads unchanged and retain the earlier realistic references. Their existing stable car/art IDs continue to resolve through the generated catalog; source metadata must use the new native dimensions, bounds and wheel centers so previews, paint customization and rotating wheels stay aligned.

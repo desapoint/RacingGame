@@ -88,60 +88,68 @@
     ]
   },
   "mazda3-turbo-sedan-2021": {
-    "file": "mazda3-turbo-sedan-2021.png",
-    "width": 1933,
-    "height": 813,
+    "file": "mazda3-turbo-sedan-2021-2d.png",
+    "width": 2172,
+    "height": 724,
     "bounds": [
-      35,
-      108,
-      1869,
-      603
+      32,
+      21,
+      2107,
+      687
     ],
     "wheels": [
       {
-        "x": 411,
-        "y": 574,
-        "radius": 122
+        "x": 447,
+        "y": 527,
+        "radius": 159
       },
       {
-        "x": 1569,
-        "y": 575,
-        "radius": 122
+        "x": 1728,
+        "y": 528,
+        "radius": 159
       }
     ],
     "paintColor": "#c91420",
     "referenceUrls": [
       "https://cdn.motor1.com/images/mgl/b3jkl/s1/2021-mazda3-turbo-first-drive.jpg",
       "https://www.jdpower.com/cars/2021/mazda/mazda3"
-    ]
+    ],
+    "facing": "right",
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/mazda3-turbo-sedan-2021.png",
+    "artworkSource": "User-supplied illustrated sprite, 2026-10-01"
   },
   "kia-forte-gt-sedan-2022": {
-    "file": "kia-forte-gt-sedan-2022.png",
-    "width": 1994,
-    "height": 789,
+    "file": "kia-forte-gt-sedan-2022-2d.png",
+    "width": 2172,
+    "height": 724,
     "bounds": [
-      34,
-      106,
-      1906,
-      614
+      24,
+      31,
+      2122,
+      693
     ],
     "wheels": [
       {
-        "x": 417,
-        "y": 581,
-        "radius": 121
+        "x": 430,
+        "y": 539,
+        "radius": 162
       },
       {
-        "x": 1578,
-        "y": 582,
-        "radius": 121
+        "x": 1720,
+        "y": 540,
+        "radius": 162
       }
     ],
     "paintColor": "#e56c12",
     "referenceUrls": [
       "https://www.kiamedia.com/us/en/media/photos/17929/2022-forte-22",
       "https://images.caricos.com/k/kia/2022_kia_forte/images/2560x1440/2022_kia_forte_12_2560x1440.jpg"
-    ]
+    ],
+    "facing": "right",
+    "renderStyle": "cartoon-2d",
+    "realisticReference": "docs/art/realistic/kia-forte-gt-sedan-2022.png",
+    "artworkSource": "User-supplied illustrated sprite, 2026-10-01"
   },
   "ford-mustang-boss302-1969": {
     "file": "ford-mustang-boss302-1969.png",
