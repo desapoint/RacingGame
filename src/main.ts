@@ -498,7 +498,13 @@ class App {
     this.outcomePaid = false;
     this.race = race;
     const main = document.querySelector<HTMLElement>('#main')!;
-    main.innerHTML = `<div class="page-heading race-heading"><div><div class="eyebrow">${context.type.toUpperCase()} / ${this.profile.settings.difficulty.toUpperCase()}</div><h1>${context.title}<span class="heading-dot">.</span></h1><p>¼ mile · ${carById.get(owned.id)!.name} · Featured rival: ${this.race.racers[1].name}</p></div>${ui.button('Pause <kbd>Esc</kbd>', 'pause', '', 'secondary')}</div><section class="panel race-panel"><div class="race-top"><span id="race-status">STAGING</span><div class="distance-bar"><i id="distance-fill"></i></div><span id="race-distance">0 / 402 M</span></div><canvas id="race-canvas" aria-label="Two lane drag race"></canvas><div class="race-feedback" id="race-feedback" role="status">Hold throttle to set launch RPM.</div><div class="dashboard instrument-cluster"><div class="gauge speed-gauge" id="speed-gauge"><div class="gauge-face"><span class="gauge-caption">SPEED</span><i class="gauge-needle"></i><i class="gauge-hub"></i><strong id="speed">0</strong><small>KM/H</small><div class="gauge-scale"><span>0</span><span>160</span><span>320</span></div></div></div><div class="gauge tach-gauge" id="tach-gauge"><div class="gauge-face"><span class="gauge-caption">RPM</span><div class="tach-range" aria-hidden="true"><span>0</span><span id="redline-label">RED</span><span id="tach-max-label">MAX</span></div><div class="shift-lights" id="shift-lights" aria-label="Shift light"><i></i><i></i><i></i><i></i><i></i></div><i class="gauge-needle"></i><i class="gauge-hub"></i><strong id="rpm">3.0</strong><small>×1000 RPM</small><span class="shift-callout" id="shift-label">LAUNCH</span></div></div><div class="gear-console"><span>GEAR</span><strong id="gear">N</strong><small>6-SPEED</small><div class="shift-gate" aria-hidden="true"><i></i><i></i><i></i></div></div><div class="race-time odometer"><span>RUN TIMER</span><strong id="elapsed">0.000</strong><small>SECONDS</small></div></div></section><div class="race-controls">${ui.button('<kbd>Space</kbd><span>Throttle<small>Hold to rev · release to let RPM fall</small></span>', 'throttle', '', 'secondary control-launch')}${ui.button('<kbd>↑</kbd><span>Gear up<small>Engages first in manual-start mode</small></span>', 'shift', '', 'primary control-shift')}${ui.button('<kbd>N</kbd><span>Nitrous<small id="nitro-label">' + (this.race.player.nitroLeft ? 'Ready to use' : 'Install a system in the garage') + '</small></span>', 'nitro', '', 'secondary control-nitro', !this.race.player.nitroLeft)}</div><p class="race-note">Stage in neutral and use throttle to choose your RPM. Automatic start selects first on green; manual start waits for your gear-up input. Excess RPM creates wheelspin instead of a binary launch penalty.</p>`;
+    const tachMaxK = this.race.player.engine.tachMaxRpm / 1000;
+    const tachMarks = Array.from({ length: 9 }, (_, index) => {
+      const value = (tachMaxK * index) / 8;
+      const label = Math.abs(value - Math.round(value)) < 0.05 ? Math.round(value).toString() : value.toFixed(1);
+      return `<span>${label}</span>`;
+    }).join('');
+    main.innerHTML = `<div class="page-heading race-heading"><div><div class="eyebrow">${context.type.toUpperCase()} / ${this.profile.settings.difficulty.toUpperCase()}</div><h1>${context.title}<span class="heading-dot">.</span></h1><p>¼ mile · ${carById.get(owned.id)!.name} · Featured rival: ${this.race.racers[1].name}</p></div>${ui.button('Pause <kbd>Esc</kbd>', 'pause', '', 'secondary')}</div><section class="panel race-panel"><div class="race-top"><span id="race-status">STAGING</span><div class="distance-bar"><i id="distance-fill"></i></div><span id="race-distance">0 / 402 M</span></div><canvas id="race-canvas" aria-label="Two lane drag race"></canvas><div class="race-feedback" id="race-feedback" role="status">Hold throttle to set launch RPM.</div><div class="dashboard instrument-cluster"><div class="gauge speed-gauge" id="speed-gauge"><div class="gauge-face"><span class="gauge-caption">SPEED</span><i class="gauge-needle"></i><i class="gauge-hub"></i><strong id="speed">0</strong><small>KM/H</small><div class="gauge-scale"><span>0</span><span>160</span><span>320</span></div></div></div><div class="gauge tach-gauge" id="tach-gauge"><div class="gauge-face"><span class="gauge-caption">RPM × 1000</span><div class="tach-major" aria-hidden="true">${tachMarks}</div><span class="tach-redline-label" id="redline-label">REDLINE</span><div class="redline-segments" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div><i class="redline-marker" aria-hidden="true"></i><div class="shift-lights" id="shift-lights" aria-label="Shift light"><i></i><i></i><i></i><i></i><i></i></div><i class="gauge-needle"></i><i class="gauge-hub"></i><strong id="rpm">0.8</strong><small>ENGINE SPEED</small><span class="shift-callout" id="shift-label">LAUNCH</span></div></div><div class="gear-console"><span>GEAR</span><strong id="gear">N</strong><small>6-SPEED</small><div class="shift-gate" aria-hidden="true"><i></i><i></i><i></i></div></div><div class="race-time odometer"><span>RUN TIMER</span><strong id="elapsed">0.000</strong><small>SECONDS</small></div></div></section><div class="race-controls">${ui.button('<kbd>Space</kbd><span>Throttle<small>Hold for power · release to coast</small></span>', 'throttle', '', 'secondary control-launch')}${ui.button('<kbd>↑</kbd><span>Gear up<small>Engages first in manual-start mode</small></span>', 'shift', '', 'primary control-shift')}${ui.button('<kbd>N</kbd><span>Nitrous<small id="nitro-label">' + (this.race.player.nitroLeft ? 'Ready to use' : 'Install a system in the garage') + '</small></span>', 'nitro', '', 'secondary control-nitro', !this.race.player.nitroLeft)}</div><p class="race-note">Space is the throttle for the full pass: hold it for power and release it to coast with engine braking. Stage in neutral to choose launch RPM. Excess RPM creates wheelspin instead of a binary launch penalty.</p>`;
     this.renderer = new Renderer(document.querySelector<HTMLCanvasElement>('#race-canvas')!);
     window.scrollTo(0, 0);
     this.lastHud = 0;
@@ -549,7 +555,6 @@ class App {
     set('rpm', (player.rpm / 1000).toFixed(1));
     set('elapsed', player.elapsed.toFixed(3));
     set('redline-label', `RED ${(player.engine.redlineRpm / 1000).toFixed(1)}`);
-    set('tach-max-label', (player.engine.tachMaxRpm / 1000).toFixed(0));
     set('race-distance', `${Math.floor(player.distance)} / 402 M`);
     const speedGauge = document.getElementById('speed-gauge');
     if (speedGauge)
@@ -563,8 +568,9 @@ class App {
         '--needle-angle',
         `${-120 + Math.min(1, player.rpm / player.engine.tachMaxRpm) * 240}deg`,
       );
-      const redlineStart = Math.min(239, (player.engine.redlineRpm / player.engine.tachMaxRpm) * 240);
-      tachGauge.style.setProperty('--redline-start', `${redlineStart}deg`);
+      const redlineAngle =
+        -120 + Math.min(1, player.engine.redlineRpm / player.engine.tachMaxRpm) * 240;
+      tachGauge.style.setProperty('--redline-angle', `${redlineAngle}deg`);
       const shiftError = Math.abs(player.rpm - player.shiftTarget) / Math.max(1, player.shiftTarget);
       tachGauge.classList.toggle('perfect', player.stats.shiftLight > 0 && shiftError <= 0.035);
       tachGauge.classList.toggle('redline', player.rpm >= player.engine.redlineRpm);
@@ -599,9 +605,11 @@ class App {
                 ? 'Across the line. Waiting for the field…'
                 : race.time < race.feedbackUntil
                   ? race.feedback
-                  : player.wheelSlip > 0.16 && player.distance < 55
-                    ? 'WHEELSPIN · GRIP IS BUILDING'
-                    : player.rpm >= player.engine.redlineRpm
+                  : !player.throttleHeld
+                    ? 'THROTTLE CLOSED · COASTING / ENGINE BRAKING'
+                    : player.wheelSlip > 0.16 && player.distance < 55
+                      ? 'WHEELSPIN · GRIP IS BUILDING'
+                      : player.rpm >= player.engine.redlineRpm
                       ? 'REDLINE · SHIFT UP'
                       : 'Build speed. Watch the tach and shift lights.',
     );
@@ -650,7 +658,7 @@ class App {
       pause.disabled = race.finished;
     }
     const throttle = document.querySelector<HTMLButtonElement>('[data-action="throttle"]');
-    if (throttle) throttle.disabled = player.launched || race.finished;
+    if (throttle) throttle.disabled = race.finished || !!player.finish;
     const shiftButton = document.querySelector<HTMLButtonElement>('[data-action="shift"]');
     if (shiftButton)
       shiftButton.disabled =
