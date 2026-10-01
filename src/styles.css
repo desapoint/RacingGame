@@ -1143,46 +1143,6 @@ main {
   display: block;
   margin: 4px 0 0;
 }
-.tach-label {
-  display: flex;
-  justify-content: space-between;
-  font-size: 8px;
-  letter-spacing: 1px;
-  color: #b8adbf;
-  margin-bottom: 15px;
-}
-.tach-label span:last-child {
-  color: #b7d595;
-}
-.tach-track {
-  height: 15px;
-  background: #2e2936;
-  position: relative;
-  border-radius: 3px;
-  overflow: hidden;
-}
-#tach-fill {
-  width: 0;
-  height: 100%;
-  background: #bea2ee;
-}
-#tach-fill.perfect {
-  background: var(--green);
-}
-#shift-window {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  border: 2px solid #c4ed9b;
-  background: #b9dd9c33;
-}
-.tach-scale {
-  display: flex;
-  justify-content: space-between;
-  font-size: 8px;
-  color: #706776;
-  margin-top: 9px;
-}
 .race-time strong {
   font-size: 25px;
 }
@@ -2264,13 +2224,18 @@ h2 {
 .tach-gauge .gauge-face::after {
   content: "";
   position: absolute;
-  width: 27%;
-  height: 5px;
-  right: 8%;
-  top: 32%;
-  transform: rotate(48deg);
-  background: #a03a31;
-  box-shadow: 0 0 7px #a03a3155;
+  z-index: 1;
+  inset: 5%;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 240deg,
+    transparent 0deg 204deg,
+    #d85845 204deg 240deg,
+    transparent 240deg 360deg
+  );
+  -webkit-mask: radial-gradient(circle, transparent 0 78%, #000 79% 88%, transparent 89%);
+  mask: radial-gradient(circle, transparent 0 78%, #000 79% 88%, transparent 89%);
+  filter: drop-shadow(0 0 2px #d8584566);
 }
 .gauge-caption {
   position: absolute;
@@ -2347,6 +2312,33 @@ h2 {
 .gauge-scale span:first-child { left: 18%; }
 .gauge-scale span:nth-child(2) { left: 47%; }
 .gauge-scale span:last-child { right: 16%; }
+.tach-numbers {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  color: #d0c9bc;
+  font: 700 clamp(7px, .65vw, 10px) monospace;
+  text-shadow: 0 1px 2px #000;
+  pointer-events: none;
+}
+.tach-numbers span {
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+.tach-numbers span:nth-child(1) { left: 16%; top: 72%; }
+.tach-numbers span:nth-child(2) { left: 10%; top: 56%; }
+.tach-numbers span:nth-child(3) { left: 14%; top: 38%; }
+.tach-numbers span:nth-child(4) { left: 25%; top: 24%; }
+.tach-numbers span:nth-child(5) { left: 44%; top: 17%; }
+.tach-numbers span:nth-child(6) { left: 63%; top: 20%; }
+.tach-numbers span:nth-child(7) { left: 78%; top: 33%; }
+.tach-numbers span:nth-child(8) { left: 86%; top: 51%; }
+.tach-numbers span:nth-child(9) { left: 80%; top: 69%; }
+.tach-numbers .redline-number { color: #e06658; }
+.tach-gauge .gauge-caption { top: 43%; font-size: 7px; }
+.tach-gauge strong { top: 55%; }
+.tach-gauge small { top: 71%; font-size: 6px; }
+
 .shift-callout {
   position: absolute;
   z-index: 6;
@@ -2575,10 +2567,23 @@ h2 {
     font-size: 19px;
   }
   .shift-callout {
-    font-size: 6px;
-    padding: 2px 4px;
-  }
-  .gear-console,
+  position: absolute;
+  z-index: 6;
+  left: 50%;
+  bottom: 7%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  color: #b9b2a7;
+  font: 700 7px monospace;
+  letter-spacing: .8px;
+}
+.tach-gauge.perfect .shift-callout {
+  color: #91c86f;
+}
+.tach-gauge.redline .shift-callout {
+  color: #e36052;
+}
+.gear-console,
   .odometer {
     min-height: 72px;
   }
@@ -2588,4 +2593,70 @@ h2 {
   .drag-strip-results .standing {
     padding-right: 28px;
   }
+}
+
+
+/* 2026-09-30 race HUD usability pass */
+.race-feedback {
+  box-sizing: border-box;
+  height: 52px;
+  min-height: 52px;
+  display: grid;
+  place-items: center;
+  line-height: 1.35;
+}
+.race-controls button { min-width: 0; }
+@media (max-width: 760px) {
+  .race-feedback {
+    height: 48px;
+    min-height: 48px;
+    padding: 8px 10px;
+  }
+  .race-controls {
+    position: fixed;
+    z-index: 40;
+    left: 8px;
+    right: 8px;
+    bottom: max(8px, env(safe-area-inset-bottom));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+    margin: 0;
+    padding: 8px;
+    border: 1px solid #77726866;
+    border-radius: 5px;
+    background: #101210f2;
+    box-shadow: 0 8px 28px #000b, inset 0 1px #ffffff0d;
+    backdrop-filter: blur(5px);
+  }
+  .race-controls.finished { display: none; }
+  .race-controls button {
+    min-height: 62px;
+    padding: 10px 6px;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    flex-direction: column;
+  }
+  .race-controls button > span {
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.15;
+  }
+  .race-controls kbd,
+  .race-controls small { display: none; }
+  .race-controls .control-shift { min-height: 68px; }
+  .race-note { margin-bottom: 92px; }
+}
+@media (max-width: 420px) {
+  .race-controls {
+    left: 5px;
+    right: 5px;
+    gap: 5px;
+    padding: 6px;
+  }
+  .race-controls button {
+    min-height: 58px;
+    padding: 8px 4px;
+  }
+  .race-controls button > span { font-size: 11px; }
 }
