@@ -271,6 +271,10 @@ export class SaveRepository {
     else this.blocked = wasBlocked;
     return success;
   }
+  async reset(): Promise<SaveEnvelope | null> {
+    const next = freshSave();
+    return (await this.replace(next)) ? next : null;
+  }
 }
 export function downloadSave(contents: string, name = 'redline-save.json'): void {
   const url = URL.createObjectURL(new Blob([contents], { type: 'application/json' }));

@@ -52,6 +52,12 @@ See [getting-started.md](getting-started.md) for controls, commands, source layo
 - **Preserve direct-file compatibility:** Load the config using a relative classic `<script src="./config.js">` before the game starts. Do not use `fetch`, XHR, module imports, or `crossorigin` to read local configuration. Copy both release files together. Missing or invalid configuration must show a readable startup error.
 - **Verify external edits:** Tests cover changing starting funds and car horsepower in a copied config without modifying HTML, plus missing/invalid config handling and complete offline races from root, release, and relocated two-file packages.
 
+## 2026-09-29 — Explicit full progression reset
+
+- **Destructive reset lives in Settings:** Provide a clearly labeled reset-progression action alongside save import/export. Require an explicit confirmation before changing storage.
+- **Reset means a brand-new profile:** Use the same `freshSave()` path as a first launch and replace the persisted profile through `SaveRepository`. This resets credits, owned cars and upgrades, tuning and liveries, career unlocks/results, workshop and idle progress, race statistics, preferences, timestamps, and save ID; it is not a career-only reset.
+- **Recovery mode can be abandoned intentionally:** A successful reset may replace an unreadable stored save and clears the recovery block. Exported JSON backups are external files and are never deleted by the in-game reset.
+
 ## 2026-09-30 — GitHub Pages deployment
 
 - **Playable web deployment:** Publish the production `dist/` output to GitHub Pages so the current game is playable from the repository's Pages URL without cloning or installing dependencies.
