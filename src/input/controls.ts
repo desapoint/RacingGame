@@ -8,7 +8,9 @@ export class Controls {
       event.target instanceof HTMLInputElement ||
       event.target instanceof HTMLSelectElement ||
       event.target instanceof HTMLTextAreaElement ||
-      (event.target instanceof HTMLButtonElement && event.code === 'Space')
+      (event.target instanceof HTMLButtonElement &&
+        event.code === 'Space' &&
+        event.target.dataset.action !== 'throttle')
     )
       return;
 
@@ -43,6 +45,12 @@ export class Controls {
     this.throttle(false);
   };
 
+  private onBlur = () => {
+    if (!this.throttleDown) return;
+    this.throttleDown = false;
+    this.throttle(false);
+  };
+
   constructor(
     private handle: (action: Action) => void,
     private throttle: (active: boolean) => void,
@@ -50,10 +58,12 @@ export class Controls {
   ) {
     window.addEventListener('keydown', this.onKeyDown);
     window.addEventListener('keyup', this.onKeyUp);
+    window.addEventListener('blur', this.onBlur);
   }
 
   destroy(): void {
     window.removeEventListener('keydown', this.onKeyDown);
     window.removeEventListener('keyup', this.onKeyUp);
+    window.removeEventListener('blur', this.onBlur);
   }
 }
