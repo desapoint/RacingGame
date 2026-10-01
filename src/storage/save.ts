@@ -24,7 +24,7 @@ export function freshSave(now = Date.now()): SaveEnvelope {
       selected: data.starter,
       unlocked: 0,
       results: {},
-      settings: { difficulty: 'normal', reducedMotion: false },
+      settings: { difficulty: 'normal', reducedMotion: false, startMode: 'automatic' },
       idle: { level: 0, bank: 0, lastSeen: now },
       races: 0,
       wins: 0,
@@ -83,7 +83,7 @@ export function validateSave(value: unknown): asserts value is SaveEnvelope {
     )
       fail();
     for (const [slot, id] of Object.entries(car.parts)) {
-      if (!['engine', 'transmission', 'tires', 'nitro', 'weight'].includes(slot) || !textId(id))
+      if (!['engine', 'transmission', 'tires', 'nitro', 'weight', 'electronics'].includes(slot) || !textId(id))
         fail();
       const part = partById.get(id!);
       if (part && (part.slot !== slot || part.minClass > (carById.get(car.id)?.class ?? 3))) fail();
@@ -111,7 +111,8 @@ export function validateSave(value: unknown): asserts value is SaveEnvelope {
   if (
     !p.settings ||
     !['easy', 'normal', 'hard'].includes(p.settings.difficulty) ||
-    typeof p.settings.reducedMotion !== 'boolean'
+    typeof p.settings.reducedMotion !== 'boolean' ||
+    (p.settings.startMode !== undefined && !['automatic', 'manual'].includes(p.settings.startMode))
   )
     fail();
   if (

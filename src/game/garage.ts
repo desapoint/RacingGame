@@ -17,6 +17,7 @@ export function statsFor(car: CarDef, owned?: OwnedCar): CarStats {
   const effect = (slot: Slot) => partById.get(owned?.parts[slot] ?? '')?.effect ?? 0;
   const power = 1 + effect('engine');
   const weight = 1 - effect('weight');
+  const shiftLightLevel = partById.get(owned?.parts.electronics ?? '')?.level ?? 0;
   return {
     acceleration: (car.acceleration * power) / weight,
     maxSpeed: car.maxSpeed * Math.sqrt(power),
@@ -25,6 +26,7 @@ export function statsFor(car: CarDef, owned?: OwnedCar): CarStats {
     nitro: effect('nitro'),
     power: Math.round(car.power * power),
     mass: Math.round(car.mass * weight),
+    shiftLight: Math.min(2, shiftLightLevel) as 0 | 1 | 2,
   };
 }
 export function buyCar(profile: Profile, id: string): string {

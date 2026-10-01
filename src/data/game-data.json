@@ -49,7 +49,8 @@
       "category": "sedan",
       "condition": "standard",
       "grip": 1,
-      "shiftTime": 0.28
+      "shiftTime": 0.28,
+      "redlineRpm": 6600
     },
     {
       "id": "volkswagen-golf-gti-2024",
@@ -89,7 +90,8 @@
       "category": "hatchback",
       "condition": "standard",
       "grip": 1,
-      "shiftTime": 0.28
+      "shiftTime": 0.28,
+      "redlineRpm": 7200
     },
     {
       "id": "mazda3-turbo-sedan-2021",
@@ -169,7 +171,8 @@
       "category": "sedan",
       "condition": "standard",
       "grip": 1,
-      "shiftTime": 0.28
+      "shiftTime": 0.28,
+      "redlineRpm": 7200
     },
     {
       "id": "audi-rs3-sedan-2024",
@@ -1347,6 +1350,24 @@
       "price": 18000,
       "minClass": 2,
       "effect": 0.21
+    },
+    {
+      "id": "shiftlight-single",
+      "name": "Single shift lamp",
+      "slot": "electronics",
+      "level": 1,
+      "price": 900,
+      "minClass": 0,
+      "effect": 1
+    },
+    {
+      "id": "shiftlight-multi",
+      "name": "Progressive shift-light array",
+      "slot": "electronics",
+      "level": 2,
+      "price": 2800,
+      "minClass": 0,
+      "effect": 2
     }
   ],
   "rivals": [

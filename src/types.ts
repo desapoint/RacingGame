@@ -1,4 +1,6 @@
-export type Slot = 'engine' | 'transmission' | 'tires' | 'nitro' | 'weight';
+export type Slot = 'engine' | 'transmission' | 'tires' | 'nitro' | 'weight' | 'electronics';
+export type StartMode = 'automatic' | 'manual';
+export type RevLimiterType = 'soft-cut' | 'hard-cut' | 'vintage-bounce';
 export type Difficulty = 'easy' | 'normal' | 'hard';
 export type Screen = 'garage' | 'career' | 'dealership' | 'jobs' | 'settings';
 export type VehicleCategory =
@@ -49,6 +51,14 @@ export interface CarDef {
   condition?: VehicleCondition;
   grip?: number;
   shiftTime?: number;
+  idleRpm?: number;
+  redlineRpm?: number;
+  revLimitRpm?: number;
+  rpmRiseRate?: number;
+  rpmFallRate?: number;
+  revLimiterType?: RevLimiterType;
+  revLimiterCutSeconds?: number;
+  revLimiterDropRpm?: number;
 }
 export interface PartDef {
   id: string;
@@ -125,7 +135,7 @@ export interface Profile {
   selected: string;
   unlocked: number;
   results: Record<string, RaceRecord>;
-  settings: { difficulty: Difficulty; reducedMotion: boolean };
+  settings: { difficulty: Difficulty; reducedMotion: boolean; startMode?: StartMode };
   idle: { level: number; bank: number; lastSeen: number };
   races: number;
   wins: number;
@@ -147,4 +157,5 @@ export interface CarStats {
   nitro: number;
   power: number;
   mass: number;
+  shiftLight: 0 | 1 | 2;
 }
