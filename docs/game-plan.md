@@ -35,7 +35,7 @@ Add a small, upgradeable idle operation that accrues currency while the game is 
 
 ### Cars, parts, and appearance
 
-Start with at least three fictional cars in each career division. Each car definition has a stable ID, class, purchase price, performance stats, restrictions, and an art ID. Avoid requiring real manufacturer marks or licensed assets.
+Start with at least three fictional cars in each career division. Each car definition has a stable ID, class, purchase price, performance stats, restrictions, and a stable `spriteIndex` that maps to the local atlases. Avoid requiring real manufacturer marks or licensed assets.
 
 Define five upgrade slots: engine, transmission, tires, nitro, and weight reduction. Parts have configurable prices, class limits, stat changes, and unlock requirements. Provide two setup controls—launch RPM and final-drive ratio—with ranges and event restrictions defined in game data. Parts and tuning must affect the race simulation consistently.
 
@@ -49,7 +49,7 @@ Use TypeScript source organized by responsibility: app/screens, race simulation,
 
 Keep editable balance and progression values in one JSON game-data source file. It covers cars, classes, stats, part slots and prices, upgrade effects, restrictions, tuning ranges, career divisions/events, rivals, difficulty profiles, rewards, jobs, and idle rates/caps. Development imports the JSON; the release generates a separate editable `config.js` with the same object and reads it through a classic script tag, allowing edits without rebuilding. Do not fetch configuration at runtime. Define stable IDs, TypeScript types, and startup/development validation for references, ranges, and duplicate IDs. Keep paint masks and sprite geometry in the corresponding local car assets.
 
-Use Vite for local development, where TypeScript is translated as the source is served, and esbuild for the release bundle. The release build embeds the classic IIFE game script, styles, and artwork in `dist/index.html` and emits a neighboring editable `dist/config.js`. Use relative paths, no module script, dynamic import, runtime `fetch`, remote CDN, server API, or network dependency. Keep both release files together when distributing them and verify play by opening `dist/index.html` through `file://`.
+Use Vite for local development, where TypeScript is translated as the source is served, and esbuild for the release bundle. The release build embeds the classic IIFE game script and styles in `dist/index.html`, emits a neighboring editable `dist/config.js`, and copies the optimized car sprite atlases into `dist/assets/`. Use relative paths, no module script, dynamic import, runtime `fetch`, remote CDN, server API, or network dependency. Keep `index.html`, `config.js`, and the `assets/` directory together when distributing them and verify play by opening `dist/index.html` through `file://`.
 
 ## Saves and offline behavior
 

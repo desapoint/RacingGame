@@ -52,6 +52,14 @@ See [getting-started.md](getting-started.md) for controls, commands, source layo
 - **Preserve direct-file compatibility:** Load the config using a relative classic `<script src="./config.js">` before the game starts. Do not use `fetch`, XHR, module imports, or `crossorigin` to read local configuration. Copy both release files together. Missing or invalid configuration must show a readable startup error.
 - **Verify external edits:** Tests cover changing starting funds and car horsepower in a copied config without modifying HTML, plus missing/invalid config handling and complete offline races from root, release, and relocated two-file packages.
 
+
+## 2026-09-29 — Sprite-backed 30-car roster
+
+- **Supplied sprite roster:** Replace the procedural/five-profile car artwork with the 30 cars from the supplied sprite pack. This supersedes the earlier small-procedural-art and dedicated-sedan-art decisions while keeping the existing drag-race simulation and career structure.
+- **Stable sprite mapping:** Car definitions use a unique integer `spriteIndex` from 1 through 30. Stable car IDs remain the save/config reference; the sprite index only selects the matching atlas cell.
+- **Compact layered atlases:** Car bodies and paint masks use 6 × 5 atlases with 80 × 30 cells, while wheels use a separate 6 × 5 atlas with 32 × 32 cells. The three optimized atlases total 55,586 bytes. Separate wheels preserve rotation and wheel-style choices, and the renderer retains the existing 800 × 300 logical car space so saved paint/livery coordinates remain compatible.
+- **Offline packaging:** The release keeps code and CSS in `dist/index.html`, editable data in `dist/config.js`, and copies the three local atlases into `dist/assets/`. The release therefore requires the HTML, config, and assets directory together but still makes no runtime network requests.
+
 ## 2026-09-29 — Explicit full progression reset
 
 - **Destructive reset lives in Settings:** Provide a clearly labeled reset-progression action alongside save import/export. Require an explicit confirmation before changing storage.

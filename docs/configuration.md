@@ -6,7 +6,8 @@
 | --- | --- |
 | `src/data/game-data.json` | Canonical JSON config for development and new builds |
 | `dist/config.js` | Editable config used directly by the built game |
-| `dist/index.html` | Game code, styles, and artwork; loads its neighboring `config.js` |
+| `dist/index.html` | Game code and styles; loads its neighboring `config.js` and local sprite atlases |
+| `dist/assets/` | Optimized local WebP atlases for car bodies, paint masks, and wheels |
 
 The release config contains a plain data object wrapped in one JavaScript assignment:
 
@@ -16,7 +17,7 @@ globalThis.REDLINE_CONFIG = {
 };
 ```
 
-Edit the existing values inside that object, save the file, and reload the game. Keep `config.js` next to `index.html`. The wrapper lets browsers read local data through a classic script without fetching JSON or loading ES modules across `file://` origins. No server is required.
+Edit the existing values inside that object, save the file, and reload the game. Keep `config.js` and the `assets/` directory next to `index.html`. The wrapper lets browsers read local data through a classic script without fetching JSON or loading ES modules across `file://` origins. No server is required.
 
 Development continues to use ordinary JSON. Building generates the release wrapper from `src/data/game-data.json`; preserve lasting changes there, because a new build replaces `dist/config.js`.
 
@@ -34,6 +35,6 @@ For example, to display 275 HP for the Mazda, find the car whose ID is `mazda3-t
 
 The top-level object contains `cars`, `parts`, `classes`, `events`, `rivals`, `difficulties`, `jobs`, `idle`, and `tuning`, plus the race distance, starting funds, and starter/loaner IDs. Keep IDs unique and references valid. Preserve existing IDs so saved ownership continues to resolve.
 
-V1's career assumes four divisions with five ordered events each. Roster size can grow, but each car must reference an existing artwork ID: `hatch`, `coupe`, `super`, `mazda3-sedan`, or `forte-gt-sedan`. Creating a new silhouette requires a source-code change and rebuild.
+V1's career assumes four divisions with five ordered events each. The active roster uses 30 sprite-backed cars. Each car must define a unique integer `spriteIndex` from 1 through 30, matching its cell in the local body, paint-mask, and wheel atlases. Changing or adding sprite artwork requires updating those local atlases and rebuilding the release.
 
 Startup validation reports invalid configuration on the page. A missing or unreadable config also displays an error instead of silently falling back to embedded defaults. Idle capacities must remain no larger than the lowest job participation reward. Existing saves continue to be validated against the active configuration.

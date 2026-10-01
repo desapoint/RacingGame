@@ -2,8 +2,8 @@
   "title": "Redline",
   "distance": 402.336,
   "startCash": 8000,
-  "starter": "kestrel-rs",
-  "loaner": "kestrel-rs",
+  "starter": "mazda3-turbo-sedan-2021",
+  "loaner": "mazda3-turbo-sedan-2021",
   "classes": [
     {
       "id": "street",
@@ -32,186 +32,394 @@
   ],
   "cars": [
     {
-      "id": "kestrel-rs",
-      "name": "Kestrel RS",
-      "tagline": "Light feet. Heavy ambition.",
+      "id": "mazda3-turbo-sedan-2021",
+      "name": "2021 Mazda Mazda3",
+      "tagline": "AWD · 2.5 Turbo Sedan AWD",
       "class": 0,
       "price": 0,
-      "power": 190,
-      "mass": 1180,
-      "acceleration": 7.3,
-      "maxSpeed": 65,
-      "art": "hatch",
-      "color": "#baa7f7"
-    },
-    {
-      "id": "comet-gt",
-      "name": "Comet GT",
-      "tagline": "A little muscle goes a long way.",
-      "class": 0,
-      "price": 3500,
-      "power": 212,
-      "mass": 1220,
-      "acceleration": 7.5,
-      "maxSpeed": 67,
-      "art": "coupe",
-      "color": "#edb272"
-    },
-    {
-      "id": "vela-sport",
-      "name": "Vela Sport",
-      "tagline": "Made for the late shift.",
-      "class": 0,
-      "price": 7000,
-      "power": 234,
-      "mass": 1260,
-      "acceleration": 7.7,
-      "maxSpeed": 69,
-      "art": "super",
-      "color": "#85c9b5"
-    },
-    {
-      "id": "mazda3-turbo-sedan-2021",
-      "name": "2021 Mazda3 Turbo Sedan",
-      "tagline": "Quiet confidence. Turbocharged ambition.",
-      "class": 0,
-      "price": 7800,
       "power": 250,
-      "mass": 1540,
-      "acceleration": 8.1,
-      "maxSpeed": 66,
-      "art": "mazda3-sedan",
-      "color": "#bd233b"
+      "mass": 1535,
+      "acceleration": 7.92,
+      "maxSpeed": 69.7,
+      "spriteIndex": 1,
+      "color": "#d62d36"
     },
     {
       "id": "kia-forte-gt-sedan-2022",
-      "name": "2022 Kia Forte GT Sedan",
-      "tagline": "Four doors. A little more attitude.",
+      "name": "2022 Kia Forte",
+      "tagline": "FWD · GT DCT",
       "class": 0,
-      "price": 6200,
+      "price": 3500,
       "power": 201,
-      "mass": 1375,
-      "acceleration": 7.65,
+      "mass": 1370,
+      "acceleration": 7.2,
       "maxSpeed": 65,
-      "art": "forte-gt-sedan",
-      "color": "#f07827"
+      "spriteIndex": 2,
+      "color": "#ef6b1f"
     },
     {
-      "id": "sable-r",
-      "name": "Sable R",
-      "tagline": "Light feet. Heavy ambition.",
+      "id": "honda-civic-type-r-2024",
+      "name": "2024 Honda Civic Type R",
+      "tagline": "FWD · Type R",
+      "class": 1,
+      "price": 56500,
+      "power": 315,
+      "mass": 1445,
+      "acceleration": 10.35,
+      "maxSpeed": 85.4,
+      "spriteIndex": 3,
+      "color": "#e5e6e6"
+    },
+    {
+      "id": "toyota-gr-corolla-core-2023",
+      "name": "2023 Toyota GR Corolla",
+      "tagline": "AWD · Core",
+      "class": 0,
+      "price": 14300,
+      "power": 300,
+      "mass": 1475,
+      "acceleration": 9.71,
+      "maxSpeed": 81.2,
+      "spriteIndex": 4,
+      "color": "#e4e5e5"
+    },
+    {
+      "id": "subaru-wrx-2024",
+      "name": "2024 Subaru WRX",
+      "tagline": "AWD · Base 6MT",
+      "class": 0,
+      "price": 7100,
+      "power": 271,
+      "mass": 1495,
+      "acceleration": 8.73,
+      "maxSpeed": 74.9,
+      "spriteIndex": 5,
+      "color": "#2664d1"
+    },
+    {
+      "id": "volkswagen-golf-r-2023",
+      "name": "2023 Volkswagen Golf R",
+      "tagline": "AWD · 2.0 TSI 6MT",
       "class": 1,
       "price": 34000,
-      "power": 350,
-      "mass": 1265,
-      "acceleration": 9.5,
-      "maxSpeed": 79,
-      "art": "hatch",
-      "color": "#baa7f7"
+      "power": 315,
+      "mass": 1520,
+      "acceleration": 9.89,
+      "maxSpeed": 82.4,
+      "spriteIndex": 6,
+      "color": "#2562c3"
     },
     {
-      "id": "monarch-6",
-      "name": "Monarch 6",
-      "tagline": "A little muscle goes a long way.",
+      "id": "hyundai-elantra-n-2024",
+      "name": "2024 Hyundai Elantra N",
+      "tagline": "FWD · 6MT",
+      "class": 0,
+      "price": 8900,
+      "power": 276,
+      "mass": 1450,
+      "acceleration": 9.12,
+      "maxSpeed": 77.5,
+      "spriteIndex": 7,
+      "color": "#84b2e7"
+    },
+    {
+      "id": "acura-integra-type-s-2024",
+      "name": "2024 Acura Integra Type S",
+      "tagline": "FWD · Type S",
       "class": 1,
-      "price": 37500,
-      "power": 372,
-      "mass": 1305,
-      "acceleration": 9.7,
-      "maxSpeed": 81,
-      "art": "coupe",
-      "color": "#edb272"
+      "price": 61000,
+      "power": 320,
+      "mass": 1460,
+      "acceleration": 10.41,
+      "maxSpeed": 85.8,
+      "spriteIndex": 8,
+      "color": "#e0ae1d"
     },
     {
-      "id": "arcadia-gt",
-      "name": "Arcadia GT",
-      "tagline": "Made for the late shift.",
-      "class": 1,
-      "price": 41000,
-      "power": 394,
-      "mass": 1345,
-      "acceleration": 9.9,
-      "maxSpeed": 83,
-      "art": "super",
-      "color": "#85c9b5"
-    },
-    {
-      "id": "tempest-rx",
-      "name": "Tempest RX",
-      "tagline": "Light feet. Heavy ambition.",
+      "id": "nissan-z-sport-2024",
+      "name": "2024 Nissan Z",
+      "tagline": "RWD · Sport 6MT",
       "class": 2,
-      "price": 94000,
-      "power": 510,
-      "mass": 1350,
-      "acceleration": 11.7,
-      "maxSpeed": 93,
-      "art": "coupe",
-      "color": "#baa7f7"
+      "price": 122000,
+      "power": 400,
+      "mass": 1585,
+      "acceleration": 11.87,
+      "maxSpeed": 95.3,
+      "spriteIndex": 9,
+      "color": "#176ccf"
     },
     {
-      "id": "spectre-s",
-      "name": "Spectre S",
-      "tagline": "A little muscle goes a long way.",
-      "class": 2,
-      "price": 97500,
-      "power": 532,
-      "mass": 1390,
-      "acceleration": 11.899999999999999,
-      "maxSpeed": 95,
-      "art": "super",
-      "color": "#edb272"
-    },
-    {
-      "id": "solstice-r",
-      "name": "Solstice R",
-      "tagline": "Made for the late shift.",
+      "id": "toyota-gr-supra-2023",
+      "name": "2023 Toyota GR Supra",
+      "tagline": "RWD · 3.0 Premium Automatic",
       "class": 2,
       "price": 101000,
-      "power": 554,
-      "mass": 1430,
-      "acceleration": 12.1,
-      "maxSpeed": 97,
-      "art": "super",
-      "color": "#85c9b5"
+      "power": 382,
+      "mass": 1560,
+      "acceleration": 11.54,
+      "maxSpeed": 93.1,
+      "spriteIndex": 10,
+      "color": "#d72f35"
     },
     {
-      "id": "apex-one",
-      "name": "Apex One",
-      "tagline": "Light feet. Heavy ambition.",
+      "id": "ford-mustang-gt-2024",
+      "name": "2024 Ford Mustang",
+      "tagline": "RWD · GT 5.0 6MT",
       "class": 3,
-      "price": 218000,
-      "power": 670,
-      "mass": 1435,
-      "acceleration": 13.9,
-      "maxSpeed": 107,
-      "art": "coupe",
-      "color": "#baa7f7"
+      "price": 203000,
+      "power": 480,
+      "mass": 1740,
+      "acceleration": 12.91,
+      "maxSpeed": 102,
+      "spriteIndex": 11,
+      "color": "#2360b7"
     },
     {
-      "id": "revenant-x",
-      "name": "Revenant X",
-      "tagline": "A little muscle goes a long way.",
-      "class": 3,
-      "price": 221500,
-      "power": 692,
-      "mass": 1475,
-      "acceleration": 14.1,
-      "maxSpeed": 109,
-      "art": "super",
-      "color": "#edb272"
+      "id": "chevrolet-camaro-ss-2024",
+      "name": "2024 Chevrolet Camaro",
+      "tagline": "RWD · SS Coupe 6MT",
+      "class": 2,
+      "price": 129000,
+      "power": 455,
+      "mass": 1705,
+      "acceleration": 12.52,
+      "maxSpeed": 99.4,
+      "spriteIndex": 12,
+      "color": "#dfad20"
     },
     {
-      "id": "zenith-xx",
-      "name": "Zenith XX",
-      "tagline": "Made for the late shift.",
+      "id": "bmw-m3-sedan-2024",
+      "name": "2024 BMW M3 Sedan",
+      "tagline": "RWD · Base 6MT",
       "class": 3,
-      "price": 225000,
-      "power": 714,
-      "mass": 1515,
+      "price": 194000,
+      "power": 473,
+      "mass": 1740,
+      "acceleration": 12.73,
+      "maxSpeed": 100.8,
+      "spriteIndex": 13,
+      "color": "#15845e"
+    },
+    {
+      "id": "mercedes-amg-c63-s-e-performance-2024",
+      "name": "2024 Mercedes-AMG C 63 S E PERFORMANCE",
+      "tagline": "AWD · 4MATIC+ Sedan",
+      "class": 3,
+      "price": 239000,
+      "power": 671,
+      "mass": 2185,
       "acceleration": 14.3,
       "maxSpeed": 111,
-      "art": "super",
-      "color": "#85c9b5"
+      "spriteIndex": 14,
+      "color": "#b5b7b8"
+    },
+    {
+      "id": "audi-rs5-sportback-2024",
+      "name": "2024 Audi RS 5 Sportback",
+      "tagline": "AWD · RS 5",
+      "class": 2,
+      "price": 94000,
+      "power": 444,
+      "mass": 1855,
+      "acceleration": 11.3,
+      "maxSpeed": 91.6,
+      "spriteIndex": 15,
+      "color": "#54575b"
+    },
+    {
+      "id": "lexus-is500-2024",
+      "name": "2024 Lexus IS 500 F SPORT Performance",
+      "tagline": "RWD · RWD",
+      "class": 2,
+      "price": 136000,
+      "power": 472,
+      "mass": 1765,
+      "acceleration": 12.54,
+      "maxSpeed": 99.6,
+      "spriteIndex": 16,
+      "color": "#ed681e"
+    },
+    {
+      "id": "cadillac-ct4v-blackwing-2024",
+      "name": "2024 Cadillac CT4-V Blackwing",
+      "tagline": "RWD · 6MT",
+      "class": 3,
+      "price": 185000,
+      "power": 472,
+      "mass": 1755,
+      "acceleration": 12.61,
+      "maxSpeed": 100.1,
+      "spriteIndex": 17,
+      "color": "#303136"
+    },
+    {
+      "id": "porsche-911-carrera-2024",
+      "name": "2024 Porsche 911 Carrera",
+      "tagline": "RWD · Coupe PDK",
+      "class": 2,
+      "price": 115000,
+      "power": 379,
+      "mass": 1520,
+      "acceleration": 11.73,
+      "maxSpeed": 94.4,
+      "spriteIndex": 18,
+      "color": "#c8c9c8"
+    },
+    {
+      "id": "porsche-taycan-2024",
+      "name": "2024 Porsche Taycan",
+      "tagline": "RWD · Base RWD",
+      "class": 0,
+      "price": 12500,
+      "power": 402,
+      "mass": 2070,
+      "acceleration": 9.29,
+      "maxSpeed": 78.6,
+      "spriteIndex": 19,
+      "color": "#5caee6"
+    },
+    {
+      "id": "tesla-model-3-performance-2024",
+      "name": "2024 Tesla Model 3 Performance",
+      "tagline": "AWD · Dual Motor AWD",
+      "class": 3,
+      "price": 221000,
+      "power": 510,
+      "mass": 1840,
+      "acceleration": 12.98,
+      "maxSpeed": 102.5,
+      "spriteIndex": 20,
+      "color": "#d72e36"
+    },
+    {
+      "id": "dodge-charger-scat-pack-2023",
+      "name": "2023 Dodge Charger",
+      "tagline": "RWD · Scat Pack 6.4 RWD",
+      "class": 2,
+      "price": 108000,
+      "power": 485,
+      "mass": 1960,
+      "acceleration": 11.65,
+      "maxSpeed": 93.9,
+      "spriteIndex": 21,
+      "color": "#6940a8"
+    },
+    {
+      "id": "alfa-romeo-giulia-quadrifoglio-2024",
+      "name": "2024 Alfa Romeo Giulia Quadrifoglio",
+      "tagline": "RWD · Quadrifoglio RWD",
+      "class": 3,
+      "price": 230000,
+      "power": 505,
+      "mass": 1735,
+      "acceleration": 13.6,
+      "maxSpeed": 106.5,
+      "spriteIndex": 22,
+      "color": "#15865b"
+    },
+    {
+      "id": "genesis-g70-3-3t-2024",
+      "name": "2024 Genesis G70",
+      "tagline": "RWD · 3.3T Sport Advanced RWD",
+      "class": 0,
+      "price": 16100,
+      "power": 365,
+      "mass": 1770,
+      "acceleration": 9.82,
+      "maxSpeed": 82,
+      "spriteIndex": 23,
+      "color": "#e4e5e4"
+    },
+    {
+      "id": "kia-stinger-gt2-2023",
+      "name": "2023 Kia Stinger",
+      "tagline": "RWD · GT2 RWD",
+      "class": 1,
+      "price": 38500,
+      "power": 368,
+      "mass": 1765,
+      "acceleration": 9.93,
+      "maxSpeed": 82.7,
+      "spriteIndex": 24,
+      "color": "#d42f34"
+    },
+    {
+      "id": "lotus-emira-v6-2024",
+      "name": "2024 Lotus Emira",
+      "tagline": "RWD · V6 First Edition 6MT",
+      "class": 3,
+      "price": 212000,
+      "power": 400,
+      "mass": 1445,
+      "acceleration": 12.96,
+      "maxSpeed": 102.3,
+      "spriteIndex": 25,
+      "color": "#72d617"
+    },
+    {
+      "id": "alpine-a110-2024",
+      "name": "2024 Alpine A110",
+      "tagline": "RWD · Base",
+      "class": 1,
+      "price": 65500,
+      "power": 252,
+      "mass": 1100,
+      "acceleration": 10.83,
+      "maxSpeed": 88.5,
+      "spriteIndex": 26,
+      "color": "#176bd1"
+    },
+    {
+      "id": "ford-mustang-fastback-1965-racer",
+      "name": "1965 Ford Mustang",
+      "tagline": "RWD · Fastback 289 HiPo race-prepped",
+      "class": 1,
+      "price": 47500,
+      "power": 271,
+      "mass": 1270,
+      "acceleration": 10.15,
+      "maxSpeed": 84.1,
+      "spriteIndex": 27,
+      "color": "#d8d5ca"
+    },
+    {
+      "id": "chevrolet-camaro-z28-1969-racer",
+      "name": "1969 Chevrolet Camaro Z/28",
+      "tagline": "RWD · 302 V8 4MT",
+      "class": 0,
+      "price": 10700,
+      "power": 290,
+      "mass": 1520,
+      "acceleration": 9.15,
+      "maxSpeed": 77.7,
+      "spriteIndex": 28,
+      "color": "#e65f20"
+    },
+    {
+      "id": "porsche-911-carrera-rs-27-1973",
+      "name": "1973 Porsche 911 Carrera RS 2.7",
+      "tagline": "RWD · Lightweight/M471-inspired",
+      "class": 1,
+      "price": 52000,
+      "power": 207,
+      "mass": 955,
+      "acceleration": 10.32,
+      "maxSpeed": 85.2,
+      "spriteIndex": 29,
+      "color": "#e6e4da"
+    },
+    {
+      "id": "dodge-charger-daytona-1969-racer",
+      "name": "1969 Dodge Charger Daytona",
+      "tagline": "RWD · 440 Magnum race-prepped",
+      "class": 1,
+      "price": 43000,
+      "power": 375,
+      "mass": 1770,
+      "acceleration": 10.09,
+      "maxSpeed": 83.7,
+      "spriteIndex": 30,
+      "color": "#d93431"
     }
   ],
   "parts": [
@@ -355,7 +563,7 @@
     {
       "id": "rival-0-0",
       "name": "Jules Park",
-      "carId": "kestrel-rs",
+      "carId": "mazda3-turbo-sedan-2021",
       "reaction": 0.22,
       "shift": 0.9,
       "consistency": 0.07,
@@ -365,7 +573,7 @@
     {
       "id": "rival-0-1",
       "name": "Milo Vega",
-      "carId": "comet-gt",
+      "carId": "chevrolet-camaro-z28-1969-racer",
       "reaction": 0.3,
       "shift": 0.86,
       "consistency": 0.1,
@@ -375,17 +583,17 @@
     {
       "id": "rival-0-2",
       "name": "Rae Collins",
-      "carId": "vela-sport",
+      "carId": "genesis-g70-3-3t-2024",
       "reaction": 0.38,
-      "shift": 0.8200000000000001,
+      "shift": 0.82,
       "consistency": 0.13,
       "nitroAt": 200,
-      "tune": 1.0
+      "tune": 1
     },
     {
       "id": "rival-1-0",
       "name": "Nico Silva",
-      "carId": "sable-r",
+      "carId": "kia-stinger-gt2-2023",
       "reaction": 0.22,
       "shift": 0.9,
       "consistency": 0.07,
@@ -395,7 +603,7 @@
     {
       "id": "rival-1-1",
       "name": "Kit Monroe",
-      "carId": "monarch-6",
+      "carId": "porsche-911-carrera-rs-27-1973",
       "reaction": 0.3,
       "shift": 0.86,
       "consistency": 0.1,
@@ -405,17 +613,17 @@
     {
       "id": "rival-1-2",
       "name": "Ari Stone",
-      "carId": "arcadia-gt",
+      "carId": "alpine-a110-2024",
       "reaction": 0.38,
-      "shift": 0.8200000000000001,
+      "shift": 0.82,
       "consistency": 0.13,
       "nitroAt": 200,
-      "tune": 1.0
+      "tune": 1
     },
     {
       "id": "rival-2-0",
       "name": "Alex Mercer",
-      "carId": "tempest-rx",
+      "carId": "toyota-gr-supra-2023",
       "reaction": 0.22,
       "shift": 0.9,
       "consistency": 0.07,
@@ -425,7 +633,7 @@
     {
       "id": "rival-2-1",
       "name": "Sasha Reed",
-      "carId": "spectre-s",
+      "carId": "porsche-911-carrera-2024",
       "reaction": 0.3,
       "shift": 0.86,
       "consistency": 0.1,
@@ -435,17 +643,17 @@
     {
       "id": "rival-2-2",
       "name": "Jo Ellis",
-      "carId": "solstice-r",
+      "carId": "lexus-is500-2024",
       "reaction": 0.38,
-      "shift": 0.8200000000000001,
+      "shift": 0.82,
       "consistency": 0.13,
       "nitroAt": 200,
-      "tune": 1.0
+      "tune": 1
     },
     {
       "id": "rival-3-0",
       "name": "Val Ortiz",
-      "carId": "apex-one",
+      "carId": "bmw-m3-sedan-2024",
       "reaction": 0.22,
       "shift": 0.9,
       "consistency": 0.07,
@@ -455,7 +663,7 @@
     {
       "id": "rival-3-1",
       "name": "Ren Takeda",
-      "carId": "revenant-x",
+      "carId": "lotus-emira-v6-2024",
       "reaction": 0.3,
       "shift": 0.86,
       "consistency": 0.1,
@@ -465,12 +673,12 @@
     {
       "id": "rival-3-2",
       "name": "Max Sterling",
-      "carId": "zenith-xx",
+      "carId": "mercedes-amg-c63-s-e-performance-2024",
       "reaction": 0.38,
-      "shift": 0.8200000000000001,
+      "shift": 0.82,
       "consistency": 0.13,
       "nitroAt": 200,
-      "tune": 1.0
+      "tune": 1
     }
   ],
   "events": [
@@ -478,7 +686,11 @@
       "id": "street-1",
       "name": "First light",
       "division": 0,
-      "rivals": ["rival-0-0", "rival-0-1", "rival-0-2"],
+      "rivals": [
+        "rival-0-0",
+        "rival-0-1",
+        "rival-0-2"
+      ],
       "reward": 7500,
       "maxPartLevel": 1,
       "final": false
@@ -487,7 +699,11 @@
       "id": "street-2",
       "name": "Industrial action",
       "division": 0,
-      "rivals": ["rival-0-0", "rival-0-1", "rival-0-2"],
+      "rivals": [
+        "rival-0-0",
+        "rival-0-1",
+        "rival-0-2"
+      ],
       "reward": 8000,
       "maxPartLevel": 1,
       "final": false
@@ -496,7 +712,11 @@
       "id": "street-3",
       "name": "After hours",
       "division": 0,
-      "rivals": ["rival-0-0", "rival-0-1", "rival-0-2"],
+      "rivals": [
+        "rival-0-0",
+        "rival-0-1",
+        "rival-0-2"
+      ],
       "reward": 8500,
       "maxPartLevel": 1,
       "final": false
@@ -505,7 +725,11 @@
       "id": "street-4",
       "name": "The underpass",
       "division": 0,
-      "rivals": ["rival-0-0", "rival-0-1", "rival-0-2"],
+      "rivals": [
+        "rival-0-0",
+        "rival-0-1",
+        "rival-0-2"
+      ],
       "reward": 9000,
       "maxPartLevel": 1,
       "final": false
@@ -514,7 +738,11 @@
       "id": "street-5",
       "name": "Street royalty",
       "division": 0,
-      "rivals": ["rival-0-0", "rival-0-1", "rival-0-2"],
+      "rivals": [
+        "rival-0-0",
+        "rival-0-1",
+        "rival-0-2"
+      ],
       "reward": 9500,
       "maxPartLevel": 1,
       "final": true
@@ -523,7 +751,11 @@
       "id": "club-1",
       "name": "Club initiation",
       "division": 1,
-      "rivals": ["rival-1-0", "rival-1-1", "rival-1-2"],
+      "rivals": [
+        "rival-1-0",
+        "rival-1-1",
+        "rival-1-2"
+      ],
       "reward": 17000,
       "maxPartLevel": 2,
       "final": false
@@ -532,7 +764,11 @@
       "id": "club-2",
       "name": "Dockside duel",
       "division": 1,
-      "rivals": ["rival-1-0", "rival-1-1", "rival-1-2"],
+      "rivals": [
+        "rival-1-0",
+        "rival-1-1",
+        "rival-1-2"
+      ],
       "reward": 17500,
       "maxPartLevel": 2,
       "final": false
@@ -541,7 +777,11 @@
       "id": "club-3",
       "name": "Night movers",
       "division": 1,
-      "rivals": ["rival-1-0", "rival-1-1", "rival-1-2"],
+      "rivals": [
+        "rival-1-0",
+        "rival-1-1",
+        "rival-1-2"
+      ],
       "reward": 18000,
       "maxPartLevel": 2,
       "final": false
@@ -550,7 +790,11 @@
       "id": "club-4",
       "name": "Inner circle",
       "division": 1,
-      "rivals": ["rival-1-0", "rival-1-1", "rival-1-2"],
+      "rivals": [
+        "rival-1-0",
+        "rival-1-1",
+        "rival-1-2"
+      ],
       "reward": 18500,
       "maxPartLevel": 2,
       "final": false
@@ -559,7 +803,11 @@
       "id": "club-5",
       "name": "Club champion",
       "division": 1,
-      "rivals": ["rival-1-0", "rival-1-1", "rival-1-2"],
+      "rivals": [
+        "rival-1-0",
+        "rival-1-1",
+        "rival-1-2"
+      ],
       "reward": 19000,
       "maxPartLevel": 2,
       "final": true
@@ -568,7 +816,11 @@
       "id": "pro-1",
       "name": "Proving ground",
       "division": 2,
-      "rivals": ["rival-2-0", "rival-2-1", "rival-2-2"],
+      "rivals": [
+        "rival-2-0",
+        "rival-2-1",
+        "rival-2-2"
+      ],
       "reward": 34000,
       "maxPartLevel": 3,
       "final": false
@@ -577,7 +829,11 @@
       "id": "pro-2",
       "name": "Full commitment",
       "division": 2,
-      "rivals": ["rival-2-0", "rival-2-1", "rival-2-2"],
+      "rivals": [
+        "rival-2-0",
+        "rival-2-1",
+        "rival-2-2"
+      ],
       "reward": 34500,
       "maxPartLevel": 3,
       "final": false
@@ -586,7 +842,11 @@
       "id": "pro-3",
       "name": "Over the limit",
       "division": 2,
-      "rivals": ["rival-2-0", "rival-2-1", "rival-2-2"],
+      "rivals": [
+        "rival-2-0",
+        "rival-2-1",
+        "rival-2-2"
+      ],
       "reward": 35000,
       "maxPartLevel": 3,
       "final": false
@@ -595,7 +855,11 @@
       "id": "pro-4",
       "name": "No lifting",
       "division": 2,
-      "rivals": ["rival-2-0", "rival-2-1", "rival-2-2"],
+      "rivals": [
+        "rival-2-0",
+        "rival-2-1",
+        "rival-2-2"
+      ],
       "reward": 35500,
       "maxPartLevel": 3,
       "final": false
@@ -604,7 +868,11 @@
       "id": "pro-5",
       "name": "Professional courtesy",
       "division": 2,
-      "rivals": ["rival-2-0", "rival-2-1", "rival-2-2"],
+      "rivals": [
+        "rival-2-0",
+        "rival-2-1",
+        "rival-2-2"
+      ],
       "reward": 36000,
       "maxPartLevel": 3,
       "final": true
@@ -613,7 +881,11 @@
       "id": "elite-1",
       "name": "Rare company",
       "division": 3,
-      "rivals": ["rival-3-0", "rival-3-1", "rival-3-2"],
+      "rivals": [
+        "rival-3-0",
+        "rival-3-1",
+        "rival-3-2"
+      ],
       "reward": 55000,
       "maxPartLevel": 3,
       "final": false
@@ -622,7 +894,11 @@
       "id": "elite-2",
       "name": "The last tenth",
       "division": 3,
-      "rivals": ["rival-3-0", "rival-3-1", "rival-3-2"],
+      "rivals": [
+        "rival-3-0",
+        "rival-3-1",
+        "rival-3-2"
+      ],
       "reward": 55500,
       "maxPartLevel": 3,
       "final": false
@@ -631,7 +907,11 @@
       "id": "elite-3",
       "name": "Limitless",
       "division": 3,
-      "rivals": ["rival-3-0", "rival-3-1", "rival-3-2"],
+      "rivals": [
+        "rival-3-0",
+        "rival-3-1",
+        "rival-3-2"
+      ],
       "reward": 56000,
       "maxPartLevel": 3,
       "final": false
@@ -640,7 +920,11 @@
       "id": "elite-4",
       "name": "Crown contenders",
       "division": 3,
-      "rivals": ["rival-3-0", "rival-3-1", "rival-3-2"],
+      "rivals": [
+        "rival-3-0",
+        "rival-3-1",
+        "rival-3-2"
+      ],
       "reward": 56500,
       "maxPartLevel": 3,
       "final": false
@@ -649,7 +933,11 @@
       "id": "elite-5",
       "name": "King of the quarter",
       "division": 3,
-      "rivals": ["rival-3-0", "rival-3-1", "rival-3-2"],
+      "rivals": [
+        "rival-3-0",
+        "rival-3-1",
+        "rival-3-2"
+      ],
       "reward": 57000,
       "maxPartLevel": 3,
       "final": true

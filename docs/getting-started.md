@@ -4,7 +4,7 @@ A lightweight, desktop-first quarter-mile drag racer. Pick a car, build a setup,
 
 ## Play the release
 
-Double-click `dist/index.html` in a modern browser. Keep the editable `dist/config.js` beside it. Copy these two files together anywhere on your drive and open the HTML through `file://` without a server or internet connection. The game loads configuration as a classic local script; no browser security flags or CORS extensions are needed.
+Double-click `dist/index.html` in a modern browser. Keep the editable `dist/config.js` and the `dist/assets/` directory beside it. Copy the release package together anywhere on your drive and open the HTML through `file://` without a server or internet connection. The game loads configuration as a classic local script; no browser security flags or CORS extensions are needed.
 
 Double-clicking the repository's root `index.html` also works: it opens the built `dist/index.html`. Run `npm run build` first if the release is missing or you have changed the source.
 
@@ -23,7 +23,7 @@ To produce a release:
 npm run build
 ```
 
-This type-checks the source and uses esbuild to embed the game script, CSS, and artwork into `dist/index.html`. It also generates a readable `dist/config.js` from the source JSON. Distribute both files together.
+This type-checks the source and uses esbuild to embed the game script and CSS into `dist/index.html`. It also generates a readable `dist/config.js` from the source JSON and copies the optimized car atlases into `dist/assets/`. Distribute the HTML, config, and assets directory together.
 
 ## Edit the configuration
 
@@ -34,7 +34,7 @@ Cars, prices, performance values, parts, rewards, rivals, difficulty, tuning, an
 
 ## First race
 
-1. Start with the Kestrel RS and 8,000 credits. Upgrades are optional for the first event.
+1. Start with the 2021 Mazda Mazda3 and 8,000 credits. Upgrades are optional for the first event.
 2. Choose **Career**, select a difficulty, and start **First light**. Easy changes rival pace but keeps the same rewards.
 3. Wait for the lights to turn green, then press **Space**. Launching before green adds a 0.75-second penalty; press again on green to launch.
 4. Press **Up** or **Shift** in the green RPM window (6,100–6,800 RPM). All cars have six gears. Early or late shifts cost time.
@@ -45,7 +45,7 @@ Garage launch RPM changes the preferred launch window. Final drive trades top sp
 
 ## What is included
 
-- Four divisions with five sequential events each, and fourteen cars: twelve fictional models plus a red 2021 Mazda3 Turbo Sedan and an orange 2022 Kia Forte GT Sedan. Both new sedans are available in the Street dealership from the start.
+- Four divisions with five sequential events each and a 30-car sprite-backed roster spanning modern performance cars and classic race-prepped models.
 - Career, single races, results, and two repeatable paid jobs.
 - Five upgrade slots, three stages per slot, and two tuning controls.
 - Independent body and lower-trim paint, three wheel styles, and a freehand vector livery editor. Drawings are clipped to the body; undo and clear are available.
@@ -83,7 +83,7 @@ The browser tests open the built HTML through `file://` with network access disa
 | `src/data/game-data.json` | Cars, parts, events, rivals, rewards, difficulty, tuning, idle economy |
 | `src/data/config.ts` | Typed config indexes and startup validation |
 | `src/game/` | Pure race simulation, garage operations, progression, economy |
-| `src/render/` | Canvas scenery and reusable layered car geometry |
+| `src/render/` | Canvas scenery and sprite-backed layered car rendering |
 | `src/input/` | Keyboard-to-action mapping |
 | `src/ui/` | Menu templates and pointer livery editing |
 | `src/storage/` | Save validation, persistence, import/export, recovery |
@@ -91,4 +91,4 @@ The browser tests open the built HTML through `file://` with network access disa
 
 ## V1 scope
 
-The art uses three lightweight reusable silhouette families for the fictional cars and two dedicated sedan profiles, with separate wheel and paint layers. All artwork is drawn locally. One industrial night strip serves every event. There is no sound, online multiplayer, or controller support. Balance is an initial pass and should be tuned through playtesting. Modest-hardware performance still needs validation on a representative physical device.
+The art uses three optimized local WebP atlases: 30 body sprites, matching paint masks, and separate wheels. The renderer keeps wheels and paint/livery layers independent so customization and wheel rotation still work. One industrial night strip serves every event. There is no sound, online multiplayer, or controller support. Balance is an initial pass and should be tuned through playtesting. Modest-hardware performance still needs validation on a representative physical device.
