@@ -1,0 +1,22 @@
+name: Validate synced throttle and tach fixes
+
+on:
+  push:
+    branches:
+      - fix/throttle-coast-tach-redline
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
