@@ -584,7 +584,7 @@ main {
 }
 .upgrade-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 13px;
 }
 .upgrade-card {
@@ -1444,6 +1444,7 @@ dialog p {
     font-size: 7px;
   }
   .upgrade-grid {
+    grid-template-columns: repeat(3, 1fr);
     gap: 9px;
   }
   .upgrade-card {
@@ -2393,10 +2394,15 @@ h1, h2 { text-transform: uppercase; font-style: italic; }
   z-index: 1;
   inset: 5%;
   border-radius: 50%;
-  background: conic-gradient(from 240deg, transparent 0deg 204deg, #d85845 204deg 240deg, transparent 240deg 360deg);
-  -webkit-mask: radial-gradient(circle, transparent 0 78%, #000 79% 88%, transparent 89%);
-  mask: radial-gradient(circle, transparent 0 78%, #000 79% 88%, transparent 89%);
-  filter: drop-shadow(0 0 2px #d8584566);
+  background: conic-gradient(
+    from 240deg,
+    transparent 0deg var(--redline-start, 204deg),
+    #ff4a38 var(--redline-start, 204deg) 240deg,
+    transparent 240deg 360deg
+  );
+  -webkit-mask: radial-gradient(circle, transparent 0 73%, #000 74% 91%, transparent 92%);
+  mask: radial-gradient(circle, transparent 0 73%, #000 74% 91%, transparent 92%);
+  filter: drop-shadow(0 0 5px #ff4a38aa);
 }
 .gauge-caption {
   position: absolute;
@@ -2464,7 +2470,7 @@ h1, h2 { text-transform: uppercase; font-style: italic; }
 .gauge-scale span:first-child { left: 18%; }
 .gauge-scale span:nth-child(2) { left: 47%; }
 .gauge-scale span:last-child { right: 16%; }
-.tach-numbers {
+.tach-range {
   position: absolute;
   inset: 0;
   z-index: 2;
@@ -2473,17 +2479,50 @@ h1, h2 { text-transform: uppercase; font-style: italic; }
   text-shadow: 0 1px 2px #000;
   pointer-events: none;
 }
-.tach-numbers span { position: absolute; transform: translate(-50%, -50%); }
-.tach-numbers span:nth-child(1) { left: 16%; top: 72%; }
-.tach-numbers span:nth-child(2) { left: 10%; top: 56%; }
-.tach-numbers span:nth-child(3) { left: 14%; top: 38%; }
-.tach-numbers span:nth-child(4) { left: 25%; top: 24%; }
-.tach-numbers span:nth-child(5) { left: 44%; top: 17%; }
-.tach-numbers span:nth-child(6) { left: 63%; top: 20%; }
-.tach-numbers span:nth-child(7) { left: 78%; top: 33%; }
-.tach-numbers span:nth-child(8) { left: 86%; top: 51%; }
-.tach-numbers span:nth-child(9) { left: 80%; top: 69%; }
-.tach-numbers .redline-number { color: #e06658; }
+.tach-range span { position: absolute; }
+.tach-range span:first-child { left: 15%; bottom: 19%; }
+.tach-range span:nth-child(2) {
+  right: 8%;
+  top: 27%;
+  color: #ff6757;
+  font-size: 8px;
+  text-shadow: 0 0 6px #ff4a38aa;
+}
+.tach-range span:last-child { right: 16%; bottom: 18%; color: #b8b1a6; }
+.shift-lights {
+  position: absolute;
+  z-index: 7;
+  top: 9%;
+  left: 27%;
+  right: 27%;
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  min-height: 8px;
+}
+.shift-lights i {
+  display: none;
+  width: 10px;
+  height: 7px;
+  border-radius: 2px;
+  border: 1px solid #595b55;
+  background: #171916;
+  box-shadow: inset 0 1px 2px #000;
+}
+.shift-lights i.available { display: block; }
+.shift-lights i.lit {
+  background: #d8ef8e;
+  border-color: #efffbd;
+  box-shadow: 0 0 7px #c8ef77cc, inset 0 0 3px #fff;
+}
+.shift-lights.multi i:nth-child(4).lit,
+.shift-lights.multi i:nth-child(5).lit {
+  background: #ff604c;
+  border-color: #ff9b8d;
+  box-shadow: 0 0 8px #ff4a38cc, inset 0 0 3px #fff;
+}
+.shift-lights.single i:not(:last-child) { display: none; }
+.shift-lights.single i:last-child { width: 30px; }
 .tach-gauge .gauge-caption { top: 43%; font-size: 7px; }
 .tach-gauge strong { top: 55%; }
 .tach-gauge small { top: 71%; font-size: 6px; }
@@ -2499,7 +2538,8 @@ h1, h2 { text-transform: uppercase; font-style: italic; }
   letter-spacing: .8px;
 }
 .tach-gauge.perfect .shift-callout { color: #91c86f; }
-.tach-gauge.redline .shift-callout { color: #e36052; }
+.tach-gauge.redline .shift-callout { color: #ff6654; text-shadow: 0 0 7px #ff4a38aa; }
+.tach-gauge.redline .gauge-face { box-shadow: inset 0 0 0 2px #080908, inset 0 0 30px #ff34251f, 0 0 0 2px #ff4a3855, 0 2px 0 #060706; }
 .gear-console,
 .odometer {
   min-height: 118px;
@@ -2529,6 +2569,7 @@ h1, h2 { text-transform: uppercase; font-style: italic; }
   box-shadow: inset 0 1px #ffffff12, 0 3px #090a09;
 }
 .race-controls .primary { background: linear-gradient(#bf4335, #8f2e25); border-color: #df675a66; }
+.race-controls .control-launch.held { background: linear-gradient(#d16c3b, #9e3e25); border-color: #f29a6caa; box-shadow: inset 0 1px #ffffff22, 0 0 12px #e2653844, 0 3px #090a09; }
 .race-controls kbd { border-radius: 2px; background: #101210; border-color: #777268; }
 
 .results.timing-slip { padding: 0; background: #181a18; border: 4px solid #30332f; }
