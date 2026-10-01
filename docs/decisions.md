@@ -90,3 +90,10 @@ See [getting-started.md](getting-started.md) for controls, commands, source layo
 - **Preserve automotive branch work:** Keep the automotive UI, physical drag tree and timing-slip results. The race HUD uses a conventional 0–8 ×1000 RPM tachometer with a fixed redline arc and no horizontal RPM bar.
 - **Stable staging and mobile controls:** Before launch, hold the configured launch RPM rather than oscillating. On narrow screens keep Launch, Shift and Nitrous in a safe-area-aware fixed control dock; hide it after the run.
 - **Small sprites, large presentation:** Prepare intentionally small WebP sprites once, disable canvas smoothing when enlarging them, and draw race cars larger. This keeps downloads small while maintaining readable silhouettes on desktop and mobile.
+
+## 2026-10-01 — High-DPI canvas and sprite interpolation
+
+- **Display-aware canvas backing store:** Size the race and garage canvas backing buffers from their rendered CSS width and the full browser `devicePixelRatio`, while preserving the 1100 × 460 logical coordinate system. This supersedes the earlier 1.5× device-pixel-ratio cap.
+- **Smooth scaled sprites:** Compact runtime car sprites remain intentionally small for download size, but enlarge them with Canvas 2D image smoothing enabled and `imageSmoothingQuality = "high"`. Do not use nearest-neighbor enlargement for the current illustrated car artwork.
+- **High-DPI cached scenery:** Build the cached race background at the active render scale so static scenery is not upscaled from a lower-resolution offscreen canvas. Rebuild it when the renderer is resized.
+
