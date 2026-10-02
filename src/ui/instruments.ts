@@ -12,7 +12,7 @@ export const gaugeStyles: { id: GaugeStyle; name: string; description: string }[
 ];
 
 const shiftLights = () =>
-  '<div class="shift-lights" id="shift-lights" aria-label="Shift light"><i></i><i></i><i></i><i></i><i></i></div>';
+  '<div class="shift-lights shift-light-pod" id="shift-lights" aria-label="Progressive shift light"><span class="shift-pod-label">SHIFT</span><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>';
 
 const auxiliaryGauge = (
   id: 'fuel' | 'temp',
