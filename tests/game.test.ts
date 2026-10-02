@@ -208,7 +208,7 @@ test('factory horsepower and torque anchor the race engine curve', () => {
 
 test('instrument style survives save validation and invalid styles are rejected', () => {
   const save = freshSave();
-  save.payload.settings.gaugeStyle = 'rect-solid';
+  save.payload.settings.gaugeStyle = 'oem-overlap';
   assert.doesNotThrow(() => validateSave(save));
   (save.payload.settings as any).gaugeStyle = 'broken-gauge';
   assert.throws(() => validateSave(save));
@@ -230,6 +230,25 @@ test('perimeter instrument variants use one rounded path and solid mode removes 
   assert.ok(!solid.includes('<mask'));
   assert.ok(!solid.includes('mask="url('));
   assert.ok(!solid.includes('rect-corner'));
+});
+
+test('every selectable instrument includes fuel and coolant gauges', () => {
+  for (const style of [
+    'classic',
+    'analog-digital-mix',
+    'oem-overlap',
+    'rect-24',
+    'rect-16',
+    'rect-8',
+    'rect-track',
+    'rect-solid',
+  ] as const) {
+    const html = instrumentCluster(style);
+    assert.ok(html.includes('id="fuel-gauge"'), `${style} fuel gauge`);
+    assert.ok(html.includes('id="temp-gauge"'), `${style} temperature gauge`);
+    assert.ok(html.includes('id="fuel-level"'), `${style} fuel readout`);
+    assert.ok(html.includes('id="coolant-temp"'), `${style} coolant readout`);
+  }
 });
 
 test('idle handles caps, repeat claims, twelve hours and backwards clocks', () => {
