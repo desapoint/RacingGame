@@ -10,7 +10,8 @@ import { LiveryEditor } from './ui/livery';
 import * as ui from './ui/screens';
 import { dealership, initialDealerFilters, dealerSelection } from './ui/dealership';
 import { vehicleSpecs } from './ui/vehicle-specs';
-import type { Difficulty, OwnedCar, SaveEnvelope, Screen, StartMode } from './types';
+import { instrumentCluster } from './ui/instruments';
+import type { Difficulty, GaugeStyle, OwnedCar, SaveEnvelope, Screen, StartMode } from './types';
 
 type RaceContext = { type: 'career' | 'job' | 'quick'; id: string; title: string };
 class App {
@@ -427,6 +428,7 @@ class App {
     }
     if (target.id === 'difficulty') this.profile.settings.difficulty = target.value as Difficulty;
     if (target.id === 'start-mode') this.profile.settings.startMode = target.value as StartMode;
+    if (target.id === 'gauge-style') this.profile.settings.gaugeStyle = target.value as GaugeStyle;
     if (target.id === 'reduced-motion') this.profile.settings.reducedMotion = target.checked;
     if (target.id === 'car-select') {
       this.profile.selected = target.value;
@@ -503,7 +505,7 @@ class App {
     this.outcomePaid = false;
     this.race = race;
     const main = document.querySelector<HTMLElement>('#main')!;
-    main.innerHTML = `<div class="page-heading race-heading"><div><div class="eyebrow">${context.type.toUpperCase()} / ${this.profile.settings.difficulty.toUpperCase()}</div><h1>${context.title}<span class="heading-dot">.</span></h1><p>¼ mile · ${carById.get(owned.id)!.name} · Featured rival: ${this.race.racers[1].name}</p></div>${ui.button('Pause <kbd>Esc</kbd>', 'pause', '', 'secondary')}</div><section class="panel race-panel"><div class="race-top"><span id="race-status">STAGING</span><div class="distance-bar"><i id="distance-fill"></i></div><span id="race-distance">0 / 402 M</span></div><canvas id="race-canvas" aria-label="Two lane drag race"></canvas><div class="race-feedback" id="race-feedback" role="status">Hold throttle to set launch RPM.</div><div class="dashboard instrument-cluster"><div class="gauge speed-gauge" id="speed-gauge"><div class="gauge-face"><span class="gauge-caption">SPEED</span><i class="gauge-needle"></i><i class="gauge-hub"></i><strong id="speed">0</strong><small>KM/H</small><div class="gauge-scale"><span>0</span><span>160</span><span>320</span></div></div></div><div class="gauge tach-gauge" id="tach-gauge"><div class="gauge-face"><span class="gauge-caption">RPM</span><div class="tach-range" aria-hidden="true"><span>0</span><span id="redline-label">RED</span><span id="tach-max-label">MAX</span></div><div class="shift-lights" id="shift-lights" aria-label="Shift light"><i></i><i></i><i></i><i></i><i></i></div><i class="gauge-needle"></i><i class="gauge-hub"></i><strong id="rpm">3.0</strong><small>×1000 RPM</small><span class="shift-callout" id="shift-label">LAUNCH</span></div></div><div class="gear-console"><span>GEAR</span><strong id="gear">N</strong><small>6-SPEED</small><div class="shift-gate" aria-hidden="true"><i></i><i></i><i></i></div></div><div class="race-time odometer"><span>RUN TIMER</span><strong id="elapsed">0.000</strong><small>SECONDS</small></div></div></section><div class="race-controls">${ui.button('<kbd>Space</kbd><span>Throttle<small>Hold to rev · release to let RPM fall</small></span>', 'throttle', '', 'secondary control-launch')}${ui.button('<kbd>↑</kbd><span>Gear up<small>Engages first in manual-start mode</small></span>', 'shift', '', 'primary control-shift')}${ui.button('<kbd>N</kbd><span>Nitrous<small id="nitro-label">' + (this.race.player.nitroLeft ? 'Ready to use' : 'Install a system in the garage') + '</small></span>', 'nitro', '', 'secondary control-nitro', !this.race.player.nitroLeft)}</div><p class="race-note">Stage in neutral and use throttle to choose your RPM. Automatic start selects first on green; manual start waits for your gear-up input. Excess RPM creates wheelspin instead of a binary launch penalty.</p>`;
+    main.innerHTML = `<div class="page-heading race-heading"><div><div class="eyebrow">${context.type.toUpperCase()} / ${this.profile.settings.difficulty.toUpperCase()}</div><h1>${context.title}<span class="heading-dot">.</span></h1><p>¼ mile · ${carById.get(owned.id)!.name} · Featured rival: ${this.race.racers[1].name}</p></div>${ui.button('Pause <kbd>Esc</kbd>', 'pause', '', 'secondary')}</div><section class="panel race-panel"><div class="race-top"><span id="race-status">STAGING</span><div class="distance-bar"><i id="distance-fill"></i></div><span id="race-distance">0 / 402 M</span></div><canvas id="race-canvas" aria-label="Two lane drag race"></canvas><div class="race-feedback" id="race-feedback" role="status">Hold throttle to set launch RPM.</div>${instrumentCluster(this.profile.settings.gaugeStyle ?? 'classic')}</section><div class="race-controls">${ui.button('<kbd>Space</kbd><span>Throttle<small>Hold to rev · release to let RPM fall</small></span>', 'throttle', '', 'secondary control-launch')}${ui.button('<kbd>↑</kbd><span>Gear up<small>Engages first in manual-start mode</small></span>', 'shift', '', 'primary control-shift')}${ui.button('<kbd>N</kbd><span>Nitrous<small id="nitro-label">' + (this.race.player.nitroLeft ? 'Ready to use' : 'Install a system in the garage') + '</small></span>', 'nitro', '', 'secondary control-nitro', !this.race.player.nitroLeft)}</div><p class="race-note">Stage in neutral and use throttle to choose your RPM. Automatic start selects first on green; manual start waits for your gear-up input. Excess RPM creates wheelspin instead of a binary launch penalty.</p>`;
     this.renderer = new Renderer(document.querySelector<HTMLCanvasElement>('#race-canvas')!);
     window.scrollTo(0, 0);
     this.lastHud = 0;
@@ -555,6 +557,19 @@ class App {
     set('elapsed', player.elapsed.toFixed(3));
     set('redline-label', `RED ${(player.engine.redlineRpm / 1000).toFixed(1)}`);
     set('tach-max-label', (player.engine.tachMaxRpm / 1000).toFixed(0));
+    set('cluster-slip', `${Math.round(player.wheelSlip * 100)}%`);
+    set('cluster-traction', `${Math.round(player.traction * 100)}%`);
+    set('cluster-throttle', player.launched || player.throttleHeld ? '100%' : '0%');
+    set(
+      'cluster-shift-target',
+      `${Math.round(player.launched ? player.shiftTarget : (player.owned?.launch ?? player.engine.redlineRpm * 0.68))} RPM`,
+    );
+    set('cluster-curve', player.engine.curveSource === 'factory-ratings' ? 'FACTORY' : 'FALLBACK');
+    const perimeterFill = document.getElementById('perimeter-rpm-fill') as unknown as SVGPathElement | null;
+    if (perimeterFill) {
+      const progress = Math.max(0, Math.min(100, (player.rpm / player.engine.tachMaxRpm) * 100));
+      perimeterFill.style.strokeDasharray = `${progress} 100`;
+    }
     set('race-distance', `${Math.floor(player.distance)} / 402 M`);
     const speedGauge = document.getElementById('speed-gauge');
     if (speedGauge)
