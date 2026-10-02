@@ -141,7 +141,7 @@ def make_rotating_rim(crop: Image.Image, radius_px: float, caliper_mask: Image.I
     )
     keep &= (rr <= 1.03) & (arr[:, :, 3] >= 20) & (cal <= 40)
     alpha = np.where(keep, arr[:, :, 3], 0).astype(np.uint8)
-    mask = Image.fromarray(alpha, "L").filter(ImageFilter.MaxFilter(3))
+    mask = Image.fromarray(alpha, "L")
     out = Image.new("RGBA", rgba.size, (0, 0, 0, 0))
     out.paste(rgba, (0, 0), mask)
     return out
