@@ -102,11 +102,12 @@ def extract_caliper_mask(crop: Image.Image, radius_px: float) -> Image.Image:
     value = maximum / 255.0
     lum = 0.299 * rgb[:, :, 0] + 0.587 * rgb[:, :, 1] + 0.114 * rgb[:, :, 2]
     mask = (
-        (rr <= 0.68)
-        & (arr[:, :, 3] >= 40)
-        & (saturation > 0.43)
-        & (value > 0.28)
-        & (lum > 38)
+        (rr > 0.20)
+        & (rr <= 0.68)
+        & (arr[:, :, 3] >= 30)
+        & (saturation > 0.30)
+        & (value > 0.10)
+        & (lum > 20)
     )
     raw = Image.fromarray((mask.astype(np.uint8) * 255), "L")
     return raw.filter(ImageFilter.MaxFilter(5)).filter(ImageFilter.MinFilter(3))
