@@ -7,7 +7,9 @@ import re
 import shutil
 from pathlib import Path
 
-from PIL import Image, ImageChops, ImageDraw, ImageEnhance, ImageFilter, ImageOps
+import numpy as np
+
+from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageOps
 
 ROOT = Path(__file__).resolve().parents[1]
 CAR_DIR = ROOT / "src" / "assets" / "cars"
@@ -31,13 +33,15 @@ def load_specs() -> dict[str, dict]:
 
 def flatten_white_background(img: Image.Image) -> Image.Image:
     rgba = img.convert("RGBA")
-    px = rgba.load()
-    for y in range(rgba.height):
-        for x in range(rgba.width):
-            r, g, b, a = px[x, y]
-            if a and r > 245 and g > 245 and b > 245:
-                px[x, y] = (r, g, b, 0)
-    return rgba
+    arr = np.array(rgba, copy=True)
+    white = (
+        (arr[:, :, 3] > 0)
+        & (arr[:, :, 0] > 245)
+        & (arr[:, :, 1] > 245)
+        & (arr[:, :, 2] > 245)
+    )
+    arr[white, 3] = 0
+    return Image.fromarray(arr, "RGBA")
 
 def cartoonize(img: Image.Image) -> Image.Image:
     rgba = flatten_white_background(img)
@@ -82,74 +86,62 @@ def hsv_like(r: int, g: int, b: int):
     return sat, val
 
 def extract_caliper_mask(crop: Image.Image, radius_px: float) -> Image.Image:
-    rgba = crop.convert("RGBA")
-    w, h = rgba.size
-    cx, cy = w / 2, h / 2
-    raw = Image.new("L", rgba.size, 0)
-    rp = rgba.load()
-    mp = raw.load()
-    for y in range(h):
-        for x in range(w):
-            dx, dy = x + .5 - cx, y + .5 - cy
-            rr = math.hypot(dx, dy) / max(1.0, radius_px)
-            if rr > .68:
-                continue
-            r, g, b, a = rp[x, y]
-            if a < 40:
-                continue
-            sat, val = hsv_like(r, g, b)
-            lum = .299 * r + .587 * g + .114 * b
-            # Colored factory calipers are usually the strongest compact saturation
-            # inside the rim. Avoid black tire/rim and grey rotor pixels.
-            if sat > .43 and val > .28 and lum > 38:
-                mp[x, y] = 255
-    raw = raw.filter(ImageFilter.MaxFilter(5)).filter(ImageFilter.MinFilter(3))
-    return raw
+    arr = np.asarray(crop.convert("RGBA"))
+    h, w = arr.shape[:2]
+    yy, xx = np.ogrid[:h, :w]
+    rr = np.sqrt((xx + 0.5 - w / 2) ** 2 + (yy + 0.5 - h / 2) ** 2) / max(1.0, radius_px)
+    rgb = arr[:, :, :3].astype(np.float32)
+    maximum = rgb.max(axis=2)
+    minimum = rgb.min(axis=2)
+    saturation = np.divide(
+        maximum - minimum,
+        maximum,
+        out=np.zeros_like(maximum),
+        where=maximum > 0,
+    )
+    value = maximum / 255.0
+    lum = 0.299 * rgb[:, :, 0] + 0.587 * rgb[:, :, 1] + 0.114 * rgb[:, :, 2]
+    mask = (
+        (rr <= 0.68)
+        & (arr[:, :, 3] >= 40)
+        & (saturation > 0.43)
+        & (value > 0.28)
+        & (lum > 38)
+    )
+    raw = Image.fromarray((mask.astype(np.uint8) * 255), "L")
+    return raw.filter(ImageFilter.MaxFilter(5)).filter(ImageFilter.MinFilter(3))
 
 def make_rotating_rim(crop: Image.Image, radius_px: float, caliper_mask: Image.Image) -> Image.Image:
     rgba = crop.convert("RGBA")
-    w, h = rgba.size
-    cx, cy = w / 2, h / 2
-    src = rgba.load()
-    cal = caliper_mask.load()
-    mask = Image.new("L", rgba.size, 0)
-    mp = mask.load()
+    arr = np.asarray(rgba)
+    h, w = arr.shape[:2]
+    yy, xx = np.ogrid[:h, :w]
+    rr = np.sqrt((xx + 0.5 - w / 2) ** 2 + (yy + 0.5 - h / 2) ** 2) / max(1.0, radius_px)
 
-    gray = rgba.convert("L")
-    edge = gray.filter(ImageFilter.FIND_EDGES)
-    ep = edge.load()
+    rgb = arr[:, :, :3].astype(np.float32)
+    lum = 0.299 * rgb[:, :, 0] + 0.587 * rgb[:, :, 1] + 0.114 * rgb[:, :, 2]
+    maximum = rgb.max(axis=2)
+    minimum = rgb.min(axis=2)
+    saturation = np.divide(
+        maximum - minimum,
+        maximum,
+        out=np.zeros_like(maximum),
+        where=maximum > 0,
+    )
+    edge = np.asarray(rgba.convert("L").filter(ImageFilter.FIND_EDGES))
+    cal = np.asarray(caliper_mask)
 
-    for y in range(h):
-        for x in range(w):
-            dx, dy = x + .5 - cx, y + .5 - cy
-            rr = math.hypot(dx, dy) / max(1.0, radius_px)
-            if rr > 1.03:
-                continue
-            r, g, b, a = src[x, y]
-            if a < 20 or cal[x, y] > 40:
-                continue
-            lum = .299 * r + .587 * g + .114 * b
-            sat, _ = hsv_like(r, g, b)
-            keep = False
-            if rr >= .66:
-                keep = True                           # tire + outer rim
-            elif rr <= .16:
-                keep = True                           # hub
-            else:
-                # Preserve spokes and trim but discard most low-detail grey rotor area.
-                local_edge = ep[x, y]
-                if local_edge > 32:
-                    keep = True
-                elif lum < 72:
-                    keep = True
-                elif lum > 188 and local_edge > 15:
-                    keep = True
-                elif sat > .18 and local_edge > 18:
-                    keep = True
-            if keep:
-                mp[x, y] = min(255, a)
-
-    mask = mask.filter(ImageFilter.MaxFilter(3))
+    keep = (
+        ((rr >= 0.66) & (rr <= 1.03))
+        | (rr <= 0.16)
+        | ((rr > 0.16) & (rr < 0.66) & (edge > 32))
+        | ((rr > 0.16) & (rr < 0.66) & (lum < 72))
+        | ((rr > 0.16) & (rr < 0.66) & (lum > 188) & (edge > 15))
+        | ((rr > 0.16) & (rr < 0.66) & (saturation > 0.18) & (edge > 18))
+    )
+    keep &= (rr <= 1.03) & (arr[:, :, 3] >= 20) & (cal <= 40)
+    alpha = np.where(keep, arr[:, :, 3], 0).astype(np.uint8)
+    mask = Image.fromarray(alpha, "L").filter(ImageFilter.MaxFilter(3))
     out = Image.new("RGBA", rgba.size, (0, 0, 0, 0))
     out.paste(rgba, (0, 0), mask)
     return out
@@ -204,7 +196,7 @@ def erase_wheel(body: Image.Image, cx: float, cy: float, r: float):
 
 def save_png(img: Image.Image, path: Path):
     path.parent.mkdir(parents=True, exist_ok=True)
-    img.save(path, format="PNG", optimize=True)
+    img.save(path, format="PNG", compress_level=3)
 
 def main():
     specs = load_specs()
