@@ -1,0 +1,44 @@
+name: Build layered sprite review
+
+on:
+  push:
+    branches:
+      - sprite-layering-pass
+    paths:
+      - "scripts/export-layered-sprites.py"
+      - ".github/workflows/sprite-layer-review.yml"
+      - "src/assets/cars/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Install Pillow
+        run: python -m pip install --disable-pip-version-check pillow
+
+      - name: Export layered sprites
+        run: python scripts/export-layered-sprites.py
+
+      - name: Package review ZIP
+        run: |
+          cd sprite-layer-review
+          zip -r ../racinggame-layered-sprite-review.zip .
+
+      - name: Upload review package
+        uses: actions/upload-artifact@v6
+        with:
+          name: racinggame-layered-sprite-review
+          path: racinggame-layered-sprite-review.zip
+          if-no-files-found: error
