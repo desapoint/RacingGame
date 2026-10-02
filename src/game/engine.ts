@@ -138,13 +138,18 @@ function factoryCurve(
             ? 0.9
             : 0.92;
   const midRpm = torquePeakRpm + (powerPeakRpm - torquePeakRpm) * 0.55;
-  const midTorque = Math.max(powerTorque * 1.05, peakTorqueNm * shoulder);
-  const redlineTorque =
+  const midTorque = Math.min(
+    Math.max(powerTorque * 1.05, peakTorqueNm * shoulder),
+    requiredTorqueForPower(powerHp * 0.995, midRpm),
+  );
+  const redlineTorque = Math.min(
     character === 'electric'
       ? powerTorque * 0.72
       : character === 'diesel'
         ? powerTorque * 0.58
-        : powerTorque * 0.76;
+        : powerTorque * 0.76,
+    requiredTorqueForPower(powerHp * 0.96, redlineRpm),
+  );
   return uniqueCurve([
     { rpm: idleRpm, torqueNm: peakTorqueNm * low },
     { rpm: idleRpm + (torquePeakRpm - idleRpm) * 0.48, torqueNm: peakTorqueNm * Math.min(0.95, low + 0.28) },
