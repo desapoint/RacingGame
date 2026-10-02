@@ -3997,7 +3997,7 @@ main {
 .instrument-cluster {
   background:
     radial-gradient(circle at 50% 0%, #16446024, transparent 26rem),
-    repeating-linear-gradient(90deg, #ffffff025 0 1px, transparent 1px 9px),
+    repeating-linear-gradient(90deg, #ffffff05 0 1px, transparent 1px 9px),
     #071019;
   border-top: 2px solid #21465e;
 }
