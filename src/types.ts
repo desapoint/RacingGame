@@ -1,5 +1,6 @@
 export type Slot = 'engine' | 'transmission' | 'tires' | 'nitro' | 'weight' | 'electronics';
 export type StartMode = 'automatic' | 'manual';
+export type GaugeStyle = 'classic' | 'analog-digital-mix' | 'rect-24' | 'rect-16' | 'rect-8' | 'rect-track' | 'rect-solid';
 export type RevLimiterType = 'soft-cut' | 'hard-cut' | 'vintage-bounce';
 export type Difficulty = 'easy' | 'normal' | 'hard';
 export type Screen = 'garage' | 'career' | 'dealership' | 'jobs' | 'settings';
@@ -135,7 +136,7 @@ export interface Profile {
   selected: string;
   unlocked: number;
   results: Record<string, RaceRecord>;
-  settings: { difficulty: Difficulty; reducedMotion: boolean; startMode?: StartMode };
+  settings: { difficulty: Difficulty; reducedMotion: boolean; startMode?: StartMode; gaugeStyle?: GaugeStyle };
   idle: { level: number; bank: number; lastSeen: number };
   races: number;
   wins: number;
