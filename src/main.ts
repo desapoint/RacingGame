@@ -622,7 +622,7 @@ class App {
     set(
       'race-feedback',
       race.finished
-        ? 'Race complete · your results are below'
+        ? 'Race complete · official timing slip posted'
         : race.paused
           ? 'Take your time. Resume when you’re ready.'
           : race.time < 0
