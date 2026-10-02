@@ -42,3 +42,20 @@ jobs:
           name: racinggame-layered-sprite-review
           path: racinggame-layered-sprite-review.zip
           if-no-files-found: error
+
+      - name: Package source sprites for QA
+        run: |
+          mkdir -p sprite-source-package/src/assets/cars
+          mkdir -p sprite-source-package/docs/art/style-reference
+          cp src/assets/cars/*.png sprite-source-package/src/assets/cars/
+          cp src/assets/cars/catalog.ts sprite-source-package/src/assets/cars/
+          cp -r docs/art/style-reference/*.png sprite-source-package/docs/art/style-reference/
+          cd sprite-source-package
+          zip -r ../racinggame-sprite-sources.zip .
+
+      - name: Upload source sprites
+        uses: actions/upload-artifact@v6
+        with:
+          name: racinggame-sprite-sources
+          path: racinggame-sprite-sources.zip
+          if-no-files-found: error
