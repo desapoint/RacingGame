@@ -4,6 +4,7 @@ import { data, carById, validateConfig } from '../src/data/config';
 import { createOwned, statsFor, buyPart, buyCar } from '../src/game/garage';
 import { accrueIdle, claimIdle, careerReward, eligible } from '../src/game/economy';
 import { Race } from '../src/game/race';
+import { engineProfile, powerFactor, torqueFactor } from '../src/game/engine';
 import { freshSave, parseSave, validateSave } from '../src/storage/save';
 
 function drive(race: Race, skilled = true) {
@@ -190,6 +191,26 @@ test('rev limiter and RPM fall configuration resolve from the car engine profile
   assert.ok(race.player.rpm <= race.player.engine.limitRpm + 100);
   assert.ok(race.player.engine.rpmFallRate > 0);
   assert.ok(race.player.engine.redlineRpm < race.player.engine.tachMaxRpm);
+});
+
+test('factory horsepower and torque anchor the race engine curve', () => {
+  const car = carById.get('mazda3-turbo-sedan-2021')!;
+  const engine = engineProfile(car);
+  assert.equal(engine.curveSource, 'factory-ratings');
+  assert.equal(engine.factoryPowerHp, 250);
+  assert.equal(engine.factoryTorqueNm, 434);
+  assert.ok(engine.torqueCurve.length >= 6);
+  assert.ok(torqueFactor(engine, engine.torquePeakRpm) > 0.95);
+  assert.ok(powerFactor(engine, engine.powerPeakRpm) > 0.9);
+  assert.ok(engine.torquePeakRpm < engine.powerPeakRpm);
+});
+
+test('instrument style survives save validation and invalid styles are rejected', () => {
+  const save = freshSave();
+  save.payload.settings.gaugeStyle = 'rect-solid';
+  assert.doesNotThrow(() => validateSave(save));
+  (save.payload.settings as any).gaugeStyle = 'broken-gauge';
+  assert.throws(() => validateSave(save));
 });
 
 test('idle handles caps, repeat claims, twelve hours and backwards clocks', () => {
