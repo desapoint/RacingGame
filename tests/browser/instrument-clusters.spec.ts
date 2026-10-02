@@ -12,7 +12,7 @@ test('custom perimeter gauges share one smooth path and continuous mode removes 
   for (const style of perimeterStyles) {
     await page.locator('[data-action="nav"][data-id="settings"]').click();
     await page.locator('#gauge-style').selectOption(style);
-    await page.locator('[data-action="nav"][data-id="garage"]').click();
+    await page.locator('button[data-action="nav"][data-id="garage"]').click();
     await page.locator('[data-action="quick"]').click();
 
     const cluster = page.locator(`.perimeter-cluster.${style}`);
@@ -32,7 +32,7 @@ test('custom perimeter gauges share one smooth path and continuous mode removes 
 
   await page.locator('[data-action="nav"][data-id="settings"]').click();
   await page.locator('#gauge-style').selectOption('rect-solid');
-  await page.locator('[data-action="nav"][data-id="garage"]').click();
+  await page.locator('button[data-action="nav"][data-id="garage"]').click();
   await page.locator('[data-action="quick"]').click();
 
   const solid = page.locator('.perimeter-cluster.rect-solid');
