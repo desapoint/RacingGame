@@ -565,6 +565,23 @@ class App {
       `${Math.round(player.launched ? player.shiftTarget : (player.owned?.launch ?? player.engine.redlineRpm * 0.68))} RPM`,
     );
     set('cluster-curve', player.engine.curveSource === 'factory-ratings' ? 'FACTORY' : 'FALLBACK');
+    const fuelLevel = Math.max(0.54, 0.6 - (player.distance / data.distance) * 0.01);
+    const engineLoad = Math.max(0, Math.min(1, player.rpm / player.engine.redlineRpm));
+    const speedLoad = Math.max(0, Math.min(1, (player.speed * 3.6) / 240));
+    const coolantTemp = Math.round(74 + engineLoad * 19 + speedLoad * 8);
+    set('fuel-level', `${Math.round(fuelLevel * 100)}%`);
+    set('coolant-temp', `${coolantTemp}°C`);
+    const fuelGauge = document.getElementById('fuel-gauge');
+    if (fuelGauge) {
+      fuelGauge.style.setProperty('--needle-angle', `${-100 + fuelLevel * 200}deg`);
+      fuelGauge.style.setProperty('--aux-progress', `${fuelLevel * 100}%`);
+    }
+    const tempGauge = document.getElementById('temp-gauge');
+    if (tempGauge) {
+      const tempProgress = Math.max(0, Math.min(1, (coolantTemp - 50) / 80));
+      tempGauge.style.setProperty('--needle-angle', `${-100 + tempProgress * 200}deg`);
+      tempGauge.style.setProperty('--aux-progress', `${tempProgress * 100}%`);
+    }
     const perimeterFill = document.getElementById('perimeter-rpm-fill') as unknown as SVGPathElement | null;
     if (perimeterFill) {
       const progress = Math.max(0, Math.min(100, (player.rpm / player.engine.tachMaxRpm) * 100));
@@ -639,6 +656,9 @@ class App {
     const shiftLightBar = document.getElementById('shift-lights');
     shiftLightBar?.classList.toggle('single', player.stats.shiftLight === 1);
     shiftLightBar?.classList.toggle('multi', player.stats.shiftLight === 2);
+    const limiterActive =
+      (player.launched || player.throttleHeld) && player.rpm >= player.engine.redlineRpm;
+    shiftLightBar?.classList.toggle('limiter', limiterActive);
     const shiftLights = document.querySelectorAll<HTMLElement>('#shift-lights i');
     const lightProgress = Math.max(
       0,
