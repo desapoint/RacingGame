@@ -126,3 +126,12 @@ Art workbench archives are tracked with Git text conversion disabled. Provenance
 - **Color semantics:** Cyan/blue marks selection, navigation and instrumentation; green marks race/continue actions and ready states; amber marks earned in-game credits; red is reserved for racing emphasis, warnings and destructive actions.
 - **No monetization chrome:** Progression remains local and gameplay-earned. Do not add premium currencies, storefront prompts, purchase-plus buttons, energy timers or microtransaction-style UI. The top bar shows only earned credits and local/offline status.
 - **Preserve low-cost rendering:** The redesign is CSS/HTML presentation around the existing Canvas 2D renderer and current compact sprite pipeline. Avoid new runtime image loads, web fonts, heavy effects or dependencies solely for interface decoration.
+
+
+## 2026-10-02 — Viewport-first race presentation
+
+- **Desktop race is a game screen, not a document:** At desktop widths above 900 px, an active race owns the 16:9 viewport. The track and controls occupy the main play area, instruments occupy a dedicated right rail, and page-level scrolling is suppressed. Keep live racing usable at 1600 × 900 without vertical page scroll.
+- **Navigation may overlay gameplay:** During a race, the existing navigation and account/balance UI collapse into compact floating overlays instead of reserving permanent page columns or rows. This intentionally lets menus sit above game content when that saves usable viewport space.
+- **Timing slips overlay the race:** Race results no longer extend the document below the track. The official result is presented as a paper-like timing slip over the right side of the existing race screen, with the track left visible behind it. On narrow screens the same result becomes an overlay sheet rather than forcing a long results page.
+- **Shift light is hardware-like and progressive:** Shift-light equipment uses a seven-lamp pod. Progressive systems illuminate green, then amber, then red lamps as the target approaches; single-light systems retain one wide red warning lamp. Limiter flashing remains supported.
+- **Prefer scalable UI rendering over decorative image weight:** Dashboard hardware, the timing paper and viewport framing are CSS/HTML effects so they scale cleanly across display sizes and preserve the offline/low-end-hardware requirement. Generate raster assets only when they materially improve vehicle/scenery artwork or cannot be represented cleanly by the existing renderer.
