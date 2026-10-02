@@ -24,7 +24,7 @@ export function freshSave(now = Date.now()): SaveEnvelope {
       selected: data.starter,
       unlocked: 0,
       results: {},
-      settings: { difficulty: 'normal', reducedMotion: false, startMode: 'automatic' },
+      settings: { difficulty: 'normal', reducedMotion: false, startMode: 'automatic', gaugeStyle: 'classic' },
       idle: { level: 0, bank: 0, lastSeen: now },
       races: 0,
       wins: 0,
@@ -112,7 +112,11 @@ export function validateSave(value: unknown): asserts value is SaveEnvelope {
     !p.settings ||
     !['easy', 'normal', 'hard'].includes(p.settings.difficulty) ||
     typeof p.settings.reducedMotion !== 'boolean' ||
-    (p.settings.startMode !== undefined && !['automatic', 'manual'].includes(p.settings.startMode))
+    (p.settings.startMode !== undefined && !['automatic', 'manual'].includes(p.settings.startMode)) ||
+    (p.settings.gaugeStyle !== undefined &&
+      !['classic', 'analog-digital-mix', 'rect-24', 'rect-16', 'rect-8', 'rect-track', 'rect-solid'].includes(
+        p.settings.gaugeStyle,
+      ))
   )
     fail();
   if (

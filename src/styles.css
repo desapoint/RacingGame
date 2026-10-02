@@ -2701,3 +2701,318 @@ h1, h2 { text-transform: uppercase; font-style: italic; }
   .race-controls button { min-height: 58px; padding: 8px 4px; }
   .race-controls button > span { font-size: 11px; }
 }
+
+
+/* Selectable race instrument clusters */
+.setting-help {
+  display: block;
+  margin-top: 7px;
+  max-width: 38rem;
+  color: #82798d;
+  font-size: 9px;
+  line-height: 1.45;
+  letter-spacing: .3px;
+}
+.custom-instrument {
+  min-height: 228px;
+  border-top: 4px solid #252b31;
+  background:
+    radial-gradient(circle at 50% 130%, #17212b 0, #0b0f14 48%, #07090c 82%);
+}
+.perimeter-cluster {
+  display: block;
+  padding: 18px 24px 20px;
+}
+.perimeter-shell {
+  --needle-angle: -120deg;
+  position: relative;
+  min-height: 214px;
+  overflow: hidden;
+  border: 1px solid #27313b;
+  border-radius: 13px;
+  background: linear-gradient(180deg, #080c11, #05080b);
+  box-shadow: inset 0 0 35px #0008, 0 1px 0 #ffffff08;
+}
+.perimeter-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.perimeter-track {
+  stroke: #222c36;
+  vector-effect: non-scaling-stroke;
+}
+.perimeter-fill {
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 0 5px #eef5ff3d);
+  transition: stroke-dasharray 45ms linear;
+}
+.perimeter-shell.redline .perimeter-fill {
+  filter: drop-shadow(0 0 8px #ff594877);
+}
+.perimeter-topline {
+  position: absolute;
+  z-index: 3;
+  left: 7.2%;
+  right: 7.2%;
+  top: 36px;
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: start;
+  pointer-events: none;
+}
+.perimeter-topline > div > span,
+.perimeter-gear > span,
+.perimeter-status,
+.perimeter-info span {
+  color: #7990a5;
+  font: 700 8px monospace;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+}
+.perimeter-topline strong {
+  display: block;
+  margin-top: 4px;
+  color: #eef4fa;
+  font: 800 18px "Arial Narrow", Arial, sans-serif;
+  letter-spacing: -.3px;
+}
+.perimeter-topline strong small {
+  position: static;
+  margin-left: 3px;
+  color: #8190a0;
+  font: 700 7px monospace;
+}
+.perimeter-red {
+  text-align: right;
+}
+.perimeter-red span {
+  color: #ff6556;
+}
+.perimeter-red small {
+  display: block;
+  margin: 5px 0 0;
+  color: #7d8791;
+  font: 700 8px monospace;
+}
+.perimeter-center {
+  position: absolute;
+  z-index: 2;
+  inset: 75px 8% 32px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 18px;
+  align-items: center;
+}
+.perimeter-speed {
+  min-width: 0;
+}
+.perimeter-speed strong {
+  position: static;
+  display: block;
+  color: #eff4fa;
+  font: 900 clamp(48px, 7vw, 78px)/.8 "Arial Narrow", Arial, sans-serif;
+  letter-spacing: -3px;
+  text-align: left;
+}
+.perimeter-speed small {
+  position: static;
+  display: block;
+  margin: 10px 0 0;
+  color: #7890a5;
+  font: 700 8px monospace;
+  letter-spacing: 1.1px;
+}
+.perimeter-gear {
+  min-width: 80px;
+  text-align: right;
+}
+.perimeter-gear strong {
+  display: block;
+  margin-top: 4px;
+  color: #eff4fa;
+  font: 900 clamp(58px, 8vw, 86px)/.8 "Arial Narrow", Arial, sans-serif;
+  letter-spacing: -3px;
+}
+.perimeter-status {
+  position: absolute;
+  z-index: 4;
+  left: 8%;
+  right: 8%;
+  bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+.perimeter-status > span:first-child {
+  color: #a8b6c3;
+}
+.perimeter-status b {
+  color: #e6edf3;
+}
+.perimeter-shell > .shift-lights {
+  top: 35px;
+  left: 39%;
+  right: 39%;
+}
+.perimeter-shell > .shift-lights i {
+  width: 13px;
+  height: 6px;
+  border-radius: 5px;
+  border-color: #394550;
+  background: #111820;
+}
+.perimeter-info {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 9px;
+}
+.perimeter-info > div {
+  min-width: 0;
+  padding: 8px 10px;
+  border: 1px solid #26313b;
+  border-radius: 8px;
+  background: #0c1117;
+}
+.perimeter-info b {
+  display: block;
+  overflow: hidden;
+  color: #eaf0f6;
+  font: 800 12px "Arial Narrow", Arial, sans-serif;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.perimeter-info span {
+  display: block;
+  margin-top: 3px;
+  font-size: 7px;
+  letter-spacing: .8px;
+}
+.rect-16 .perimeter-shell { border-radius: 9px; }
+.rect-8 .perimeter-shell { border-radius: 18px; }
+.rect-track .perimeter-shell {
+  border-radius: 5px;
+  background:
+    linear-gradient(90deg, #ffffff03 1px, transparent 1px),
+    linear-gradient(#ffffff03 1px, transparent 1px),
+    #06090d;
+  background-size: 18px 18px;
+}
+.rect-track .perimeter-info > div { border-radius: 3px; }
+.rect-solid .perimeter-track { stroke: #1d2933; }
+.rect-solid .perimeter-fill { filter: drop-shadow(0 0 7px #dceaff55); }
+
+.analog-digital-mix {
+  grid-template-columns: minmax(150px, .8fr) minmax(210px, 1.15fr) minmax(110px, .62fr) minmax(125px, .7fr);
+  gap: clamp(10px, 1.8vw, 26px);
+  background:
+    radial-gradient(circle at 48% 52%, #1b2631 0, #0c1116 42%, #080a0e 78%);
+}
+.mix-speed,
+.mix-center {
+  min-height: 142px;
+  border: 1px solid #2d3842;
+  border-radius: 8px;
+  background: #080c11;
+  box-shadow: inset 0 0 22px #0008;
+}
+.mix-speed {
+  display: grid;
+  align-content: center;
+  padding: 16px;
+}
+.mix-speed > span,
+.mix-center > span {
+  color: #758a9d;
+  font: 700 8px monospace;
+  letter-spacing: 1.1px;
+}
+.mix-speed > strong {
+  position: static;
+  margin-top: 8px;
+  color: #edf3f8;
+  font: 900 clamp(42px, 5vw, 64px)/.85 "Arial Narrow", Arial, sans-serif;
+  text-align: left;
+}
+.mix-speed > small {
+  position: static;
+  margin: 8px 0 0;
+  color: #758a9d;
+  font: 700 7px monospace;
+}
+.mix-live {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+  align-items: baseline;
+  margin-top: 13px;
+}
+.mix-live b {
+  color: #dce8f1;
+  font-size: 12px;
+}
+.mix-live span {
+  color: #667786;
+  font: 700 7px monospace;
+  letter-spacing: .8px;
+}
+.mix-tach .gauge-face {
+  width: min(100%, 218px);
+}
+.mix-center {
+  display: grid;
+  align-content: center;
+  gap: 9px;
+  padding: 14px;
+  text-align: center;
+}
+.mix-center > strong {
+  color: #edf3f8;
+  font: 900 58px/.8 "Arial Narrow", Arial, sans-serif;
+}
+.mix-center > div {
+  display: grid;
+  gap: 2px;
+  padding-top: 7px;
+  border-top: 1px solid #202a33;
+}
+.mix-center > div b {
+  color: #dfe8ef;
+  font-size: 11px;
+}
+.mix-center > div small {
+  position: static;
+  margin: 0;
+  color: #667887;
+  font: 700 6px monospace;
+  letter-spacing: .7px;
+}
+.mix-time {
+  min-height: 142px;
+}
+@media (max-width: 760px) {
+  .perimeter-cluster { padding: 12px; }
+  .perimeter-shell { min-height: 192px; }
+  .perimeter-center { inset: 72px 9% 32px; }
+  .perimeter-speed strong { font-size: 48px; }
+  .perimeter-gear strong { font-size: 58px; }
+  .perimeter-info { grid-template-columns: repeat(2, 1fr); }
+  .perimeter-info .perimeter-time { grid-column: 1 / -1; }
+  .analog-digital-mix {
+    grid-template-columns: 1fr 1fr;
+    padding: 14px;
+  }
+  .analog-digital-mix .mix-tach {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+  .analog-digital-mix .mix-time {
+    grid-column: 1 / -1;
+    min-height: 92px;
+  }
+}

@@ -53,7 +53,7 @@ Garage launch RPM changes the preferred launch window. Final drive trades top sp
 - A free loaner job with a guaranteed participation payout, even in last place.
 - A three-level workshop with limited offline earnings. Claim its bank in **Jobs & workshop**.
 - Autosave, save export/import with preview, and recovery of unreadable stored data.
-- Responsive menus, touch race buttons, reduced-motion settings, and automatic pause when the page is hidden.
+- Responsive menus, touch race buttons, reduced-motion settings, selectable analog/digital/perimeter instrument clusters, and automatic pause when the page is hidden.
 
 ## Save behavior
 

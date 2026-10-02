@@ -109,3 +109,11 @@ See [getting-started.md](getting-started.md) for controls, commands, source layo
 
 
 Art workbench archives are tracked with Git text conversion disabled. Provenance hashes cover exact bytes, including metadata and runtime snapshots, so future checkouts must preserve archived line endings.
+
+
+## 2026-10-01 — Factory-informed power curves and selectable instrument clusters
+
+- **Factory ratings drive the engine shape:** When a model has both sourced factory horsepower and torque, the race engine profile now builds a physically consistent interpolated torque curve anchored to those ratings. The inferred torque-peak and power-peak RPM locations remain estimates unless a car-specific override is later added. Models missing either rating retain an explicit arcade fallback instead of pretending the missing data is verified.
+- **Power and torque stay connected:** Runtime power is derived from torque and engine speed, and shift targets compare the resulting wheel-torque/power behavior rather than a standalone generic bell curve. Condition and upgrade balance still scales the car's gameplay acceleration/power separately.
+- **Driver-selectable dashboard:** Settings now persist an instrument-cluster preference. The original analog cluster remains available alongside a digital/analog mix, four rectangular segmented perimeter layouts and a continuous perimeter layout.
+- **Smooth rectangular corners:** All perimeter tachometers use one rounded SVG path from bottom-left to top-left, across the top and down the right edge. Segmentation is a mask on that path, so a corner follows one continuous curve instead of joining separately rotated corner blocks. The continuous variant removes the segmentation mask entirely.
