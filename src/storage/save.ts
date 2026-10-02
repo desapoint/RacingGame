@@ -114,7 +114,7 @@ export function validateSave(value: unknown): asserts value is SaveEnvelope {
     typeof p.settings.reducedMotion !== 'boolean' ||
     (p.settings.startMode !== undefined && !['automatic', 'manual'].includes(p.settings.startMode)) ||
     (p.settings.gaugeStyle !== undefined &&
-      !['classic', 'analog-digital-mix', 'rect-24', 'rect-16', 'rect-8', 'rect-track', 'rect-solid'].includes(
+      !['classic', 'analog-digital-mix', 'oem-overlap', 'rect-24', 'rect-16', 'rect-8', 'rect-track', 'rect-solid'].includes(
         p.settings.gaugeStyle,
       ))
   )
