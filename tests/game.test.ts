@@ -6,6 +6,7 @@ import { accrueIdle, claimIdle, careerReward, eligible } from '../src/game/econo
 import { Race } from '../src/game/race';
 import { engineProfile, powerFactor, torqueFactor } from '../src/game/engine';
 import { freshSave, parseSave, validateSave } from '../src/storage/save';
+import { instrumentCluster } from '../src/ui/instruments';
 
 function drive(race: Race, skilled = true) {
   for (let tick = 0; tick < 8000 && !race.finished; tick++) {
@@ -211,6 +212,24 @@ test('instrument style survives save validation and invalid styles are rejected'
   assert.doesNotThrow(() => validateSave(save));
   (save.payload.settings as any).gaugeStyle = 'broken-gauge';
   assert.throws(() => validateSave(save));
+});
+
+test('perimeter instrument variants use one rounded path and solid mode removes segmentation', () => {
+  for (const style of ['rect-24', 'rect-16', 'rect-8', 'rect-track'] as const) {
+    const html = instrumentCluster(style);
+    assert.match(html, /Q 30 20 50 20/);
+    assert.match(html, /Q 670 20 670 40/);
+    assert.ok(html.includes(`<mask id="perimeter-mask-${style}"`));
+    assert.ok(html.includes(`mask="url(#perimeter-mask-${style})"`));
+    assert.ok(!html.includes('rect-corner'));
+  }
+
+  const solid = instrumentCluster('rect-solid');
+  assert.match(solid, /Q 30 20 50 20/);
+  assert.match(solid, /Q 670 20 670 40/);
+  assert.ok(!solid.includes('<mask'));
+  assert.ok(!solid.includes('mask="url('));
+  assert.ok(!solid.includes('rect-corner'));
 });
 
 test('idle handles caps, repeat claims, twelve hours and backwards clocks', () => {
