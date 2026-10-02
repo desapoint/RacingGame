@@ -141,6 +141,16 @@ def make_rotating_rim(crop: Image.Image, radius_px: float, caliper_mask: Image.I
         | ((rr > 0.16) & (rr < 0.66) & (saturation > 0.18) & (edge > 18))
     )
     keep &= (rr <= 1.03) & (arr[:, :, 3] >= 20) & (cal <= 40)
+    # Factory calipers are often red/blue/yellow and can include dark pixels that
+    # morphology does not fully capture. Strip saturated brake-annulus color from
+    # the rotating layer while preserving the center cap and neutral rim/spokes.
+    colored_hardware = (
+        (rr > 0.20)
+        & (rr < 0.68)
+        & (saturation > 0.22)
+        & (maximum > 22)
+    )
+    keep &= ~colored_hardware
     alpha = np.where(keep, arr[:, :, 3], 0).astype(np.uint8)
     mask = Image.fromarray(alpha, "L")
     out = Image.new("RGBA", rgba.size, (0, 0, 0, 0))
