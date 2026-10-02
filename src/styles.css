@@ -3016,3 +3016,342 @@ h1, h2 { text-transform: uppercase; font-style: italic; }
     min-height: 92px;
   }
 }
+
+
+/* Fuel / coolant instrumentation and OEM overlap cluster */
+.classic-instrument {
+  grid-template-columns: minmax(155px, .95fr) minmax(185px, 1.05fr) minmax(126px, .68fr) minmax(110px, .58fr);
+  gap: clamp(10px, 1.65vw, 24px);
+}
+.classic-console-stack {
+  display: grid;
+  gap: 9px;
+}
+.classic-console-stack .gear-console,
+.classic-console-stack .odometer {
+  min-height: 82px;
+}
+.classic-console-stack .gear-console strong { font-size: 36px; }
+.classic-console-stack .odometer strong { margin: 8px 0 3px; font-size: clamp(16px, 1.5vw, 24px); }
+
+.aux-pod,
+.mix-aux {
+  display: grid;
+  gap: 9px;
+  align-content: center;
+}
+.mini-aux-gauge {
+  --needle-angle: 0deg;
+  min-width: 0;
+}
+.mini-aux-face {
+  position: relative;
+  width: min(100%, 126px);
+  aspect-ratio: 1;
+  margin: auto;
+  overflow: hidden;
+  border: 4px solid #363b38;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #111410 0 52%, transparent 53%),
+    conic-gradient(from 230deg, #d4cebf 0 1deg, transparent 1deg 22deg, #d4cebf 22deg 23deg, transparent 23deg 44deg, #d4cebf 44deg 45deg, transparent 45deg 360deg),
+    #171a16;
+  box-shadow: inset 0 0 0 1px #080908, inset 0 0 20px #000, 0 0 0 1px #65665f;
+}
+.temp-gauge .mini-aux-face::after {
+  content: "";
+  position: absolute;
+  inset: 7%;
+  border-radius: 50%;
+  background: conic-gradient(from 230deg, transparent 0 178deg, #ff5647 178deg 222deg, transparent 222deg 360deg);
+  -webkit-mask: radial-gradient(circle, transparent 0 76%, #000 77% 92%, transparent 93%);
+  mask: radial-gradient(circle, transparent 0 76%, #000 77% 92%, transparent 93%);
+}
+.mini-aux-low,
+.mini-aux-high {
+  position: absolute;
+  z-index: 3;
+  top: 39%;
+  color: #b9b2a7;
+  font: 800 9px monospace;
+}
+.mini-aux-low { left: 11%; }
+.mini-aux-high { right: 11%; }
+.mini-aux-needle {
+  position: absolute;
+  z-index: 5;
+  width: 3px;
+  height: 31%;
+  left: 50%;
+  bottom: 50%;
+  border-radius: 2px 2px 0 0;
+  background: #d85845;
+  box-shadow: 0 0 5px #d8584566;
+  transform-origin: 50% 100%;
+  transform: translateX(-50%) rotate(var(--needle-angle));
+  transition: transform 50ms linear;
+}
+.mini-aux-hub {
+  position: absolute;
+  z-index: 6;
+  width: 14%;
+  aspect-ratio: 1;
+  left: 43%;
+  top: 43%;
+  border: 2px solid #494c46;
+  border-radius: 50%;
+  background: #151714;
+}
+.mini-aux-face strong {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  right: 0;
+  top: 60%;
+  color: #eee5d6;
+  font: 800 clamp(13px, 1.35vw, 18px) "Arial Narrow", Arial, sans-serif;
+  text-align: center;
+}
+.mini-aux-face small {
+  position: absolute;
+  z-index: 4;
+  left: 0;
+  right: 0;
+  top: 76%;
+  color: #817d75;
+  font: 700 6px monospace;
+  letter-spacing: .6px;
+  text-align: center;
+}
+
+.analog-digital-mix {
+  grid-template-columns: minmax(145px, .75fr) minmax(210px, 1.1fr) minmax(110px, .6fr) minmax(128px, .62fr);
+}
+.analog-digital-mix .mix-aux {
+  grid-template-columns: 1fr;
+  align-self: stretch;
+}
+.analog-digital-mix .mix-aux .mini-aux-face { max-width: 104px; }
+.analog-digital-mix .mix-time {
+  grid-column: 1 / -1;
+  min-height: 62px;
+  flex-direction: row;
+  gap: 18px;
+}
+.analog-digital-mix .mix-time strong { margin: 0; }
+.analog-digital-mix .mix-time small { margin: 0; }
+
+.perimeter-info {
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+.digital-aux-gauge em {
+  position: relative;
+  display: block;
+  height: 6px;
+  margin-top: 7px;
+  overflow: hidden;
+  border: 1px solid #34404a;
+  border-radius: 5px;
+  background: #080c10;
+}
+.digital-aux-gauge em i {
+  display: block;
+  width: var(--aux-progress, 58%);
+  height: 100%;
+  background: linear-gradient(90deg, #7fa9c5, #dfeaf2);
+  transition: width 60ms linear;
+}
+.digital-aux-gauge.temp-digital em i {
+  background: linear-gradient(90deg, #78a8c9 0 62%, #f3c35b 78%, #ff5948 100%);
+}
+.digital-aux-gauge small {
+  position: static;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3px;
+  color: #627585;
+  font: 700 6px monospace;
+}
+.digital-aux-gauge small span { margin: 0; font-size: 6px; }
+
+.oem-overlap {
+  position: relative;
+  display: block;
+  min-height: 292px;
+  padding: 18px 22px 20px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 46%, #18201c 0, #0a0d0b 49%, #050605 82%);
+}
+.oem-overlap .oem-speed,
+.oem-overlap .oem-tach {
+  position: absolute;
+  margin: 0;
+}
+.oem-overlap .oem-speed {
+  z-index: 4;
+  width: 38%;
+  left: 29%;
+  top: 10px;
+}
+.oem-overlap .oem-tach {
+  z-index: 3;
+  width: 34%;
+  right: 2.5%;
+  top: 34px;
+}
+.oem-overlap .oem-aux-pod {
+  position: absolute;
+  z-index: 2;
+  width: 31%;
+  left: 3%;
+  top: 48px;
+}
+.oem-overlap .gauge-face {
+  width: 100%;
+  max-width: 224px;
+}
+.oem-combo-face {
+  position: relative;
+  width: 100%;
+  max-width: 184px;
+  aspect-ratio: 1;
+  margin: auto;
+  border: 6px solid #393c37;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #111310 0 53%, transparent 54%),
+    repeating-conic-gradient(from 220deg, #d2ccbf 0deg 1deg, transparent 1deg 15deg),
+    #181b17;
+  box-shadow: inset 0 0 0 2px #070807, inset 0 0 24px #000, 0 0 0 1px #66675f;
+}
+.oem-combo-title {
+  position: absolute;
+  z-index: 4;
+  top: 14%;
+  left: 0;
+  right: 0;
+  color: #8e897f;
+  font: 700 7px monospace;
+  letter-spacing: .8px;
+  text-align: center;
+}
+.oem-combo-half {
+  --needle-angle: 0deg;
+  position: absolute;
+  top: 24%;
+  bottom: 12%;
+  width: 50%;
+}
+.oem-combo-half.left { left: 0; }
+.oem-combo-half.right { right: 0; }
+.oem-combo-half > span {
+  position: absolute;
+  top: 8%;
+  color: #c4bdae;
+  font: 800 8px monospace;
+}
+.oem-combo-half.left > span:first-child,
+.oem-combo-half.right > span:first-child { left: 15%; }
+.oem-combo-half.left > span:nth-child(2),
+.oem-combo-half.right > span:nth-child(2) { right: 15%; }
+.oem-combo-half .mini-aux-needle {
+  height: 39%;
+  bottom: 47%;
+}
+.oem-combo-half .mini-aux-hub {
+  width: 17%;
+  left: 41.5%;
+  top: 45%;
+}
+.oem-combo-half strong {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 18%;
+  color: #eee5d6;
+  font: 800 12px "Arial Narrow", Arial, sans-serif;
+  text-align: center;
+}
+.oem-combo-half small {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4%;
+  color: #7e7a72;
+  font: 700 6px monospace;
+  text-align: center;
+}
+.oem-gear {
+  position: absolute;
+  z-index: 8;
+  left: 48%;
+  bottom: 17px;
+  width: 74px;
+  padding: 7px 8px;
+  transform: translateX(-50%);
+  border: 1px solid #353b36;
+  border-radius: 4px;
+  background: #0a0d0aee;
+  text-align: center;
+}
+.oem-gear > span { color: #7f7b73; font: 700 6px monospace; letter-spacing: .8px; }
+.oem-gear strong { display: block; color: #f1e9da; font: 900 26px/.9 "Arial Narrow", Arial, sans-serif; }
+.oem-gear small { display: block; margin-top: 3px; color: #8e897f; font: 700 6px monospace; }
+.oem-speed-footer {
+  position: absolute;
+  z-index: 6;
+  left: 25%;
+  right: 25%;
+  bottom: 7%;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding: 2px 5px;
+  border: 1px solid #3d443c;
+  background: #a8bd77;
+  color: #172013;
+  font: 800 7px monospace;
+}
+.oem-hidden-traction,
+.oem-hidden-shift { display: none; }
+
+@keyframes shift-limiter-flash { 50% { opacity: .18; } }
+.shift-lights.limiter i.lit { animation: shift-limiter-flash 110ms steps(1, end) infinite; }
+
+@media (max-width: 900px) {
+  .classic-instrument {
+    grid-template-columns: 1fr 1fr;
+  }
+  .classic-instrument .aux-pod {
+    grid-template-columns: 1fr 1fr;
+  }
+  .classic-console-stack {
+    grid-template-columns: 1fr 1fr;
+  }
+  .oem-overlap { min-height: 252px; }
+}
+@media (max-width: 760px) {
+  .analog-digital-mix .mix-aux {
+    grid-template-columns: 1fr 1fr;
+  }
+  .analog-digital-mix .mix-aux .mini-aux-face { max-width: 112px; }
+  .perimeter-info { grid-template-columns: repeat(2, 1fr); }
+  .perimeter-info .perimeter-time { grid-column: 1 / -1; }
+  .oem-overlap {
+    min-height: 236px;
+    padding: 10px 8px 14px;
+  }
+  .oem-overlap .oem-speed { width: 42%; left: 29%; top: 13px; }
+  .oem-overlap .oem-tach { width: 38%; right: -1%; top: 32px; }
+  .oem-overlap .oem-aux-pod { width: 34%; left: 0; top: 43px; }
+  .oem-gear { bottom: 11px; }
+}
+@media (max-width: 480px) {
+  .classic-instrument .aux-pod { grid-column: 1 / -1; }
+  .classic-instrument .classic-console-stack { grid-column: 1 / -1; }
+  .oem-overlap { min-height: 205px; }
+  .oem-combo-title { display: none; }
+  .oem-gear { width: 58px; padding: 5px; }
+  .oem-gear strong { font-size: 21px; }
+}
