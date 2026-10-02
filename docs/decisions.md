@@ -117,3 +117,12 @@ Art workbench archives are tracked with Git text conversion disabled. Provenance
 - **Power and torque stay connected:** Runtime power is derived from torque and engine speed, and shift targets compare the resulting wheel-torque/power behavior rather than a standalone generic bell curve. Condition and upgrade balance still scales the car's gameplay acceleration/power separately.
 - **Driver-selectable dashboard:** Settings now persist an instrument-cluster preference. The original analog cluster remains available alongside a digital/analog mix, four rectangular segmented perimeter layouts and a continuous perimeter layout.
 - **Smooth rectangular corners:** All perimeter tachometers use one rounded SVG path from bottom-left to top-left, across the top and down the right edge. Segmentation is a mask on that path, so a corner follows one continuous curve instead of joining separately rotated corner blocks. The continuous variant removes the segmentation mask entirely.
+
+
+## 2026-10-02 — Desktop 2D game-shell interface
+
+- **Game-first desktop presentation:** The primary desktop UI uses a compact dark racing-game shell rather than a document/web-dashboard treatment. Use hard-edged HUD panels, concise uppercase labels, dense but readable spacing and clear screen-state hierarchy.
+- **Side-profile cars remain the visual rule:** Garage, race and selection views continue to present vehicle artwork from the side. The interface should frame the existing 2D sprites rather than replace them with perspective renders or 3D scenes.
+- **Color semantics:** Cyan/blue marks selection, navigation and instrumentation; green marks race/continue actions and ready states; amber marks earned in-game credits; red is reserved for racing emphasis, warnings and destructive actions.
+- **No monetization chrome:** Progression remains local and gameplay-earned. Do not add premium currencies, storefront prompts, purchase-plus buttons, energy timers or microtransaction-style UI. The top bar shows only earned credits and local/offline status.
+- **Preserve low-cost rendering:** The redesign is CSS/HTML presentation around the existing Canvas 2D renderer and current compact sprite pipeline. Avoid new runtime image loads, web fonts, heavy effects or dependencies solely for interface decoration.
