@@ -26,7 +26,7 @@ jobs:
           python-version: "3.12"
 
       - name: Install Pillow
-        run: python -m pip install --disable-pip-version-check pillow
+        run: python -m pip install --disable-pip-version-check pillow numpy
 
       - name: Export layered sprites
         run: python scripts/export-layered-sprites.py
